@@ -1,1 +1,110 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
+
+$info-bar-height: 80px;
+$info-bar-padding-top-bottom: 20px;
+$info-bar-padding-left-right: 30px;
+$info-bar-border-width: 1px;
+$action-bar-border-width: 1px;
+$action-bar-height: 80px;
+$scroll-box-shadow: rgba(0, 0, 0, .25);
+
+.frost-modal {
+  &.ember-remodal {
+    &.window {
+      position: relative;
+      min-width: 500px;
+      min-height: 250px;
+      max-height: calc(100vh - 90px);
+      padding: 0;
+      overflow: hidden;
+
+      .ember-remodal {
+        &.yielded {
+          &.content {
+            display: flex;
+            flex-direction: column;
+
+            .header {
+              display: flex;
+              position: absolute;
+              top: 0;
+              flex-direction: column;
+              align-items: flex-start;
+              width: 100%;
+              height: $info-bar-height + $info-bar-border-width;
+              padding: $info-bar-padding-top-bottom $info-bar-padding-left-right;
+              border-bottom: $info-bar-border-width solid $frost-color-lgrey-1;
+              z-index: 999;
+
+              &.header-scrolled {
+                border-bottom: 0;
+                box-shadow: 0 2px 3px $scroll-box-shadow;
+
+                &:after {
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                  bottom: 0;
+                  left: 0;
+                  height: $info-bar-height + $info-bar-border-width;
+                  background: $frost-color-white;
+                  content: '';
+                  z-index: -1;
+                }
+              }
+            }
+
+            .ps-container {
+              position: relative;
+              max-height: calc(100vh - 90px);
+              padding: 0;
+              overflow: auto;
+
+              .ps-scrollbar-y-rail {
+                margin-top: $info-bar-height + $info-bar-border-width;
+                margin-bottom: $action-bar-height + $info-bar-border-width;
+              }
+            }
+
+            .footer {
+              display: flex;
+              position: absolute;
+              bottom: 0;
+              align-items: center;
+              justify-content: flex-end;
+              width: 100%;
+              height: $action-bar-height + $action-bar-border-width;
+              margin-top: 20px;
+              padding-right: 30px;
+              border-top: 1px solid $frost-color-lgrey-1;
+              z-index: 999;
+
+              .frost-button {
+                min-width: 120px;
+                margin-left: 20px;
+              }
+
+              &.footer-scrolled {
+                border-top: 0;
+                box-shadow: 0 -2px 3px $scroll-box-shadow;
+
+                &:after {
+                  position: absolute;
+                  top: 0;
+                  right: 0;
+                  bottom: 0;
+                  left: 0;
+                  height: $action-bar-height + $action-bar-border-width;
+                  background: $frost-color-white;
+                  content: '';
+                  opacity: .95;
+                  z-index: -1;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

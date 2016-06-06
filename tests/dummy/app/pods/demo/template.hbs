@@ -1,2 +1,58 @@
 frost-modal testbed
-{{frost-modal}}
+{{#frost-modal
+  confirm=(action 'confirmHandler') as |slot|}}
+  {{#block-slot slot 'target'}}
+    {{frost-button
+      priority="primary"
+      size="medium"
+      text='Test basic dialog'
+    }}
+  {{/block-slot}}
+  {{#block-slot slot 'header'}}
+    <div class="primary-title">Test title</div>
+  {{/block-slot}}
+  {{#block-slot slot 'body'}}
+    <div class="custom-body">
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+    </div>
+  {{/block-slot}}
+  {{#block-slot slot 'cancel'}}
+    {{frost-button
+      autofocus=true
+      size='medium'
+      priority='tertiary'
+      text='Cancel'
+    }}
+  {{/block-slot}}
+  {{#block-slot slot 'confirm'}}
+    {{frost-button
+      size='medium'
+      priority='primary'
+      text='Confirm'
+    }}
+  {{/block-slot}}
+{{/frost-modal}}

@@ -1,12 +1,12 @@
-@import 'frost-core';
-@import 'frost-theme';
+@import 'node_modules/ember-frost-core/addon/styles/frost-theme';
+@import 'node_modules/ember-frost-core/addon/styles/frost-app';
 
 .dummy-notification-container {
   position: fixed;
   top: 60px;
   right: 10px;
-  z-index: 999;
   width: 80%;
   max-width: 400px;
   margin: auto;
+  z-index: 999;
 }

@@ -1,7 +1,9 @@
 /* global Ps */
 import Ember from 'ember'
 const {Component} = Ember
+import computed from 'ember-computed-decorators'
 import PropTypeMixin from 'ember-prop-types'
+import _ from 'lodash/lodash'
 
 export default Component.extend(PropTypeMixin, {
   // ==========================================================================
@@ -17,13 +19,14 @@ export default Component.extend(PropTypeMixin, {
   $containerEl: null,
   $headerEl: null,
   $footerEl: null,
-  computedName: Ember.computed ('modalName', function () {
-    return this.get('modalName') ? this.get('modalName') : ''
-  }),
 
   // ==========================================================================
   // Computed Properties
   // ==========================================================================
+  @computed('modalName')
+  computedName (modalName) {
+    return _.isUndefined(modalName) ? '' : modalName
+  },
 
   // ==========================================================================
   // Functions

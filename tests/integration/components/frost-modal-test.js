@@ -3,8 +3,8 @@ import {describeComponent, it} from 'ember-mocha'
 import hbs from 'htmlbars-inline-precompile'
 
 describeComponent(
-  'frost-simple-modal',
-  'Integration: EmberFrostSimpleModalComponent',
+  'frost-modal',
+  'Integration: EmberFrostModalComponent',
   {
     integration: true
   },
@@ -19,7 +19,7 @@ describeComponent(
       //   {{/frost-simple-modal}}
       // `)
 
-      this.render(hbs`{{frost-simple-modal}}`)
+      this.render(hbs`{{frost-modal}}`)
       expect(this.$()).to.have.length(1)
     })
   }

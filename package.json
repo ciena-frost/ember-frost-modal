@@ -12,7 +12,7 @@
     "test": "npm run lint && ember test",
     "eslint": "eslint *.js addon app blueprints config tests",
     "sass-lint": "sass-lint -q -v",
-    "lint": "npm run eslint && ember sass-lint"
+    "lint": "npm run eslint && npm run sass-lint"
   },
   "repository": "git@github.com:ciena-frost/ember-frost-modal.git",
   "engines": {

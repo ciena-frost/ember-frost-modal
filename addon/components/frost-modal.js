@@ -28,6 +28,11 @@ export default Component.extend(PropTypeMixin, {
     return _.isUndefined(modalName) ? '' : modalName
   },
 
+  @computed('modalClass')
+  computedClasses (modalClass) {
+    return _.isUndefined(modalClass) ? 'frost-modal' : `frost-modal ${modalClass}`
+  },
+
   // ==========================================================================
   // Functions
   // ==========================================================================

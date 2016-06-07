@@ -16,6 +16,10 @@
     width: 500px;
   }
 }
+.header {
+  flex-direction: column;
+  align-items: flex-start;
+}
 
 .custom-body {
   display: flex;

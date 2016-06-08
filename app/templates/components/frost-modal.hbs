@@ -1,0 +1,47 @@
+{{#ember-remodal
+  forService=true
+  closeOnOutsideClick=false
+  modalClasses=computedClasses
+  name=computedName
+  onOpen=(action 'modalOpen')
+  onClose=(action 'modalClose')
+  onConfirm=(action 'confirm')
+  closeOnEscape=false
+  disableNativeClose=true as |modal|
+}}
+  {{yield}}
+  {{#modal.open}}
+    {{#yield-slot 'target'}}
+      {{yield}}
+    {{/yield-slot}}
+  {{/modal.open}}
+
+  {{#yield-slot 'header'}}
+    <div class="header">
+      {{yield}}
+    </div>
+  {{/yield-slot}}
+
+  {{#perfect-scroll
+    wheelSpeed=2
+    minScrollbarLength=20
+    maxScrollbarLength=150}}
+    {{#yield-slot 'body'}}
+      {{yield}}
+    {{/yield-slot}}
+  {{/perfect-scroll}}
+
+  <div class='footer'>
+    {{#modal.cancel}}
+      {{#yield-slot 'cancel'}}
+        {{yield}}
+      {{/yield-slot}}
+    {{/modal.cancel}}
+
+    {{#modal.confirm}}
+      {{#yield-slot 'confirm'}}
+        {{yield}}
+      {{/yield-slot}}
+    {{/modal.confirm}}
+  </div>
+{{/ember-remodal}}

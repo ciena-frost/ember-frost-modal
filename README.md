@@ -22,10 +22,53 @@ ember install ember-frost-modal
 ```
 
 ## API
-Coming soon
+| Attribute | Type | Value | Description |
+| --------- | ---- | ----- | ----------- |
+| `modalName` | `string` | <name> | Optional name for the modal |
+| `modalClass` | `string` | <class-name> | Optional class to add custom styles to the modal |
+| `confirm` | `Function` | <action-name> | Optional callback triggered if confirm button is used |
+| `onOpen` | `Function` | <action-name> | Optional callback triggered after the modal opens |
+| `onClose` | `Function` | <action-name> | Optional callback triggered after the modal closes |
+
+## Slots API
+Using [ember-block-slots](https://github.com/ciena-blueplanet/ember-block-slots), this generic modal dialog can be wrapped inside other more complex modal components. This basic modal will provide a header, scrollable content area and footer with actions. The required slots are `target` and `cancel`, to provide a way to launch and close the modal dialog respectively.
 
 ## Examples
-Coming soon
+```handlebars
+{{#frost-modal
+  confirm=(action 'confirmHandler') as |slot|}}
+  {{#block-slot slot 'target'}}
+    {{frost-button
+      priority="primary"
+      size="medium"
+      text='Test basic dialog'
+    }}
+  {{/block-slot}}
+  {{#block-slot slot 'header'}}
+    <div class="primary-title">Test title</div>
+  {{/block-slot}}
+  {{#block-slot slot 'body'}}
+    <div class="custom-body">
+      <div>Test Information block</div>
+    </div>
+  {{/block-slot}}
+  {{#block-slot slot 'cancel'}}
+    {{frost-button
+      autofocus=true
+      size='medium'
+      priority='tertiary'
+      text='Cancel'
+    }}
+  {{/block-slot}}
+  {{#block-slot slot 'confirm'}}
+    {{frost-button
+      size='medium'
+      priority='primary'
+      text='Confirm'
+    }}
+  {{/block-slot}}
+{{/frost-modal}}
+```
 
 ## Development
 ### Setup

@@ -1,6 +1,6 @@
 frost-modal testbed
 {{#frost-modal
-  confirm=(action 'confirmHandler') as |slot|}}
+  modalName='testModal' as |slot|}}
   {{#block-slot slot 'target'}}
     {{frost-button
       priority="primary"
@@ -9,7 +9,7 @@ frost-modal testbed
     }}
   {{/block-slot}}
   {{#block-slot slot 'header'}}
-    <div class="primary-title">Test title</div>
+    <div class="primary-title">BLAH</div>
   {{/block-slot}}
   {{#block-slot slot 'body'}}
     <div class="custom-body">
@@ -40,19 +40,13 @@ frost-modal testbed
       <div>Test Information block</div>
     </div>
   {{/block-slot}}
-  {{#block-slot slot 'cancel'}}
-    {{frost-button
-      autofocus=true
-      size='medium'
-      priority='tertiary'
-      text='Cancel'
-    }}
-  {{/block-slot}}
-  {{#block-slot slot 'confirm'}}
-    {{frost-button
-      size='medium'
-      priority='primary'
-      text='Confirm'
-    }}
+  {{#block-slot slot 'footer' as |actions|}}
+    {{actions.button
+      type='close'
+      text='Cancel'}}
+    {{actions.button
+      confirm=(action 'confirmHandler')
+      type='confirm'
+      text='Confirm'}}
   {{/block-slot}}
 {{/frost-modal}}

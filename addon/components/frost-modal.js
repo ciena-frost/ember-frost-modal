@@ -6,6 +6,7 @@ import PropTypeMixin from 'ember-prop-types'
 import _ from 'lodash/lodash'
 
 export default Component.extend(PropTypeMixin, {
+  remodal: Ember.inject.service(),
   // ==========================================================================
   // Dependencies
   // ==========================================================================
@@ -156,7 +157,9 @@ export default Component.extend(PropTypeMixin, {
         onOpen()
       }
     },
-    modalClose () {
+    modalClose (confirmHandler) {
+      confirmHandler()
+      console.log(IN HERE);
       Ember.$(document).off('ps-scroll-up ps-scroll-down ps-y-reach-start ps-y-reach-end')
 
       Ember.$(window).off('resize', this.updateScrollStyles)
@@ -170,6 +173,12 @@ export default Component.extend(PropTypeMixin, {
       if (onClose) {
         onClose()
       }
+      // const name = this.get('computedName')
+      // const remodalInstance = name !== '' ? `remodal.${name}` : 'remodal.ember-remodal'
+      // const modalInstance = `${remodalInstance}.modal`
+      // this.get(remodalInstance)._destroyDomElements()
+      // this.get(remodalInstance)._deregisterObservers()
+      // this.set(modalInstance, null)
     }
   }
 })

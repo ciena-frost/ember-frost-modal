@@ -32,16 +32,23 @@
   {{/perfect-scroll}}
 
   <div class='footer'>
-    {{#modal.cancel}}
-      {{#yield-slot 'cancel'}}
-        {{yield}}
-      {{/yield-slot}}
-    {{/modal.cancel}}
-
-    {{#modal.confirm}}
+    {{#yield-slot 'footer'}}
+    {{!-- {{#modal.cancel}} --}}
+    {{yield (block-params
+      (hash
+        button=(component
+        'action-button'
+          priority='tertiary'
+          size='medium'
+        )
+      )
+    )}}
+    {{!-- {{/modal.cancel}} --}}
+    {{!-- {{#modal.confirm}}
       {{#yield-slot 'confirm'}}
         {{yield}}
       {{/yield-slot}}
-    {{/modal.confirm}}
+    {{/modal.confirm}} --}}
+    {{/yield-slot}}
   </div>
 {{/ember-remodal}}

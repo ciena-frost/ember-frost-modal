@@ -40,14 +40,14 @@ frost-modal testbed
       <div>Test Information block</div>
     </div>
   {{/block-slot}}
-  {{#block-slot slot 'footer' as |actions|}}
-    {{actions.button
-      type='close'
+  {{#block-slot slot 'footer' as |controls|}}
+    {{controls.cancel
       text='Cancel'}}
-    {{actions.button
-      confirm=(action 'confirmHandler')
-      priority='primary'
-      type='confirm'
+    {{controls.button
+      text='Custom action'
+      onActionClick=(action 'myCustomAction')}}
+    {{controls.confirm
+      onConfirm=(action 'confirmHandler')
       text='Confirm'}}
   {{/block-slot}}
 {{/frost-modal}}

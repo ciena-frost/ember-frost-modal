@@ -1,17 +1,22 @@
-import Ember from 'ember';
+import Ember from 'ember'
 
 export default Ember.Component.extend({
 
   actions: {
     onActionClick () {
       if (this.get('type') === 'confirm') {
-        const confirm = this.get('confirm')
-        if (confirm) {
-          confirm()
+        if (this.attrs['onConfirm']) {
+          this.attrs['onConfirm']()
+          this.attrs['onClose']()
         }
       }
-      this.attrs['onClose']()
+      if (this.get('type') === 'cancel') {
+        this.attrs['onClose']()
+      }
+      const customAction = this.get('onActionClick')
+      if (customAction) {
+        customAction()
+      }
     }
   }
-
 })

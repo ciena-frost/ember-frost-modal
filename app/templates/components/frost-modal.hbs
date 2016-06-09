@@ -33,12 +33,26 @@
     {{#yield-slot 'footer'}}
     {{yield (block-params
       (hash
-        button=(component
+        cancel=(component
         'action-button'
+          type='cancel'
           priority='tertiary'
           size='medium'
           onClose=(action 'modalClose')
-        ))
+        )
+        confirm=(component
+          'action-button'
+          type='confirm'
+          priority='primary'
+          size='medium'
+          onClose=(action 'modalClose')
+          )
+        button=(component
+          'action-button'
+          size='medium'
+          priority='secondary'
+          )
+        )
     )}}
     {{/yield-slot}}
   </div>

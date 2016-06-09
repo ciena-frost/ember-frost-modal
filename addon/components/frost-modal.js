@@ -173,12 +173,6 @@ export default Component.extend(PropTypeMixin, {
       if (onClose) {
         onClose()
       }
-      // const name = this.get('computedName')
-      // const remodalInstance = name !== '' ? `remodal.${name}` : 'remodal.ember-remodal'
-      // const modalInstance = `${remodalInstance}.modal`
-      // this.get(remodalInstance)._destroyDomElements()
-      // this.get(remodalInstance)._deregisterObservers()
-      // this.set(modalInstance, null)
     }
   }
 })

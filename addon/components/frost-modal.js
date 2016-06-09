@@ -135,7 +135,6 @@ export default Component.extend(PropTypeMixin, {
   actions: {
     confirm () {
       const confirm = this.get('confirm')
-
       if (confirm) {
         confirm()
       }
@@ -151,15 +150,13 @@ export default Component.extend(PropTypeMixin, {
       if (!this.get('scrollBindingsSet')) {
         this.setScrollBindings()
       }
-      const onOpen = this.get('onOpen')
 
+      const onOpen = this.get('onOpen')
       if (onOpen) {
         onOpen()
       }
     },
-    modalClose (confirmHandler) {
-      confirmHandler()
-      console.log(IN HERE);
+    modalClose () {
       Ember.$(document).off('ps-scroll-up ps-scroll-down ps-y-reach-start ps-y-reach-end')
 
       Ember.$(window).off('resize', this.updateScrollStyles)
@@ -168,6 +165,9 @@ export default Component.extend(PropTypeMixin, {
         this.get('containerObserver').disconnect()
       }
       this.set('scrollBindingsSet', false)
+
+      this.get('remodal').close(this.get('computedName'))
+
       const onClose = this.get('onClose')
 
       if (onClose) {

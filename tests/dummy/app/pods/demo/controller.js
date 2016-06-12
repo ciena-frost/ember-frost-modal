@@ -9,6 +9,9 @@ export default Ember.Controller.extend({
         autoClear: true,
         clearDuration: 2000
       })
+    },
+    myCustomAction: function () {
+      console.log('My Custom action triggered')
     }
   }
 })

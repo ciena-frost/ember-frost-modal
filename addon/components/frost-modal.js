@@ -6,6 +6,7 @@ import PropTypeMixin from 'ember-prop-types'
 import _ from 'lodash/lodash'
 
 export default Component.extend(PropTypeMixin, {
+  remodal: Ember.inject.service(),
   // ==========================================================================
   // Dependencies
   // ==========================================================================
@@ -134,7 +135,6 @@ export default Component.extend(PropTypeMixin, {
   actions: {
     confirm () {
       const confirm = this.get('confirm')
-
       if (confirm) {
         confirm()
       }
@@ -150,8 +150,8 @@ export default Component.extend(PropTypeMixin, {
       if (!this.get('scrollBindingsSet')) {
         this.setScrollBindings()
       }
-      const onOpen = this.get('onOpen')
 
+      const onOpen = this.get('onOpen')
       if (onOpen) {
         onOpen()
       }
@@ -165,6 +165,9 @@ export default Component.extend(PropTypeMixin, {
         this.get('containerObserver').disconnect()
       }
       this.set('scrollBindingsSet', false)
+
+      this.get('remodal').close(this.get('computedName'))
+
       const onClose = this.get('onClose')
 
       if (onClose) {

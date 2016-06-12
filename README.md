@@ -26,17 +26,34 @@ ember install ember-frost-modal
 | --------- | ---- | ----- | ----------- |
 | `modalName` | `string` | <name> | Optional name for the modal |
 | `modalClass` | `string` | <class-name> | Optional class to add custom styles to the modal |
-| `confirm` | `Function` | <action-name> | Optional callback triggered if confirm button is used |
-| `onOpen` | `Function` | <action-name> | Optional callback triggered after the modal opens |
-| `onClose` | `Function` | <action-name> | Optional callback triggered after the modal closes |
 
-## Slots API
-Using [ember-block-slots](https://github.com/ciena-blueplanet/ember-block-slots), this generic modal dialog can be wrapped inside other more complex modal components. This basic modal will provide a header, scrollable content area and footer with actions. The required slots are `target` and `cancel`, to provide a way to launch and close the modal dialog respectively.
+### Ember-remodal
+
+This addon uses the [ember-remodal](http://sethbrasile.github.io/ember-remodal/) service as a base for the modal behavior.
+
+### Slots API
+
+Using [ember-block-slots](https://github.com/ciena-blueplanet/ember-block-slots), this generic modal dialog can be wrapped inside other more complex modal components. This basic modal will provide a header, scrollable content area and footer with actions. The required slots are `target` and `footer`, to provide a way to launch and close the modal dialog respectively.
+
+### Footer controls block
+
+The `footer` block can yield a `cancel`, `confirm` or generic button type. The `cancel` button is internally hooked up to close the dialog.
+The button text can be customized using the `text` attribute. The `cancel` button text defaults to `Cancel`. The `confirm` button text defaults to `Confirm`.
+The `confirm` button is a primary button that takes a `onConfirm` action handler to allow the consumer to perform actions on confirmation, eg saving a record, and it automatically closes the dialog.
+If you require another custom button, you can use the generic button type. To set an action handler on that button, set the attr `onActionClick`. All button text, size and priority can be overridden.
+
+### ember-perfectscroll effects
+
+This gives you styling of header/footer when content is scrolled underneath either element
+
+Styling includes: box shadow plus slight transparency in header/footer to reveal content underneath
+For more documentation on ember-perfectscroll:  [perfect-scrollbar](https://github.com/noraesae/perfect-scrollbar)
 
 ## Examples
 ```handlebars
+frost-modal testbed
 {{#frost-modal
-  confirm=(action 'confirmHandler') as |slot|}}
+  modalName='testModal' as |slot|}}
   {{#block-slot slot 'target'}}
     {{frost-button
       priority="primary"
@@ -45,29 +62,25 @@ Using [ember-block-slots](https://github.com/ciena-blueplanet/ember-block-slots)
     }}
   {{/block-slot}}
   {{#block-slot slot 'header'}}
-    <div class="primary-title">Test title</div>
+    <div class="primary-title">TEST TITLE</div>
   {{/block-slot}}
   {{#block-slot slot 'body'}}
     <div class="custom-body">
       <div>Test Information block</div>
+      <div>Test Information block</div>
     </div>
   {{/block-slot}}
-  {{#block-slot slot 'cancel'}}
-    {{frost-button
-      autofocus=true
-      size='medium'
-      priority='tertiary'
-      text='Cancel'
-    }}
-  {{/block-slot}}
-  {{#block-slot slot 'confirm'}}
-    {{frost-button
-      size='medium'
-      priority='primary'
-      text='Confirm'
-    }}
+  {{#block-slot slot 'footer' as |controls|}}
+    {{controls.cancel}}
+    {{controls.button
+      text='Custom action'
+      onClick=(action 'myCustomAction')}}
+    {{controls.confirm
+      onConfirm=(action 'confirmHandler')
+      text='Confirm it!'}}
   {{/block-slot}}
 {{/frost-modal}}
+
 ```
 
 ## Development

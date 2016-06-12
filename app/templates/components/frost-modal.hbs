@@ -4,8 +4,6 @@
   modalClasses=computedClasses
   name=computedName
   onOpen=(action 'modalOpen')
-  onClose=(action 'modalClose')
-  onConfirm=(action 'confirm')
   closeOnEscape=false
   disableNativeClose=true as |modal|
 }}
@@ -32,16 +30,32 @@
   {{/perfect-scroll}}
 
   <div class='footer'>
-    {{#modal.cancel}}
-      {{#yield-slot 'cancel'}}
-        {{yield}}
-      {{/yield-slot}}
-    {{/modal.cancel}}
-
-    {{#modal.confirm}}
-      {{#yield-slot 'confirm'}}
-        {{yield}}
-      {{/yield-slot}}
-    {{/modal.confirm}}
+    {{#yield-slot 'footer'}}
+    {{yield (block-params
+      (hash
+        cancel=(component
+        'action-button'
+          text='Cancel'
+          type='cancel'
+          priority='tertiary'
+          size='medium'
+          onClose=(action 'modalClose')
+        )
+        confirm=(component
+          'action-button'
+          text='Confirm'
+          type='confirm'
+          priority='primary'
+          size='medium'
+          onClose=(action 'modalClose')
+          )
+        button=(component
+          'action-button'
+          size='medium'
+          priority='secondary'
+          )
+        )
+    )}}
+    {{/yield-slot}}
   </div>
 {{/ember-remodal}}

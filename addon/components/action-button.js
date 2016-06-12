@@ -1,22 +1,38 @@
 import Ember from 'ember'
+import FrostButton from 'ember-frost-core/components/frost-button'
+const { ViewUtils } = Ember
 
-export default Ember.Component.extend({
+/**
+ * @module
+ * @augments module:ember-frost-core/components/frost-button
+ */
+export default FrostButton.extend({
 
-  actions: {
-    onActionClick () {
-      if (this.get('type') === 'confirm') {
-        if (this.attrs['onConfirm']) {
-          this.attrs['onConfirm']()
-          this.attrs['onClose']()
-        }
-      }
-      if (this.get('type') === 'cancel') {
+  /**
+   * Sets up behavior for onClick event
+   *
+   * @function
+   * @param  {Object} event The mouse click event
+   * @return {Boolean} If user does Shift|Ctrl|Alt|Meta|Secondary + click, then exit the function
+   * without doing the logic to execute the closure action
+   */
+  onclick: Ember.on('click', function (event) {
+    if (!ViewUtils.isSimpleClick(event)) {
+      return true
+    }
+
+    if (this.get('type') === 'confirm') {
+      if (this.attrs['onConfirm']) {
+        this.attrs['onConfirm']()
         this.attrs['onClose']()
       }
-      const customAction = this.get('onActionClick')
-      if (customAction) {
-        customAction()
-      }
     }
-  }
+    if (this.get('type') === 'cancel') {
+      this.attrs['onClose']()
+    }
+    const customAction = this.get('onClick')
+    if (customAction) {
+      customAction()
+    }
+  })
 })

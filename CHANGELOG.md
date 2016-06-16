@@ -1,3 +1,6 @@
+# 2.0.1
+ - Link to forked remodal temporary to force component re-rendering on dialog open/close
+
 # 2.0.0
 ## Breaking
  - Changed the footer block controls interface to more cleanly support cancel, confirm and custom buttons within a single block-slot

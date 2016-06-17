@@ -1,7 +1,6 @@
 import Ember from 'ember'
 const {
-  get,
-  on
+  get
 } = Ember
 import PerfectScroll from 'ember-perfect-scroll/components/perfect-scroll/component'
 

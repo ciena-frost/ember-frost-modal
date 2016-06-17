@@ -3,7 +3,7 @@ const {
   get,
   on
 } = Ember
-import PerfectScroll from 'ember-perfect-scroll/components/perfect-scroll'
+import PerfectScroll from 'ember-perfect-scroll/components/perfect-scroll/component'
 
 export default PerfectScroll.extend({
   _destroyPerfectScroll: on('willDestroyElement', function () {

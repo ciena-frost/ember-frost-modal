@@ -139,6 +139,7 @@ export default Component.extend(PropTypeMixin, {
         confirm()
       }
     },
+
     modalOpen () {
       this.set('$containerEl', Ember.$('.ember-remodal.window.remodal-is-opened .ps-container'))
       this.set('$headerEl', Ember.$('.ember-remodal.window.remodal-is-opened .header'))
@@ -156,6 +157,7 @@ export default Component.extend(PropTypeMixin, {
         onOpen()
       }
     },
+
     modalClose () {
       Ember.$(document).off('ps-scroll-up ps-scroll-down ps-y-reach-start ps-y-reach-end')
 

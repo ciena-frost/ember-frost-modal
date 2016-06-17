@@ -1,4 +1,4 @@
-{{#ember-remodal
+{{#fixed-remodal
   forService=true
   closeOnOutsideClick=false
   modalClasses=computedClasses
@@ -20,14 +20,14 @@
     </div>
   {{/yield-slot}}
 
-  {{#perfect-scroll
+  {{#modal-perfect-scroll
     wheelSpeed=2
     minScrollbarLength=20
     maxScrollbarLength=150}}
     {{#yield-slot 'body'}}
       {{yield}}
     {{/yield-slot}}
-  {{/perfect-scroll}}
+  {{/modal-perfect-scroll}}
 
   <div class='footer'>
     {{#yield-slot 'footer'}}
@@ -58,4 +58,4 @@
     )}}
     {{/yield-slot}}
   </div>
-{{/ember-remodal}}
+{{/fixed-remodal}}

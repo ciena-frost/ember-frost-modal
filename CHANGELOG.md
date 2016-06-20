@@ -1,3 +1,9 @@
+# 2.0.2
+
+Destroy and recreate the modal content so that it can update on re-launch
+
+Guard against a null destroy in perfect-scroll
+
 # 2.0.1
  - Link to forked remodal temporary to force component re-rendering on dialog open/close
 

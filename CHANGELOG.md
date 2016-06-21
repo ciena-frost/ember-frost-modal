@@ -1,3 +1,7 @@
+# 2.0.3
+No CHANGELOG section found in Pull Request description.
+Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`
+
 # 2.0.2
 
 Destroy and recreate the modal content so that it can update on re-launch

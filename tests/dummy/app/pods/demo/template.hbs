@@ -40,12 +40,13 @@ frost-modal testbed
       <div>Test Information block</div>
     </div>
   {{/block-slot}}
-  {{#block-slot slot 'footer' as |controls|}}
+  {{#block-slot slot 'footer' as |controls modalClose|}}
     {{controls.cancel}}
     {{controls.button
       text='Custom action'
       onClick=(action 'myCustomAction')}}
     {{controls.confirm
+      onClick=modalClose
       onConfirm=(action 'confirmHandler')
       text='Confirm it!'}}
   {{/block-slot}}

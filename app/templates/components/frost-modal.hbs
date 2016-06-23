@@ -47,7 +47,6 @@
           type='confirm'
           priority='primary'
           size='medium'
-          onClose=(action 'modalClose')
           )
         button=(component
           'action-button'
@@ -55,6 +54,7 @@
           priority='secondary'
           )
         )
+        (action 'modalClose')
     )}}
     {{/yield-slot}}
   </div>

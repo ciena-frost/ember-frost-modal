@@ -54,8 +54,7 @@ Default frost-modal test
 <br>
 Non default dialog
 {{#frost-modal
-  modalName='testModal2'
-  closeOnClick=false as |slot|}}
+  modalName='testModal2' as |slot|}}
   {{#block-slot slot 'target'}}
     {{frost-button
       priority="primary"
@@ -78,6 +77,7 @@ Non default dialog
       text='Custom action'
       onClick=(action 'myCustomAction')}}
     {{controls.confirm
+      closeOnClick=false
       onConfirm=(action 'confirmHandler')
       text='Confirm!'}}
   {{/block-slot}}

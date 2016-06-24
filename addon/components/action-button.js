@@ -7,6 +7,7 @@ const { ViewUtils } = Ember
  * @augments module:ember-frost-core/components/frost-button
  */
 export default FrostButton.extend({
+  closeOnClick: true,
   /**
    * Sets up behavior for onClick event
    *

@@ -14,7 +14,7 @@ export default Component.extend(PropTypeMixin, {
   // ==========================================================================
   // Properties
   // ==========================================================================
-
+  closeOnClick: true,
   scrollBindingsSet: false,
   containerObserver: null,  // @type {window.MutationObserver}
   $containerEl: null,

@@ -1,3 +1,6 @@
+# 2.1.0
+* Added support to use the built in modalClose function only if needed
+
 # 2.0.3
 No CHANGELOG section found in Pull Request description.
 Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`

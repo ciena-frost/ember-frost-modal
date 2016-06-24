@@ -7,6 +7,7 @@ const { ViewUtils } = Ember
  * @augments module:ember-frost-core/components/frost-button
  */
 export default FrostButton.extend({
+  closeOnClick: true,
   /**
    * Sets up behavior for onClick event
    *
@@ -23,7 +24,9 @@ export default FrostButton.extend({
     if (this.get('type') === 'confirm') {
       if (this.attrs['onConfirm']) {
         this.attrs['onConfirm']()
-        this.attrs['onClose']()
+        if (this.get('closeOnClick')) {
+          this.attrs['onClose']()
+        }
       }
     }
     if (this.get('type') === 'cancel') {

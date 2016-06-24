@@ -14,7 +14,6 @@ export default Component.extend(PropTypeMixin, {
   // ==========================================================================
   // Properties
   // ==========================================================================
-
   scrollBindingsSet: false,
   containerObserver: null,  // @type {window.MutationObserver}
   $containerEl: null,

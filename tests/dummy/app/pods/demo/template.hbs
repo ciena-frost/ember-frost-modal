@@ -1,6 +1,6 @@
-frost-modal testbed
+Default frost-modal test
 {{#frost-modal
-  modalName='testModal' as |slot|}}
+  modalName='testModal'as |slot|}}
   {{#block-slot slot 'target'}}
     {{frost-button
       priority="primary"
@@ -40,13 +40,45 @@ frost-modal testbed
       <div>Test Information block</div>
     </div>
   {{/block-slot}}
-  {{#block-slot slot 'footer' as |controls|}}
+  {{#block-slot slot 'footer' as |controls close|}}
     {{controls.cancel}}
     {{controls.button
       text='Custom action'
       onClick=(action 'myCustomAction')}}
     {{controls.confirm
       onConfirm=(action 'confirmHandler')
-      text='Confirm it!'}}
+      text='Confirm and close'}}
+  {{/block-slot}}
+{{/frost-modal}}
+
+<br>
+Non default dialog
+{{#frost-modal
+  modalName='testModal2' as |slot|}}
+  {{#block-slot slot 'target'}}
+    {{frost-button
+      priority="primary"
+      size="medium"
+      text='Test dialog 2'
+    }}
+  {{/block-slot}}
+  {{#block-slot slot 'header'}}
+    <div class="primary-title">BLAH</div>
+  {{/block-slot}}
+  {{#block-slot slot 'body'}}
+    <div class="custom-body">
+      <div>Test Information block</div>
+      <div>Test Information block</div>
+    </div>
+  {{/block-slot}}
+  {{#block-slot slot 'footer' as |controls close|}}
+    {{controls.cancel}}
+    {{controls.button
+      text='Custom action'
+      onClick=(action 'myCustomAction')}}
+    {{controls.confirm
+      closeOnClick=false
+      onConfirm=(action 'confirmHandler')
+      text='Confirm!'}}
   {{/block-slot}}
 {{/frost-modal}}

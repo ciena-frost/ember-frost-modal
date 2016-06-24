@@ -26,6 +26,8 @@ ember install ember-frost-modal
 | --------- | ---- | ----- | ----------- |
 | `modalName` | `string` | <name> | Optional name for the modal |
 | `modalClass` | `string` | <class-name> | Optional class to add custom styles to the modal |
+| `closeOnClick` | `boolean` | `default = true` | `Modal closes when the Confirm button is clicked` |
+| | | `false` | `Modal does not automatically close when the Confirm button is clicked` |
 
 ### Ember-remodal
 
@@ -37,10 +39,11 @@ Using [ember-block-slots](https://github.com/ciena-blueplanet/ember-block-slots)
 
 ### Footer controls block
 
-The `footer` block can yield a `cancel`, `confirm` or generic button type. The `cancel` button is internally hooked up to close the dialog.
+The `footer` block can yield a `cancel`, `confirm` or generic button type as `controls` block param. The `cancel` button is internally hooked up to close the dialog.
 The button text can be customized using the `text` attribute. The `cancel` button text defaults to `Cancel`. The `confirm` button text defaults to `Confirm`.
-The `confirm` button is a primary button that takes a `onConfirm` action handler to allow the consumer to perform actions on confirmation, eg saving a record, and it automatically closes the dialog.
-If you require another custom button, you can use the generic button type. To set an action handler on that button, set the attr `onActionClick`. All button text, size and priority can be overridden.
+The `confirm` button is a primary button that takes a `onConfirm` action handler to allow the consumer to perform actions on confirmation, eg saving a record, and it  closes the dialog by default. If however, you set the template attr `closeOnClick=false`, it will not close the dialog on confirm click. This allows you to hook into the confirm action and perform other tasks.
+The footer block also yields a `close` action that a consumer can call to correctly close the dialog after all tasks are completed.
+If you require another custom button, you can use the generic button type. To set an action handler on that button, set the attr `onClick`. All button text, size and priority can be overridden.
 
 ### ember-perfectscroll effects
 
@@ -62,22 +65,23 @@ frost-modal testbed
     }}
   {{/block-slot}}
   {{#block-slot slot 'header'}}
-    <div class="primary-title">TEST TITLE</div>
+    <div class="primary-title">BLAH</div>
   {{/block-slot}}
   {{#block-slot slot 'body'}}
     <div class="custom-body">
       <div>Test Information block</div>
       <div>Test Information block</div>
+      <div>Test Information block</div>
     </div>
   {{/block-slot}}
-  {{#block-slot slot 'footer' as |controls|}}
+  {{#block-slot slot 'footer' as |controls close|}}
     {{controls.cancel}}
     {{controls.button
       text='Custom action'
       onClick=(action 'myCustomAction')}}
     {{controls.confirm
       onConfirm=(action 'confirmHandler')
-      text='Confirm it!'}}
+      text='Confirm and close'}}
   {{/block-slot}}
 {{/frost-modal}}
 

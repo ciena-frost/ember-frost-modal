@@ -1,3 +1,8 @@
+# 2.1.1
+ * **Reduced** specificity of SASS selectors
+ * **Added** `CONTRIBUTING.md` to inform potential contributors
+* **Added** `PULL_REQUEST_TEMPLATE.md` to ease intro into `pr-bumper`
+
 # 2.1.0
 * Added support to use the built in modalClose function only if needed
 

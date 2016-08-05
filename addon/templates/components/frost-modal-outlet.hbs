@@ -1,0 +1,22 @@
+{{#from-elsewhere
+  name=name
+  as |modal|
+}}
+  {{! can we store the active animation in the outlet via a template binding?}}
+  {{#liquid-if modal
+    containerless=true
+    rules=(retain-rules this modal.animation)
+  }}
+    <div class="frost-modal-outlet-background"></div>
+    <div class="frost-modal-outlet-container"
+      onclick={{action (ignore-children modal.onOutsideClick)}}
+    >
+      <div class="frost-modal-outlet-body" >
+        {{component modal.body}}
+      </div>
+    </div>
+  {{/liquid-if}}
+{{/from-elsewhere}}
+
+{{! presets for various dialog types }}
+{{! demo a sample of building your own }}

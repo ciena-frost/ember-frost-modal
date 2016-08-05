@@ -1,0 +1,102 @@
+{{yield}}
+
+{{!--#yield-slot 'header'}}
+  <div class='header'>
+    Info bar can be yielded back {{yield}}
+  </div>
+{{/yield-slot--}}
+
+{{!#modal-perfect-scroll
+    wheelSpeed=2
+    minScrollbarLength=20
+    maxScrollbarLength=150}}
+{{!--
+  perfect scroll is kind of biting us in the ass, can we make an equivalent?
+  port some combination of perfect-scroll to native Ember
+  https://github.com/noraesae/perfect-scrollbar
+  Look at https://github.com/lukesargeant/ember-scroll-box
+  and https://github.com/alphasights/ember-scrollable
+--}}
+  {{!--#yield-slot 'body'}}
+    {{yield}}
+  {{/yield-slot--}}
+{{!/modal-perfect-scroll}}
+
+{{!--#yield-slot 'footer'}}
+  <div class='footer'>
+    {{yield (block-params
+      (hash
+        cancel=(component 'frost-button'
+          priority='tertiary'
+          size='small'
+          text='Cancel'
+          onClick=(action onCancel)
+        )
+
+        cancel=(component
+        'action-button'
+          text='Cancel'
+          type='cancel'
+          priority='tertiary'
+          size='medium'
+          onClose=(action 'modalClose')
+        )
+
+        confirm=(component 'frost-button'
+          priority='primary'
+          size='small'
+          text='Confirm'
+          onClick=(action onConfirm)
+        )
+
+        confirm=(component
+          'action-button'
+          text='Confirm'
+          type='confirm'
+          priority='primary'
+          size='medium'
+          onClose=(action 'modalClose')
+          )
+        button=(component
+          'action-button'
+          size='medium'
+          priority='secondary'
+          onClose=(action 'modalClose')
+          )
+        )
+        (action 'modalClose')
+      )}}
+    </div>
+  {{/yield-slot--}}
+
+
+  {{! for the fixed types we just need 'type' and 'text' }}
+
+  {{!--
+    demo this as building various types of modals - probably want to rethink the name (modal-components?)
+    e.g.
+    {{modal-body as |components actions|}}
+      {{components.header
+        title=
+      }}
+      {{#components.body}}
+
+      {{/components.body}}
+      {{#components.footer}}
+        {{components.cancel}}
+        {{components.confirm}}
+      {{/components.footer}}
+    {{/modal-body}}
+
+    {{modal-body}}
+      {{#block-slot 'header'}}
+
+      {{/block-slot}}
+      {{#block-slot 'body'}}
+
+      {{/block-slot}}
+      {{#block-slot 'footer'}}
+
+      {{/block-slot}}
+    {{/modal-body}}
+  --}}

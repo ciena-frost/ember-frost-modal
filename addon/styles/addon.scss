@@ -111,3 +111,37 @@ $scroll-box-shadow: rgba(0, 0, 0, .25);
     }
   }
 }
+
+/* New styles */
+
+.frost-modal-outlet-background {
+  background-color: black;
+  opacity: 0.5;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.frost-modal-outlet-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.frost-modal-outlet-body {
+  background-color: white;
+  padding: 4em;
+  border-radius: 5px;
+  border: 1px solid #B4B4E8;
+}
+
+.frost-modal-content-blur {
+  filter: blur(3px);
+}

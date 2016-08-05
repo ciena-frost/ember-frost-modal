@@ -1,0 +1,11 @@
+{{frost-modal-binding 'user-form' isUserModalVisible
+  animation=(frost-modal-animation 'form')
+  onClose=(action (mut isUserModalVisible) false)
+}}
+
+{{frost-button
+  priority='primary'
+  size='small'
+  text='We have modal!'
+  onClick=(action (mut isUserModalVisible) true)
+}}

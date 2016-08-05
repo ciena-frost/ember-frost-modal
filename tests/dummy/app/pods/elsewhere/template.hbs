@@ -1,0 +1,31 @@
+<div>Meanwhile...</div>
+
+{{!-- e-modal-outlet
+  name='override'
+--}}
+
+
+
+{{frost-button
+  priority='primary'
+  size='small'
+  text='We have modal!'
+  onClick=(action (mut isModalVisible) true)
+}}
+
+{{!-- e-modal 'warning-modal'
+  isVisible=isModalVisible
+  onCancel=(action (mut isModalVisible) false)
+  target='override'
+--}}
+
+{{e-modal 'warning-modal'
+  isVisible=isModalVisible
+  onCancel=(action (mut isModalVisible) false)
+}}
+
+{{!--
+  hooks:
+  onClose
+  onOpen
+--}}

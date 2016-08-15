@@ -38,6 +38,14 @@ module.exports = function (environment) {
     ENV.APP.rootElement = '#ember-testing'
   }
 
+  // BEGIN-SNIPPET config-no-animation
+  if (environment === 'test') {
+    ENV['frost-modal'] = {
+      'no-animation': true
+    }
+  }
+  // END-SNIPPET
+
   if (environment === 'production') {
     ENV.baseURL = '/frost-modal'
     ENV.isDemo = true

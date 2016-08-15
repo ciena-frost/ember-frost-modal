@@ -1,0 +1,56 @@
+{{frost-modal-header
+  icon=(hash
+    icon=params.icon
+    pack='frost-modal'
+  )
+  title=params.title
+  isOverflow=isOverflowYStart
+}}
+
+{{#frost-scroll
+  class='frost-modal-scroll'
+  onScrollDown=(action 'scrollDown')
+  onScrollUp=(action 'scrollUp')
+  onScrollYEnd=(action 'scrollYEnd')
+  onScrollYStart=(action 'scrollYStart')
+}}
+  {{#if params.summary}}
+    {{frost-modal-summary
+      summary=params.summary
+    }}
+  {{/if}}
+  {{#if content}}
+    <div class='frost-modal-content'>
+      {{component content}}
+    </div>
+    <div class='frost-modal-content-padding'></div>
+  {{/if}}
+{{/frost-scroll}}
+
+{{#frost-modal-footer}}
+  {{#if isOverflowYEnd}}
+    <div class='frost-modal-overflow-y-end'></div>
+  {{/if}}
+  {{frost-button
+    isVisible=params.cancel.isVisible
+    priority='tertiary'
+    size='medium'
+    text=(if params.cancel.text params.cancel.text 'Cancel')
+    onClick=onCancel
+  }}
+  {{frost-button
+    isVisible=params.confirm.isVisible
+    priority='primary'
+    size='medium'
+    text=(if params.confirm.text params.confirm.text 'Confirm')
+    onClick=onConfirm
+  }}
+  {{#each params.links as |link|}}
+    {{#frost-link link.route
+      priority=link.priority
+      size='medium'
+    }}
+      {{link.text}}
+    {{/frost-link}}
+  {{/each}}
+{{/frost-modal-footer}}

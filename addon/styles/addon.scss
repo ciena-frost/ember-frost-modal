@@ -1,4 +1,5 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
+@import 'node_modules/ember-frost-core/addon/styles/frost-app';
 
 $info-bar-height: 80px;
 $info-bar-padding-top-bottom: 20px;
@@ -113,35 +114,143 @@ $scroll-box-shadow: rgba(0, 0, 0, .25);
 }
 
 /* New styles */
+/* New styles */
+/* New styles */
+/* New styles */
 
-.frost-modal-outlet-background {
-  background-color: black;
-  opacity: 0.5;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
+.frost-modal {
+  &-content-blur {
+    filter: blur(3px);
+    -webkit-filter: blur(3px); // TODO PostCSS autoprefixer
+  }
+
+  &-content {
+    padding: 20px 30px;
+
+    &-padding {
+      height: 70px;
+    }
+  }
+
+  &-dialog {
+    position: relative;
+    min-width: 500px;
+    min-height: 250px;
+    max-height: calc(100vh - 90px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-height: 70px;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-top: 1px solid $frost-color-lgrey-1;
+    background-color: rgba($frost-color-white, 0.95);
+
+    > * {
+      margin-left: 10px;
+    }
+  }
+
+  &-header {
+    position: relative;
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    padding: 20px 30px 30px 30px;
+    border-bottom: 1px solid $frost-color-lgrey-1;
+
+    & .frost-icon {
+      height: 40px;
+      width: 40px;
+      margin-right: 20px;
+    }
+
+    &-title {
+      font-size: $frost-font-l;
+    }
+  }
+
+  &-outlet {
+    &-background {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      width: 100vw;
+
+      &.message {
+        background-color: rgba($frost-color-white, 0.8);
+      }
+    }
+
+    &-body {
+      z-index: $frost-z-index-modal;
+      background-color: white;
+      box-shadow: 0 25px 125px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    &-container {
+      position: fixed;
+      left: 0;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100vw;
+
+      &.message {
+        align-items: center;
+      }
+    }
+  }
+
+  &-overflow-y-end,
+  &-overflow-y-start {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 300ms; // TODO Animate in/out
+  }
+
+  &-overflow-y-end {
+    top: 0;
+    box-shadow: 0 -3px 10px 2px rgba(0, 0, 0, 0.13);
+  }
+
+  &-overflow-y-start {
+    bottom: 0;
+    box-shadow: 0 3px 10px 2px rgba(0, 0, 0, 0.13);
+  }
+
+  &-scroll {
+    flex: 1;
+    position: relative;
+    padding: 0 30px;
+
+    .ps-scrollbar-y-rail {
+      margin-bottom: 70px;
+    }
+  }
+
+  &-summary {
+    padding: 20px 30px;
+    font-size: $frost-font-m;
+
+    + .frost-modal-content {
+      padding-top: 0px;
+    }
+  }
 }
 
-.frost-modal-outlet-container {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.frost-modal-outlet-body {
-  background-color: white;
-  padding: 4em;
-  border-radius: 5px;
-  border: 1px solid #B4B4E8;
-}
-
-.frost-modal-content-blur {
-  filter: blur(3px);
-}

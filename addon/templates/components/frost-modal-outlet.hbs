@@ -2,21 +2,19 @@
   name=name
   as |modal|
 }}
-  {{! can we store the active animation in the outlet via a template binding?}}
   {{#liquid-if modal
     containerless=true
-    rules=(retain-rules this modal.animation)
+    rules=(frost-modal-outlet-animation this modal.animation)
   }}
-    <div class="frost-modal-outlet-background"></div>
-    <div class="frost-modal-outlet-container"
+    <div class="frost-modal-outlet-background {{if modal.classModifier modal.classModifier}}"></div>
+    <div class="frost-modal-outlet-container {{if modal.classModifier modal.classModifier}}"
       onclick={{action (ignore-children modal.onOutsideClick)}}
     >
-      <div class="frost-modal-outlet-body" >
-        {{component modal.body}}
+      <div class="frost-modal-outlet-body {{if modal.classModifier modal.classModifier}}">
+        {{!#liquid-spacer growDuration=100}}
+          {{component modal.body}}
+        {{!/liquid-spacer}}
       </div>
     </div>
   {{/liquid-if}}
 {{/from-elsewhere}}
-
-{{! presets for various dialog types }}
-{{! demo a sample of building your own }}

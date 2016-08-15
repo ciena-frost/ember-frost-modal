@@ -21,7 +21,7 @@ declare module 'ember' {
      */
     function deprecate(message: string, test: boolean, options: {});
     /**
-     * Define an assertion that will throw an exception if the condition is not met. Ember build tools will remove any calls to `Ember.assert()` when doing a production build. Example:
+     * Define an assertion that will throw an exception if the condition is not met. Ember build tools will remove any calls to `Ember.assert()` when doing an Ember.js framework production build and will make the assertion a no-op for an application production build. Example:
      */
     function assert(desc: string, test: boolean);
     /**
@@ -159,15 +159,15 @@ declare module 'ember' {
      */
     function A(): NativeArray;
     /**
-     * This will compare two javascript values of possibly different types. It will tell you which one is greater than the other by returning:
+     * Compares two javascript values and returns:
      */
     function compare(v: {}, w: {}): number;
     /**
-     * Creates a clone of the passed object. This function can take just about any type of object and create a clone of it, including primitive values (which are not actually cloned because they are immutable).
+     * Creates a shallow copy of the passed object. A deep copy of the object is returned if the optional `deep` argument is `true`.
      */
     function copy(obj: {}, deep: boolean): {};
     /**
-     * Compares two objects, returning true if they are logically equal. This is a deeper comparison than a simple triple equal. For sets it will compare the internal objects. For any other object that implements `isEqual()` it will respect that method.
+     * Compares two objects, returning true if they are equal.
      */
     function isEqual(a: {}, b: {}): boolean;
     /**
@@ -175,7 +175,7 @@ declare module 'ember' {
      */
     function isArray(obj: {}): boolean;
     /**
-     * Returns a consistent type for the passed item.
+     * Returns a consistent type for the passed object.
      */
     function typeOf(item: {}): string;
     /**
@@ -183,58 +183,6 @@ declare module 'ember' {
      */
     function $();
     export namespace ApplicationInstance {
-      /**
-       * Unregister a factory.
-       */
-      unregister(fullName: string);
-      /**
-       * Given a fullName return the corresponding factory.
-       */
-      resolveRegistration(fullName: string): Function;
-      /**
-       * Registers a factory that can be used for dependency injection (with `inject`) or for service lookup. Each factory is registered with a full name including two parts: `type:name`.
-       */
-      register(fullName: string, factory: Function, options: {});
-      /**
-       * Check if a factory is registered.
-       */
-      hasRegistration(fullName: string): boolean;
-      /**
-       * Register an option for a particular factory.
-       */
-      registerOption(fullName: string, optionName: string, options: {});
-      /**
-       * Return a specific registered option for a particular factory.
-       */
-      registeredOption(fullName: string, optionName: string): {};
-      /**
-       * Register options for a particular factory.
-       */
-      registerOptions(fullName: string, options: {});
-      /**
-       * Return registered options for a particular factory.
-       */
-      registeredOptions(fullName: string): {};
-      /**
-       * Allow registering options for all factories of a type.
-       */
-      registerOptionsForType(type: string, options: {});
-      /**
-       * Return the registered options for all factories of a type.
-       */
-      registeredOptionsForType(type: string): {};
-      /**
-       * Define a dependency injection onto a specific factory or all factories of a type.
-       */
-      inject(factoryNameOrType: string, property: string, injectionName: string);
-      /**
-       * Returns an object that can be used to provide an owner to a manually created instance.
-       */
-      ownerInjection(): {};
-      /**
-       * Given a fullName return a corresponding instance.
-       */
-      lookup(fullName: string, options: {}): any;
       /**
        * A list of boot-time configuration options for customizing the behavior of an `Ember.ApplicationInstance`.
        */
@@ -280,7 +228,7 @@ declare module 'ember' {
          */
         hash(options: {}): {};
         /**
-         * Use the `if` block helper to conditionally render a block depending on a property. If the property is "falsey", for example: `false`, `undefined`, `null`, `""`, `0` or an empty array, the block will not be rendered.
+         * Use the `if` block helper to conditionally render a block depending on a property. If the property is "falsey", for example: `false`, `undefined`, `null`, `""`, `0`, `NaN` or an empty array, the block will not be rendered.
          */
         if();
         /**
@@ -508,7 +456,93 @@ declare module 'ember' {
     /**
      * The `ApplicationInstance` encapsulates all of the stateful aspects of a running `Application`.
      */
-    export class ApplicationInstance extends Object implements RegistryProxyMixin, ContainerProxyMixin {
+    export class ApplicationInstance extends EngineInstance {
+    }
+    /**
+     * An instance of `Ember.Application` is the starting point for every Ember application. It helps to instantiate, initialize and coordinate the many objects that make up your app.
+     */
+    export class Application extends Engine implements RegistryProxyMixin {
+      /**
+       * The root DOM element of the Application. This can be specified as an element or a [jQuery-compatible selector string](http://api.jquery.com/category/selectors/).
+       */
+      rootElement: DOMElement;
+      /**
+       * The `Ember.EventDispatcher` responsible for delegating events to this application's views.
+       */
+      eventDispatcher: EventDispatcher;
+      /**
+       * The DOM events for which the event dispatcher should listen.
+       */
+      customEvents: {};
+      /**
+       * Use this to defer readiness until some condition is true.
+       */
+      deferReadiness();
+      /**
+       * Call `advanceReadiness` after any asynchronous setup logic has completed. Each call to `deferReadiness` must be matched by a call to `advanceReadiness` or the application will never become ready and routing will not begin.
+       */
+      advanceReadiness();
+      /**
+       * Reset the application. This is typically used only in tests. It cleans up the application in the following order:
+       */
+      reset();
+      /**
+       * Boot a new instance of `Ember.ApplicationInstance` for the current application and navigate it to the given `url`. Returns a `Promise` that resolves with the instance when the initial routing and rendering is complete, or rejects with any error that occured during the boot process.
+       */
+      visit(url: string, options: ApplicationInstance.BootOptions): Promise<Ember.ApplicationInstance|Error>;
+      /**
+       * This creates a registry with the default Ember naming conventions.
+       */
+      static buildRegistry(namespace: Application): Registry;
+      /**
+       * Given a fullName return the corresponding factory.
+       */
+      resolveRegistration(fullName: string): Function;
+      /**
+       * Registers a factory that can be used for dependency injection (with `inject`) or for service lookup. Each factory is registered with a full name including two parts: `type:name`.
+       */
+      register(fullName: string, factory: Function, options: {});
+      /**
+       * Unregister a factory.
+       */
+      unregister(fullName: string);
+      /**
+       * Check if a factory is registered.
+       */
+      hasRegistration(fullName: string): boolean;
+      /**
+       * Register an option for a particular factory.
+       */
+      registerOption(fullName: string, optionName: string, options: {});
+      /**
+       * Return a specific registered option for a particular factory.
+       */
+      registeredOption(fullName: string, optionName: string): {};
+      /**
+       * Register options for a particular factory.
+       */
+      registerOptions(fullName: string, options: {});
+      /**
+       * Return registered options for a particular factory.
+       */
+      registeredOptions(fullName: string): {};
+      /**
+       * Allow registering options for all factories of a type.
+       */
+      registerOptionsForType(type: string, options: {});
+      /**
+       * Return the registered options for all factories of a type.
+       */
+      registeredOptionsForType(type: string): {};
+      /**
+       * Define a dependency injection onto a specific factory or all factories of a type.
+       */
+      inject(factoryNameOrType: string, property: string, injectionName: string);
+    }
+    /**
+     * The `EngineInstance` encapsulates all of the stateful aspects of a running `Engine`.
+     */
+    export class EngineInstance extends Object implements RegistryProxyMixin, ContainerProxyMixin {
       /**
        * Unregister a factory.
        */
@@ -563,37 +597,17 @@ declare module 'ember' {
       lookup(fullName: string, options: {}): any;
     }
     /**
-     * An instance of `Ember.Application` is the starting point for every Ember application. It helps to instantiate, initialize and coordinate the many objects that make up your app.
+     * The `Engine` class contains core functionality for both applications and engines.
      */
-    export class Application extends Namespace implements RegistryProxyMixin {
-      /**
-       * The root DOM element of the Application. This can be specified as an element or a [jQuery-compatible selector string](http://api.jquery.com/category/selectors/).
-       */
-      rootElement: DOMElement;
-      /**
-       * The `Ember.EventDispatcher` responsible for delegating events to this application's views.
-       */
-      eventDispatcher: EventDispatcher;
-      /**
-       * The DOM events for which the event dispatcher should listen.
-       */
-      customEvents: {};
+    export class Engine extends Namespace {
       /**
        * This creates a registry with the default Ember naming conventions.
        */
       static buildRegistry(namespace: Application): Registry;
       /**
-       * Use this to defer readiness until some condition is true.
+       * The goal of initializers should be to register dependencies and injections. This phase runs once. Because these initializers may load code, they are allowed to defer application readiness and advance it. If you need to access the container or store you should use an InstanceInitializer that will be run after all initializers and therefore after all code is loaded and the app is ready.
        */
-      deferReadiness();
-      /**
-       * Call `advanceReadiness` after any asynchronous setup logic has completed. Each call to `deferReadiness` must be matched by a call to `advanceReadiness` or the application will never become ready and routing will not begin.
-       */
-      advanceReadiness();
-      /**
-       * Reset the application. This is typically used only in tests. It cleans up the application in the following order:
-       */
-      reset();
+      initializer(initializer: {});
       /**
        * Instance initializers run after all initializers have run. Because instance initializers run after the app is fully set up. We have access to the store, container, and other items. However, these initializers run after code has loaded and are not allowed to defer readiness.
        */
@@ -602,54 +616,6 @@ declare module 'ember' {
        * Set this to provide an alternate class to `Ember.DefaultResolver`
        */
       resolver: any;
-      /**
-       * The goal of initializers should be to register dependencies and injections. This phase runs once. Because these initializers may load code, they are allowed to defer application readiness and advance it. If you need to access the container or store you should use an InstanceInitializer that will be run after all initializers and therefore after all code is loaded and the app is ready.
-       */
-      initializer(initializer: {});
-      /**
-       * Given a fullName return the corresponding factory.
-       */
-      resolveRegistration(fullName: string): Function;
-      /**
-       * Registers a factory that can be used for dependency injection (with `inject`) or for service lookup. Each factory is registered with a full name including two parts: `type:name`.
-       */
-      register(fullName: string, factory: Function, options: {});
-      /**
-       * Unregister a factory.
-       */
-      unregister(fullName: string);
-      /**
-       * Check if a factory is registered.
-       */
-      hasRegistration(fullName: string): boolean;
-      /**
-       * Register an option for a particular factory.
-       */
-      registerOption(fullName: string, optionName: string, options: {});
-      /**
-       * Return a specific registered option for a particular factory.
-       */
-      registeredOption(fullName: string, optionName: string): {};
-      /**
-       * Register options for a particular factory.
-       */
-      registerOptions(fullName: string, options: {});
-      /**
-       * Return registered options for a particular factory.
-       */
-      registeredOptions(fullName: string): {};
-      /**
-       * Allow registering options for all factories of a type.
-       */
-      registerOptionsForType(type: string, options: {});
-      /**
-       * Return the registered options for all factories of a type.
-       */
-      registeredOptionsForType(type: string): {};
-      /**
-       * Define a dependency injection onto a specific factory or all factories of a type.
-       */
-      inject(factoryNameOrType: string, property: string, injectionName: string);
     }
     /**
      * The DefaultResolver defines the default lookup rules to resolve container lookups before consulting the container for registered items:
@@ -957,7 +923,7 @@ declare module 'ember' {
        */
       deprecatingAlias(dependentKey: string): ComputedProperty;
       /**
-       * A computed property that returns the sum of the value in the dependent array.
+       * A computed property that returns the sum of the values in the dependent array.
        */
       sum(dependentKey: string): ComputedProperty;
       /**
@@ -1143,7 +1109,7 @@ declare module 'ember' {
     }
     export class ControllerMixin implements ActionHandler {
       /**
-       * Defines which query parameters the controller accepts. If you give the names ['category','page'] it will bind the values of these query parameters to the variables `this.category` and `this.page`
+       * Defines which query parameters the controller accepts. If you give the names `['category','page']` it will bind the values of these query parameters to the variables `this.category` and `this.page`
        */
       queryParams: any;
       /**
@@ -1299,6 +1265,10 @@ declare module 'ember' {
        */
       render(name: string, options: {});
       /**
+       * Disconnects a view that has been rendered into an outlet.
+       */
+      disconnectOutlet(options: {}|string);
+      /**
        * The collection of functions, keyed by name, available on this `ActionHandler` as action targets.
        */
       actions: {};
@@ -1407,7 +1377,7 @@ declare module 'ember' {
     }
     export class Controller extends Object implements ControllerMixin {
       /**
-       * Defines which query parameters the controller accepts. If you give the names ['category','page'] it will bind the values of these query parameters to the variables `this.category` and `this.page`
+       * Defines which query parameters the controller accepts. If you give the names `['category','page']` it will bind the values of these query parameters to the variables `this.category` and `this.page`
        */
       queryParams: any;
       /**
@@ -2824,7 +2794,7 @@ declare module 'ember' {
     /**
      * An `Ember.Component` is a view that is completely isolated. Properties accessed in its templates go to the view object and actions are targeted at the view object. There is no access to the surrounding context or outer controller; all contextual information must be passed in.
      */
-    export class Component extends View {
+    export class Component extends View implements ViewTargetActionSupport {
       /**
        * Calls a action passed to a component.
        */
@@ -2841,6 +2811,30 @@ declare module 'ember' {
        * Enables components to take a list of parameters as arguments
        */
       static positionalParams: any;
+      /**
+       * Renders the view again. This will work regardless of whether the view is already in the DOM or not. If the view is in the DOM, the rendering process will be deferred to give bindings a chance to synchronize.
+       */
+      rerender();
+      /**
+       * Returns the current DOM element for the view.
+       */
+      element: DOMElement;
+      /**
+       * Returns a jQuery object for this view's element. If you pass in a selector string, this method will return a jQuery object, using the current element as its buffer.
+       */
+      $(selector: string): JQuery;
+      /**
+       * The HTML `id` of the view's element in the DOM. You can provide this value yourself but it must be unique (just as in HTML):
+       */
+      elementId: string;
+      /**
+       * Tag name for the view's outer element. The tag name is only used when an element is first created. If you change the `tagName` for an element, you must destroy and recreate the view element.
+       */
+      tagName: string;
+      /**
+       * Normally, Ember's component model is "write-only". The component takes a bunch of attributes that it got passed in, and uses them to render its template.
+       */
+      readDOMAttr(name: string): void;
     }
     export class AriaRoleSupport {
       /**
@@ -3109,12 +3103,12 @@ declare module 'ember' {
    */
   export class Registry {
   }
+  export class Backburner {
+  }
   /**
    * Helper class that allows you to register your library with Ember.
    */
   export class Libraries {
-  }
-  export class Backburner {
   }
   /**
    * Objects of this type can implement an interface to respond to requests to get and set. The default implementation handles simple properties.

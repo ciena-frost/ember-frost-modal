@@ -39,3 +39,49 @@
   color: $frost-color-night-2;
   font-size: $frost-font-m;
 }
+
+/* New styles */
+/* New styles */
+/* New styles */
+/* New styles */
+
+.frost-modal-demo {
+  display: flex;
+  flex-direction: row;
+}
+
+.frost-modal-demos {
+  height: 100vh;
+  padding: 0 20px;
+  box-shadow: 0px 0 5px 3px rgba(0, 0, 0, 0.13);
+}
+
+.frost-modal-demo-selector {
+  min-width: 100px;
+  margin: 10px;
+
+  .frost-radio-button {
+    margin-top: 5px;
+  }
+}
+
+.frost-modal-demo-example {
+  flex: 1;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.frost-modal-demo-title {
+  margin-top: 20px;
+  font-size: $frost-font-m;
+  color: $frost-color-grey-2;
+}
+
+.frost-modal-demo-hbs-snippet {
+  margin: 0 20px;
+}
+
+.frost-modal-demo-launch {
+  margin-top: 20px;
+}

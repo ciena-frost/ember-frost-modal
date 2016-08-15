@@ -8,8 +8,12 @@
 {{frost-modal-outlet}}
 {{! END-SNIPPET modal-outlet}}
 
+
 <div class='dummy-body'>
-  <div class='dummy-content {{frost-modal-content-blur}}'>
+  <div class="dummy-content">
+  {{!--
+  <div class="dummy-content {{if (frost-modal-active) 'frost-modal-content-blur'}}">
+  --}}
     {{outlet}}
   </div>
 </div>

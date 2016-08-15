@@ -9,6 +9,7 @@ Router.map(function () {
   this.route('demo', { path: '/' })
   this.route('elsewhere')
   this.route('demo-e')
+  this.route('demo-s');
 })
 
 export default Router

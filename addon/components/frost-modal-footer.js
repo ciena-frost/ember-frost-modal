@@ -1,0 +1,10 @@
+import Ember from 'ember'
+const { Component } = Ember
+
+export default Component.extend({
+
+  // == Component properties ==================================================
+
+  classNames: ['frost-modal-footer']
+
+})

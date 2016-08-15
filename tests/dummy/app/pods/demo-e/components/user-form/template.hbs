@@ -1,15 +1,10 @@
-<p class='message'>This is a sample warning message!</p>
+<p class='message'>This is a sample with a bound property {{params.count}}</p>
+
+<input type='text'>
 
 {{frost-button
   priority='tertiary'
   size='small'
-  text='Cancel'
+  text='Close'
   onClick=(action onCancel)
-}}
-
-{{frost-button
-  priority='primary'
-  size='small'
-  text='Confirm'
-  onClick=(action onConfirm)
 }}

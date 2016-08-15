@@ -1,15 +1,19 @@
 import Ember from 'ember'
 const {
-  getOwner,
-  inject
+  computed,
+  inject,
+  isPresent,
+  on
 } = Ember
 import layout from '../templates/components/frost-modal-binding'
+import localComponentLookup from '../utils/local-component-lookup'
 import { PropTypes } from 'ember-prop-types'
 
 const FrostModalBinding = Ember.Component.extend({
 
   // == Dependencies ==========================================================
 
+  modalService: inject.service('frost-modal'),
   routing: inject.service('-routing'),
 
   // == Component properties ==================================================
@@ -19,54 +23,77 @@ const FrostModalBinding = Ember.Component.extend({
   // == State properties ======================================================
 
   propTypes: {
+    // Positional params
+    modalComponentName: PropTypes.string.isRequired,
+
+    // Options
+    animation: PropTypes.func,
+    classModifier: PropTypes.string,
     closeOnOutsideClick: PropTypes.bool,
+    content: PropTypes.shape({
+      component: PropTypes.string.isRequired,
+      params: PropTypes.oneOfType([
+        PropTypes.EmberObject,
+        PropTypes.object
+      ])
+    }),
     isVisible: PropTypes.bool.isRequired,
-    modalName: PropTypes.string.isRequired,
+    params: PropTypes.oneOfType([
+      PropTypes.EmberObject,
+      PropTypes.object
+    ]),
+    targetOutlet: PropTypes.string,
+
+    // Actions
     onCancel: PropTypes.func,
     onClose: PropTypes.func.isRequired,
-    onConfirm: PropTypes.func,
-    onOpen: PropTypes.func,
-    target: PropTypes.string
+    onConfirm: PropTypes.func
   },
 
   getDefaultProps () {
     return {
-      closeOnOutsideClick: true,
-      isVisible: false,
-      target: 'modal'
+      closeOnOutsideClick: false,
+      targetOutlet: 'modal'
     }
   },
 
-  // == Computed properties ===================================================
+  // == Events ================================================================
 
-  modalPath: Ember.computed('modalName', function () {
-    const routePath = this.get('routing.currentPath')
-    const localModalComponentPath = `${routePath}/components/${this.get('modalName')}`
-    const componentLookup = getOwner(this).lookup('component-lookup:main')
-    const component = componentLookup.componentFor(localModalComponentPath, getOwner(this))
-    const layout = componentLookup.layoutFor(localModalComponentPath, getOwner(this))
-    if (!!(component || layout)) {
-      return localModalComponentPath
-    } else {
-      return this.get('modalName')
-    }
-  }),
+  // TODO Extract: Good intentions, but needs to be carried further into a
+  // local-component closure to be effective
 
-  // == Functions =============================================================
+  // setComponentPaths: on('init', function() {
+  //   this.set('_modalComponentPath', localComponentLookup.call(
+  //     this, this.get('routing'), this.modalComponentName)
+  //   )
+
+  //   const contentComponentName = this.get('content.component')
+  //   if (isPresent(contentComponentName)) {
+  //     this.set('content.component', localComponentLookup.call(
+  //       this, this.get('routing'), contentComponentName)
+  //     )
+  //   }
+  // }),
+
+  didReceiveAttrs() {
+    this.get('modalService').setState(this.modalComponentName, this.isVisible)
+  },
 
   // == Actions ===============================================================
 
   actions: {
     _onCancel() {
-      if (this.onCancel) {
-        this.onCancel()
+      const onCancel = this.get('onCancel')
+      if (onCancel) {
+        onCancel()
       }
       this.onClose()
     },
 
     _onConfirm() {
-      if (this.onConfirm) {
-        this.onConfirm()
+      const onConfirm = this.get('onConfirm')
+      if (onConfirm) {
+        onConfirm()
       }
       this.onClose()
     },
@@ -78,17 +105,10 @@ const FrostModalBinding = Ember.Component.extend({
     }
   }
 
-   // _onCancel: Ember.computed('onCancel', function() {
-  //   if (this.get('onCancel') {
-  //     return this.get('onCancel')
-  //   } else {
-  //     (action (mut isModalVisible) false)
-  //   }
-  // })
 })
 
 FrostModalBinding.reopenClass({
-  positionalParams: [ 'modalName', 'isVisible' ]
+  positionalParams: [ 'modalComponentName' ]
 })
 
 export default FrostModalBinding

@@ -4,7 +4,7 @@ export default Ember.Route.extend({
   queryParams: {
     isUserModalVisible: {
       as: 'user',
-      replace: false
+      replace: true
     }
   }
 })

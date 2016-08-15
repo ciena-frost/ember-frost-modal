@@ -1,95 +1,17 @@
 {{#if isVisible}}
   {{to-elsewhere
-    named=target
+    named=targetOutlet
     send=(hash
       animation=animation
-      body=(component modalPath
+      body=(component modalComponentName
+        content=content
+        params=params
         onCancel=(action '_onCancel')
         onClose=onClose
         onConfirm=(action '_onConfirm')
-        onOpen=onOpen
       )
+      classModifier=classModifier
       onOutsideClick=(action '_onOutsideClick')
     )
   }}
 {{/if}}
-
-{{! optional dismiss on outside click }}
-{{! optional dismiss on escape }}
-
-{{! ember-remodal works with promises on open/close - some discussion on using ember-concurrency instead - look into this}}
-
-{{! closeOnOutsideClick }}
-{{! closeOnEscape }}
-{{! closeOnCancel }}
-{{! closeOnConfirm }}
-
-{{!--
- class modifier (appended to background, container and dialog) buttonClass - this seems like a duplicate to a modifier
-  Inconsistent - 4 modifiers
-  modalClasses: If set, this string value will be added to the classes on the main modal window.
-outerButtonClasses: If provided, this string value is added to the class attribute on the built-in openButton and openLink.
-innerButtonClasses: If provided, this string value is added to the class attribute on the built-in confirmButton and the cancelButton.
-
-  Consolidate this to one modifier set and just provide different class targets for cancel/confirm, etc.
-
-Apply the remodal-bg class to anything you want blurred in the background while a modal is open.
-
-For custom styling, you can easily target every portion of the modal.
-
-Main modal window: .ember-remodal.window
-Named modal main window: .ember-remodal.whatever-you-named-the-modal.window
-Open button: .ember-remodal.open.button
-Open link: .ember-remodal.link.text
-Confirm button: .ember-remodal.confirm.button
-Cancel button: .ember-remodal.cancel.button
-Native close button: .ember-remodal.native.close
-Title: .ember-remodal.title.text
-Text: .ember-remodal.paragraph.text
-Content yielded with block form: .ember-remodal.yielded.content
-Overlay: .remodal-overlay
-Buttons: .ember-remodal.button
-Buttons inside the modal: .ember-remodal.inner.button
-Buttons outside the modal: .ember-remodal.outer.button
-You can set additional classes on the main modal window via modalClasses.
-
-You can also set additional classes on any of the built-in buttons via:
-
-buttonClasses
-outerButtonClasses
-innerButtonClasses
-openButtonClasses
-openLinkClasses
-confirmButtonClasses
-cancelButtonClasses
-
---}}
-
-{{! animation options - document how to use }}
-
-{{!--
-  Useful!
-
-  'ember-remodal': {
-    disableAnimationWhileTesting: true
-  }
---}}
-
-{{! ember-hook all the things... }}
-
-{{! demo a testing example, showing that you can use hooks to find the modal elements }}
-
-{{!--
-  confirm: Shows up inside the modal, toward the bottom. With it's default setup, when a user clicks this button, the component will:
-  Fire it's onConfirm action.
-  Close the modal.
-  Fire it's onClose action
-
-  Look into the |pipe| template helper for this
-
-  Ditto for cancel
---}}
-
-{{!-- Doesn't seem like it will be difficult to match ember-remodal -
-  the biggest difference will be passing a component vs passing a block for the body
---}}

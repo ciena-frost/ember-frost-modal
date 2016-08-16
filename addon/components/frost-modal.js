@@ -144,7 +144,11 @@ export default Component.extend(PropTypeMixin, {
       this.set('$headerEl', Ember.$('.ember-remodal.window.remodal-is-opened .header'))
       this.set('$footerEl', Ember.$('.ember-remodal.window.remodal-is-opened .footer'))
 
-      if (!(this.get('$containerEl').length > 0 && this.get('$headerEl').length > 0 && this.get('$footerEl').length > 0)) {
+      if (
+        !(this.get('$containerEl').length > 0 &&
+        this.get('$headerEl').length > 0 &&
+        this.get('$footerEl').length > 0)
+      ) {
         return
       }
       if (!this.get('scrollBindingsSet')) {

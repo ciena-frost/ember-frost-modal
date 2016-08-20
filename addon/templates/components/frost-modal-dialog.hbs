@@ -1,42 +1,42 @@
-<div class='frost-modal-header'>
+<div class='frost-modal-dialog-header'>
   {{#if params.icon}}
     {{frost-icon
       pack='frost-modal'
       icon=params.icon
     }}
   {{/if}}
-  <div class='frost-modal-header-title'>
+  <div class='frost-modal-dialog-header-title'>
     {{params.title}}
   </div>
   {{#if isOverflowYStart}}
-    <div class='frost-modal-overflow-y-start'></div>
+    <div class='frost-modal-dialog-overflow-y-start'></div>
   {{/if}}
 </div>
 
 {{#frost-scroll
-  class='frost-modal-scroll'
+  class='frost-modal-dialog-scroll'
   onScrollDown=(action 'scrollDown')
   onScrollUp=(action 'scrollUp')
   onScrollYEnd=(action 'scrollYEnd')
   onScrollYStart=(action 'scrollYStart')
 }}
   {{#if params.summary}}
-    <div class='frost-modal-summary'>
+    <div class='frost-modal-dialog-summary'>
       {{params.summary}}
     </div>
   {{/if}}
 
   {{#if content}}
-    <div class='frost-modal-content'>
+    <div class='frost-modal-dialog-content'>
       {{component content}}
     </div>
   {{/if}}
 {{/frost-scroll}}
 
 
-<div class='frost-modal-footer'>
+<div class='frost-modal-dialog-footer'>
   {{#if isOverflowYEnd}}
-    <div class='frost-modal-overflow-y-end'></div>
+    <div class='frost-modal-dialog-overflow-y-end'></div>
   {{/if}}
 
   {{frost-button

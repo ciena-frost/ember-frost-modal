@@ -9,10 +9,7 @@
 {{! END-SNIPPET remote-outlet}}
 
 <div class='dummy-body'>
-  <div class="dummy-content">
-  {{!--
-  <div class="dummy-content {{if (frost-modal-active) 'frost-modal-content-blur'}}">
-  --}}
+  <div class="dummy-content frost-modal-content-blur {{if (frost-modal-active) 'active'}}">
     {{outlet}}
   </div>
 </div>

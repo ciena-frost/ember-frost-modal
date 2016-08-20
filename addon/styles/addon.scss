@@ -1,107 +1,65 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
 @import 'node_modules/ember-frost-core/addon/styles/frost-app';
 
-.frost-modal {
-  &-about-dialog {
-    width: 500px;
-    position: relative;
+.frost-modal-content-blur {
+  transition: filter 0.3s;
 
-    .frost-icon-frost-modal-about-close {
-      color: $frost-color-blue-1;
-      transition: color 0.3s;
+  &.active {
+    filter: blur(1.5px);
+    -webkit-filter: blur(1.5px); // TODO PostCSS autoprefixer
+  }
+}
 
-      &:hover {
-        color: $frost-color-blue-3;
-      }
+.frost-modal-outlet {
+  &-background {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: $frost-z-index-modal;
+
+    &.message,
+    &.about {
+      background-color: rgba($frost-color-white, 0.8);
     }
+  }
 
-    &-branding-strip {
-      position: absolute;
-      width: 5px;
-      height: 100%;
-      overflow: hidden;
-    }
+  &-body {
+    z-index: $frost-z-index-modal;
+    background-color: white;
+    box-shadow: 0 25px 125px 0 rgba(0, 0, 0, 0.3);
+  }
 
-    &-close {
-      position: absolute;
-      top: -20px;
-      right: -20px;
-      height: 40px;
-      width: 40px;
-      z-index: 1;
-      cursor: pointer;
-      display: flex;
+  &-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: $frost-z-index-modal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+
+    &.message,
+    &.about {
       align-items: center;
-      justify-content: center;
-
-      &-icon {
-        height: 30px;
-        width: 30px;
-      }
-    }
-
-    &-copyright {
-      padding: 10px 40px 20px 40px;
-      font-size: $frost-font-xs;
-      line-height: 17px;
-      background-color: $frost-color-lgrey-3;
-      color: $frost-color-grey-4;
-    }
-
-    &-header {
-      position: relative;
-      padding-bottom: 10px;
-      display: flex;
-      flex-direction: row;
-
-      &-body {
-        margin-left: 40px;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-      }
-    }
-
-    &-logo {
-      height: 60px;
-      margin: 40px auto 30px 0;
-    }
-
-    &-product {
-      height: 25px;
-      margin: 0 auto 30px 0;
-    }
-
-    &-scroll {
-      min-height: 100px;
-      max-height: 200px;
-      border-top: 1px solid $frost-color-lgrey-1;
-    }
-
-    &-version {
-      padding-bottom: 10px;
-      font-size: $frost-font-s;
-      color: $frost-color-grey-6;
     }
   }
+}
 
-  &-content-blur {
-    filter: blur(3px);
-    -webkit-filter: blur(3px); // TODO PostCSS autoprefixer
-  }
+.frost-modal-dialog {
+  position: relative;
+  min-width: 500px;
+  min-height: 250px;
+  max-height: calc(100vh - 90px);
+  display: flex;
+  flex-direction: column;
 
   &-content {
     margin-bottom: 70px;
     padding: 20px 30px;
-  }
-
-  &-dialog {
-    position: relative;
-    min-width: 500px;
-    min-height: 250px;
-    max-height: calc(100vh - 90px);
-    display: flex;
-    flex-direction: column;
   }
 
   &-footer {
@@ -138,45 +96,6 @@
 
     &-title {
       font-size: $frost-font-l;
-    }
-  }
-
-  &-outlet {
-    &-background {
-      position: fixed;
-      left: 0;
-      top: 0;
-      height: 100vh;
-      width: 100vw;
-      z-index: $frost-z-index-modal;
-
-      &.message,
-      &.about {
-        background-color: rgba($frost-color-white, 0.8);
-      }
-    }
-
-    &-body {
-      z-index: $frost-z-index-modal;
-      background-color: white;
-      box-shadow: 0 25px 125px 0 rgba(0, 0, 0, 0.3);
-    }
-
-    &-container {
-      position: fixed;
-      left: 0;
-      top: 0;
-      z-index: $frost-z-index-modal;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      width: 100vw;
-
-      &.message,
-      &.about {
-        align-items: center;
-      }
     }
   }
 
@@ -220,4 +139,85 @@
   }
 }
 
+.frost-modal-about-dialog {
+  width: 500px;
+  position: relative;
 
+  .frost-icon-frost-modal-about-close {
+    color: $frost-color-blue-1;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $frost-color-blue-3;
+    }
+  }
+
+  &-branding-strip {
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &-close {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    height: 40px;
+    width: 40px;
+    z-index: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-icon {
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+  &-copyright {
+    padding: 10px 40px 20px 40px;
+    font-size: $frost-font-xs;
+    line-height: 17px;
+    background-color: $frost-color-lgrey-3;
+    color: $frost-color-grey-4;
+  }
+
+  &-header {
+    position: relative;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+
+    &-body {
+      margin-left: 40px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &-logo {
+    height: 60px;
+    margin: 40px auto 30px 0;
+  }
+
+  &-product {
+    height: 25px;
+    margin: 0 auto 30px 0;
+  }
+
+  &-scroll {
+    min-height: 100px;
+    max-height: 200px;
+    border-top: 1px solid $frost-color-lgrey-1;
+  }
+
+  &-version {
+    padding-bottom: 10px;
+    font-size: $frost-font-s;
+    color: $frost-color-grey-6;
+  }
+}

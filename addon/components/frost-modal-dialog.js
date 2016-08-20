@@ -25,7 +25,7 @@ export default Component.extend({
 
   // Minor issue - overflow isn't triggered when content component size changes
   initOverflow: on('didInsertElement', function () {
-    const scroll = this.$('.frost-modal-scroll').get(0)
+    const scroll = this.$('.frost-modal-dialog-scroll').get(0)
     if (scroll.scrollHeight > scroll.clientHeight) {
       run.schedule('sync', () => {
         this.set('isOverflowYEnd', true)

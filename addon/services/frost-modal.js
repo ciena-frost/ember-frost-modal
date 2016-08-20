@@ -1,5 +1,10 @@
 import Ember from 'ember'
-const { Service } = Ember
+const {
+  Service,
+  run: {
+    scheduleOnce
+  }
+ } = Ember
 
 export default Service.extend({
 
@@ -10,7 +15,9 @@ export default Service.extend({
   // == Functions =============================================================
 
   setState (modalName, isVisible) {
-    this.set('isActive', isVisible)
+    scheduleOnce('sync', this, function() {
+      this.set('isActive', isVisible)
+    })
   }
 
 })

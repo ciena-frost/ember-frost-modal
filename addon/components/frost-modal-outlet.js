@@ -1,4 +1,3 @@
-import config from 'ember-get-config'
 import Ember from 'ember'
 const { Component } = Ember
 import layout from '../templates/components/frost-modal-outlet'

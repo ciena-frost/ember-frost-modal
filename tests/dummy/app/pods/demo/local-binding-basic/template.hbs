@@ -1,0 +1,33 @@
+{{! BEGIN-SNIPPET custom }}
+{{frost-modal-binding 'frost-modal-dialog'
+  animation=(frost-modal-animation 'message')
+  classModifier='message'
+  details=(component 'demo/components/confirm-details'
+    lines=lines
+  )
+  isVisible=(eq activeModal 'custom')
+  params=(hash
+    summary='Summary'
+    title='Title'
+  )
+  onClose=(action 'activateModal' null)
+}}
+{{! END-SNIPPET}}
+
+{{!--
+    'binding options',
+    /**
+     * animation
+     * classModifier
+     * closeOnOutsideClick
+     * content
+     * isVisible
+     * modal
+     * params
+     * targetOutlet
+     * onCancel
+     * onClose
+     * onConfirm
+     */
+     --}}
+

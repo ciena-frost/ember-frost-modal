@@ -1,135 +1,98 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
 @import 'node_modules/ember-frost-core/addon/styles/frost-app';
 
-$info-bar-height: 80px;
-$info-bar-padding-top-bottom: 20px;
-$info-bar-padding-left-right: 30px;
-$info-bar-border-width: 1px;
-$action-bar-border-width: 1px;
-$action-bar-height: 80px;
-$scroll-box-shadow: rgba(0, 0, 0, .25);
-
-@mixin frost-modal-header-builtins {
-  display: flex;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: $info-bar-height + $info-bar-border-width;
-  padding: $info-bar-padding-top-bottom $info-bar-padding-left-right;
-  border-bottom: $info-bar-border-width solid $frost-color-lgrey-1;
-  z-index: 999;
-
-  &.header-scrolled {
-    border-bottom: 0;
-    box-shadow: 0 2px 3px $scroll-box-shadow;
-
-    &:after {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      height: $info-bar-height + $info-bar-border-width;
-      background: $frost-color-white;
-      content: '';
-      z-index: -1;
-    }
-  }
-}
-
-@mixin frost-modal-footer-builtins {
-  display: flex;
-  position: absolute;
-  bottom: 0;
-  align-items: center;
-  justify-content: flex-end;
-  width: 100%;
-  height: $action-bar-height + $action-bar-border-width;
-  margin-top: 20px;
-  padding-right: 30px;
-  border-top: 1px solid $frost-color-lgrey-1;
-  z-index: 999;
-
-  &:after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: $action-bar-height + $action-bar-border-width;
-    background: $frost-color-white;
-    content: '';
-    opacity: .95;
-    z-index: -1;
-  }
-
-  .frost-button {
-    min-width: 120px;
-    margin-left: 10px;
-  }
-
-  &.footer-scrolled {
-    box-shadow: 0 -2px 3px $scroll-box-shadow;
-  }
-}
-
 .frost-modal {
-  &.ember-remodal {
-    &.window {
-      position: relative;
-      min-width: 500px;
-      min-height: 250px;
-      max-height: calc(100vh - 90px);
-      padding: 0;
+  &-about-dialog {
+    width: 500px;
+    position: relative;
+
+    .frost-icon-frost-modal-about-close {
+      color: $frost-color-blue-1;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $frost-color-blue-3;
+      }
+    }
+
+    &-branding-strip {
+      position: absolute;
+      width: 5px;
+      height: 100%;
       overflow: hidden;
     }
-  }
 
-  .ember-remodal {
-    &.yielded {
+    &-close {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      height: 40px;
+      width: 40px;
+      z-index: 1;
+      cursor: pointer;
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-      .header {
-        @include frost-modal-header-builtins;
-      }
-
-      .ps-container {
-        position: relative;
-        max-height: calc(100vh - 90px);
-        padding: 0;
-        overflow: auto;
-
-        .ps-scrollbar-y-rail {
-          margin-top: $info-bar-height + $info-bar-border-width;
-          margin-bottom: $action-bar-height + $info-bar-border-width;
-        }
-      }
-
-      .footer {
-        @include frost-modal-footer-builtins;
+      &-icon {
+        height: 30px;
+        width: 30px;
       }
     }
+
+    &-copyright {
+      padding: 10px 40px 20px 40px;
+      font-size: $frost-font-xs;
+      line-height: 17px;
+      background-color: $frost-color-lgrey-3;
+      color: $frost-color-grey-4;
+    }
+
+    &-header {
+      position: relative;
+      padding-bottom: 10px;
+      display: flex;
+      flex-direction: row;
+
+      &-body {
+        margin-left: 40px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    &-logo {
+      height: 60px;
+      margin: 40px auto 30px 0;
+    }
+
+    &-product {
+      height: 25px;
+      margin: 0 auto 30px 0;
+    }
+
+    &-scroll {
+      min-height: 100px;
+      max-height: 200px;
+      border-top: 1px solid $frost-color-lgrey-1;
+    }
+
+    &-version {
+      padding-bottom: 10px;
+      font-size: $frost-font-s;
+      color: $frost-color-grey-6;
+    }
   }
-}
 
-/* New styles */
-/* New styles */
-/* New styles */
-/* New styles */
-
-.frost-modal {
   &-content-blur {
     filter: blur(3px);
     -webkit-filter: blur(3px); // TODO PostCSS autoprefixer
   }
 
   &-content {
+    margin-bottom: 70px;
     padding: 20px 30px;
-
-    &-padding {
-      height: 70px;
-    }
   }
 
   &-dialog {
@@ -185,8 +148,10 @@ $scroll-box-shadow: rgba(0, 0, 0, .25);
       top: 0;
       height: 100vh;
       width: 100vw;
+      z-index: $frost-z-index-modal;
 
-      &.message {
+      &.message,
+      &.about {
         background-color: rgba($frost-color-white, 0.8);
       }
     }
@@ -201,13 +166,15 @@ $scroll-box-shadow: rgba(0, 0, 0, .25);
       position: fixed;
       left: 0;
       top: 0;
+      z-index: $frost-z-index-modal;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100vh;
       width: 100vw;
 
-      &.message {
+      &.message,
+      &.about {
         align-items: center;
       }
     }
@@ -225,12 +192,12 @@ $scroll-box-shadow: rgba(0, 0, 0, .25);
 
   &-overflow-y-end {
     top: 0;
-    box-shadow: 0 -3px 10px 2px rgba(0, 0, 0, 0.13);
+    box-shadow: 0 -4px 10px 2px rgba(0, 0, 0, 0.13);
   }
 
   &-overflow-y-start {
     bottom: 0;
-    box-shadow: 0 3px 10px 2px rgba(0, 0, 0, 0.13);
+    box-shadow: 0 4px 10px 2px rgba(0, 0, 0, 0.13);
   }
 
   &-scroll {

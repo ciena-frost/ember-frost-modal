@@ -1,0 +1,67 @@
+{{!-- BEGIN-SNIPPET form-api }}
+  {{frost-modal-confirm-message
+    cancel=(hash
+      isVisible= // (true)
+      text= // ('Cancel')
+    )
+    confirm=(hash
+      isVisible=  // (true)
+      text= // ('Confirm')
+    )
+    form=(component 'frost-bunsen-form'
+      bar= // e.g. props for 'foo'
+    )
+    isVisible= // Required binding
+    links=(array
+      (hash
+        priority= // ['primary', etc.]
+        route= // e.g. 'foo.bar'
+        text= // e.g. 'Foo'
+      )
+    )
+    targetOutlet= // ('modal')
+    title= // Required
+    onCancel= // e.g. (action 'foo')
+    onClose= // Required binding
+    onConfirm= // e.g. (action 'foo')
+  }}
+{{ END-SNIPPET --}}
+
+{{! BEGIN-SNIPPET form }}
+{{frost-modal-form
+  form=(component 'frost-bunsen-form'
+    bunsenModel=simpleBunsenModel
+    onChange=(action 'simpleBunsenChange')
+    value=simpleBunsenValue
+  )
+  isVisible=isFormVisible
+  title='Easy peasy'
+  onClose=(action (mut isFormVisible) false)
+  onConfirm=(action 'notifyAndClear')
+}}
+{{! END-SNIPPET }}
+
+<div class='frost-modal-demo-api'>
+  <div class='frost-modal-demo-title'>
+    API
+  </div>
+  <div class='frost-modal-demo-hbs-snippet'>
+    {{code-snippet name='form-api.hbs'}}
+  </div>
+</div>
+<div class='frost-modal-demo-live'>
+  <div class='frost-modal-demo-title'>
+    Live demo
+  </div>
+  <div class='frost-modal-demo-hbs-snippet'>
+    {{code-snippet name='form.hbs'}}
+  </div>
+  <div class='frost-modal-demo-launch'>
+    {{frost-button
+      priority='primary'
+      size='medium'
+      text='Launch the modal'
+      onClick=(action (mut isFormVisible) true)
+    }}
+  </div>
+</div>

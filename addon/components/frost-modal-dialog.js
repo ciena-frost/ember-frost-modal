@@ -17,18 +17,14 @@ export default Component.extend({
   // == State properties ======================================================
 
   propTypes: {
-    isCancelVisible: PropTypes.bool,
-    isConfirmVisible: PropTypes.bool
+    isOverflowYStart: PropTypes.bool,
+    isOverflowYEnd: PropTypes.bool
   },
 
-  getDefaultProps () {
-    return {
-      isCancelVisible: true,
-      isConfirmVisible: true
-    }
-  },
+  // == Events ================================================================
 
-  initOverflow: on('didInsertElement', function() {
+  // Minor issue - overflow isn't triggered when content component size changes
+  initOverflow: on('didInsertElement', function () {
     const scroll = this.$('.frost-modal-scroll').get(0)
     if (scroll.scrollHeight > scroll.clientHeight) {
       run.schedule('sync', () => {
@@ -37,20 +33,22 @@ export default Component.extend({
     }
   }),
 
+  // == Actions ===============================================================
+
   actions: {
-    scrollDown() {
+    scrollDown () {
       this.set('isOverflowYStart', true)
     },
 
-    scrollUp() {
+    scrollUp () {
       this.set('isOverflowYEnd', true)
     },
 
-    scrollYEnd() {
+    scrollYEnd () {
       this.set('isOverflowYEnd', false)
     },
 
-    scrollYStart() {
+    scrollYStart () {
       this.set('isOverflowYStart', false)
     }
   }

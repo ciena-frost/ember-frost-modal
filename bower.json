@@ -11,7 +11,8 @@
     "perfect-scrollbar": ">=0.6.7 <2.0.0",
     "pretender": "~0.12.0",
     "sinonjs": "1.17.1",
-    "remodal": "1.0.7"
+    "remodal": "1.0.7",
+    "z-schema": "3.16.1"
   },
   "resolutions": {
     "ember": "~2.6.0"

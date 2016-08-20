@@ -1,0 +1,58 @@
+{{!-- BEGIN-SNIPPET info-api }}
+  {{frost-modal-info-message
+    confirm=(hash
+      isVisible= // (true)
+      text= // ('Ok')
+    )
+    details=(component 'foo'
+      bar= // e.g. props for 'foo'
+    )
+    isVisible= // Required binding
+    links=(array
+      (hash
+        priority= // ['primary', etc.]
+        route= // e.g. 'foo.bar'
+        text= // e.g. 'Foo'
+      )
+    )
+    summary= // [main message]
+    targetOutlet= // ('modal')
+    title= // Required
+    onClose= // Required binding
+    onConfirm= // e.g. (action 'foo')
+  }}
+{{ END-SNIPPET --}}
+
+{{! BEGIN-SNIPPET info }}
+{{frost-modal-info-message
+  isVisible=isInfoVisible
+  summary='I just thought you should know'
+  title="I'm quite boring"
+  onClose=(action (mut isInfoVisible) false)
+}}
+{{! END-SNIPPET }}
+
+<div class='frost-modal-demo-api'>
+  <div class='frost-modal-demo-title'>
+    API
+  </div>
+  <div class='frost-modal-demo-hbs-snippet'>
+    {{code-snippet name='info-api.hbs'}}
+  </div>
+</div>
+<div class='frost-modal-demo-live'>
+  <div class='frost-modal-demo-title'>
+    Live demo
+  </div>
+  <div class='frost-modal-demo-hbs-snippet'>
+    {{code-snippet name='info.hbs'}}
+  </div>
+  <div class='frost-modal-demo-launch'>
+    {{frost-button
+      priority='primary'
+      size='medium'
+      text='Launch the modal'
+      onClick=(action (mut isInfoVisible) true)
+    }}
+  </div>
+</div>

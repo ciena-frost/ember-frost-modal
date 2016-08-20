@@ -11,9 +11,7 @@
       onclick={{action (ignore-children modal.onOutsideClick)}}
     >
       <div class="frost-modal-outlet-body {{if modal.classModifier modal.classModifier}}">
-        {{!#liquid-spacer growDuration=100}}
-          {{component modal.body}}
-        {{!/liquid-spacer}}
+        {{component modal.body}}
       </div>
     </div>
   {{/liquid-if}}

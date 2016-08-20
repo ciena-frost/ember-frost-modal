@@ -1,11 +1,17 @@
-{{frost-modal-header
-  icon=(hash
-    icon=params.icon
-    pack='frost-modal'
-  )
-  title=params.title
-  isOverflow=isOverflowYStart
-}}
+<div class='frost-modal-header'>
+  {{#if params.icon}}
+    {{frost-icon
+      pack='frost-modal'
+      icon=params.icon
+    }}
+  {{/if}}
+  <div class='frost-modal-header-title'>
+    {{params.title}}
+  </div>
+  {{#if isOverflowYStart}}
+    <div class='frost-modal-overflow-y-start'></div>
+  {{/if}}
+</div>
 
 {{#frost-scroll
   class='frost-modal-scroll'
@@ -15,22 +21,24 @@
   onScrollYStart=(action 'scrollYStart')
 }}
   {{#if params.summary}}
-    {{frost-modal-summary
-      summary=params.summary
-    }}
+    <div class='frost-modal-summary'>
+      {{params.summary}}
+    </div>
   {{/if}}
+
   {{#if content}}
     <div class='frost-modal-content'>
       {{component content}}
     </div>
-    <div class='frost-modal-content-padding'></div>
   {{/if}}
 {{/frost-scroll}}
 
-{{#frost-modal-footer}}
+
+<div class='frost-modal-footer'>
   {{#if isOverflowYEnd}}
     <div class='frost-modal-overflow-y-end'></div>
   {{/if}}
+
   {{frost-button
     isVisible=params.cancel.isVisible
     priority='tertiary'
@@ -38,6 +46,7 @@
     text=(if params.cancel.text params.cancel.text 'Cancel')
     onClick=onCancel
   }}
+
   {{frost-button
     isVisible=params.confirm.isVisible
     priority='primary'
@@ -45,12 +54,14 @@
     text=(if params.confirm.text params.confirm.text 'Confirm')
     onClick=onConfirm
   }}
+
   {{#each params.links as |link|}}
     {{#frost-link link.route
       priority=link.priority
       size='medium'
+      onClick=onClose
     }}
       {{link.text}}
     {{/frost-link}}
   {{/each}}
-{{/frost-modal-footer}}
+</div>

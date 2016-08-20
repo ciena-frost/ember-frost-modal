@@ -1,17 +1,17 @@
 /* jshint expr:true */
-import { expect } from 'chai';
+import { expect } from 'chai'
 import {
   describe,
   it
-} from 'mocha';
+} from 'mocha'
 import {
   frostModalContentBlur
-} from 'ember-frost-modal/helpers/frost-modal-content-blur';
+} from 'ember-frost-modal/helpers/frost-modal-content-blur'
 
-describe('FrostModalContentBlurHelper', function() {
+describe('FrostModalContentBlurHelper', function () {
   // Replace this with your real tests.
-  it('works', function() {
-    let result = frostModalContentBlur(42);
-    expect(result).to.be.ok;
-  });
-});
+  it('works', function () {
+    let result = frostModalContentBlur(42)
+    expect(result).to.be.ok
+  })
+})

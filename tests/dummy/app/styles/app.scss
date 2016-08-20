@@ -11,40 +11,6 @@
   z-index: 999;
 }
 
-.ember-remodal {
-  &.window {
-    width: 500px;
-  }
-}
-
-.header {
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.custom-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 80px;
-  margin-bottom: 80px;
-  padding: 10px 40px 0;
-  color: $frost-color-grey-4;
-  font-size: $frost-font-m;
-  text-align: left;
-}
-
-.primary-title {
-  padding-bottom: 3px;
-  color: $frost-color-night-2;
-  font-size: $frost-font-m;
-}
-
-/* New styles */
-/* New styles */
-/* New styles */
-/* New styles */
-
 .frost-modal-demo {
   display: flex;
   flex-direction: row;
@@ -56,32 +22,78 @@
   box-shadow: 0px 0 5px 3px rgba(0, 0, 0, 0.13);
 }
 
-.frost-modal-demo-selector {
+.frost-modal-demo-selectors {
+  height: calc(100vh - 61px);
   min-width: 100px;
-  margin: 10px;
+  margin: 10px 0 10px 10px;
+  padding-right: 20px;
 
-  .frost-radio-button {
-    margin-top: 5px;
+  a {
+    display: block;
+    color: $frost-color-grey-2;
+    cursor: pointer;
+    font-style: normal;
+    text-decoration: initial;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $frost-color-blue-1;
+    }
+
+    + a,
+    + .frost-modal-demo-selector-indent {
+      padding-top: 10px;
+    }
   }
+}
+
+.frost-modal-demo-selector-title {
+  padding-top: 10px;
+  font-style: italic;
+
+  + a {
+    padding-top: 10px;
+  }
+
+  > a,
+  > .frost-modal-demo-selector-title {
+    padding: 10px 0 0 10px;
+  }
+}
+
+.frost-modal-demo-selector-indent {
+  margin-left: 20px;
 }
 
 .frost-modal-demo-example {
   flex: 1;
+  height: 100vh;
   margin-left: 20px;
   display: flex;
+  flex-direction: row;
+}
+
+.frost-modal-demo-api,
+.frost-modal-demo-live {
+  display: flex;
   flex-direction: column;
+}
+
+.frost-modal-demo-live {
+  margin-left: 40px;
 }
 
 .frost-modal-demo-title {
   margin-top: 20px;
   font-size: $frost-font-m;
+  font-weight: bold;
   color: $frost-color-grey-2;
 }
 
 .frost-modal-demo-hbs-snippet {
   margin: 0 20px;
-}
 
-.frost-modal-demo-launch {
-  margin-top: 20px;
+  > pre {
+    padding: 20px;
+  }
 }

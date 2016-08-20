@@ -8,8 +8,8 @@ const {
  }
 } = Ember
 
-export function capitalize([text]) {
+export function capitalize ([text]) {
   return _capitalize(text)
 }
 
-export default helper(capitalize);
+export default helper(capitalize)

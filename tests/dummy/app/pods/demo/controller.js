@@ -1,17 +1,37 @@
 import Ember from 'ember'
+import { task, timeout } from 'ember-concurrency'
 
 export default Ember.Controller.extend({
+  activeModal: null,
+  selectedDemo: 'overview',
+
+  line: 0,
+  lines: Ember.A([
+    'All by myself'
+  ]),
+  isUserModalVisible: false,
+
+  // linesTask: task(function * () {
+  //   yield timeout(10000)
+  //   while (this.line < 100) {
+  //     this.get('lines').addObject(`line ${this.line}`)
+  //     this.incrementProperty('line')
+  //     yield timeout(25)
+  //   }
+  // }).drop(),
+
+  // init () {
+  //   this.get('linesTask').perform()
+  // },
+
   actions: {
-    confirmHandler: function () {
-      this.notifications.addNotification({
-        message: 'Confirmed',
-        type: 'success',
-        autoClear: true,
-        clearDuration: 2000
-      })
+    activateModal (modalName) {
+      this.set('activeModal', modalName)
     },
-    myCustomAction: function () {
-      console.log('My Custom action triggered')
+
+    showDemo (demo) {
+      this.set('selectedDemo', demo)
+      this.toggleProperty('changedDemo')
     }
   }
 })

@@ -1,13 +1,12 @@
-<div class='dummy-notification-container'>
+<div class="dummy-notification-container">
   {{#each notifications as |notification|}}
     {{notification-message notification=notification}}
   {{/each}}
 </div>
 
-{{! BEGIN-SNIPPET modal-outlet }}
+{{! BEGIN-SNIPPET remote-outlet }}
 {{frost-modal-outlet}}
-{{! END-SNIPPET modal-outlet}}
-
+{{! END-SNIPPET remote-outlet}}
 
 <div class='dummy-body'>
   <div class="dummy-content">

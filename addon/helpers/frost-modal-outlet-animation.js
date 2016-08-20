@@ -14,7 +14,7 @@ export default Helper.extend({
 
   // == Functions =============================================================
 
-  compute([outlet, rules]) {
+  compute ([outlet, rules]) {
     if (config && get(config, 'frost-modal.no-animation')) {
       return
     }

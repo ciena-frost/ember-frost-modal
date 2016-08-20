@@ -1,0 +1,71 @@
+{{!-- BEGIN-SNIPPET about-api }}
+  {{frost-modal-about
+    brandingStrip=(hash
+      icon= // e.g. 'blueplanet-branding-strip'
+      pack= // e.g. 'ciena-icons'
+    )
+    copyright= // legalese
+    isVisible= // Required binding
+    logo=(hash
+      icon= // e.g. 'blueplanet'
+      pack= // e.g. 'ciena-icons'
+    )
+    product=(hash
+      icon= // e.g. 'waveserver'
+      pack= // e.g. 'ciena-waveserver-ui'
+    )
+    targetOutlet= // ('modal')
+    versions=(array
+      // e.g. 1.0.0
+    )
+    onClose= // Required binding
+  }}
+{{ END-SNIPPET --}}
+
+{{! BEGIN-SNIPPET about }}
+{{frost-modal-about
+  brandingStrip=(hash
+    icon='branding-strip'
+    pack='dummy'
+  )
+  copyright=legalIpsum
+  isVisible=isAboutVisible
+  logo=(hash
+    icon='logo'
+    pack='dummy'
+  )
+  product=(hash
+    icon='product'
+    pack='dummy'
+  )
+  versions=(array
+    'Version: 1.0.0'
+  )
+  onClose=(action (mut isAboutVisible) false)
+}}
+{{! END-SNIPPET }}
+
+<div class='frost-modal-demo-api'>
+  <div class='frost-modal-demo-title'>
+    API
+  </div>
+  <div class='frost-modal-demo-hbs-snippet'>
+    {{code-snippet name='about-api.hbs'}}
+  </div>
+</div>
+<div class='frost-modal-demo-live'>
+  <div class='frost-modal-demo-title'>
+    Live demo
+  </div>
+  <div class='frost-modal-demo-hbs-snippet'>
+    {{code-snippet name='about.hbs'}}
+  </div>
+  <div class='frost-modal-demo-launch'>
+    {{frost-button
+      priority='primary'
+      size='medium'
+      text='Launch the modal'
+      onClick=(action (mut isAboutVisible) true)
+    }}
+  </div>
+</div>

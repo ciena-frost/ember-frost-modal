@@ -1,0 +1,40 @@
+<div class='frost-modal-about-dialog-close'
+  onclick={{action (action onClose)}}
+>
+  {{frost-icon
+    class='frost-modal-about-dialog-close-icon'
+    icon='about-close'
+    pack='frost-modal'
+  }}
+</div>
+<div class='frost-modal-about-dialog-header'>
+  {{frost-icon
+    class='frost-modal-about-dialog-branding-strip'
+    icon=params.brandingStrip.icon
+    pack=params.brandingStrip.pack
+  }}
+  <div class='frost-modal-about-dialog-header-body'>
+    {{frost-icon
+      class='frost-modal-about-dialog-logo'
+      icon=params.logo.icon
+      pack=params.logo.pack
+    }}
+    {{#if params.product}}
+      {{frost-icon
+        class='frost-modal-about-dialog-product'
+        icon=params.product.icon
+        pack=params.product.pack
+      }}
+    {{/if}}
+    {{#each params.versions as |version|}}
+      <div class='frost-modal-about-dialog-version'>
+        {{version}}
+      </div>
+    {{/each}}
+  </div>
+</div>
+{{#frost-scroll class='frost-modal-about-dialog-scroll'}}
+  <div class='frost-modal-about-dialog-copyright'>
+    {{params.copyright}}
+  </div>
+{{/frost-scroll}}

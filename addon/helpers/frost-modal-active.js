@@ -13,13 +13,13 @@ export default Helper.extend({
 
   // == Events ================================================================
 
-  onModalStateChange: observer('modalService.isActive', function() {
+  onModalStateChange: observer('modalService.isActive', function () {
     this.recompute()
   }),
 
   // == Functions =============================================================
 
-  compute() {
+  compute () {
     return this.get('modalService.isActive')
   }
 })

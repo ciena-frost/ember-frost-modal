@@ -9,7 +9,7 @@ export default Service.extend({
 
   // == Functions =============================================================
 
-  setState(modalName, isVisible) {
+  setState (modalName, isVisible) {
     this.set('isActive', isVisible)
   }
 

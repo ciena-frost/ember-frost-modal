@@ -1,1 +1,1 @@
-export { default } from 'ember-frost-modal/helpers/frost-modal-active';
+export { default } from 'ember-frost-modal/helpers/frost-modal-active'

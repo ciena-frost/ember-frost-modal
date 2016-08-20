@@ -1,84 +1,44 @@
-Default frost-modal test
-{{#frost-modal
-  modalName='testModal'as |slot|}}
-  {{#block-slot slot 'target'}}
-    {{frost-button
-      priority="primary"
-      size="medium"
-      text='Test basic dialog'
-    }}
-  {{/block-slot}}
-  {{#block-slot slot 'header'}}
-    <div class="primary-title">BLAH</div>
-  {{/block-slot}}
-  {{#block-slot slot 'body'}}
-    <div class="custom-body">
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
+<div class='frost-modal-demo'>
+  <div class='frost-modal-demos'>
+    <div class='frost-modal-demo-title'>
+      Demos
     </div>
-  {{/block-slot}}
-  {{#block-slot slot 'footer' as |controls close|}}
-    {{controls.cancel}}
-    {{controls.button
-      text='Custom action'
-      onClick=(action 'myCustomAction')}}
-    {{controls.confirm
-      onConfirm=(action 'confirmHandler')
-      text='Confirm and close'}}
-  {{/block-slot}}
-{{/frost-modal}}
-
-<br>
-Non default dialog
-{{#frost-modal
-  modalName='testModal2' as |slot|}}
-  {{#block-slot slot 'target'}}
-    {{frost-button
-      priority="primary"
-      size="medium"
-      text='Test dialog 2'
-    }}
-  {{/block-slot}}
-  {{#block-slot slot 'header'}}
-    <div class="primary-title">BLAH</div>
-  {{/block-slot}}
-  {{#block-slot slot 'body'}}
-    <div class="custom-body">
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-    </div>
-  {{/block-slot}}
-  {{#block-slot slot 'footer' as |controls close|}}
-    {{controls.cancel}}
-    {{controls.button
-      text='Custom action'
-      onClick=(action 'myCustomAction')}}
-    {{controls.confirm
-      closeOnClick=false
-      onConfirm=(action 'confirmHandler')
-      text='Confirm!'}}
-  {{/block-slot}}
-{{/frost-modal}}
+    {{#frost-scroll class='frost-modal-demo-selectors'}}
+      {{#link-to 'demo.overview'}}Overview{{/link-to}}
+      <div class='frost-modal-demo-selector-title'>
+        Building blocks
+        {{#link-to 'demo.background-blur'}}Background blur{{/link-to}}
+        <div class='frost-modal-demo-selector-title'>
+          Local binding
+          {{#link-to 'demo.local-binding-basic'}}Basic{{/link-to}}
+          {{#link-to 'demo.local-binding-content'}}Content{{/link-to}}
+        </div>
+        {{#link-to 'demo.remote-outlet'}}Remote outlet{{/link-to}}
+      </div>
+      <div class='frost-modal-demo-selector-title'>
+        Components
+        {{#link-to 'demo.about'}}frost-modal-about{{/link-to}}
+        {{#link-to 'demo.frost-modal-dialog'}}frost-modal-dialog{{/link-to}}
+        <div class='frost-modal-demo-selector-indent'>
+          {{#link-to 'demo.form'}}frost-modal-form{{/link-to}}
+          <div class='frost-modal-demo-selector-title'>
+            Messages
+            {{#link-to 'demo.confirm'}}frost-modal-confirm-message{{/link-to}}
+            {{#link-to 'demo.error'}}frost-modal-error-message{{/link-to}}
+            {{#link-to 'demo.info'}}frost-modal-info-message{{/link-to}}
+            {{#link-to 'demo.warn'}}frost-modal-warn-message{{/link-to}}
+          </div>
+          <div class='frost-modal-demo-selector-title'>
+            Performance
+            {{#link-to 'demo.updates'}}Updates{{/link-to}}
+            {{#link-to 'demo.overflow'}}Overflow{{/link-to}}
+          </div>
+        </div>
+        {{#link-to 'demo.transition'}}frost-modal-transition{{/link-to}}
+      </div>
+    {{/frost-scroll}}
+  </div>
+  {{#frost-scroll class='frost-modal-demo-example'}}
+    {{outlet}}
+  {{/frost-scroll}}
+</div>

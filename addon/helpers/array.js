@@ -6,7 +6,7 @@ const {
 } = Ember
 
 // TODO Move to ember-frost-core
-export function array(params) {
+export function array (params) {
   return params
 }
 

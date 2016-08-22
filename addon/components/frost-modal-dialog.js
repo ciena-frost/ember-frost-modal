@@ -17,8 +17,9 @@ export default Component.extend({
   // == State properties ======================================================
 
   propTypes: {
-    isOverflowYStart: PropTypes.bool,
-    isOverflowYEnd: PropTypes.bool
+    // Constants TODO getConstants - like getDefaultProps, but assert if `this` has the prop defined
+    // isOverflowYStart: PropTypes.bool,
+    // isOverflowYEnd: PropTypes.bool
   },
 
   // == Events ================================================================

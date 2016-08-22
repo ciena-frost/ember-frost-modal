@@ -1,8 +1,8 @@
 <div class='frost-modal-dialog-header'>
   {{#if params.icon}}
     {{frost-icon
-      pack='frost-modal'
-      icon=params.icon
+      icon=params.icon.name
+      pack=params.icon.pack
     }}
   {{/if}}
   <div class='frost-modal-dialog-header-title'>
@@ -26,9 +26,9 @@
     </div>
   {{/if}}
 
-  {{#if content}}
+  {{#if params.content}}
     <div class='frost-modal-dialog-content'>
-      {{component content}}
+      {{component params.content}}
     </div>
   {{/if}}
 {{/frost-scroll}}
@@ -55,6 +55,7 @@
     onClick=onConfirm
   }}
 
+  {{! TODO The onClose hook is breaking the 'active' transition }}
   {{#each params.links as |link|}}
     {{#frost-link link.route
       priority=link.priority

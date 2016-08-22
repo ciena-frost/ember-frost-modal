@@ -6,10 +6,16 @@
 
 {{! BEGIN-SNIPPET remote-outlet }}
 {{frost-modal-outlet}}
-{{! END-SNIPPET remote-outlet}}
+{{! END-SNIPPET }}
 
 <div class='dummy-body'>
-  <div class="dummy-content frost-modal-content-blur {{if (frost-modal-active) 'active'}}">
+  {{! BEGIN-SNIPPET background-blur }}
+  <div
+    class="dummy-content frost-modal-blur
+      {{if (frost-modal-active) 'active'}}
+    "
+  >
+  {{! END-SNIPPET }}
     {{outlet}}
   </div>
 </div>

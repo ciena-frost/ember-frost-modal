@@ -9,7 +9,9 @@ export default Helper.extend({
 
   // == Dependencies ==========================================================
 
+  // BEGIN-SNIPPET frost-modal-service-inject
   modalService: inject.service('frost-modal'),
+  // END-SNIPPET
 
   // == Events ================================================================
 
@@ -20,6 +22,9 @@ export default Helper.extend({
   // == Functions =============================================================
 
   compute () {
-    return this.get('modalService.isActive')
+    // BEGIN-SNIPPET frost-modal-service-get
+    const isActive = this.get('modalService.isActive')
+    // END-SNIPPET
+    return isActive
   }
 })

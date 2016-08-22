@@ -1,0 +1,59 @@
+{{frost-modal-info-message
+  confirm=(hash
+    text='Excellent'
+  )
+  isVisible=isModalVisible
+  summary='...blur engaged!'
+  title='Modal activated...'
+  onClose=(action (mut isModalVisible) false)
+}}
+
+<div class='frost-modal-demo-api'>
+  <div class='frost-modal-demo-title'>
+    Notes
+  </div>
+  <div class='frost-modal-demo-notes'>
+    <p>
+      Background too legible?  We've got you covered.
+    </p>
+    <p>
+      Add the <b>'frost-modal-blur'</b> class and an if condition that
+      adds the <b>'active'</b> modifier to any element that should be
+      blurred when a modal is visible <i>(see the </i><b>Live demo</b><i>
+      for the </i><b>API</b><i>)</i>
+    </p>
+    <p>
+      In most cases, the blur should be added to the root element of
+      the application so that the entire background is blurred.
+    </p>
+  </div>
+  <div class='frost-modal-demo-title'>
+    Technical mumbo jumbo
+  </div>
+  <div class='frost-modal-demo-notes'>
+    <p>
+      The <b>frost-modal</b> service forms a bridge between an active
+      <b>frost-modal-binding</b> and the <b>frost-modal-active</b> helper.
+      Note that the service could also be injected in other scenarios that
+      need to know if a modal is active.
+    </p>
+    {{code-snippet name='frost-modal-service-inject.js'}}
+    {{code-snippet name='frost-modal-service-get.js'}}
+  </div>
+</div>
+<div class='frost-modal-demo-live'>
+  <div class='frost-modal-demo-title'>
+    Live demo
+  </div>
+  <div class='frost-modal-demo-hbs-snippet'>
+    {{code-snippet name='background-blur.hbs'}}
+  </div>
+  <div class='frost-modal-demo-launch'>
+    {{frost-button
+      priority='primary'
+      size='medium'
+      text='Launch a modal'
+      onClick=(action (mut isModalVisible) true)
+    }}
+  </div>
+</div>

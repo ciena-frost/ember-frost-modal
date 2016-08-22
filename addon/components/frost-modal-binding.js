@@ -27,10 +27,6 @@ const FrostModalBinding = Component.extend({
     animation: PropTypes.func,
     classModifier: PropTypes.string,
     closeOnOutsideClick: PropTypes.bool,
-    content: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.EmberObject
-    ]),
     isVisible: PropTypes.bool.isRequired,
     params: PropTypes.oneOfType([
       PropTypes.EmberObject,

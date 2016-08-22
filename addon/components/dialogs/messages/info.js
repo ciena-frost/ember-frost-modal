@@ -12,10 +12,6 @@ import { PropTypes } from 'ember-prop-types'
 
 export default FrostModalBinding.extend({
 
-  // == Computed properties ===================================================
-
-  content: readOnly('details'),
-
   // == State properties ======================================================
 
   propTypes: {
@@ -68,7 +64,11 @@ export default FrostModalBinding.extend({
         confirm: {
           text: getWithDefault(this, 'confirm.text', 'Ok')
         },
-        icon: 'info',
+        content: this.details,
+        icon: {
+          name: 'info',
+          pack: 'frost-modal'
+        },
         links: this.links,
         summary: this.summary,
         title: this.title

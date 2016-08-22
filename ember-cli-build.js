@@ -9,7 +9,10 @@ module.exports = function (defaults) {
     'ember-cli-mocha': {
       useLintTree: false
     },
-    snippetSearchPaths: ['tests/dummy']
+    snippetSearchPaths: [
+      'addon',
+      'tests/dummy'
+    ]
   })
 
   app.import('bower_components/sinonjs/sinon.js')

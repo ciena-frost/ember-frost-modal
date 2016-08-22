@@ -1,0 +1,109 @@
+{{!-- BEGIN-SNIPPET dialog-api }}
+  {{frost-modal-dialog
+    params=(hash
+      cancel=(hash
+        isVisible= // (true)
+        text= // ('Cancel')
+      )
+      confirm=(hash
+        isVisible=  // (true)
+        text= // ('Confirm')
+      )
+      content=(component 'foo'
+        bar= // e.g. props for 'foo'
+      )
+      icon=(hash
+        name= // e.g. 'warn'
+        pack= // e.g. 'frost-modal'
+      )
+      links=(array
+        (hash
+          priority= // ['primary', etc.]
+          route= // e.g. 'foo.bar'
+          text= // e.g. 'Foo'
+        )
+      )
+      summary= // [main message]
+      title= // Required
+    )
+  }}
+{{ END-SNIPPET --}}
+
+{{! BEGIN-SNIPPET dialog }}
+{{frost-modal-binding 'frost-modal-dialog'
+  isVisible=isDialogVisible
+  params=(hash
+    confirm=(hash
+      isVisible=false
+    )
+    content=(component 'demo/dialog/components/basic-content'
+      text='Basic content'
+    )
+    icon=(hash
+      name='warn'
+      pack='frost-modal'
+    )
+    links=(array
+      (hash
+        priority='secondary'
+        route='demo.form'
+        text='Moving on...'
+      )
+    )
+    summary='Much boilerplate'
+    title='Un-shimmed dialog'
+  )
+  onClose=(action (mut isDialogVisible) false)
+}}
+{{! END-SNIPPET }}
+
+<div class='frost-modal-demo-api'>
+  {{#frost-tabs onChange=(action (mut tab)) selection=tab}}
+    {{#frost-tab alias='Notes' id='notes'}}
+      <div class='frost-modal-demo-notes'>
+        <p>
+          \{{frost-modal-dialog}} provides a structured dialog for use as the modal
+          in a \{{frost-modal-binding}}
+          <ul>
+            <li>header - <b>icon, title</b></li>
+            <li>scrollable content area - <b>summary, content component</b></li>
+            <li>footer - <b>cancel, confirm, links</b>
+              <i>(with proper transition behavior)</i>
+            </li>
+          </ul>
+        </p>
+        <p>
+          While \{{frost-modal-dialog}} can be called directly, the primary
+          usage is via shim components that provide more specific
+          use cases and reduce boilerplate.
+        </p>
+        <p>
+          The rest of the components listed under the <i>Dialog components</i>
+          provide shims around the \{{frost-modal-binding}} / \{{frost-modal-dialog}}
+          combination.
+        </p>
+      </div>
+    {{/frost-tab}}
+    {{#frost-tab alias='API' id='api'}}
+      <div class='frost-modal-demo-hbs-snippet'>
+        {{code-snippet name='dialog-api.hbs'}}
+      </div>
+    {{/frost-tab}}
+  {{/frost-tabs}}
+</div>
+<div class='frost-modal-demo-live'>
+  <div class='frost-modal-demo-title'>
+    Live demo
+  </div>
+  <div class='frost-modal-demo-hbs-snippet'>
+    {{code-snippet name='dialog.hbs'}}
+  </div>
+  <div class='frost-modal-demo-launch'>
+    {{frost-button
+      priority='primary'
+      size='medium'
+      text='Launch the modal'
+      onClick=(action (mut isDialogVisible) true)
+    }}
+  </div>
+</div>

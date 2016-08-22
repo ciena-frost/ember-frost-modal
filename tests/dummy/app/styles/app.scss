@@ -11,6 +11,11 @@
   z-index: 999;
 }
 
+// TODO Move to ember-frost-tabs
+.frost-tabs .tab-nav .tab {
+  cursor: pointer;
+}
+
 .frost-modal-demo {
   display: flex;
   flex-direction: row;
@@ -37,11 +42,14 @@
     transition: color 0.3s;
 
     &:hover {
+      color: $frost-color-blue-3;
+    }
+
+    &.active {
       color: $frost-color-blue-1;
     }
 
-    + a,
-    + .frost-modal-demo-selector-indent {
+    + a {
       padding-top: 10px;
     }
   }
@@ -61,8 +69,13 @@
   }
 }
 
-.frost-modal-demo-selector-indent {
-  margin-left: 20px;
+.frost-modal-demo-overview-links {
+  margin-top: 40px;
+  padding-top: 60px;
+  border-top: 1px solid $frost-color-lgrey-2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .frost-modal-demo-example {
@@ -75,12 +88,12 @@
 
 .frost-modal-demo-api,
 .frost-modal-demo-live {
-  display: flex;
-  flex-direction: column;
-}
+  flex: 1;
+  margin-right: 20px;
 
-.frost-modal-demo-live {
-  margin-left: 40px;
+  .frost-tabs {
+    margin-top: 15px;
+  }
 }
 
 .frost-modal-demo-title {
@@ -96,4 +109,8 @@
   > pre {
     padding: 20px;
   }
+}
+
+.frost-modal-demo-notes {
+  margin: 0 20px 0 10px;
 }

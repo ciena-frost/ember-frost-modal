@@ -1,7 +1,7 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
 @import 'node_modules/ember-frost-core/addon/styles/frost-app';
 
-.frost-modal-content-blur {
+.frost-modal-blur {
   transition: filter 0.3s;
 
   &.active {
@@ -18,11 +18,7 @@
     height: 100vh;
     width: 100vw;
     z-index: $frost-z-index-modal;
-
-    &.message,
-    &.about {
-      background-color: rgba($frost-color-white, 0.8);
-    }
+    background-color: rgba($frost-color-white, 0.8);
   }
 
   &-body {
@@ -41,11 +37,6 @@
     justify-content: center;
     height: 100vh;
     width: 100vw;
-
-    &.message,
-    &.about {
-      align-items: center;
-    }
   }
 }
 

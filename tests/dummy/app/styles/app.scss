@@ -11,6 +11,11 @@
   z-index: 999;
 }
 
+.frost-modal-demo-basic-modal {
+  min-width: 200px;
+  border: 1px solid $frost-color-grey-5;
+}
+
 // TODO Move to ember-frost-tabs
 .frost-tabs .tab-nav .tab {
   cursor: pointer;
@@ -32,6 +37,7 @@
   min-width: 100px;
   margin: 10px 0 10px 10px;
   padding-right: 20px;
+  font-size: $frost-font-s;
 
   a {
     display: block;
@@ -103,8 +109,9 @@
   color: $frost-color-grey-2;
 }
 
-.frost-modal-demo-hbs-snippet {
+.frost-modal-demo-snippet {
   margin: 0 20px;
+  font-size: $frost-font-s;
 
   > pre {
     padding: 20px;
@@ -113,4 +120,5 @@
 
 .frost-modal-demo-notes {
   margin: 0 20px 0 10px;
+  font-size: $frost-font-s;
 }

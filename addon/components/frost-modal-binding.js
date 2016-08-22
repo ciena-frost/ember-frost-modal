@@ -11,7 +11,6 @@ const FrostModalBinding = Component.extend({
   // == Dependencies ==========================================================
 
   modalService: inject.service('frost-modal'),
-  routing: inject.service('-routing'),
 
   // == Component properties ==================================================
 
@@ -32,6 +31,7 @@ const FrostModalBinding = Component.extend({
       PropTypes.EmberObject,
       PropTypes.object
     ]),
+    noBlur: PropTypes.bool,
     targetOutlet: PropTypes.string,
 
     // Actions
@@ -50,7 +50,7 @@ const FrostModalBinding = Component.extend({
   // == Events ================================================================
 
   didReceiveAttrs () {
-    this.get('modalService').setState(this.modalComponentName, this.isVisible)
+    this.get('modalService').setState(this.modalComponentName, this.isVisible, this.noBlur)
   },
 
   // == Actions ===============================================================

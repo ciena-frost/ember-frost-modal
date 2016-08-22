@@ -14,14 +14,21 @@ export default Helper.extend({
 
   // == Functions =============================================================
 
-  compute ([outlet, rules]) {
+  compute ([outlet, modal]) {
     if (config && get(config, 'frost-modal.no-animation')) {
       return
     }
 
-    if (rules) {
-      outlet.set('animationRules', rules)
+    if (!modal) {
+      return outlet.get('animationRules')
     }
+
+    if (modal.animation) {
+      outlet.set('animationRules', modal.animation)
+    } else {
+      outlet.set('animationRules', null)
+    }
+
     return outlet.get('animationRules')
   }
 })

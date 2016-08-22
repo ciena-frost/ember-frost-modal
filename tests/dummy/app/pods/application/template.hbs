@@ -4,15 +4,13 @@
   {{/each}}
 </div>
 
-{{! BEGIN-SNIPPET remote-outlet }}
 {{frost-modal-outlet}}
-{{! END-SNIPPET }}
 
 <div class='dummy-body'>
   {{! BEGIN-SNIPPET background-blur }}
   <div
     class="dummy-content frost-modal-blur
-      {{if (frost-modal-active) 'active'}}
+      {{if (frost-modal-blur-active) 'active'}}
     "
   >
   {{! END-SNIPPET }}

@@ -25,6 +25,6 @@ export default Helper.extend({
     // BEGIN-SNIPPET frost-modal-service-get
     const isActive = this.get('modalService.isActive')
     // END-SNIPPET
-    return isActive
+    return isActive && !this.get('modalService.noBlur')
   }
 })

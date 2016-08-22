@@ -11,12 +11,16 @@ export default Service.extend({
   // == State properties ======================================================
 
   isActive: false,
+  noBlur: false,
 
   // == Functions =============================================================
 
-  setState (modalName, isVisible) {
+  setState (modalName, isVisible, noBlur) {
     scheduleOnce('sync', this, function() {
-      this.set('isActive', isVisible)
+      this.setProperties({
+        isActive: isVisible,
+        noBlur
+      })
     })
   }
 

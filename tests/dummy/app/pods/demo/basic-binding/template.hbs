@@ -1,0 +1,69 @@
+{{!-- BEGIN-SNIPPET basic-binding-api }}
+  {{frost-modal-binding 'modal-foo'
+    animation= // e.g. (frost-modal-animation 'message')
+    classModifier= // e.g. 'special'
+    closeOnOutsideClick= // (false)
+    isVisible= // Required binding
+    noBlur= // (false)
+    params=(hash
+      foo=
+      bar=
+    )
+    targetOutlet= // ('modal')
+    onCancel= // e.g. (action 'foo')
+    onClose= // Required binding
+    onConfirm= // e.g. (action 'foo')
+  }}
+{{ END-SNIPPET --}}
+
+{{! BEGIN-SNIPPET binding-basic }}
+{{frost-modal-binding 'so-basic'
+  closeOnOutsideClick=true
+  isVisible=isModalVisible
+  onClose=(action (mut isModalVisible) false)
+}}
+{{! END-SNIPPET}}
+
+<div class='frost-modal-demo-api'>
+  <div class='frost-modal-demo-title'>
+    Notes
+  </div>
+  <div class='frost-modal-demo-notes'>
+    <p>
+      "This was a triumph! I'm making a note here: Huge Success"
+    </p>
+    <p>
+      The local complement to a remote outlet <i>(a portal, get it?)</i>, a <b>\{{frost-modal-binding}}</b>
+      provides the primitives necessary to send a modal defined locally to a remote oulet.
+    </p>
+    <p>
+      Unlike some <i>other</i> portals though, ours won't leave your modal stranded in a lava pit of
+      un-managed DOM.  That's because the binding renders an actual Ember component in the outlet location
+      instead of rendering DOM locally and appending the result to a remote location.  In addition,
+      parameters for the modal component are bound to the local context (route), so any changes in the
+      local context will be handled in the remote modal using the standard Ember component lifecycle.
+    </p>
+  </div>
+  <div class='frost-modal-demo-title'>
+    API
+  </div>
+  <div class='frost-modal-demo-snippet'>
+    {{code-snippet name='basic-binding-api.hbs'}}
+  </div>
+</div>
+<div class='frost-modal-demo-live'>
+  <div class='frost-modal-demo-title'>
+    Live demo
+  </div>
+  <div class='frost-modal-demo-snippet'>
+    {{code-snippet name='binding-basic.hbs'}}
+  </div>
+  <div class='frost-modal-demo-launch'>
+    {{frost-button
+      priority='primary'
+      size='medium'
+      text='Launch the modal'
+      onClick=(action (mut isModalVisible) true)
+    }}
+  </div>
+</div>

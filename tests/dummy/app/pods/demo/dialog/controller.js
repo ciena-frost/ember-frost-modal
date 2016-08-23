@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
   tab: 'notes',
 
   actions: {
-    confirm() {
+    confirm () {
       this.notifications.addNotification({
         message: 'Affirmative',
         type: 'success',

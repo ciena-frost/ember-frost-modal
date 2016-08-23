@@ -1,9 +1,6 @@
 import Ember from 'ember'
 const {
   assign,
-  computed: {
-    readOnly
-  },
   getWithDefault
 } = Ember
 import FrostModalBinding from '../../frost-modal-binding'

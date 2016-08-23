@@ -1,7 +1,6 @@
 import Ember from 'ember'
 const {
-  assign,
-  getWithDefault
+  assign
 } = Ember
 import FrostModalBinding from '../frost-modal-binding'
 import { about } from '../../helpers/frost-modal-animation'

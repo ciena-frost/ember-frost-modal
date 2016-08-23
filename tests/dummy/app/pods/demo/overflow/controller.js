@@ -18,14 +18,14 @@ export default Ember.Controller.extend({
     }
   }).drop(),
 
-   actions: {
-    stopCounting() {
+  actions: {
+    stopCounting () {
       this.get('countBottles').cancelAll()
       this.set('isModalVisible', false)
       this.get('bottles').clear()
     },
 
-    startCounting() {
+    startCounting () {
       this.set('isModalVisible', true)
       this.get('countBottles').perform()
     }

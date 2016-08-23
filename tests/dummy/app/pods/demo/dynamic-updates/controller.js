@@ -3,7 +3,7 @@ import { task, timeout } from 'ember-concurrency'
 
 export default Ember.Controller.extend({
   queryParams: [
-    'isModalVisible',
+    'isModalVisible'
   ],
 
   // BEGIN-SNIPPET dynamic-update
@@ -33,13 +33,13 @@ export default Ember.Controller.extend({
   }).drop(),
 
   actions: {
-    stopSpeeding() {
+    stopSpeeding () {
       this.get('speedTask').cancelAll()
       this.set('isModalVisible', false)
       this.get('incrememtors').clear()
     },
 
-    startSpeeding() {
+    startSpeeding () {
       this.set('isModalVisible', true)
       this.get('speedTask').perform()
     }

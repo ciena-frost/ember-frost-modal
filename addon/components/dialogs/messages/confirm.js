@@ -1,9 +1,6 @@
 import Ember from 'ember'
 const {
-  assign,
-  computed: {
-    readOnly
-  }
+  assign
 } = Ember
 import FrostModalBinding from '../../frost-modal-binding'
 import { message } from '../../../helpers/frost-modal-animation'

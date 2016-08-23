@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
   isLocalVisible: false,
 
   // BEGIN-SNIPPET local-animation
-  localAnimation() {
+  localAnimation () {
     this.transition(
       this.toValue(true),
       this.use('explode', {

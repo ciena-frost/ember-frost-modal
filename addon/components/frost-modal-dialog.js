@@ -5,7 +5,7 @@ const {
   run
 } = Ember
 import layout from '../templates/components/frost-modal-dialog'
-import { PropTypes } from 'ember-prop-types'
+// import { PropTypes } from 'ember-prop-types'
 
 export default Component.extend({
 

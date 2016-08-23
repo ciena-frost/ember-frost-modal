@@ -2,13 +2,13 @@ import Ember from 'ember'
 
 export default Ember.Controller.extend({
   queryParams: [
-    'isErrorVisible',
+    'isErrorVisible'
   ],
 
   isErrorVisible: false,
 
   actions: {
-    phew() {
+    phew () {
       this.set('isErrorVisible', false)
       this.notifications.addNotification({
         message: 'That was close...',

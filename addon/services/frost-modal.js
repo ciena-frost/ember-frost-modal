@@ -16,7 +16,7 @@ export default Service.extend({
   // == Functions =============================================================
 
   setState (modalName, isVisible, noBlur) {
-    scheduleOnce('sync', this, function() {
+    scheduleOnce('sync', this, function () {
       this.setProperties({
         isActive: isVisible,
         noBlur

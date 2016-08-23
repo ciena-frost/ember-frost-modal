@@ -2,7 +2,7 @@ import Ember from 'ember'
 
 export default Ember.Controller.extend({
   queryParams: [
-    'isFormVisible',
+    'isFormVisible'
   ],
 
   isFormVisible: false,
@@ -34,11 +34,11 @@ export default Ember.Controller.extend({
   simpleBunsenValue: {},
 
   actions: {
-    simpleBunsenChange(formValue) {
+    simpleBunsenChange (formValue) {
       this.set('simpleBunsenValue', formValue)
     },
 
-    notifyAndClear() {
+    notifyAndClear () {
       this.notifications.addNotification({
         message: JSON.stringify(this.get('simpleBunsenValue'), null, 2),
         type: 'success',

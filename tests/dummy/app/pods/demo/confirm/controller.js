@@ -2,13 +2,13 @@ import Ember from 'ember'
 
 export default Ember.Controller.extend({
   queryParams: [
-    'isConfirmVisible',
+    'isConfirmVisible'
   ],
 
   isConfirmVisible: false,
 
   actions: {
-    rejoice() {
+    rejoice () {
       this.notifications.addNotification({
         message: 'Yay.',
         type: 'success',

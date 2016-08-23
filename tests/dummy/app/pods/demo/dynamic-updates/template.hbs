@@ -1,0 +1,40 @@
+{{! BEGIN-SNIPPET dynamic-update }}
+{{frost-modal-binding 'need-for-speed'
+  closeOnOutsideClick=true
+  isVisible=isModalVisible
+  params=(hash
+    meter=(component 'speed-o-meter'
+      gauges=incrememtors
+    )
+  )
+  onClose=(action 'stopSpeeding')
+}}
+{{! END-SNIPPET}}
+
+<div class='frost-modal-demo-api'>
+  <div class='frost-modal-demo-title'>
+    Notes
+  </div>
+  <div class='frost-modal-demo-notes'>
+    <p>
+      Is <b>ember-frost-modal</b> fast yet?
+    </p>
+    {{code-snippet name='dynamic-update.js'}}
+  </div>
+</div>
+<div class='frost-modal-demo-live'>
+  <div class='frost-modal-demo-title'>
+    Live demo
+  </div>
+  <div class='frost-modal-demo-snippet'>
+    {{code-snippet name='dynamic-update.hbs'}}
+  </div>
+  <div class='frost-modal-demo-launch'>
+    {{frost-button
+      priority='primary'
+      size='medium'
+      text='Launch the modal'
+      onClick=(action 'startSpeeding')
+    }}
+  </div>
+</div>

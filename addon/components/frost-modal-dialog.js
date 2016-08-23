@@ -25,6 +25,7 @@ export default Component.extend({
   // == Events ================================================================
 
   // Minor issue - overflow isn't triggered when content component size changes
+  // BEGIN-SNIPPET dialog-overflow
   initOverflow: on('didInsertElement', function () {
     const scroll = this.$('.frost-modal-dialog-scroll').get(0)
     if (scroll.scrollHeight > scroll.clientHeight) {
@@ -33,6 +34,7 @@ export default Component.extend({
       })
     }
   }),
+  // END-SNIPPET
 
   // == Actions ===============================================================
 

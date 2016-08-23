@@ -8,11 +8,14 @@
   <div class='frost-modal-dialog-header-title'>
     {{params.title}}
   </div>
+  {{! BEGIN-SNIPPET dialog-overflow-y-start }}
   {{#if isOverflowYStart}}
     <div class='frost-modal-dialog-overflow-y-start'></div>
   {{/if}}
+  {{! END-SNIPPET }}
 </div>
 
+{{! BEGIN-SNIPPET dialog-overflow-scroll }}
 {{#frost-scroll
   class='frost-modal-dialog-scroll'
   onScrollDown=(action 'scrollDown')
@@ -20,6 +23,7 @@
   onScrollYEnd=(action 'scrollYEnd')
   onScrollYStart=(action 'scrollYStart')
 }}
+{{! END-SNIPPET}}
   {{#if params.summary}}
     <div class='frost-modal-dialog-summary'>
       {{params.summary}}
@@ -34,10 +38,13 @@
 {{/frost-scroll}}
 
 
+
 <div class='frost-modal-dialog-footer'>
+  {{! BEGIN-SNIPPET dialog-overflow-y-end }}
   {{#if isOverflowYEnd}}
     <div class='frost-modal-dialog-overflow-y-end'></div>
   {{/if}}
+  {{! END-SNIPPET }}
 
   {{frost-button
     isVisible=params.cancel.isVisible

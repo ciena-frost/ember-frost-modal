@@ -1,11 +1,12 @@
 <div class='frost-modal-dialog-header'>
   {{#if params.icon}}
     {{frost-icon
+      hook=(concat hook '-icon')
       icon=params.icon.name
       pack=params.icon.pack
     }}
   {{/if}}
-  <div class='frost-modal-dialog-header-title'>
+  <div class='frost-modal-dialog-header-title' data-test={{hook (concat hook '-title')}}>
     {{params.title}}
   </div>
   {{! BEGIN-SNIPPET dialog-overflow-y-start }}
@@ -25,13 +26,13 @@
 }}
 {{! END-SNIPPET}}
   {{#if params.summary}}
-    <div class='frost-modal-dialog-summary'>
+    <div class='frost-modal-dialog-summary' data-test={{hook (concat hook '-summary')}}>
       {{params.summary}}
     </div>
   {{/if}}
 
   {{#if params.content}}
-    <div class='frost-modal-dialog-content'>
+    <div class='frost-modal-dialog-content' data-test={{hook (concat hook '-content')}}>
       {{component params.content}}
     </div>
   {{/if}}
@@ -47,6 +48,7 @@
   {{! END-SNIPPET }}
 
   {{frost-button
+    hook=(concat hook '-cancel')
     isVisible=params.cancel.isVisible
     priority='tertiary'
     size='medium'
@@ -55,6 +57,7 @@
   }}
 
   {{frost-button
+    hook=(concat hook '-confirm')
     isVisible=params.confirm.isVisible
     priority='primary'
     size='medium'
@@ -62,9 +65,9 @@
     onClick=onConfirm
   }}
 
-  {{! TODO The onClose hook is breaking the 'active' transition }}
-  {{#each params.links as |link|}}
+  {{#each params.links as |link index|}}
     {{#frost-link link.route
+      hook=(concat hook '-link-' index)
       priority=link.priority
       size='medium'
       onClick=onClose

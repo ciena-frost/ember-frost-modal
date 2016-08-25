@@ -4,9 +4,9 @@ const {
 } = Ember
 import FrostModalBinding from '../frost-modal-binding'
 import { about } from '../../helpers/frost-modal-animation'
-import { PropTypes } from 'ember-prop-types'
+import { PropTypes, PropTypesMixin } from 'ember-prop-types'
 
-export default FrostModalBinding.extend({
+export default FrostModalBinding.extend(PropTypesMixin, {
 
   // == State properties ======================================================
 

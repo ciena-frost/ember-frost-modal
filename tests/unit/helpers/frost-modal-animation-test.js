@@ -5,13 +5,12 @@ import {
   it
 } from 'mocha'
 import {
-  retainRules
-} from 'ember-frost-modal/helpers/retain-rules'
+  frostModalFormAnimation
+} from 'ember-frost-modal/helpers/frost-modal-animation'
 
-describe('RetainRulesHelper', function () {
+describe('FrostModalAnimationHelper', function () {
   // Replace this with your real tests.
   it('works', function () {
-    let result = retainRules(42)
-    expect(result).to.be.ok
+
   })
 })

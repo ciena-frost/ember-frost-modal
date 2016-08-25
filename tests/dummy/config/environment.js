@@ -27,6 +27,9 @@ module.exports = function (environment) {
   }
 
   if (environment === 'test') {
+    ENV['frost-modal'] = {
+      'no-animation': true
+    }
     // Testem prefers this...
     ENV.baseURL = '/'
     ENV.locationType = 'none'

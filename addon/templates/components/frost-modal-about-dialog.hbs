@@ -1,4 +1,5 @@
 <div class='frost-modal-about-dialog-close'
+  data-test={{hook (concat hook '-close')}}
   onclick={{action (action onClose)}}
 >
   {{frost-icon
@@ -13,7 +14,10 @@
     icon=params.brandingStrip.icon
     pack=params.brandingStrip.pack
   }}
-  <div class='frost-modal-about-dialog-header-body'>
+  <div
+    class='frost-modal-about-dialog-header-body'
+    data-test={{hook (concat hook '-header')}}
+  >
     {{frost-icon
       class='frost-modal-about-dialog-logo'
       icon=params.logo.icon
@@ -27,7 +31,10 @@
       }}
     {{/if}}
     {{#each params.versions as |version|}}
-      <div class='frost-modal-about-dialog-version'>
+      <div
+        class='frost-modal-about-dialog-version'
+        data-test={{hook (concat hook '-version')}}
+      >
         {{version}}
       </div>
     {{/each}}

@@ -31,9 +31,11 @@
 {{frost-modal-form
   form=(component 'frost-bunsen-form'
     bunsenModel=simpleBunsenModel
+    hook='bunsen-form'
     onChange=(action 'simpleBunsenChange')
     value=simpleBunsenValue
   )
+  hook='form-dialog'
   isVisible=isFormVisible
   title='Easy peasy'
   onClose=(action (mut isFormVisible) false)

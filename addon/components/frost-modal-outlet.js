@@ -1,9 +1,9 @@
 import Ember from 'ember'
 const { Component } = Ember
 import layout from '../templates/components/frost-modal-outlet'
-import { PropTypes } from 'ember-prop-types'
+import PropTypesMixin, {PropTypes} from 'ember-prop-types'
 
-export default Component.extend({
+export default Component.extend(PropTypesMixin, {
 
   // == Component properties ==================================================
 

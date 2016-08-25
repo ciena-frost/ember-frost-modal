@@ -22,36 +22,44 @@ describeComponent(
       initialize()
     })
     it('renders', function () {
-      // Set any properties with this.set('myProperty', 'value');
-      // Handle any actions with this.on('myAction', function(val) { ... });
-      // Template block usage:
-      // this.render(hbs`
-      //   {{#frost-modal-about}}
-      //     template content
-      //   {{/frost-modal-about}}
-      // `);
-      this.set('isAboutVisible', true)
-      this.render(hbs`{{frost-modal-about
-        brandingStrip=(hash
-          icon='branding-strip'
-          pack='dummy'
-        )
-        copyright=legalIpsum
-        hook='about-dialog'
-        logo=(hash
-          icon='logo'
-          pack='dummy'
-        )
-        product=(hash
-          icon='product'
-          pack='dummy'
-        )
-        versions=(array
-          'Version: 1.0.0'
-        )
-        onClose=(action (mut isAboutVisible) false)
-      }}`)
-      expect($hook('about-dialog')).to.have.length(1)
+      this.set('closeModal', () => {
+        this.set('isModalVisible', false)
+      })
+      this.set('isModalVisible', true)
+
+      this.render(hbs`
+        {{frost-modal-outlet}}
+
+        {{frost-modal-about
+          brandingStrip=(hash
+            icon='branding-strip'
+            pack='dummy'
+          )
+          copyright='copyright'
+          hook='about-dialog'
+          isVisible=isModalVisible
+          logo=(hash
+            icon='logo'
+            pack='dummy'
+          )
+          product=(hash
+            icon='product'
+            pack='dummy'
+          )
+          versions=(array
+            'Version: 1.0.0'
+          )
+          onClose=(action closeModal)
+        }}
+      `)
+
+      expect($hook('about-dialog-modal'), 'Is modal visible')
+        .to.have.length(1)
+
+      $hook('about-dialog-modal-close').click()
+
+      expect($hook('about-dialog-modal'), 'Is modal hidden')
+        .to.have.length(0)
     })
   }
 )

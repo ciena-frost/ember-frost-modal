@@ -4,9 +4,9 @@ const {
   inject
 } = Ember
 import layout from '../templates/components/frost-modal-binding'
-import { PropTypes } from 'ember-prop-types'
+import PropTypesMixin, {PropTypes} from 'ember-prop-types'
 
-const FrostModalBinding = Component.extend({
+const FrostModalBinding = Component.extend(PropTypesMixin, {
 
   // == Dependencies ==========================================================
 

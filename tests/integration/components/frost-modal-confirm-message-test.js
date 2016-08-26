@@ -5,6 +5,10 @@ import {
   it
 } from 'ember-mocha'
 import hbs from 'htmlbars-inline-precompile'
+import {
+  $hook,
+  initialize
+} from 'ember-hook'
 
 describeComponent(
   'frost-modal-confirm-message',
@@ -13,18 +17,39 @@ describeComponent(
     integration: true
   },
   function () {
-    it('renders', function () {
-      // Set any properties with this.set('myProperty', 'value');
-      // Handle any actions with this.on('myAction', function(val) { ... });
-      // Template block usage:
-      // this.render(hbs`
-      //   {{#frost-modal-confirm-message}}
-      //     template content
-      //   {{/frost-modal-confirm-message}}
-      // `);
+    beforeEach( function () {
+      initialize()
+    })
 
-      this.render(hbs`{{frost-modal-confirm-message}}`)
-      expect(this.$()).to.have.length(1)
+    it('renders', function () {
+      this.set('closeModal', () => {
+        this.set('isModalVisible', false)
+      })
+      this.set('isModalVisible', true)
+
+      this.render(hbs`
+        {{frost-modal-outlet}}
+
+        {{frost-modal-confirm-message
+        hook='confirm-dialog'
+        cancel=(hash
+          isVisible=false
+        )
+        confirm=(hash
+          text='100%'
+        )
+        isVisible=isModalVisible
+        summary='I agree'
+        title='Most definitely'
+        onClose=(action closeModal)
+      }}`)
+
+      expect($hook('confirm-dialog-modal'), 'Is modal visible')
+        .to.have.length(1)
+      $hook('confirm-dialog-modal-cancel').click()
+
+      expect($hook('confirm-dialog-modal'), 'Is modal hidden')
+        .to.have.length(0)
     })
   }
 )

@@ -21,9 +21,6 @@ module.exports = function (environment) {
     ENV['frost-modal'] = {
       'no-animation': true
     }
-    ENV['iconPacks'] = {
-      'inline': true
-    }
   }
   // END-SNIPPET
 

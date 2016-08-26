@@ -23,7 +23,6 @@ describeComponent(
   function () {
     beforeEach(function () {
       initialize()
-      console.log(initializeSvgUse)
       initializeSvgUse()
     })
 

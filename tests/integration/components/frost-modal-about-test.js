@@ -11,6 +11,7 @@ import {
   initialize
 } from 'ember-hook'
 
+
 describeComponent(
   'frost-modal-about',
   'Integration: FrostModalAboutComponent',

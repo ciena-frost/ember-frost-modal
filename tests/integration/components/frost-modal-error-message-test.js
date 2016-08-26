@@ -5,6 +5,10 @@ import {
   it
 } from 'ember-mocha'
 import hbs from 'htmlbars-inline-precompile'
+import {
+  $hook,
+  initialize
+} from 'ember-hook'
 
 describeComponent(
   'frost-modal-error-message',
@@ -13,18 +17,41 @@ describeComponent(
     integration: true
   },
   function () {
-    it('renders', function () {
-      // Set any properties with this.set('myProperty', 'value');
-      // Handle any actions with this.on('myAction', function(val) { ... });
-      // Template block usage:
-      // this.render(hbs`
-      //   {{#frost-modal-error-message}}
-      //     template content
-      //   {{/frost-modal-error-message}}
-      // `);
-
-      this.render(hbs`{{frost-modal-error-message}}`)
-      expect(this.$()).to.have.length(1)
+    beforeEach( function () {
+      initialize()
     })
+
+    it('renders', function () {
+      this.set('closeModal', () => {
+        this.set('isModalVisible', false)
+      })
+      this.set('isModalVisible', true)
+
+      this.render(hbs`
+        {{frost-modal-outlet}}
+        {{frost-modal-error-message
+          confirm=(hash
+            isVisible=false
+          )
+          hook='error-dialog'
+          isVisible=isModalVisible
+          links=(array
+            (hash
+              priority='secondary'
+              route='demo.confirm'
+              text='To safety!'
+            )
+          )
+          summary='Are you familiar with the old robot saying?'
+          title='"Does not compute"'
+          onClose=(action closeModal)
+        }}`)
+        expect($hook('error-dialog-modal'), 'Is modal visible')
+          .to.have.length(1)
+        $hook('error-dialog-modal-cancel').click()
+
+        expect($hook('error-dialog-modal'), 'Is modal hidden')
+          .to.have.length(0)
+      })
   }
 )

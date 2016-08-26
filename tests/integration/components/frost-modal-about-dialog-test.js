@@ -22,8 +22,16 @@ describeComponent(
       //     template content
       //   {{/frost-modal-about-dialog}}
       // `);
+      this.set('closeModal', () => {
+        this.set('isModalVisible', false)
+      })
+      this.render(hbs`
+        {{frost-modal-outlet}}
 
-      this.render(hbs`{{frost-modal-about-dialog}}`)
+        {{frost-modal-about-dialog
+        onClose=(action closeModal)
+        }}`
+      )
       expect(this.$()).to.have.length(1)
     })
   }

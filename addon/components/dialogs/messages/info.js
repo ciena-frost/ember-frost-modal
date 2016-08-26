@@ -30,21 +30,6 @@ export default FrostModalBinding.extend(PropTypesMixin, {
     // Actions
     onClose: PropTypes.func.isRequired,
     onConfirm: PropTypes.func
-
-    // Constants TODO getConstants - like getDefaultProps, but assert if `this` has the prop defined
-    // animation: PropTypes.func,
-    // classModifier: PropTypes.string,
-    // modalComponentName: PropTypes.string,
-    // icon: PropTypes.string,
-    // cancel: PropTypes.shape({
-    //   isVisible: PropTypes.bool,
-    //   text: PropTypes.string
-    // }),
-    // confirm: PropTypes.shape({
-    //   isVisible: PropTypes.bool,
-    //   text: PropTypes.string
-    // }),
-    // onCancel: PropTypes.func,
   },
 
   getDefaultProps () {

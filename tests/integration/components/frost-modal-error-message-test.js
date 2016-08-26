@@ -7,7 +7,7 @@ import {
 import hbs from 'htmlbars-inline-precompile'
 import {
   $hook,
-  initialize
+  initialize as initializeHook
 } from 'ember-hook'
 
 describeComponent(
@@ -18,7 +18,7 @@ describeComponent(
   },
   function () {
     beforeEach( function () {
-      initialize()
+      initializeHook()
     })
 
     it('renders', function () {

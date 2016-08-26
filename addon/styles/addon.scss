@@ -44,12 +44,12 @@
   position: relative;
   min-width: 500px;
   min-height: 250px;
-  max-height: calc(100vh - 90px);
+  max-height: calc(100vh - 90px); // TODO Nav height variable
   display: flex;
   flex-direction: column;
 
   &-content {
-    margin-bottom: 70px;
+    margin-bottom: 70px; // TODO Footer height variable
     padding: 20px 30px;
   }
 
@@ -116,7 +116,7 @@
     padding: 0 30px;
 
     .ps-scrollbar-y-rail {
-      margin-bottom: 70px;
+      margin-bottom: 70px; // TODO Footer height variable
     }
   }
 
@@ -124,15 +124,15 @@
     padding: 20px 30px;
     font-size: $frost-font-m;
 
-    + .frost-modal-content {
+    + .frost-modal-dialog-content {
       padding-top: 0px;
     }
   }
 }
 
 .frost-modal-about-dialog {
-  width: 500px;
   position: relative;
+  width: 500px;
 
   .frost-icon-frost-modal-about-close {
     color: $frost-color-blue-1;
@@ -171,7 +171,7 @@
   &-copyright {
     padding: 10px 40px 20px 40px;
     font-size: $frost-font-xs;
-    line-height: 17px;
+    line-height: 17px; // UX: Not official, but looks good
     background-color: $frost-color-lgrey-3;
     color: $frost-color-grey-4;
   }

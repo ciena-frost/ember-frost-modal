@@ -20,7 +20,6 @@ describeComponent(
     beforeEach(function () {
       initialize()
     })
-    
     it('renders', function () {
       this.set('closeModal', () => {
         this.set('isModalVisible', false)

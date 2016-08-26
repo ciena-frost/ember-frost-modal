@@ -5,7 +5,6 @@ const {
   run
 } = Ember
 import layout from '../templates/components/frost-modal-dialog'
-// import { PropTypes } from 'ember-prop-types'
 
 export default Component.extend({
 
@@ -14,17 +13,9 @@ export default Component.extend({
   classNames: ['frost-modal-dialog'],
   layout,
 
-  // == State properties ======================================================
-
-  propTypes: {
-    // Constants TODO getConstants - like getDefaultProps, but assert if `this` has the prop defined
-    // isOverflowYStart: PropTypes.bool,
-    // isOverflowYEnd: PropTypes.bool
-  },
-
   // == Events ================================================================
 
-  // Minor issue - overflow isn't triggered when content component size changes
+  // TODO overflow isn't triggered when content component size changes
   // BEGIN-SNIPPET dialog-overflow
   initOverflow: on('didInsertElement', function () {
     const scroll = this.$('.frost-modal-dialog-scroll').get(0)

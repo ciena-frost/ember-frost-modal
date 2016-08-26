@@ -6,30 +6,22 @@ module.exports = function (environment) {
     baseURL: '/',
     locationType: 'hash',
     EmberENV: {
-      FEATURES: {
-        // Here you can enable experimental features on an ember canary build
-        // e.g. 'with-controller': true
-      }
+      FEATURES: {}
     },
-
-    APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
-    }
+    APP: {}
   }
 
-  if (environment === 'development') {
-    // ENV.APP.LOG_RESOLVER = true
-    // ENV.APP.LOG_ACTIVE_GENERATION = true
-    // ENV.APP.LOG_TRANSITIONS = true
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true
-    // ENV.APP.LOG_VIEW_LOOKUPS = true
-  }
+  if (environment === 'development') {}
 
+  // BEGIN-SNIPPET config-no-animation
   if (environment === 'test') {
     ENV['frost-modal'] = {
       'no-animation': true
     }
+  }
+  // END-SNIPPET
+
+  if (environment === 'test') {
     // Testem prefers this...
     ENV.baseURL = '/'
     ENV.locationType = 'none'
@@ -41,20 +33,9 @@ module.exports = function (environment) {
     ENV.APP.rootElement = '#ember-testing'
   }
 
-  // BEGIN-SNIPPET config-no-animation
-  if (environment === 'test') {
-    ENV['frost-modal'] = {
-      'no-animation': true
-    }
-  }
-  // END-SNIPPET
-
   if (environment === 'production') {
     ENV.baseURL = '/frost-modal'
     ENV.isDemo = true
-    ENV['ember-cli-mirage'] = {
-      enabled: true
-    }
   }
 
   return ENV

@@ -6,7 +6,10 @@ module.exports = function (environment) {
     baseURL: '/',
     locationType: 'hash',
     EmberENV: {
-      FEATURES: {}
+      FEATURES: {},
+      iconPacks: {
+        inline: true
+      }
     },
     APP: {}
   }
@@ -17,6 +20,9 @@ module.exports = function (environment) {
   if (environment === 'test') {
     ENV['frost-modal'] = {
       'no-animation': true
+    }
+    ENV['iconPacks'] = {
+      'inline': true
     }
   }
   // END-SNIPPET

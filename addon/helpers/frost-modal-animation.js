@@ -3,6 +3,7 @@ const {
   Helper
 } = Ember
 
+// TODO Unique animation
 const about = function () {
   this.transition(
     this.toValue(true),
@@ -23,6 +24,7 @@ const about = function () {
   )
 }
 
+// TODO Unique animation
 const form = function () {
   this.transition(
     this.toValue(true),
@@ -43,6 +45,7 @@ const form = function () {
   )
 }
 
+// TODO Unique animation
 const message = function () {
   this.transition(
     this.toValue(true),

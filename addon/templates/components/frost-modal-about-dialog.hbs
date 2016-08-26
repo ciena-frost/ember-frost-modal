@@ -11,29 +11,28 @@
 <div class='frost-modal-about-dialog-header'>
   {{frost-icon
     class='frost-modal-about-dialog-branding-strip'
+    hook=(concat hook '-branding-strip')
     icon=params.brandingStrip.icon
     pack=params.brandingStrip.pack
   }}
-  <div
-    class='frost-modal-about-dialog-header-body'
-    data-test={{hook (concat hook '-header')}}
-  >
+  <div class='frost-modal-about-dialog-header-body'>
     {{frost-icon
       class='frost-modal-about-dialog-logo'
+      hook=(concat hook '-logo')
       icon=params.logo.icon
       pack=params.logo.pack
     }}
     {{#if params.product}}
       {{frost-icon
         class='frost-modal-about-dialog-product'
+        hook=(concat hook '-product')
         icon=params.product.icon
         pack=params.product.pack
       }}
     {{/if}}
-    {{#each params.versions as |version|}}
-      <div
-        class='frost-modal-about-dialog-version'
-        data-test={{hook (concat hook '-version')}}
+    {{#each params.versions as |version index|}}
+      <div class='frost-modal-about-dialog-version'
+        data-test={{hook (concat hook '-version') index=index}}
       >
         {{version}}
       </div>
@@ -41,7 +40,9 @@
   </div>
 </div>
 {{#frost-scroll class='frost-modal-about-dialog-scroll'}}
-  <div class='frost-modal-about-dialog-copyright'>
+  <div class='frost-modal-about-dialog-copyright'
+    data-test={{hook (concat hook '-copyright')}}
+  >
     {{params.copyright}}
   </div>
 {{/frost-scroll}}

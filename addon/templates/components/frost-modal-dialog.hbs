@@ -6,12 +6,16 @@
       pack=params.icon.pack
     }}
   {{/if}}
-  <div class='frost-modal-dialog-header-title' data-test={{hook (concat hook '-title')}}>
+  <div class='frost-modal-dialog-header-title'
+    data-test={{hook (concat hook '-title')}}
+  >
     {{params.title}}
   </div>
   {{! BEGIN-SNIPPET dialog-overflow-y-start }}
   {{#if isOverflowYStart}}
-    <div class='frost-modal-dialog-overflow-y-start'></div>
+    <div class='frost-modal-dialog-overflow-y-start'
+      data-test={{hook (concat hook '-overflow-y-start')}}
+    ></div>
   {{/if}}
   {{! END-SNIPPET }}
 </div>
@@ -26,24 +30,28 @@
 }}
 {{! END-SNIPPET}}
   {{#if params.summary}}
-    <div class='frost-modal-dialog-summary' data-test={{hook (concat hook '-summary')}}>
+    <div class='frost-modal-dialog-summary'
+      data-test={{hook (concat hook '-summary')}}
+    >
       {{params.summary}}
     </div>
   {{/if}}
 
   {{#if params.content}}
-    <div class='frost-modal-dialog-content' data-test={{hook (concat hook '-content')}}>
+    <div class='frost-modal-dialog-content'
+      data-test={{hook (concat hook '-content')}}
+    >
       {{component params.content}}
     </div>
   {{/if}}
 {{/frost-scroll}}
 
-
-
 <div class='frost-modal-dialog-footer'>
   {{! BEGIN-SNIPPET dialog-overflow-y-end }}
   {{#if isOverflowYEnd}}
-    <div class='frost-modal-dialog-overflow-y-end'></div>
+    <div class='frost-modal-dialog-overflow-y-end'
+      data-test={{hook (concat hook '-overflow-y-end')}}
+    ></div>
   {{/if}}
   {{! END-SNIPPET }}
 
@@ -66,6 +74,7 @@
   }}
 
   {{#each params.links as |link index|}}
+    {{! TODO Can the hook here be done with an index param? }}
     {{#frost-link link.route
       hook=(concat hook '-link-' index)
       priority=link.priority

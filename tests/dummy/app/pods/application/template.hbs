@@ -1,4 +1,4 @@
-<div class="dummy-notification-container">
+<div class="demo-notification-container">
   {{#each notifications as |notification|}}
     {{notification-message notification=notification}}
   {{/each}}
@@ -6,10 +6,10 @@
 
 {{frost-modal-outlet}}
 
-<div class='dummy-body'>
+<div class='demo-body'>
   {{! BEGIN-SNIPPET background-blur }}
   <div
-    class="dummy-content frost-modal-blur
+    class="demo-content frost-modal-blur
       {{if (frost-modal-blur-active) 'active'}}
     "
   >

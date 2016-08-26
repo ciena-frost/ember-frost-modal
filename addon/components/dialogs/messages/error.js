@@ -5,9 +5,9 @@ const {
 } = Ember
 import FrostModalBinding from '../../frost-modal-binding'
 import { message } from '../../../helpers/frost-modal-animation'
-import { PropTypes } from 'ember-prop-types'
+import PropTypesMixin, { PropTypes } from 'ember-prop-types'
 
-export default FrostModalBinding.extend({
+export default FrostModalBinding.extend(PropTypesMixin, {
 
   // == State properties ======================================================
 
@@ -30,16 +30,6 @@ export default FrostModalBinding.extend({
     // Actions
     onClose: PropTypes.func.isRequired,
     onConfirm: PropTypes.func
-
-    // Constants TODO getConstants - like getDefaultProps, but assert if `this` has the prop defined
-    // animation: PropTypes.func,
-    // cancel: PropTypes.shape({
-    //   isVisible: PropTypes.bool,
-    //   text: PropTypes.string
-    // }),
-    // classModifier: PropTypes.string,
-    // modalComponentName: PropTypes.string,
-    // icon: PropTypes.string,
   },
 
   getDefaultProps () {

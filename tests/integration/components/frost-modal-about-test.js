@@ -1,15 +1,15 @@
 /* jshint expr:true */
 import { expect } from 'chai'
 import {
+  $hook,
+  initialize
+} from 'ember-hook'
+import {
   describeComponent,
   it
 } from 'ember-mocha'
 import { beforeEach } from 'mocha'
 import hbs from 'htmlbars-inline-precompile'
-import {
-  $hook,
-  initialize
-} from 'ember-hook'
 
 describeComponent(
   'frost-modal-about',
@@ -21,6 +21,7 @@ describeComponent(
     beforeEach(function () {
       initialize()
     })
+
     it('renders', function () {
       this.set('closeModal', () => {
         this.set('isModalVisible', false)

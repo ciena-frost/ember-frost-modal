@@ -1,6 +1,10 @@
 /* jshint expr:true */
 import { expect } from 'chai'
 import {
+  $hook,
+  initialize
+} from 'ember-hook'
+import {
   describeComponent,
   it
 } from 'ember-mocha'
@@ -13,18 +17,28 @@ describeComponent(
     integration: true
   },
   function () {
-    it('renders', function () {
-      // Set any properties with this.set('myProperty', 'value');
-      // Handle any actions with this.on('myAction', function(val) { ... });
-      // Template block usage:
-      // this.render(hbs`
-      //   {{#frost-modal-binding}}
-      //     template content
-      //   {{/frost-modal-binding}}
-      // `);
+    beforeEach(function () {
+      initialize()
+    })
 
-      this.render(hbs`{{frost-modal-binding}}`)
-      expect(this.$()).to.have.length(1)
+    it('renders', function () {
+      this.set('closeModal', () => {
+        this.set('isModalVisible', false)
+      })
+      this.set('isModalVisible', true)
+
+      this.render(hbs`
+        {{frost-modal-outlet}}
+
+        {{frost-modal-binding 'basic-modal'
+          hook='basic'
+          isVisible=isModalVisible
+          onClose=(action closeModal)
+        }}
+      `)
+
+      expect($hook('basic-modal'), 'Is modal visible')
+        .to.have.length(1)
     })
   }
 )

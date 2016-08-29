@@ -1,0 +1,20 @@
+{{frost-modal-outlet
+  name='basic'
+}}
+
+{{frost-modal-binding 'basic-modal'
+  closeOnOutsideClick=true
+  hook='basic'
+  isVisible=isModalVisible
+  noBlur=true
+  targetOutlet='basic'
+  onClose=(action (mut isModalVisible) false)
+}}
+
+{{frost-button
+  hook='launcher'
+  priority='primary'
+  size='medium'
+  text='Launch the modal'
+  onClick=(action (mut isModalVisible) true)
+}}

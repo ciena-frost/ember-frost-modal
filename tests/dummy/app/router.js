@@ -23,6 +23,7 @@ Router.map(function () {
     this.route('remote-outlet')
     this.route('warn')
   })
+  this.route('frost-modal-outlet-test');
 })
 
 export default Router

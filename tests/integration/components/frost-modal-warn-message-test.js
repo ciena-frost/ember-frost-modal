@@ -9,6 +9,9 @@ import {
   $hook,
   initialize
 } from 'ember-hook'
+import {
+  beforeEach
+} from 'mocha'
 
 describeComponent(
   'frost-modal-warn-message',

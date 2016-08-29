@@ -9,6 +9,9 @@ import {
   $hook,
   initialize as initializeHook
 } from 'ember-hook'
+import {
+  beforeEach
+} from 'mocha'
 
 describeComponent(
   'frost-modal-error-message',
@@ -17,7 +20,7 @@ describeComponent(
     integration: true
   },
   function () {
-    beforeEach( function () {
+    beforeEach(function () {
       initializeHook()
     })
 
@@ -46,12 +49,12 @@ describeComponent(
           title='"Does not compute"'
           onClose=(action closeModal)
         }}`)
-        expect($hook('error-dialog-modal'), 'Is modal visible')
+      expect($hook('error-dialog-modal'), 'Is modal visible')
           .to.have.length(1)
-        $hook('error-dialog-modal-cancel').click()
+      $hook('error-dialog-modal-cancel').click()
 
-        expect($hook('error-dialog-modal'), 'Is modal hidden')
+      expect($hook('error-dialog-modal'), 'Is modal hidden')
           .to.have.length(0)
-      })
+    })
   }
 )

@@ -16,9 +16,7 @@ import {
 } from 'ember-frost-core/instance-initializers/svg-use-polyfill'
 
 import hbs from 'htmlbars-inline-precompile'
-import {
-  beforeEach
-} from 'mocha'
+
 import Ember from 'ember'
 describeComponent(
   'frost-modal-about-dialog',

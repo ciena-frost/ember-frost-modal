@@ -2,7 +2,7 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-app';
 
 .frost-modal-blur {
-  transition: filter 0.3s;
+  transition: filter .3s;
 
   &.active {
     filter: blur(1.5px);
@@ -17,8 +17,8 @@
     top: 0;
     height: 100vh;
     width: 100vw;
-    z-index: $frost-z-index-modal;
     background-color: rgba($frost-color-white, 0.8);
+    z-index: $frost-z-index-modal;
   }
 
   &-body {

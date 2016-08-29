@@ -1,12 +1,7 @@
 {
   "name": "ember-frost-modal",
-<<<<<<< HEAD
-  "version": "2.1.1",
-  "description": "Modals for what ails you",
-=======
   "version": "2.1.2",
-  "description": "A basic modal structure.",
->>>>>>> 3329bb35f9c961457046af84a7bc22927b000ac6
+  "description": "Modals for what ails you",
   "directories": {
     "doc": "doc",
     "test": "tests"

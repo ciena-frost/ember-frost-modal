@@ -16,6 +16,12 @@
   padding: 20px;
   border: 1px solid $frost-color-grey-5;
 
+  .frost-button {
+    display: block;
+    margin-top: 20px;
+    margin-left: auto;
+  }
+
   blockquote{
     display:block;
     background: #fff;

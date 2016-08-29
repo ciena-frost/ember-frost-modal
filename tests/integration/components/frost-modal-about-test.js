@@ -23,8 +23,10 @@ describeComponent(
     })
 
     it('renders', function () {
-      this.set('closeModal', () => {
-        this.set('isModalVisible', false)
+      this.set('actions', {
+        closeModal() {
+          this.set('isModalVisible', false)
+        }
       })
       this.set('isModalVisible', true)
 
@@ -50,7 +52,7 @@ describeComponent(
           versions=(array
             'Version: 1.0.0'
           )
-          onClose=(action closeModal)
+          onClose=(action 'closeModal')
         }}
       `)
 

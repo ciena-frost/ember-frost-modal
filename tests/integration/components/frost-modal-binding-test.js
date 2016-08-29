@@ -22,23 +22,37 @@ describeComponent(
     })
 
     it('renders', function () {
-      this.set('closeModal', () => {
-        this.set('isModalVisible', false)
+      this.set('isModalVisible', false)
+      this.set('actions', {
+        closeModal() {
+          this.set('isModalVisible', false)
+        }
       })
-      this.set('isModalVisible', true)
 
       this.render(hbs`
-        {{frost-modal-outlet}}
+        {{frost-modal-outlet
+          name='basic'
+        }}
 
         {{frost-modal-binding 'basic-modal'
+          closeOnOutsideClick=true
           hook='basic'
           isVisible=isModalVisible
-          onClose=(action closeModal)
+          targetOutlet='basic'
+          onClose=(action 'closeModal')
         }}
       `)
 
-      expect($hook('basic-modal'), 'Is modal visible')
+      expect($hook('basic-modal'), 'Modal is initially hidden')
+        .to.have.length(0)
+
+      this.set('isModalVisible', true)
+      expect($hook('basic-modal'), 'Modal becomes visible')
         .to.have.length(1)
+
+      $hook('basic-modal-confirm').click()
+      expect($hook('basic-modal'), 'Modal is dismissed')
+        .to.have.length(0)
     })
   }
 )

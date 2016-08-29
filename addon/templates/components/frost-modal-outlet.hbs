@@ -9,6 +9,7 @@
     <div class="frost-modal-outlet-background {{if modal.classModifier modal.classModifier}}"></div>
     <div class="frost-modal-outlet-container {{if modal.classModifier modal.classModifier}}"
       onclick={{action (ignore-children modal.onOutsideClick)}}
+      data-test={{hook (concat 'modal-outlet-' name '-container')}}
     >
       <div class="frost-modal-outlet-body {{if modal.classModifier modal.classModifier}}">
         {{component modal.body}}

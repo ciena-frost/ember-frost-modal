@@ -6,7 +6,10 @@ module.exports = function (environment) {
     baseURL: '/',
     locationType: 'hash',
     EmberENV: {
-      FEATURES: {}
+      FEATURES: {},
+      iconPacks: {
+        inline: true
+      }
     },
     APP: {}
   }

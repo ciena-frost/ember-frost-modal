@@ -8,7 +8,9 @@
     "lodash": "^4.10.0",
     "perfect-scrollbar": "~0.6.7",
     "sinonjs": "1.17.1",
-    "z-schema": "3.16.1"
+    "z-schema": "3.16.1",
+    "es6-promise": "^3.2.2",
+    "resemblejs": "^2.2.0"
   },
   "resolutions": {
     "ember": "~2.6.0"

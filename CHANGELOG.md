@@ -1,3 +1,9 @@
+# 2.1.2
+
+* Updated to latest version of `liquid-fire`.
+
+
+
 # 2.1.1
  * **Reduced** specificity of SASS selectors
  * **Added** `CONTRIBUTING.md` to inform potential contributors

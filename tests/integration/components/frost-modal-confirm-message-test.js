@@ -9,6 +9,7 @@ import {
   $hook,
   initialize
 } from 'ember-hook'
+import { beforeEach } from 'mocha'
 
 describeComponent(
   'frost-modal-confirm-message',
@@ -17,7 +18,7 @@ describeComponent(
     integration: true
   },
   function () {
-    beforeEach( function () {
+    beforeEach(function () {
       initialize()
     })
 

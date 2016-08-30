@@ -24,7 +24,7 @@ describeComponent(
 
     it('renders', function () {
       this.set('actions', {
-        closeModal() {
+        closeModal () {
           this.set('isModalVisible', false)
         }
       })

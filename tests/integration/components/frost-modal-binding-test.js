@@ -8,6 +8,7 @@ import {
   describeComponent,
   it
 } from 'ember-mocha'
+import { beforeEach } from 'mocha'
 import hbs from 'htmlbars-inline-precompile'
 
 describeComponent(
@@ -24,7 +25,7 @@ describeComponent(
     it('renders', function () {
       this.set('isModalVisible', false)
       this.set('actions', {
-        closeModal() {
+        closeModal () {
           this.set('isModalVisible', false)
         }
       })

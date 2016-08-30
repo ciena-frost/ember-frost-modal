@@ -10,7 +10,7 @@
     "build": "ember build",
     "start": "ember server",
     "test": "npm run lint && ember test",
-    "eslint": "eslint *.js addon app blueprints config tests",
+    "eslint": "eslint *.js addon app blueprints config tests --fix",
     "sass-lint": "sass-lint -q -v",
     "lint": "npm run eslint && npm run sass-lint"
   },

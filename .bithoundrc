@@ -1,3 +1,5 @@
-"critics": {
-  "lint": {"engine": "none"}
+{
+  "critics": {
+    "lint": {"engine": "none"}
+  }
 }

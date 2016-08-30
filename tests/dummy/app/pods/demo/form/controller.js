@@ -4,6 +4,7 @@ const {
 } = Ember
 
 export default Controller.extend({
+  notifications: Ember.inject.service('notification-messages'),
   queryParams: [
     'isFormVisible'
   ],
@@ -42,7 +43,7 @@ export default Controller.extend({
     },
 
     notifyAndClear () {
-      this.notifications.addNotification({
+      this.get('notifications').addNotification({
         message: JSON.stringify(this.get('simpleBunsenValue'), null, 2),
         type: 'success',
         autoClear: true,

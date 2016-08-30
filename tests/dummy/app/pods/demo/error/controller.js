@@ -4,6 +4,7 @@ const {
 } = Ember
 
 export default Controller.extend({
+  notifications: Ember.inject.service('notification-messages'),
   queryParams: [
     'isErrorVisible'
   ],
@@ -13,7 +14,7 @@ export default Controller.extend({
   actions: {
     phew () {
       this.set('isErrorVisible', false)
-      this.notifications.addNotification({
+      this.get('notifications').addNotification({
         message: 'That was close...',
         type: 'success',
         autoClear: true,

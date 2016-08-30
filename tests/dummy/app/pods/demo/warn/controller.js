@@ -4,6 +4,7 @@ const {
 } = Ember
 
 export default Controller.extend({
+  notifications: Ember.inject.service('notification-messages'),
   queryParams: [
     'isWarnVisible'
   ],
@@ -12,7 +13,7 @@ export default Controller.extend({
 
   actions: {
     escape () {
-      this.notifications.addNotification({
+      this.get('notifications').addNotification({
         message: 'Poor Zelda...',
         type: 'success',
         autoClear: true,

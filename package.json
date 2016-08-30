@@ -40,12 +40,12 @@
     "ember-cli-inject-live-reload": "^1.4.0",
     "ember-cli-mocha": "^0.10.0",
     "ember-cli-moment-shim": "2.0.0",
-    "ember-cli-notifications": "3.3.1",
+    "ember-cli-notifications": "4.0.5",
     "ember-cli-release": "0.2.9",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^1.2.0",
     "ember-cli-visual-acceptance": "^1.3.17",
-    "ember-code-snippet": "1.3.0",
+    "ember-code-snippet": "1.4.0",
     "ember-computed-decorators": "0.2.2",
     "ember-concurrency": "0.7.8",
     "ember-disable-proxy-controllers": "^1.0.1",
@@ -78,7 +78,7 @@
     "lodash-es": "4.15.0",
     "redux": "3.5.2",
     "redux-thunk": "2.1.0",
-    "sass-lint": "1.7.0",
+    "sass-lint": "1.9.1",
     "svg4everybody": "2.1.0"
   },
   "keywords": [

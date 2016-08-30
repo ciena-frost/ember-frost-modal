@@ -4,6 +4,7 @@ const {
 } = Ember
 
 export default Controller.extend({
+  notifications: Ember.inject.service('notification-messages'),
   queryParams: [
     'isConfirmVisible'
   ],
@@ -12,7 +13,7 @@ export default Controller.extend({
 
   actions: {
     rejoice () {
-      this.notifications.addNotification({
+      this.get('notifications').addNotification({
         message: 'Yay.',
         type: 'success',
         autoClear: true,

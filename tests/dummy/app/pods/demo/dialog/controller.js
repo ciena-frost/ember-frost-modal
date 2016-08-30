@@ -4,6 +4,7 @@ const {
 } = Ember
 
 export default Controller.extend({
+  notifications: Ember.inject.service('notification-messages'),
   queryParams: [
     'isDialogVisible',
     'tab'
@@ -14,7 +15,7 @@ export default Controller.extend({
 
   actions: {
     confirm () {
-      this.notifications.addNotification({
+      this.get('notifications').addNotification({
         message: 'Affirmative',
         type: 'success',
         autoClear: true,

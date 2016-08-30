@@ -1,4 +1,6 @@
 /* jshint expr:true */
+import Ember from 'ember'
+const { run } = Ember
 import { expect } from 'chai'
 import {
   describeComponent,
@@ -22,35 +24,49 @@ describeComponent(
   function () {
     beforeEach(function () {
       initializeHook()
-    })
-
-    it('renders', function () {
+      this.timeout(10000)
       this.set('closeModal', () => {
         this.set('isModalVisible', false)
       })
-      this.set('isModalVisible', true)
+      run(() => {
+        this.set('isModalVisible', true)
 
-      this.render(hbs`
-        {{frost-modal-outlet}}
-        {{frost-modal-error-message
-          confirm=(hash
-            isVisible=false
-          )
-          hook='error-dialog'
-          isVisible=isModalVisible
-          links=(array
-            (hash
-              priority='secondary'
-              route='demo.confirm'
-              text='To safety!'
+        this.render(hbs`
+          {{frost-modal-outlet}}
+          {{frost-modal-error-message
+            confirm=(hash
+              isVisible=false
             )
-          )
-          summary='Are you familiar with the old robot saying?'
-          title='"Does not compute"'
-          onClose=(action closeModal)
-        }}`)
+            hook='error-dialog'
+            isVisible=isModalVisible
+            links=(array
+              (hash
+                priority='secondary'
+                route='demo.confirm'
+                text='To safety!'
+              )
+            )
+            summary='Are you familiar with the old robot saying?'
+            title='"Does not compute"'
+            onClose=(action closeModal)
+          }}`
+        )
+      })
+    })
+
+    it('renders', function (/*done*/) {
       expect($hook('error-dialog-modal'), 'Is modal visible')
           .to.have.length(1)
+      // TODO uncomment once ember-cli-visual-acceptance issues are fixed
+      // Ember.run.later(function () {
+      //   return capture('error-dialog', {
+      //     targetElement: this.$('.frost-modal-outlet-container.message')[0],
+      //     experimentalSvgs: true
+      //   })
+      // }, 2000)
+    })
+
+    it('closes on cancel', function () {
       $hook('error-dialog-modal-cancel').click()
 
       expect($hook('error-dialog-modal'), 'Is modal hidden')

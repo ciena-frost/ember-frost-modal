@@ -1,4 +1,6 @@
 /* jshint expr:true */
+import Ember from 'ember'
+const { run } = Ember
 import { expect } from 'chai'
 import {
   describeComponent,
@@ -7,7 +9,7 @@ import {
 import hbs from 'htmlbars-inline-precompile'
 import {
   $hook,
-  initialize
+  initialize as initializeHook
 } from 'ember-hook'
 import {
   beforeEach
@@ -20,32 +22,55 @@ describeComponent(
     integration: true
   },
   function () {
+    let props
+
     beforeEach(function () {
-      initialize()
-    })
-    it('renders', function () {
+      initializeHook()
+      this.timeout(10000)
       this.set('closeModal', () => {
         this.set('isModalVisible', false)
       })
-      this.set('isModalVisible', true)
+      props = {
+        hook: 'warning-dialog',
+        onCancel: sinon.spy(),
+        isModalVisible: true
+      }
+      run(() => {
+        this.setProperties(props)
+        this.render(hbs`
+          {{frost-modal-outlet}}
+          {{frost-modal-warn-message
+            cancel=(hash
+              text='Nope'
+            )
+            hook=hook
+            isVisible=isModalVisible
+            summary='Take this'
+            title="It's dangerous to go alone!"
+            onCancel=onCancel
+            onClose=(action closeModal)
+          }}`)
+      })
+    })
 
-      this.render(hbs`
-        {{frost-modal-outlet}}
-        {{frost-modal-warn-message
-          cancel=(hash
-            text='Nope'
-          )
-          hook='warning-dialog'
-          isVisible=isModalVisible
-          summary='Take this'
-          title="It's dangerous to go alone!"
-          onClose=(action closeModal)
-        }}
-      `)
-      expect($hook('warning-dialog-modal'), 'Is modal visible')
+    it('renders', function (/*done*/) {
+      expect($hook(props.hook), 'Is modal visible')
         .to.have.length(1)
+
+      // TODO uncomment once ember-cli-visual-acceptance issues are fixed
+      // Ember.run.later(function () {
+      //   return capture('warning-dialog', {
+      //     targetElement: this.$('.frost-modal-outlet-container.message')[0],
+      //     experimentalSvgs: true
+      //   })
+      // }, 2000)
+    })
+
+    it('cancel triggers callback and close', function  () {
       $hook('warning-dialog-modal-cancel').click()
 
+      expect(props.onCancel.called, 'Callback triggered')
+        .to.be.true
       expect($hook('warning-dialog-modal'), 'Is modal hidden')
         .to.have.length(0)
     })

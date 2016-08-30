@@ -1,8 +1,10 @@
 /* jshint expr:true */
+import Ember from 'ember'
+const { run } = Ember
 import { expect } from 'chai'
 import {
   $hook,
-  initialize
+  initialize as initializeHook
 } from 'ember-hook'
 import {
   describeComponent,
@@ -21,31 +23,41 @@ describeComponent(
   },
   function () {
     beforeEach(function () {
-      initialize()
-    })
-
-    it('renders', function () {
+      initializeHook()
       this.set('closeModal', () => {
         this.set('isModalVisible', false)
       })
-      this.set('isModalVisible', true)
+      run(() => {
+        this.set('isModalVisible', true)
 
-      this.render(hbs`
-        {{frost-modal-outlet}}
+        this.render(hbs`
+          {{frost-modal-outlet}}
 
-        {{frost-modal-info-message
-          hook='info-dialog'
-          isVisible=isModalVisible
-          summary='Summary'
-          title='Title'
-          onClose=(action closeModal)
-        }}
-      `)
+          {{frost-modal-info-message
+            hook='info-dialog'
+            isVisible=isModalVisible
+            summary='Summary'
+            title='Title'
+            onClose=(action closeModal)
+          }}
+        `)
+      })
+    })
 
+    it('renders', function (/*done*/) {
       expect($hook('info-dialog-modal'), 'Is modal visible')
         .to.have.length(1)
+      // TODO uncomment once ember-cli-visual-acceptance issues are fixed
+      // Ember.run.later(function () {
+      //   return capture('info', {
+      //     targetElement: this.$('.frost-modal-outlet-container.message')[0],
+      //     experimentalSvgs: true
+      //   })
+      // }, 2000)
+    })
 
-      $hook('info-dialog-modal-cancel').click()
+    it('closes on confirm', function () {
+      $hook('info-dialog-modal-confirm').click()
 
       expect($hook('info-dialog-modal'), 'Is modal hidden')
         .to.have.length(0)

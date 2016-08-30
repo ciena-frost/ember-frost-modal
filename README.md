@@ -7,14 +7,29 @@
 [npm-img]: https://img.shields.io/npm/v/ember-frost-modal.svg "NPM Version"
 [npm-url]: https://www.npmjs.com/package/ember-frost-modal
 
-[![Travis][ci-img]][ci-url] [![Coveralls][cov-img]][cov-url] [![NPM][npm-img]][npm-url]
+[ember-observer-badge]: http://emberobserver.com/badges/ember-frost-modal.svg
+[ember-observer-badge-url]: http://emberobserver.com/addons/ember-frost-modal
+
+[bithound-img]: https://www.bithound.io/github/ciena-blueplanet/ember-frost-modal/badges/score.svg "bitHound"
+[bithound-url]: https://www.bithound.io/github/ciena-blueplanet/ember-frost-modal
 
 # ember-frost-modal
+###### Dependencies
 
- * [Installation](#installation)
- * [API](#api)
- * [Examples](#examples)
- * [Development](#development)
+![Ember][ember-img]
+[![NPM][npm-img]][npm-url]
+
+###### Health
+
+[![Travis][ci-img]][ci-url]
+[![Coveralls][cov-img]][cov-url]
+
+###### Security
+
+[![bitHound][bithound-img]][bithound-url]
+
+###### Ember Observer score
+[![EmberObserver][ember-observer-badge]][ember-observer-badge-url]
 
 ## Installation
 ```
@@ -28,7 +43,7 @@ Detailed API and example usage can be found in the sample application in `tests/
 
 This addon uses the [ember-elsewhere](https://github.com/ef4/ember-elsewhere) to manage the modals, to lift them outside the normal route hiearchy.
 
-### ember-perfectscroll effects (TODO effects based of perfectscroll events, but not from perfectscroll)
+### ember-perfectscroll effects (TODO effects based off perfectscroll events, but not from perfectscroll)
 
 This gives you styling of header/footer when content is scrolled underneath either element
 

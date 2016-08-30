@@ -12,8 +12,6 @@ import {
   initialize as initializeHook
 } from 'ember-hook'
 import { beforeEach } from 'mocha'
-import { task, timeout } from 'ember-concurrency'
-
 
 describeComponent(
   'frost-modal-error-message',
@@ -29,7 +27,7 @@ describeComponent(
         this.set('isModalVisible', false)
       })
       this.set('things', A([]))
-      const things=this.get('things')
+      const things = this.get('things')
       while (this.get('things').length < 50) {
         things.addObject(`Thing ${things.length + 1}`)
       }
@@ -53,7 +51,7 @@ describeComponent(
       })
     })
 
-    it('renders', function (/*done*/) {
+    it('renders', function (/* done*/) {
       expect($hook('error-dialog-modal'), 'Is modal visible')
           .to.have.length(1)
       // TODO uncomment once ember-cli-visual-acceptance issues are fixed

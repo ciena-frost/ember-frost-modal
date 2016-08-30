@@ -30,7 +30,7 @@ describeComponent(
       initializeSvgUse()
     })
 
-    it('renders', function (/*done*/) {
+    it('renders', function (/* done*/) {
       this.timeout(10000)
 
       this.render(hbs`

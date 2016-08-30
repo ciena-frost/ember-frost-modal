@@ -1,52 +1,56 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
 @import 'node_modules/ember-frost-core/addon/styles/frost-app';
 
+$frost-modal-outlet-background-color: rgba($frost-color-white, .8);
+$frost-modal-outlet-body-shadow-color: rgba(0, 0, 0, .3);
+$frost-modal-dialog-footer-background-color: rgba($frost-color-white, .95);
+$frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
+
 .frost-modal-blur {
   transition: filter .3s;
 
   &.active {
-    filter: blur(1.5px);
-    -webkit-filter: blur(1.5px); // TODO PostCSS autoprefixer
+    filter: blur(1.5px); // TODO PostCSS autoprefixer
   }
 }
 
 .frost-modal-outlet {
   &-background {
     position: fixed;
-    left: 0;
     top: 0;
-    height: 100vh;
+    left: 0;
     width: 100vw;
-    background-color: rgba($frost-color-white, 0.8);
+    height: 100vh;
+    background-color: $frost-modal-outlet-background-color;
     z-index: $frost-z-index-modal;
   }
 
   &-body {
+    background-color: $frost-color-white;
+    box-shadow: 0 25px 125px 0 $frost-modal-outlet-body-shadow-color;
     z-index: $frost-z-index-modal;
-    background-color: white;
-    box-shadow: 0 25px 125px 0 rgba(0, 0, 0, 0.3);
   }
 
   &-container {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: $frost-z-index-modal;
     display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
     align-items: center;
     justify-content: center;
-    height: 100vh;
     width: 100vw;
+    height: 100vh;
+    z-index: $frost-z-index-modal;
   }
 }
 
 .frost-modal-dialog {
+  display: flex;
   position: relative;
+  flex-direction: column;
   min-width: 500px;
   min-height: 250px;
   max-height: calc(100vh - 90px); // TODO Nav height variable
-  display: flex;
-  flex-direction: column;
 
   &-content {
     margin-bottom: 70px; // TODO Footer height variable
@@ -54,17 +58,17 @@
   }
 
   &-footer {
+    display: flex;
     position: absolute;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
-    min-height: 70px;
-    padding-right: 20px;
-    display: flex;
     align-items: center;
     justify-content: flex-end;
+    min-height: 70px;
+    padding-right: 20px;
     border-top: 1px solid $frost-color-lgrey-1;
-    background-color: rgba($frost-color-white, 0.95);
+    background-color: $frost-modal-dialog-footer-background-color;
 
     > * {
       margin-left: 10px;
@@ -72,16 +76,16 @@
   }
 
   &-header {
-    position: relative;
-    min-height: 90px;
     display: flex;
+    position: relative;
     align-items: center;
-    padding: 20px 30px 30px 30px;
+    min-height: 90px;
+    padding: 20px 30px 30px;
     border-bottom: 1px solid $frost-color-lgrey-1;
 
     & .frost-icon {
-      height: 40px;
       width: 40px;
+      height: 40px;
       margin-right: 20px;
     }
 
@@ -93,26 +97,26 @@
   &-overflow-y-end,
   &-overflow-y-start {
     position: absolute;
-    left: 0;
     right: 0;
-    z-index: 1;
-    opacity: 1;
+    left: 0;
     transition: opacity 300ms; // TODO Animate in/out
+    opacity: 1;
+    z-index: 1;
   }
 
   &-overflow-y-end {
     top: 0;
-    box-shadow: 0 -4px 10px 2px rgba(0, 0, 0, 0.13);
+    box-shadow: 0 -4px 10px 2px $frost-modal-overflow-shadow-color;
   }
 
   &-overflow-y-start {
     bottom: 0;
-    box-shadow: 0 4px 10px 2px rgba(0, 0, 0, 0.13);
+    box-shadow: 0 4px 10px 2px $frost-modal-overflow-shadow-color;
   }
 
   &-scroll {
-    flex: 1;
     position: relative;
+    flex: 1;
     padding: 0 30px;
 
     .ps-scrollbar-y-rail {
@@ -125,7 +129,7 @@
     font-size: $frost-font-m;
 
     + .frost-modal-dialog-content {
-      padding-top: 0px;
+      padding-top: 0;
     }
   }
 }
@@ -135,8 +139,8 @@
   width: 500px;
 
   .frost-icon-frost-modal-about-close {
+    transition: color .3s;
     color: $frost-color-blue-1;
-    transition: color 0.3s;
 
     &:hover {
       color: $frost-color-blue-3;
@@ -151,42 +155,42 @@
   }
 
   &-close {
+    display: flex;
     position: absolute;
     top: -20px;
     right: -20px;
-    height: 40px;
-    width: 40px;
-    z-index: 1;
-    cursor: pointer;
-    display: flex;
     align-items: center;
     justify-content: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 1;
 
     &-icon {
-      height: 30px;
       width: 30px;
+      height: 30px;
     }
   }
 
   &-copyright {
-    padding: 10px 40px 20px 40px;
-    font-size: $frost-font-xs;
-    line-height: 17px; // UX: Not official, but looks good
+    padding: 10px 40px 20px;
     background-color: $frost-color-lgrey-3;
     color: $frost-color-grey-4;
+    font-size: $frost-font-xs;
+    line-height: 17px; // UX: Not official, but looks good
   }
 
   &-header {
-    position: relative;
-    padding-bottom: 10px;
     display: flex;
+    position: relative;
     flex-direction: row;
+    padding-bottom: 10px;
 
     &-body {
-      margin-left: 40px;
-      flex: 1;
       display: flex;
+      flex: 1;
       flex-direction: column;
+      margin-left: 40px;
     }
   }
 
@@ -208,7 +212,7 @@
 
   &-version {
     padding-bottom: 10px;
-    font-size: $frost-font-s;
     color: $frost-color-grey-6;
+    font-size: $frost-font-s;
   }
 }

@@ -1,6 +1,12 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
 @import 'node_modules/ember-frost-core/addon/styles/frost-app';
 
+$blockquote-border-color: #c76c0c;
+$blockquote-color: #666;
+$blockquote-shadow-color: #ccc;
+$blockquote-quote-color: #999;
+$frost-modal-demos-shadow-color: rgba(0, 0, 0, .13);
+
 .demo-notification-container {
   position: fixed;
   top: 60px;
@@ -22,70 +28,49 @@
     margin-left: auto;
   }
 
-  blockquote{
-    display:block;
-    background: #fff;
-    padding: 15px 20px 15px 45px;
-    margin: 0 0 20px;
+  blockquote {
+    display: block;
     position: relative;
-
-    /*Font*/
+    margin: 0 0 20px;
+    padding: 15px 20px 15px 45px;
+    border-right: 2px solid $blockquote-border-color;
+    border-left: 15px solid $blockquote-border-color;
+    background-color: $frost-color-white;
+    color: $blockquote-color;
     font-family: Georgia, serif;
     font-size: 16px;
     line-height: 1.2;
-    color: #666;
     text-align: justify;
+    box-shadow: 2px 2px 15px $blockquote-shadow-color;
 
-    /*Borders - (Optional)*/
-    border-left: 15px solid #c76c0c;
-    border-right: 2px solid #c76c0c;
+    &::before {
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      color: $blockquote-quote-color;
+      font-family: Georgia, serif;
+      font-size: 60px;
+      font-weight: bold;
+      content: '\201C';
+    }
 
-    /*Box Shadow - (Optional)*/
-    -moz-box-shadow: 2px 2px 15px #ccc;
-    -webkit-box-shadow: 2px 2px 15px #ccc;
-    box-shadow: 2px 2px 15px #ccc;
-  }
+    &::after {
+      content: '';
+    }
 
-  blockquote::before{
-    content: "\201C"; /*Unicode for Left Double Quote*/
-
-    /*Font*/
-    font-family: Georgia, serif;
-    font-size: 60px;
-    font-weight: bold;
-    color: #999;
-
-    /*Positioning*/
-    position: absolute;
-    left: 10px;
-    top:5px;
-  }
-
-  blockquote::after{
-    /*Reset to make sure*/
-    content: "";
-  }
-
-  blockquote a{
-    text-decoration: none;
-    background: #eee;
-    cursor: pointer;
-    padding: 0 3px;
-    color: #c76c0c;
-  }
-
-  blockquote a:hover{
-  color: #666;
-  }
-
-  blockquote em{
-    font-style: italic;
+    & em {
+      font-style: italic;
+    }
   }
 }
 
 // TODO Move to ember-frost-tabs
-.frost-tabs .tab-nav .tab {
-  cursor: pointer;
+.frost-tabs {
+  .tab-nav {
+    .tab {
+      cursor: pointer;
+    }
+  }
 }
 
 .frost-modal-demo {
@@ -96,23 +81,23 @@
 .frost-modal-demos {
   height: 100vh;
   padding: 0 20px;
-  box-shadow: 0px 0 5px 3px rgba(0, 0, 0, 0.13);
+  box-shadow: 0 0 5px 3px $frost-modal-demos-shadow-color;
 }
 
 .frost-modal-demo-selectors {
-  height: calc(100vh - 61px);
   min-width: 100px;
+  height: calc(100vh - 61px);
   margin: 10px 0 10px 10px;
   padding-right: 20px;
   font-size: $frost-font-s;
 
   a {
     display: block;
+    transition: color .3s;
     color: $frost-color-grey-2;
-    cursor: pointer;
     font-style: normal;
     text-decoration: initial;
-    transition: color 0.3s;
+    cursor: pointer;
 
     &:hover {
       color: $frost-color-blue-3;
@@ -143,20 +128,20 @@
 }
 
 .frost-modal-demo-overview-links {
-  margin-top: 40px;
-  padding-top: 60px;
-  border-top: 1px solid $frost-color-lgrey-2;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin-top: 40px;
+  padding-top: 60px;
+  border-top: 1px solid $frost-color-lgrey-2;
 }
 
 .frost-modal-demo-example {
+  display: flex;
   flex: 1;
+  flex-direction: row;
   height: 100vh;
   margin-left: 20px;
-  display: flex;
-  flex-direction: row;
 }
 
 .frost-modal-demo-api,
@@ -171,9 +156,9 @@
 
 .frost-modal-demo-title {
   margin-top: 20px;
+  color: $frost-color-grey-2;
   font-size: $frost-font-m;
   font-weight: bold;
-  color: $frost-color-grey-2;
 }
 
 .frost-modal-demo-snippet {

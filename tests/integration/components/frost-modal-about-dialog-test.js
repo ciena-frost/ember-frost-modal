@@ -2,7 +2,6 @@
 import {
   expect
 } from 'chai'
-// import Ember from 'ember'
 import {
   $hook,
   initialize

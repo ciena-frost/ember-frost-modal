@@ -1,3 +1,24 @@
+{{frost-modal-info-message
+  cancel=(hash
+    isVisible=false
+  )
+  confirm=(hash
+    isVisible=false
+  )
+  hook='info-dialog'
+  isVisible=isInfoVisible
+  links=(array
+    (hash
+      priority='secondary'
+      route='demo.form'
+      text='Got it!'
+    )
+  )
+  summary="...don't forget to add a {{frost-modal-outlet}} to the root of your application"
+  title='Hold your britches...'
+  onClose=(action (mut isInfoVisible) false)
+}}
+
 <div class='frost-modal-demo-notes'>
   <h1>TLDR</h1>
   <p>
@@ -36,12 +57,15 @@
     1 more component and 2 more animations are in development and we would be happy to add more.
   </p>
   <div class='frost-modal-demo-overview-links'>
-    {{#link-to 'demo.blur' class='frost-link secondary large'}}
+    {{#link-to 'demo.blur' class='frost-link secondary medium'}}
       <div class='content text'>Moar platform, I want to learn!</div>
     {{/link-to}}
-    {{#link-to 'demo.form' class='frost-link primary large'}}
-      <div class='content text'>Enough talk, show me components!</div>
-    {{/link-to}}
+    {{frost-button
+      priority='primary'
+      size='medium'
+      text='Enough talk, show me components!'
+      onClick=(action (mut isInfoVisible) true)
+    }}
   </div>
 </div>
 

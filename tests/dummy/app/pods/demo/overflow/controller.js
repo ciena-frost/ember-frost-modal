@@ -1,12 +1,16 @@
 import Ember from 'ember'
+const {
+  A,
+  Controller
+} = Ember
 import { task, timeout } from 'ember-concurrency'
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   queryParams: [
     'isModalVisible'
   ],
 
-  bottles: Ember.A([]),
+  bottles: A([]),
   isModalVisible: false,
 
   countBottles: task(function * () {

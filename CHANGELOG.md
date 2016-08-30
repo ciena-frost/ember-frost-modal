@@ -1,3 +1,11 @@
+# 3.0.0
+* **Removed** ember-remodal based modals
+* **Added** ember-elsewhere based modals
+* **Added** more modal types - about, info, warning, confirmation, error, form
+* **Added** documentation to the demo app
+
+
+
 # 2.1.2
 
 * Updated to latest version of `liquid-fire`.

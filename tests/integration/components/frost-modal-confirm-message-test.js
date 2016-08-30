@@ -12,13 +12,11 @@ import {
   initialize as initializeHook
 } from 'ember-hook'
 import {
-  beforeEach
-} from 'mocha'
-import {
   initialize as initializeSvgUse
 } from 'ember-frost-core/instance-initializers/svg-use-polyfill'
 import sinon from 'sinon'
 import wait from 'ember-test-helpers/wait'
+import { beforeEach } from 'mocha'
 
 describeComponent(
   'frost-modal-confirm-message',

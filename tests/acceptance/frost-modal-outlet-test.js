@@ -1,4 +1,4 @@
-/*eslint-disable */
+
 import {
   describe,
   it,
@@ -54,4 +54,3 @@ describe('Acceptance: FrostModalOutlet', function () {
     })
   })
 })
-/*eslint-enable */

@@ -44,6 +44,7 @@ export default FrostModalBinding.extend(PropTypesMixin, {
           isVisible: false
         },
         confirm: {
+          isVisible: getWithDefault(this, 'confirm.isVisible', true),
           text: getWithDefault(this, 'confirm.text', 'Ok')
         },
         content: this.details,

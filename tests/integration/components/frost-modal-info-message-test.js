@@ -11,9 +11,7 @@ import {
   it
 } from 'ember-mocha'
 import hbs from 'htmlbars-inline-precompile'
-import {
-  beforeEach
-} from 'mocha'
+import { beforeEach } from 'mocha'
 
 describeComponent(
   'frost-modal-info-message',

@@ -2,6 +2,7 @@
 import {
   expect
 } from 'chai'
+import Ember from 'ember'
 import {
   $hook,
   initialize
@@ -10,13 +11,12 @@ import {
   describeComponent,
   it
 } from 'ember-mocha'
+import { beforeEach } from 'mocha'
 import {
   initialize as initializeSvgUse
 } from 'ember-frost-core/instance-initializers/svg-use-polyfill'
-
 import hbs from 'htmlbars-inline-precompile'
 
-import Ember from 'ember'
 describeComponent(
   'frost-modal-about-dialog',
   'Integration: FrostModalAboutDialogComponent', {

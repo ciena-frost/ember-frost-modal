@@ -8,9 +8,7 @@ import {
   describeComponent,
   it
 } from 'ember-mocha'
-import {
-  beforeEach
-} from 'mocha'
+import { beforeEach } from 'mocha'
 import hbs from 'htmlbars-inline-precompile'
 
 describeComponent(

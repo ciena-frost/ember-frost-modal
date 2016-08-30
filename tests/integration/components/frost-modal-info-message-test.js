@@ -42,7 +42,7 @@ describeComponent(
       })
     })
 
-    it('renders', function (/*done*/) {
+    it('renders', function (/* done*/) {
       expect($hook('info-dialog-modal'), 'Is modal visible')
         .to.have.length(1)
       // TODO uncomment once ember-cli-visual-acceptance issues are fixed

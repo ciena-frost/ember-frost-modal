@@ -11,6 +11,7 @@ import {
   $hook,
   initialize as initializeHook
 } from 'ember-hook'
+import { beforeEach } from 'mocha'
 
 describeComponent(
   'frost-modal-form',

@@ -51,7 +51,7 @@ describeComponent(
       })
     })
 
-    it('renders', function (/*done*/) {
+    it('renders', function (/* done*/) {
       expect($hook(props.hook), 'Is modal visible')
         .to.have.length(1)
 
@@ -64,7 +64,7 @@ describeComponent(
       // }, 2000)
     })
 
-    it('cancel triggers callback and close', function  () {
+    it('cancel triggers callback and close', function () {
       $hook('warning-dialog-modal-cancel').click()
 
       expect(props.onCancel.called, 'Callback triggered')

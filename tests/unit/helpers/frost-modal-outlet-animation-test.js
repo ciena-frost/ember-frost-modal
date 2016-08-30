@@ -1,12 +1,12 @@
 /* jshint expr:true */
-import { expect } from 'chai'
+// import { expect } from 'chai'
 import {
   describe,
   it
 } from 'mocha'
-import {
-  frostModalOutletAnimation
-} from 'ember-frost-modal/helpers/frost-modal-outlet-animation'
+// import {
+//   frostModalOutletAnimation
+// } from 'ember-frost-modal/helpers/frost-modal-outlet-animation'
 
 describe('FrostModalOutletAnimationHelper', function () {
   // Replace this with your real tests.

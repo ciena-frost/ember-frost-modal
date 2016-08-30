@@ -2,7 +2,6 @@
 import {
   expect
 } from 'chai'
-import Ember from 'ember'
 import {
   $hook,
   initialize
@@ -28,7 +27,7 @@ describeComponent(
       initializeSvgUse()
     })
 
-    it('renders', function (/*done*/) {
+    it('renders', function (/* done*/) {
       this.timeout(10000)
       this.set('closeModal', () => {
         this.set('isModalVisible', false)
@@ -72,7 +71,7 @@ describeComponent(
       // }, 2000)
     })
 
-    it('renders with product', function (/*done*/) {
+    it('renders with product', function (/* done*/) {
       this.timeout(10000)
       this.set('closeModal', () => {
         this.set('isModalVisible', false)
@@ -113,7 +112,7 @@ describeComponent(
       // }, 2000)
     })
 
-    it('renders about-with-multiple-versions', function (/*done*/) {
+    it('renders about-with-multiple-versions', function (/* done*/) {
       this.timeout(10000)
       this.set('closeModal', () => {
         this.set('isModalVisible', false)
@@ -153,7 +152,7 @@ describeComponent(
       // }, 2000)
     })
 
-    it('renders about-with-product-and-multiple-versions', function (/*done*/) {
+    it('renders about-with-product-and-multiple-versions', function (/* done*/) {
       this.timeout(10000)
       this.set('closeModal', () => {
         this.set('isModalVisible', false)
@@ -198,7 +197,6 @@ describeComponent(
     })
   }
 )
-
 
 // data-test={{hook (concat hook '-close')}}
 // onclick={{action (action onClose)}}

@@ -1,6 +1,6 @@
 /* jshint expr:true */
 import Ember from 'ember'
-const { run } = Ember
+const { A, run } = Ember
 import { expect } from 'chai'
 import {
   describeComponent,
@@ -26,6 +26,11 @@ describeComponent(
       this.set('closeModal', () => {
         this.set('isModalVisible', false)
       })
+      this.set('things', A([]))
+      const things = this.get('things')
+      while (this.get('things').length < 50) {
+        things.addObject(`Thing ${things.length + 1}`)
+      }
       run(() => {
         this.set('isModalVisible', true)
 
@@ -35,15 +40,9 @@ describeComponent(
             confirm=(hash
               isVisible=false
             )
+            details=(component 'list-em' things=things)
             hook='error-dialog'
             isVisible=isModalVisible
-            links=(array
-              (hash
-                priority='secondary'
-                route='demo.confirm'
-                text='To safety!'
-              )
-            )
             summary='Are you familiar with the old robot saying?'
             title='"Does not compute"'
             onClose=(action closeModal)

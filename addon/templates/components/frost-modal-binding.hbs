@@ -1,0 +1,17 @@
+{{#if isVisible}}
+  {{to-elsewhere
+    named=targetOutlet
+    send=(hash
+      animation=animation
+      body=(component modal
+        params=params
+        hook=(concat hook '-modal')
+        onCancel=(action '_onCancel')
+        onClose=onClose
+        onConfirm=(action '_onConfirm')
+      )
+      classModifier=classModifier
+      onOutsideClick=(action '_onOutsideClick')
+    )
+  }}
+{{/if}}

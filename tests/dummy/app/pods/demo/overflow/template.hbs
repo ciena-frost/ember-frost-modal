@@ -1,0 +1,57 @@
+{{! BEGIN-SNIPPET overflow }}
+{{frost-modal-info-message
+  confirm=(hash
+    text='99'
+  )
+  details=(component 'list-em'
+    things=bottles
+  )
+  isVisible=isModalVisible
+  title='How many bottles?'
+  onClose=(action 'stopCounting')
+}}
+{{! END-SNIPPET }}
+
+<div class='frost-modal-demo-api'>
+  <div class='frost-modal-demo-title'>
+    Notes
+  </div>
+  <div class='frost-modal-demo-notes'>
+    <p>
+      I can has more content?
+    </p>
+    <p>
+      Yes you can.  While not strictly a building block/content concern, complex modals
+      will often need to deal with content overflow.  This can be solved in a number of
+      ways, but if you want to steal/clone the solution from the predefined modal dialogs
+      here ya go.
+    </p>
+    <p>
+      The dialog itself is given a max-height and the content block is surrounded in a
+      <b>frost-scroll</b> with scroll events attached.
+      {{code-snippet name='dialog-overflow-scroll.hbs'}}
+      The dialog initializes and checks for pre-existing overflow...
+      {{code-snippet name='dialog-overflow.js'}}
+      then reacts to the scroll events.  If the top or bottom of the scroll haven't been
+      reached, then overflow shadows are added to the header and footer
+      {{code-snippet name='dialog-overflow-y-start.hbs'}}
+      And viola! A dialog that grows to a maximum and has pretty overflow shading.
+    </p>
+  </div>
+</div>
+<div class='frost-modal-demo-live'>
+  <div class='frost-modal-demo-title'>
+    Live demo
+  </div>
+  <div class='frost-modal-demo-snippet'>
+    {{code-snippet name='overflow.hbs'}}
+  </div>
+  <div class='frost-modal-demo-launch'>
+    {{frost-button
+      priority='primary'
+      size='medium'
+      text='Launch the modal'
+      onClick=(action 'startCounting')
+    }}
+  </div>
+</div>

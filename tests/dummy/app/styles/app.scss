@@ -1,7 +1,13 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
 @import 'node_modules/ember-frost-core/addon/styles/frost-app';
 
-.dummy-notification-container {
+$blockquote-border-color: #c76c0c;
+$blockquote-color: #666;
+$blockquote-shadow-color: #ccc;
+$blockquote-quote-color: #999;
+$frost-modal-demos-shadow-color: rgba(0, 0, 0, .13);
+
+.demo-notification-container {
   position: fixed;
   top: 60px;
   right: 10px;
@@ -11,31 +17,160 @@
   z-index: 999;
 }
 
-.ember-remodal {
-  &.window {
-    width: 500px;
+.frost-modal-demo-basic-modal {
+  min-width: 200px;
+  padding: 20px;
+  border: 1px solid $frost-color-grey-5;
+
+  .frost-button {
+    display: block;
+    margin-top: 20px;
+    margin-left: auto;
+  }
+
+  blockquote {
+    display: block;
+    position: relative;
+    margin: 0 0 20px;
+    padding: 15px 20px 15px 45px;
+    border-right: 2px solid $blockquote-border-color;
+    border-left: 15px solid $blockquote-border-color;
+    background-color: $frost-color-white;
+    color: $blockquote-color;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 1.2;
+    text-align: justify;
+    box-shadow: 2px 2px 15px $blockquote-shadow-color;
+
+    &::before {
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      color: $blockquote-quote-color;
+      font-family: Georgia, serif;
+      font-size: 60px;
+      font-weight: bold;
+      content: '\201C';
+    }
+
+    &::after {
+      content: '';
+    }
+
+    & em {
+      font-style: italic;
+    }
   }
 }
 
-.header {
-  flex-direction: column;
-  align-items: flex-start;
+// TODO Move to ember-frost-tabs
+.frost-tabs {
+  .tab-nav {
+    .tab {
+      cursor: pointer;
+    }
+  }
 }
 
-.custom-body {
+.frost-modal-demo {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 80px;
-  margin-bottom: 80px;
-  padding: 10px 40px 0;
-  color: $frost-color-grey-4;
-  font-size: $frost-font-m;
-  text-align: left;
+  flex-direction: row;
 }
 
-.primary-title {
-  padding-bottom: 3px;
-  color: $frost-color-night-2;
+.frost-modal-demos {
+  height: 100vh;
+  padding: 0 20px;
+  box-shadow: 0 0 5px 3px $frost-modal-demos-shadow-color;
+}
+
+.frost-modal-demo-selectors {
+  min-width: 100px;
+  height: calc(100vh - 61px);
+  margin: 10px 0 10px 10px;
+  padding-right: 20px;
+  font-size: $frost-font-s;
+
+  a {
+    display: block;
+    transition: color .3s;
+    color: $frost-color-grey-2;
+    font-style: normal;
+    text-decoration: initial;
+    cursor: pointer;
+
+    &:hover {
+      color: $frost-color-blue-3;
+    }
+
+    &.active {
+      color: $frost-color-blue-1;
+    }
+
+    + a {
+      padding-top: 10px;
+    }
+  }
+}
+
+.frost-modal-demo-selector-title {
+  padding-top: 10px;
+  font-style: italic;
+
+  + a {
+    padding-top: 10px;
+  }
+
+  > a,
+  > .frost-modal-demo-selector-title {
+    padding: 10px 0 0 10px;
+  }
+}
+
+.frost-modal-demo-overview-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 40px;
+  padding-top: 60px;
+  border-top: 1px solid $frost-color-lgrey-2;
+}
+
+.frost-modal-demo-example {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  height: 100vh;
+  margin-left: 20px;
+}
+
+.frost-modal-demo-api,
+.frost-modal-demo-live {
+  flex: 1;
+  margin-right: 20px;
+
+  .frost-tabs {
+    margin-top: 15px;
+  }
+}
+
+.frost-modal-demo-title {
+  margin-top: 20px;
+  color: $frost-color-grey-2;
   font-size: $frost-font-m;
+  font-weight: bold;
+}
+
+.frost-modal-demo-snippet {
+  margin: 0 20px;
+  font-size: $frost-font-s;
+
+  > pre {
+    padding: 20px;
+  }
+}
+
+.frost-modal-demo-notes {
+  margin: 0 20px 0 10px;
+  font-size: $frost-font-s;
 }

@@ -1,0 +1,74 @@
+{{!-- BEGIN-SNIPPET confirm-api }}
+  {{frost-modal-confirm-message
+    cancel=(hash
+      isVisible= // (true)
+      text= // ('Cancel')
+    )
+    confirm=(hash
+      isVisible=  // (true)
+      text= // ('Confirm')
+    )
+    details=(component 'foo'
+      bar= // e.g. props for 'foo'
+    )
+    isVisible= // Required binding
+    links=(array
+      (hash
+        priority= // ['primary', etc.]
+        route= // e.g. 'foo.bar'
+        text= // e.g. 'Foo'
+      )
+    )
+    summary= // [main message]
+    targetOutlet= // ('modal')
+    title= // Required
+    onCancel= // e.g. (action 'foo')
+    onClose= // Required binding
+    onConfirm= // e.g. (action 'foo')
+  }}
+{{ END-SNIPPET --}}
+
+{{! BEGIN-SNIPPET confirm }}
+{{frost-modal-confirm-message
+  hook='confirm-dialog'
+  cancel=(hash
+    isVisible=false
+  )
+  confirm=(hash
+    text='100%'
+  )
+  details=(component 'demo/confirm/components/doubt-checker'
+    doubt='None'
+  )
+  isVisible=isConfirmVisible
+  summary='I agree'
+  title='Most definitely'
+  onClose=(action (mut isConfirmVisible) false)
+  onConfirm=(action 'rejoice')
+}}
+{{! END-SNIPPET }}
+
+<div class='frost-modal-demo-api'>
+  <div class='frost-modal-demo-title'>
+    API
+  </div>
+  <div class='frost-modal-demo-snippet'>
+    {{code-snippet name='confirm-api.hbs'}}
+  </div>
+</div>
+<div class='frost-modal-demo-live'>
+  <div class='frost-modal-demo-title'>
+    Live demo
+  </div>
+  <div class='frost-modal-demo-snippet'>
+    {{code-snippet name='confirm.hbs'}}
+  </div>
+  <div class='frost-modal-demo-launch'>
+    {{frost-button
+      priority='primary'
+      size='medium'
+      text='Launch the modal'
+      onClick=(action (mut isConfirmVisible) true)
+    }}
+  </div>
+</div>

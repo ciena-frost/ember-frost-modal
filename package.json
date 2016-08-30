@@ -1,7 +1,7 @@
 {
   "name": "ember-frost-modal",
   "version": "2.1.2",
-  "description": "A basic modal structure.",
+  "description": "Modals for what ails you",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -10,7 +10,7 @@
     "build": "ember build",
     "start": "ember server",
     "test": "npm run lint && ember test",
-    "eslint": "eslint *.js addon app blueprints config tests",
+    "eslint": "eslint *.js addon app blueprints config tests --fix",
     "sass-lint": "sass-lint -q -v",
     "lint": "npm run eslint && npm run sass-lint"
   },
@@ -18,52 +18,69 @@
   "engines": {
     "node": ">= 5.0.0"
   },
-  "author": "Roxanne Panthaky (https://github.com/rox163)",
+  "author": "Steven Glanzer (https://github.com/sglanzer)",
   "contributors": [
     "Eric White (https://github.com/EWhite613)",
     "Gosia Hyndman (https://github.com/vesper2000)",
     "Justin Lafleur (https://github.com/laflower)",
     "Lisa Irwin (https://github.com/lirwin)",
-    "Matthew Dahl (https://github.com/sandersky)"
+    "Matthew Dahl (https://github.com/sandersky)",
+    "Roxanne Panthaky (https://github.com/rox163)"
   ],
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
-    "ember-ajax": "0.7.1",
-    "ember-block-slots": "0.12.3",
-    "ember-browserify": "1.1.9",
-    "ember-cli": "~2.3.0",
+    "ember-browserify": "1.1.12",
+    "ember-cli": "2.6.3",
     "ember-cli-app-version": "^1.0.0",
+    "ember-cli-code-coverage": "git://github.com/kategengler/ember-cli-code-coverage.git#ac2be3fd751a5667f3e4ccf0d5e9dc3ec0936da1",
     "ember-cli-dependency-checker": "^1.2.0",
     "ember-cli-htmlbars-inline-precompile": "^0.3.1",
+    "ember-cli-import-polyfill": "0.2.0",
     "ember-cli-inject-live-reload": "^1.4.0",
-    "ember-cli-mirage": "~0.1.11",
     "ember-cli-mocha": "^0.10.0",
-    "ember-cli-notifications": "^3.2.0",
-    "ember-cli-release": "0.2.8",
-    "ember-cli-sass": "5.3.0",
-    "ember-cli-sri": "^2.0.0",
+    "ember-cli-moment-shim": "2.0.0",
+    "ember-cli-notifications": "4.0.5",
+    "ember-cli-release": "0.2.9",
+    "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^1.2.0",
+    "ember-cli-visual-acceptance": "^1.3.17",
+    "ember-code-snippet": "1.4.0",
     "ember-computed-decorators": "0.2.2",
-    "ember-data": "~2.3.0",
+    "ember-concurrency": "0.7.8",
     "ember-disable-proxy-controllers": "^1.0.1",
+    "ember-elsewhere": "~0.3.0",
     "ember-export-application-global": "^1.0.5",
-    "ember-frost-core": "0.11.7",
+    "ember-frost-bunsen": "6.6.13",
+    "ember-frost-core": "~0.25.3",
+    "ember-frost-tabs": "2.0.2",
+    "ember-get-config": "0.1.3",
+    "ember-hook": "1.3.1",
+    "ember-ignore-children-helper": "^1.0.0",
     "ember-load-initializers": "^0.5.1",
-    "ember-lodash": "0.0.7",
-    "ember-one-way-controls": "0.8.2",
+    "ember-lodash-shim": "1.0.1",
+    "ember-moment": "7.0.0-beta.3",
+    "ember-one-way-controls": "1.0.0",
     "ember-perfectscroll": "0.1.11",
-    "ember-prop-types": "~2.0.0",
-    "ember-remodal": "~1.2.0",
+    "ember-prop-types": "2.5.4",
+    "ember-redux": "1.5.2",
     "ember-resolver": "^2.0.3",
+    "ember-sinon": "0.5.1",
+    "ember-sortable": "1.8.2",
+    "ember-test-helpers": "0.5.33",
     "ember-truth-helpers": "1.2.0",
-    "ember-try": "^0.2.2",
-    "ember-wormhole": "0.3.6",
-    "eslint": "^2.9.0",
-    "eslint-config-frost-standard": "^2.0.0",
+    "eslint": "^3.4.0",
+    "eslint-config-frost-standard": "^4.0.0",
+    "eslint-plugin-mocha": "^4.5.0",
+    "eslint-plugin-promise": "^2.0.1",
+    "eslint-plugin-standard": "^2.0.0",
+    "liquid-fire": "^0.24.1",
     "loader.js": "^4.0.1",
-    "sass-lint": "1.7.0",
-    "svg4everybody": "2.0.3"
+    "lodash-es": "4.15.0",
+    "redux": "3.5.2",
+    "redux-thunk": "2.1.0",
+    "sass-lint": "1.9.1",
+    "svg4everybody": "2.1.0"
   },
   "keywords": [
     "ember-addon",
@@ -71,12 +88,14 @@
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.5",
-    "ember-computed-decorators": "^0.2.2",
     "ember-cli-htmlbars": "^1.0.1",
-    "ember-cli-sass": "^5.2.0",
-    "liquid-fire": "^0.24.1"
+    "ember-cli-sass": "^5.3.0"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "ember-frost-icon-pack": {
+    "name": "frost-modal",
+    "path": "svgs"
   }
 }

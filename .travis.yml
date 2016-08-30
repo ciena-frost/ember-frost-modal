@@ -9,6 +9,7 @@ branches:
 matrix:
   fast_finish: true
   allow_failures:
+  - env: EMBER_TRY_SCENARIO=ember-beta
   - env: EMBER_TRY_SCENARIO=ember-canary
 before_install:
 - npm config set spin false
@@ -22,8 +23,8 @@ before_script:
 - "sh -e /etc/init.d/xvfb start"
 - sleep 3 # give xvfb some time to start
 script:
-- npm run lint
-- ember try:one $EMBER_TRY_SCENARIO --- ember test
+- npm run sass-lint
+- ember try:one $EMBER_TRY_SCENARIO --- ember tva --push-var='false'
 after_success:
 - .travis/publish-coverage.sh
 addons:

@@ -1,0 +1,71 @@
+{{frost-modal-info-message
+  cancel=(hash
+    isVisible=false
+  )
+  confirm=(hash
+    isVisible=false
+  )
+  hook='info-dialog'
+  isVisible=isInfoVisible
+  links=(array
+    (hash
+      priority='secondary'
+      route='demo.form'
+      text='Got it!'
+    )
+  )
+  summary="...don't forget to add a {{frost-modal-outlet}} to the root of your application"
+  title='Hold your britches...'
+  onClose=(action (mut isInfoVisible) false)
+}}
+
+<div class='frost-modal-demo-notes'>
+  <h1>TLDR</h1>
+  <p>
+    <b>ember-frost-modal</b> is a modal platform and component library built
+    using <a href='https://github.com/ef4/ember-elsewhere' target=_blank>ember-elsewhere</a>
+    and <a href='https://github.com/ember-animation/liquid-fire' target=_blank>liquid-fire</a>.
+  </p>
+  <p>
+    The modal platform consists of:
+    <ul>
+      <li>a binding to {{#link-to 'demo.blur'}}blur{{/link-to}} the background when a modal is active</li>
+      <li>a {{#link-to 'demo.remote-outlet'}}remote outlet{{/link-to}} that controls:
+        <ul>
+          <li>background opacity</li>
+          <li>capturing clicks outside of the modal</li>
+          <li>positioning the modal on the page</li>
+        </ul>
+      </li>
+      <li>a {{#link-to 'demo.basic-binding'}}local binding{{/link-to}} that controls:
+        <ul>
+          <li>visiblity of a given modal component with custom parameters</li>
+          <li>close, cancel and confirm actions</li>
+          <li>animation transitions</li>
+          <li>outlet customization</li>
+        </ul>
+      </li>
+    </ul>
+  </p>
+  <p>
+    Unlike some other modal platforms, modals are components that remain completely within the Ember
+    rendered DOM and lifecycle, so complex content can be included in modals with assurance that bindings
+    and DOM management are handled as expected for an Ember component.
+  </p>
+  <p>
+    The component library currently ships with <b>6</b> unique components and <b>1</b> animation.  At least
+    1 more component and 2 more animations are in development and we would be happy to add more.
+  </p>
+  <div class='frost-modal-demo-overview-links'>
+    {{#link-to 'demo.blur' class='frost-link secondary medium'}}
+      <div class='content text'>Moar platform, I want to learn!</div>
+    {{/link-to}}
+    {{frost-button
+      priority='primary'
+      size='medium'
+      text='Enough talk, show me components!'
+      onClick=(action (mut isInfoVisible) true)
+    }}
+  </div>
+</div>
+

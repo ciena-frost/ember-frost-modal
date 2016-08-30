@@ -1,0 +1,84 @@
+{{!-- BEGIN-SNIPPET content-binding-api }}
+  {{frost-modal-binding 'modal-foo'
+    ...
+    params=(hash
+      foo=(component 'comp-foo'
+        baz=
+      )
+      bar=(component 'comp-bar')
+    )
+    ...
+  }}
+{{ END-SNIPPET --}}
+
+{{! BEGIN-SNIPPET content-binding }}
+{{frost-modal-binding 'rick-quotes'
+  closeOnOutsideClick=true
+  isVisible=isModalVisible
+  params=(hash
+    jerry=(component 'to-jerry')
+    morty=(component 'to-morty')
+  )
+  onClose=(action (mut isModalVisible) false)
+}}
+{{! END-SNIPPET}}
+
+<div class='frost-modal-demo-api'>
+  <div class='frost-modal-demo-title'>
+    Notes
+  </div>
+  <div class='frost-modal-demo-notes'>
+    <p>
+      You <i>can</i> take it with you
+    </p>
+    <p>
+      Basic modals are great and all, but the meat of any modal is the actual <b>content</b>.
+      And what better way to represent content than an actual component?
+    </p>
+    <p>
+      As mentioned in {{#frost-link 'demo.basic-binding'}}basic binding{{/frost-link}}, components
+      used in a <b>frost-modal-binding</b> are rendered as Ember components in the outlet location
+      and parameters are bound to the local context (route), so any changes will be handled using
+      the standard Ember component lifecycle.
+    </p>
+    <p>
+      Since this aspect of modals is completely custom, the best way to figure out how it works is
+      to present the basic API and look at a few samples:
+      <ul>
+       <li>{{#frost-link 'demo.dynamic-updates'}}Dynamic updates{{/frost-link}}</li>
+       <li>{{#frost-link 'demo.overflow'}}Overflow{{/frost-link}}</li>
+      </ul>
+    </p>
+  </div>
+  <div class='frost-modal-demo-title'>
+    API
+  </div>
+  <div class='frost-modal-demo-api'>
+    <p>
+      Any number of components can be defined against the <b>params</b> hash.
+      Most scenarios will only require a single content component...
+      but "You wanna get nuts?! C'mon, lets get nuts!"
+    </p>
+    <p>
+      All params are available in the modal context as <b>params.&lt;name&gt;</b>
+    </p>
+    {{code-snippet name='content-binding-api.hbs'}}
+  </div>
+</div>
+<div class='frost-modal-demo-live'>
+  <div class='frost-modal-demo-title'>
+    Live demo
+  </div>
+  <div class='frost-modal-demo-snippet'>
+    {{code-snippet name='content-binding.hbs'}}
+    {{code-snippet name='content-binding-modal.hbs'}}
+  </div>
+  <div class='frost-modal-demo-launch'>
+    {{frost-button
+      priority='primary'
+      size='medium'
+      text='Launch the modal'
+      onClick=(action (mut isModalVisible) true)
+    }}
+  </div>
+</div>

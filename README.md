@@ -7,85 +7,61 @@
 [npm-img]: https://img.shields.io/npm/v/ember-frost-modal.svg "NPM Version"
 [npm-url]: https://www.npmjs.com/package/ember-frost-modal
 
-[![Travis][ci-img]][ci-url] [![Coveralls][cov-img]][cov-url] [![NPM][npm-img]][npm-url]
+[ember-observer-badge]: http://emberobserver.com/badges/ember-frost-modal.svg "Ember Observer score"
+[ember-observer-badge-url]: http://emberobserver.com/addons/ember-frost-modal
+
+[ember-img]: https://img.shields.io/badge/ember-1.12.2+-orange.svg "Ember 1.12.2+"
+
+[bithound-img]: https://www.bithound.io/github/ciena-blueplanet/ember-frost-modal/badges/score.svg "bitHound"
+[bithound-url]: https://www.bithound.io/github/ciena-blueplanet/ember-frost-modal
 
 # ember-frost-modal
+###### Dependencies
 
- * [Installation](#installation)
- * [API](#api)
- * [Examples](#examples)
- * [Development](#development)
+![Ember][ember-img]
+[![NPM][npm-img]][npm-url]
+
+###### Health
+
+[![Travis][ci-img]][ci-url]
+[![Coveralls][cov-img]][cov-url]
+
+###### Security
+
+[![bitHound][bithound-img]][bithound-url]
+
+###### Ember Observer score
+[![EmberObserver][ember-observer-badge]][ember-observer-badge-url]
 
 ## Installation
 ```
 ember install ember-frost-modal
 ```
 
-## API
-| Attribute | Type | Value | Description |
-| --------- | ---- | ----- | ----------- |
-| `modalName` | `string` | <name> | Optional name for the modal |
-| `modalClass` | `string` | <class-name> | Optional class to add custom styles to the modal |
-| `closeOnClick` | `boolean` | `default = true` | `Modal closes when the Confirm button is clicked` |
-| | | `false` | `Modal does not automatically close when the Confirm button is clicked` |
+## API and Examples
+Detailed API and example usage can be found in the sample application in `tests/dummy`, which is also running at http://ciena-frost.github.io/ember-frost-modal
 
-### Ember-remodal
+### Ember-elsewhere
 
-This addon uses the [ember-remodal](http://sethbrasile.github.io/ember-remodal/) service as a base for the modal behavior.
+This addon uses the [ember-elsewhere](https://github.com/ef4/ember-elsewhere) to manage the modals, to lift them outside the normal route hiearchy.
 
-### Slots API
-
-Using [ember-block-slots](https://github.com/ciena-blueplanet/ember-block-slots), this generic modal dialog can be wrapped inside other more complex modal components. This basic modal will provide a header, scrollable content area and footer with actions. The required slots are `target` and `footer`, to provide a way to launch and close the modal dialog respectively.
-
-### Footer controls block
-
-The `footer` block can yield a `cancel`, `confirm` or generic button type as `controls` block param. The `cancel` button is internally hooked up to close the dialog.
-The button text can be customized using the `text` attribute. The `cancel` button text defaults to `Cancel`. The `confirm` button text defaults to `Confirm`.
-The `confirm` button is a primary button that takes a `onConfirm` action handler to allow the consumer to perform actions on confirmation, eg saving a record, and it  closes the dialog by default. If however, you set the template attr `closeOnClick=false`, it will not close the dialog on confirm click. This allows you to hook into the confirm action and perform other tasks.
-The footer block also yields a `close` action that a consumer can call to correctly close the dialog after all tasks are completed.
-If you require another custom button, you can use the generic button type. To set an action handler on that button, set the attr `onClick`. All button text, size and priority can be overridden.
-
-### ember-perfectscroll effects
+### ember-perfectscroll effects (TODO effects based off perfectscroll events, but not from perfectscroll)
 
 This gives you styling of header/footer when content is scrolled underneath either element
 
 Styling includes: box shadow plus slight transparency in header/footer to reveal content underneath
 For more documentation on ember-perfectscroll:  [perfect-scrollbar](https://github.com/noraesae/perfect-scrollbar)
 
-## Examples
-```handlebars
-frost-modal testbed
-{{#frost-modal
-  modalName='testModal' as |slot|}}
-  {{#block-slot slot 'target'}}
-    {{frost-button
-      priority="primary"
-      size="medium"
-      text='Test basic dialog'
-    }}
-  {{/block-slot}}
-  {{#block-slot slot 'header'}}
-    <div class="primary-title">BLAH</div>
-  {{/block-slot}}
-  {{#block-slot slot 'body'}}
-    <div class="custom-body">
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-      <div>Test Information block</div>
-    </div>
-  {{/block-slot}}
-  {{#block-slot slot 'footer' as |controls close|}}
-    {{controls.cancel}}
-    {{controls.button
-      text='Custom action'
-      onClick=(action 'myCustomAction')}}
-    {{controls.confirm
-      onConfirm=(action 'confirmHandler')
-      text='Confirm and close'}}
-  {{/block-slot}}
-{{/frost-modal}}
-
-```
+## Testing with ember-hook
+This addon has been optimized for use with [ember-hook](https://github.com/Ticketfly/ember-hook). You can set a `hook` name on your modal template. This will allow you to access the internal modal content for testing.
+### Available hooks (TODO move to documentation)
+* Modal dialog title - `<hook-name>-title`
+* Modal dialog header icon - `<hook-name>-icon`
+* Modal dialog summary div - `<hook-name>-summary`
+* Modal dialog content div - `<hook-name>-content`
+* Modal dialog cancel button - `<hook-name>-cancel`
+* Modal dialog confirm button - `<hook-name>-confirm`
+* Modal dialog action links - `<hook-name>-link-<index>`
 
 ## Development
 ### Setup

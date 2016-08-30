@@ -1,0 +1,116 @@
+{{!--
+        * outlet
+        * binding
+        * pre-built modals
+        * blur
+        * frost-modal-animation
+        *  - predefined animations are available via the (frost-modal-animation) helper
+          - form
+          - message
+        *
+      --}}
+
+
+{{!-- BEGIN-SNIPPET basic-binding-api }}
+  {{frost-modal-binding 'modal-foo'
+    animation= // e.g. (frost-modal-animation 'message')
+    classModifier= // e.g. 'special'
+    closeOnOutsideClick= // (false)
+    isVisible= // Required binding
+    noBlur= // (false)
+    params=(hash
+      foo=
+      bar=
+    )
+    targetOutlet= // ('modal')
+    onCancel= // e.g. (action 'foo')
+    onClose= // Required binding
+    onConfirm= // e.g. (action 'foo')
+  }}
+{{ END-SNIPPET --}}
+
+{{! BEGIN-SNIPPET binding-animation-predefined }}
+{{frost-modal-binding 'basic-modal'
+  animation=(frost-modal-animation 'message')
+  closeOnOutsideClick=true
+  isVisible=isPredefinedVisible
+  onClose=(action (mut isPredefinedVisible) false)
+}}
+{{! END-SNIPPET}}
+
+{{! BEGIN-SNIPPET binding-animation-local }}
+{{frost-modal-binding 'basic-modal'
+  animation=localAnimation
+  closeOnOutsideClick=true
+  isVisible=isLocalVisible
+  onClose=(action (mut isLocalVisible) false)
+}}
+{{! END-SNIPPET}}
+
+<div class='frost-modal-demo-api'>
+  <div class='frost-modal-demo-title'>
+    Notes
+  </div>
+  <div class='frost-modal-demo-notes'>
+    <p>
+      Because sometimes you need to make an entrance <i>(or exit)</i>
+    </p>
+    <p>
+      Along with basic modal primitives <b>\{{frost-modal-binding}}</b> provides an option to animate
+      the visibility of a modal.  Because we care the animation is configurable on a per-modal basis
+      and because it's awesome the animations are managed using the
+      <a href='http://ember-animation.github.io/liquid-fire/#/transitions/explode'>Liquid Fire</a>
+      transition language.
+    </p>
+    <p>
+      Animation transitions are functions provided by a helper or a local function; a few predefined
+      animations are avaiable via the <b>frost-modal-animation</b> helper and are intended to be paired
+      with the predefined modal components available in this addon.
+    </p>
+  </div>
+  <div class='frost-modal-demo-title'>
+    Testing
+  </div>
+  <div class='frost-modal-demo-notes'>
+    <p>
+      To make testing easier, animation can be disabled in config/environment.js
+    </p>
+    {{code-snippet name='config-no-animation.js'}}
+  </div>
+  <div class='frost-modal-demo-title'>
+    Sample
+  </div>
+  <div class='frost-modal-demo-api'>
+    {{code-snippet name='local-animation.js'}}
+  </div>
+</div>
+<div class='frost-modal-demo-live'>
+  <div class='frost-modal-demo-title'>
+    Live demo - pre-defined animation
+  </div>
+  <div class='frost-modal-demo-snippet'>
+    {{code-snippet name='binding-animation-predefined.hbs'}}
+  </div>
+  <div class='frost-modal-demo-launch'>
+    {{frost-button
+      priority='primary'
+      size='medium'
+      text='Launch the modal'
+      onClick=(action (mut isPredefinedVisible) true)
+    }}
+  </div>
+  <div class='frost-modal-demo-title'>
+    Live demo - local animation
+  </div>
+  <div class='frost-modal-demo-snippet'>
+    {{code-snippet name='binding-animation-local.hbs'}}
+  </div>
+  <div class='frost-modal-demo-launch'>
+    {{frost-button
+      priority='primary'
+      size='medium'
+      text='Launch the modal'
+      onClick=(action (mut isLocalVisible) true)
+    }}
+  </div>
+</div>

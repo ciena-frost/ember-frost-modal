@@ -1,0 +1,102 @@
+{{!-- BEGIN-SNIPPET outlet-api }}
+  {{frost-modal-outlet
+    name= // ('modal')
+  }}
+{{ END-SNIPPET --}}
+
+{{! BEGIN-SNIPPET named-outlet }}
+{{frost-modal-outlet
+  name='local'
+}}
+{{! END-SNIPPET }}
+
+{{! BEGIN-SNIPPET named-outlet-binding }}
+{{frost-modal-warn-message
+  cancel=(hash
+    isVisible=false
+  )
+  confirm=(hash
+    text='GAAH!'
+  )
+  isVisible=isModalVisible
+  noBlur=true
+  targetOutlet='local'
+  title='BAMF'
+  onClose=(action (mut isModalVisible) false)
+}}
+{{! END-SNIPPET }}
+
+<div class='frost-modal-demo-api'>
+  <div class='frost-modal-demo-title'>
+    Notes
+  </div>
+  <div class='frost-modal-demo-notes'>
+    <p>
+      <a href='https://en.wikipedia.org/wiki/Bamf#/media/File:Nightcrawler_Bamf.jpg' target=_blank>"Bamf"</a>
+    </p>
+    <p>
+      The <b>\{{frost-modal-outlet}}</b> provides a remote outlet so that modals
+      can be specified from a local context (e.g. the current route) but displayed
+      in another DOM location; typically the root of the application.
+    </p>
+    <p>
+      While most scenarios only require a single outlet, multiple outlets can be
+      used in an application by giving each outlet a unique name (defaults to "modal").
+    </p>
+    <p>
+      All modals in the demo (except the named outlet in this <b>Live demo</b>) use an
+      outlet located in the <i>application.hbs</i> of the demo application.
+    </p>
+  </div>
+  <div class='frost-modal-demo-title'>
+    API
+  </div>
+  <div class='frost-modal-demo-api'>
+    {{code-snippet name='outlet-api.hbs'}}
+  </div>
+  <div class='frost-modal-demo-title'>
+    Customization
+  </div>
+  <div class='frost-modal-demo-notes'>
+    <p>
+      The outlet controls the style of the background and the position of the modal,
+      both can be customized by providing a <b>classModifier</b> to a
+      {{#link-to 'demo.basic-binding'}}frost-modal-binding{{/link-to}}.
+    </p>
+    <p>
+      The modifier will be appended to the outlet classes and customization
+      can be provided using CSS:
+      <ul>
+        <li><b>.frost-modal-outlet-background.&lt;modifier&gt;</b> <i>(background)</i></li>
+        <li><b>.frost-modal-outlet-body.&lt;modifier&gt;</b> <i>(position)</i></li>
+      </ul>
+    </p>
+  </div>
+</div>
+<div class='frost-modal-demo-live'>
+  <div class='frost-modal-demo-title'>
+    Live demo
+  </div>
+  <div class='frost-modal-demo-snippet'>
+    {{code-snippet name='named-outlet.hbs'}}
+    {{code-snippet name='named-outlet-binding.hbs'}}
+  </div>
+  <div class='frost-modal-demo-title'>
+    Notes
+  </div>
+  <div class='frost-modal-demo-notes'>
+    <p>
+      Note that in this case the root application blur is disabled;
+      otherwise the local modal would also be blurred since the outlet
+      is beneath the application root!
+    </p>
+  </div>
+  <div class='frost-modal-demo-launch'>
+    {{frost-button
+      priority='primary'
+      size='medium'
+      text='Launch the modal'
+      onClick=(action (mut isModalVisible) true)
+    }}
+  </div>
+</div>

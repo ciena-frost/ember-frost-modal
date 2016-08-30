@@ -1,113 +1,218 @@
 @import 'node_modules/ember-frost-core/addon/styles/frost-theme';
+@import 'node_modules/ember-frost-core/addon/styles/frost-app';
 
-$info-bar-height: 80px;
-$info-bar-padding-top-bottom: 20px;
-$info-bar-padding-left-right: 30px;
-$info-bar-border-width: 1px;
-$action-bar-border-width: 1px;
-$action-bar-height: 80px;
-$scroll-box-shadow: rgba(0, 0, 0, .25);
+$frost-modal-outlet-background-color: rgba($frost-color-white, .8);
+$frost-modal-outlet-body-shadow-color: rgba(0, 0, 0, .3);
+$frost-modal-dialog-footer-background-color: rgba($frost-color-white, .95);
+$frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
 
-@mixin frost-modal-header-builtins {
-  display: flex;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: $info-bar-height + $info-bar-border-width;
-  padding: $info-bar-padding-top-bottom $info-bar-padding-left-right;
-  border-bottom: $info-bar-border-width solid $frost-color-lgrey-1;
-  z-index: 999;
+.frost-modal-blur {
+  transition: filter .3s;
 
-  &.header-scrolled {
-    border-bottom: 0;
-    box-shadow: 0 2px 3px $scroll-box-shadow;
-
-    &:after {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      height: $info-bar-height + $info-bar-border-width;
-      background: $frost-color-white;
-      content: '';
-      z-index: -1;
-    }
+  &.active {
+    filter: blur(1.5px); // TODO PostCSS autoprefixer
   }
 }
 
-@mixin frost-modal-footer-builtins {
-  display: flex;
-  position: absolute;
-  bottom: 0;
-  align-items: center;
-  justify-content: flex-end;
-  width: 100%;
-  height: $action-bar-height + $action-bar-border-width;
-  margin-top: 20px;
-  padding-right: 30px;
-  border-top: 1px solid $frost-color-lgrey-1;
-  z-index: 999;
-
-  &:after {
-    position: absolute;
+.frost-modal-outlet {
+  &-background {
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $frost-modal-outlet-background-color;
+    z-index: $frost-z-index-modal;
+  }
+
+  &-body {
+    background-color: $frost-color-white;
+    box-shadow: 0 25px 125px 0 $frost-modal-outlet-body-shadow-color;
+    z-index: $frost-z-index-modal;
+  }
+
+  &-container {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    z-index: $frost-z-index-modal;
+  }
+}
+
+.frost-modal-dialog {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  min-width: 500px;
+  min-height: 250px;
+  max-height: calc(100vh - 90px); // TODO Nav height variable
+
+  &-content {
+    margin-bottom: 70px; // TODO Footer height variable
+    padding: 20px 30px;
+  }
+
+  &-footer {
+    display: flex;
+    position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
-    height: $action-bar-height + $action-bar-border-width;
-    background: $frost-color-white;
-    content: '';
-    opacity: .95;
-    z-index: -1;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 70px;
+    padding-right: 20px;
+    border-top: 1px solid $frost-color-lgrey-1;
+    background-color: $frost-modal-dialog-footer-background-color;
+
+    > * {
+      margin-left: 10px;
+    }
   }
 
-  .frost-button {
-    min-width: 120px;
-    margin-left: 10px;
+  &-header {
+    display: flex;
+    position: relative;
+    align-items: center;
+    min-height: 90px;
+    padding: 20px 30px 30px;
+    border-bottom: 1px solid $frost-color-lgrey-1;
+
+    & .frost-icon {
+      width: 40px;
+      height: 40px;
+      margin-right: 20px;
+    }
+
+    &-title {
+      font-size: $frost-font-l;
+    }
   }
 
-  &.footer-scrolled {
-    box-shadow: 0 -2px 3px $scroll-box-shadow;
+  &-overflow-y-end,
+  &-overflow-y-start {
+    position: absolute;
+    right: 0;
+    left: 0;
+    transition: opacity 300ms; // TODO Animate in/out
+    opacity: 1;
+    z-index: 1;
+  }
+
+  &-overflow-y-end {
+    top: 0;
+    box-shadow: 0 -4px 10px 2px $frost-modal-overflow-shadow-color;
+  }
+
+  &-overflow-y-start {
+    bottom: 0;
+    box-shadow: 0 4px 10px 2px $frost-modal-overflow-shadow-color;
+  }
+
+  &-scroll {
+    position: relative;
+    flex: 1;
+    padding: 0 30px;
+
+    .ps-scrollbar-y-rail {
+      margin-bottom: 70px; // TODO Footer height variable
+    }
+  }
+
+  &-summary {
+    padding: 20px 30px;
+    font-size: $frost-font-m;
+
+    + .frost-modal-dialog-content {
+      padding-top: 0;
+    }
   }
 }
 
-.frost-modal {
-  &.ember-remodal {
-    &.window {
-      position: relative;
-      min-width: 500px;
-      min-height: 250px;
-      max-height: calc(100vh - 90px);
-      padding: 0;
-      overflow: hidden;
+.frost-modal-about-dialog {
+  position: relative;
+  width: 500px;
+
+  .frost-icon-frost-modal-about-close {
+    transition: color .3s;
+    color: $frost-color-blue-1;
+
+    &:hover {
+      color: $frost-color-blue-3;
     }
   }
 
-  .ember-remodal {
-    &.yielded {
-      display: flex;
-      flex-direction: column;
+  &-branding-strip {
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    overflow: hidden;
+  }
 
-      .header {
-        @include frost-modal-header-builtins;
-      }
+  &-close {
+    display: flex;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 1;
 
-      .ps-container {
-        position: relative;
-        max-height: calc(100vh - 90px);
-        padding: 0;
-        overflow: auto;
-
-        .ps-scrollbar-y-rail {
-          margin-top: $info-bar-height + $info-bar-border-width;
-          margin-bottom: $action-bar-height + $info-bar-border-width;
-        }
-      }
-
-      .footer {
-        @include frost-modal-footer-builtins;
-      }
+    &-icon {
+      width: 30px;
+      height: 30px;
     }
+  }
+
+  &-copyright {
+    padding: 10px 40px 20px;
+    background-color: $frost-color-lgrey-3;
+    color: $frost-color-grey-4;
+    font-size: $frost-font-xs;
+    line-height: 17px; // UX: Not official, but looks good
+  }
+
+  &-header {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    padding-bottom: 10px;
+
+    &-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      margin-left: 40px;
+    }
+  }
+
+  &-logo {
+    height: 60px;
+    margin: 40px auto 30px 0;
+  }
+
+  &-product {
+    height: 20px;
+    margin: 0 auto 30px 0;
+  }
+
+  &-scroll {
+    min-height: 100px;
+    max-height: 200px;
+    border-top: 1px solid $frost-color-lgrey-1;
+  }
+
+  &-version {
+    padding-bottom: 10px;
+    color: $frost-color-grey-6;
+    font-size: $frost-font-s;
   }
 }

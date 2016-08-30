@@ -1,4 +1,3 @@
-/* jshint expr:true */
 import Ember from 'ember'
 const { A, run } = Ember
 import { expect } from 'chai'

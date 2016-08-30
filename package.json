@@ -69,6 +69,7 @@
     "ember-sortable": "1.8.2",
     "ember-test-helpers": "0.5.33",
     "ember-truth-helpers": "1.2.0",
+    "eslint": "^3.4.0",
     "eslint-config-frost-standard": "^4.0.0",
     "eslint-plugin-mocha": "^4.5.0",
     "eslint-plugin-promise": "^2.0.1",

@@ -1,3 +1,8 @@
+# 3.0.1
+* Added an controller action passed to the component in the content demo
+
+
+
 # 3.0.0
 * **Removed** ember-remodal based modals
 * **Added** ember-elsewhere based modals

@@ -16,8 +16,12 @@
   closeOnOutsideClick=true
   isVisible=isModalVisible
   params=(hash
-    jerry=(component 'to-jerry')
-    morty=(component 'to-morty')
+    jerry=(component 'to-jerry'
+      onClick=(action 'getReference' 'M._Night_Shaym-Aliens!')
+    )
+    morty=(component 'to-morty'
+      onClick=(action 'getReference' 'Lawnmower_Dog')
+    )
   )
   onClose=(action (mut isModalVisible) false)
 }}

@@ -8,5 +8,11 @@ export default Controller.extend({
     'isModalVisible'
   ],
 
-  isModalVisible: false
+  isModalVisible: false,
+
+  actions: {
+    getReference (episode) {
+      window.alert(`http://rickandmorty.wikia.com/wiki/${episode}`)
+    }
+  }
 })

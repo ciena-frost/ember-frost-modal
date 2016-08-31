@@ -6,7 +6,7 @@
     "ember-cli-test-loader": "0.2.2",
     "ember-mocha": "~0.8.11",
     "lodash": "^4.10.0",
-    "perfect-scrollbar": "~0.6.7",
+    "perfect-scrollbar": "0.6.12",
     "sinonjs": "1.17.1",
     "z-schema": "3.16.1",
     "es6-promise": "^3.2.2",

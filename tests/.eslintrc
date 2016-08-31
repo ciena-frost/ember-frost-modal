@@ -6,6 +6,7 @@
     "andThen": false,
     "click": false,
     "currentPath": false,
-    "visit": false
+    "visit": false,
+    "capture": false
   }
 }

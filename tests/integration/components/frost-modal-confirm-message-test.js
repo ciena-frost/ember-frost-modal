@@ -29,7 +29,7 @@ describeComponent(
       initializeSvgUse()
     })
 
-    it('renders', function (/* done*/) {
+    it('renders', function (done) {
       this.timeout(10000)
 
       this.render(hbs`
@@ -52,12 +52,16 @@ describeComponent(
         expect($hook('confirm-dialog-modal'), 'Is modal visible')
           .to.have.length(1)
         // TODO uncomment once ember-cli-visual-acceptance issues are fixed
-        // Ember.run.later(function () {
-        //   return capture('confirm', {
-        //     targetElement: this.$('.frost-modal-outlet-container.message')[0],
-        //     experimentalSvgs: true
-        //   })
-        // }, 2000)
+        run.later(function () {
+          return capture('confirm', {
+            targetElement: this.$('.frost-modal-outlet-container.message')[0],
+            experimentalSvgs: true
+          }).then(() => {
+            done()
+          }).catch((err) => {
+            done(err)
+          })
+        }, 2000)
       })
     })
 

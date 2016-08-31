@@ -58,7 +58,7 @@ describeComponent(
             experimentalSvgs: true
           }).then(() => {
             done()
-          }).then((err) => {
+          }).catch((err) => {
             done(err)
           })
         }, 2000)

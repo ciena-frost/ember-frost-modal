@@ -1,3 +1,7 @@
+# 3.1.0
+* Added a hack to allow confirm buttons on the frost-modal-form to be disabled - a better proxy solution will be put in place shortly
+
+
 # 3.0.1
 * Added an controller action passed to the component in the content demo
 

@@ -2,6 +2,10 @@ import Ember from 'ember'
 const {
   Controller
 } = Ember
+import {
+  task,
+  timeout
+} from 'ember-concurrency'
 
 export default Controller.extend({
   notifications: Ember.inject.service('notification-messages'),
@@ -37,7 +41,24 @@ export default Controller.extend({
 
   simpleBunsenValue: {},
 
+  isSomethingReady: false,
+  doSomething: task(function * () {
+    yield timeout(4000)
+    this.set('isSomethingReady', true)
+  }).drop(),
+
   actions: {
+    closeForm () {
+      this.set('isFormVisible', false)
+      this.get('doSomething').cancelAll()
+      this.set('isSomethingReady', false)
+    },
+
+    openForm () {
+      this.set('isFormVisible', true)
+      this.get('doSomething').perform()
+    },
+
     simpleBunsenChange (formValue) {
       this.set('simpleBunsenValue', formValue)
     },

@@ -4,7 +4,10 @@ const {
   Controller,
   Object: EmberObject
 } = Ember
-import { task, timeout } from 'ember-concurrency'
+import {
+  task,
+  timeout
+} from 'ember-concurrency'
 
 export default Controller.extend({
   queryParams: [

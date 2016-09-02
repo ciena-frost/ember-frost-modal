@@ -5,6 +5,7 @@
       text= // ('Cancel')
     )
     confirm=(hash
+      disabled= // (false)
       isVisible=  // (true)
       text= // ('Confirm')
     )
@@ -29,6 +30,9 @@
 
 {{! BEGIN-SNIPPET form }}
 {{frost-modal-form
+  confirm=(hash
+    disabled=(not isSomethingReady)
+  )
   form=(component 'frost-bunsen-form'
     bunsenModel=simpleBunsenModel
     hook='bunsen-form'
@@ -38,7 +42,7 @@
   hook='form-dialog'
   isVisible=isFormVisible
   title='Easy peasy'
-  onClose=(action (mut isFormVisible) false)
+  onClose=(action 'closeForm')
   onConfirm=(action 'notifyAndClear')
 }}
 {{! END-SNIPPET }}
@@ -63,7 +67,7 @@
       priority='primary'
       size='medium'
       text='Launch the modal'
-      onClick=(action (mut isFormVisible) true)
+      onClick=(action 'openForm')
     }}
   </div>
 </div>

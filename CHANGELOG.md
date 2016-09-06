@@ -1,3 +1,8 @@
+# 3.1.1
+* Updated the info dialog demo to show a simple summary message binding
+
+
+
 # 3.1.0
 * Added a hack to allow confirm buttons on the frost-modal-form to be disabled - a better proxy solution will be put in place shortly
 

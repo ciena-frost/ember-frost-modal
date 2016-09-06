@@ -8,5 +8,6 @@ export default Controller.extend({
     'isInfoVisible'
   ],
 
+  boringSummary: 'I just thought you should know',
   isInfoVisible: false
 })

@@ -25,11 +25,14 @@
 
 {{! BEGIN-SNIPPET info }}
 {{frost-modal-info-message
+  confirm=(hash
+    text=boringConfirm
+  )
   hook='info-dialog'
   isVisible=isInfoVisible
   summary=boringSummary
   title="I'm quite boring"
-  onClose=(action (mut isInfoVisible) false)
+  onClose=(action 'closeInfo')
 }}
 {{! END-SNIPPET }}
 
@@ -53,7 +56,7 @@
       priority='primary'
       size='medium'
       text='Launch the modal'
-      onClick=(action (mut isInfoVisible) true)
+      onClick=(action 'openInfo')
     }}
   </div>
 </div>

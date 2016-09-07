@@ -1,5 +1,8 @@
 import Ember from 'ember'
-const { assign } = Ember
+const {
+  assign,
+  computed
+} = Ember
 import FrostModalBinding from '../../frost-modal-binding'
 import { message } from '../../../helpers/frost-modal-animation'
 import PropTypesMixin, { PropTypes } from 'ember-prop-types'
@@ -40,22 +43,27 @@ export default FrostModalBinding.extend(PropTypesMixin, {
     assign(defaultProps, {
       animation: message,
       classModifier: 'message',
-      modal: 'frost-modal-dialog',
-      params: {
-        cancel: this.cancel,
-        confirm: this.confirm,
-        content: this.details,
-        icon: {
-          name: 'warn',
-          pack: 'frost-modal'
-        },
-        links: this.links,
-        summary: this.summary,
-        title: this.title
-      }
+      modal: 'frost-modal-dialog'
     })
 
     return defaultProps
-  }
+  },
+
+  // == Computed properties ===================================================
+
+  params: computed(function () {
+    return {
+      cancel: this.cancel,
+      confirm: this.confirm,
+      content: this.details,
+      icon: {
+        name: 'warn',
+        pack: 'frost-modal'
+      },
+      links: this.links,
+      summary: this.summary,
+      title: this.title
+    }
+  })
 
 })

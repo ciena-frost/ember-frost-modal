@@ -1,6 +1,7 @@
 import Ember from 'ember'
 const {
   assign,
+  computed,
   getWithDefault
 } = Ember
 import FrostModalBinding from '../../frost-modal-binding'
@@ -38,27 +39,32 @@ export default FrostModalBinding.extend(PropTypesMixin, {
     assign(defaultProps, {
       animation: message,
       classModifier: 'message',
-      modal: 'frost-modal-dialog',
-      params: {
-        cancel: {
-          isVisible: false
-        },
-        confirm: {
-          isVisible: getWithDefault(this, 'confirm.isVisible', true),
-          text: getWithDefault(this, 'confirm.text', 'Ok')
-        },
-        content: this.details,
-        icon: {
-          name: 'info',
-          pack: 'frost-modal'
-        },
-        links: this.links,
-        summary: this.summary,
-        title: this.title
-      }
+      modal: 'frost-modal-dialog'
     })
 
     return defaultProps
-  }
+  },
+
+  // == Computed properties ===================================================
+
+  params: computed(function () {
+    return {
+      cancel: {
+        isVisible: false
+      },
+      confirm: {
+        isVisible: getWithDefault(this, 'confirm.isVisible', true),
+        text: getWithDefault(this, 'confirm.text', 'Ok')
+      },
+      content: this.details,
+      icon: {
+        name: 'info',
+        pack: 'frost-modal'
+      },
+      links: this.links,
+      summary: this.summary,
+      title: this.title
+    }
+  })
 
 })

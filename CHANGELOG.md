@@ -1,3 +1,10 @@
+# 3.1.2
+* Removed the hack for dynamically disabling confirm on forms
+* Added a computed property for params that fires whenever attributes are updated
+* Updated the info demo to demonstrate this ability in both the summary and confirm params
+
+
+
 # 3.1.1
 * Updated the info dialog demo to show a simple summary message binding
 

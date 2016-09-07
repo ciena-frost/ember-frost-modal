@@ -1,5 +1,8 @@
 import Ember from 'ember'
-const { assign } = Ember
+const {
+  assign,
+  computed
+} = Ember
 import FrostModalBinding from '../frost-modal-binding'
 import { about } from '../../helpers/frost-modal-animation'
 import PropTypesMixin, { PropTypes } from 'ember-prop-types'
@@ -38,17 +41,22 @@ export default FrostModalBinding.extend(PropTypesMixin, {
       animation: about,
       classModifier: 'about',
       closeOnOutsideClick: true,
-      modal: 'frost-modal-about-dialog',
-      params: {
-        brandingStrip: this.brandingStrip,
-        copyright: this.copyright,
-        logo: this.logo,
-        product: this.product,
-        versions: this.versions
-      }
+      modal: 'frost-modal-about-dialog'
     })
 
     return defaultProps
-  }
+  },
+
+  // == Computed properties ===================================================
+
+  params: computed(function () {
+    return {
+      brandingStrip: this.brandingStrip,
+      copyright: this.copyright,
+      logo: this.logo,
+      product: this.product,
+      versions: this.versions
+    }
+  })
 
 })

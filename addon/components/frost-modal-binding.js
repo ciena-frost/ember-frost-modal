@@ -53,6 +53,10 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
     this.get('modalService').setState(this.modalComponentName, this.isVisible, this.noBlur)
   },
 
+  didUpdateAttrs () {
+    this.notifyPropertyChange('params')
+  },
+
   // == Actions ===============================================================
 
   actions: {

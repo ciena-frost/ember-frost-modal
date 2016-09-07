@@ -1,15 +1,13 @@
 import Ember from 'ember'
-const { assign } = Ember
+const {
+  assign,
+  computed
+} = Ember
 import FrostModalBinding from '../frost-modal-binding'
 import { form } from '../../helpers/frost-modal-animation'
 import PropTypesMixin, { PropTypes } from 'ember-prop-types'
 
 export default FrostModalBinding.extend(PropTypesMixin, {
-
-  // HACK: Needs to be replaced with a better proxy solution
-  isConfirmDisabled: Ember.computed('confirm.disabled', function () {
-    return this.get('confirm.disabled')
-  }),
 
   // == State properties ======================================================
 
@@ -44,17 +42,22 @@ export default FrostModalBinding.extend(PropTypesMixin, {
     assign(defaultProps, {
       animation: form,
       classModifier: 'form',
-      modal: 'frost-modal-dialog',
-      params: {
-        cancel: this.cancel,
-        confirm: this.confirm,
-        content: this.form,
-        links: this.links,
-        title: this.title
-      }
+      modal: 'frost-modal-dialog'
     })
 
     return defaultProps
-  }
+  },
+
+  // == Computed properties ===================================================
+
+  params: computed(function () {
+    return {
+      cancel: this.cancel,
+      confirm: this.confirm,
+      content: this.form,
+      links: this.links,
+      title: this.title
+    }
+  })
 
 })

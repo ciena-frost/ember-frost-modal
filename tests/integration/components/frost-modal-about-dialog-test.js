@@ -61,13 +61,11 @@ describeComponent(
         // eslint-disable-next-line
       expect($hook('about-dialog-modal'), 'Is modal visible')
         .to.have.length(1)
-      // TODO uncomment once ember-cli-visual-acceptance issues are fixed
-      // Ember.run.later(function () {
-      //   return capture('about', {
-      //     targetElement: this.$('.frost-modal-outlet-container.about')[0],
-      //     experimentalSvgs: true
-      //   })
-      // }, 2000)
+
+      return capture('about', {
+        targetElement: this.$('.frost-modal-outlet-container.about')[0],
+        experimentalSvgs: true
+      })
     })
 
     it('renders with product', function (/* done*/) {

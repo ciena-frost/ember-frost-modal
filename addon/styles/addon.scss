@@ -92,6 +92,12 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
     &-title {
       font-size: $frost-font-l;
     }
+
+    &-subtitle {
+      display: block;
+      color: $frost-color-grey-5;
+      font-size: $frost-font-s;
+    }
   }
 
   &-overflow-y-end,

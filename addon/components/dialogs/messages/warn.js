@@ -27,6 +27,7 @@ export default FrostModalBinding.extend(PropTypesMixin, {
     ]),
     isVisible: PropTypes.bool.isRequired,
     links: PropTypes.array,
+    subtitle: PropTypes.string,
     summary: PropTypes.string,
     targetOutlet: PropTypes.string,
     title: PropTypes.string.isRequired,
@@ -61,6 +62,7 @@ export default FrostModalBinding.extend(PropTypesMixin, {
         pack: 'frost-modal'
       },
       links: this.links,
+      subtitle: this.subtitle,
       summary: this.summary,
       title: this.title
     }

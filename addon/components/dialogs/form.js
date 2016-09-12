@@ -27,6 +27,7 @@ export default FrostModalBinding.extend(PropTypesMixin, {
       PropTypes.EmberObject
     ]).isRequired,
     isVisible: PropTypes.bool.isRequired,
+    subtitle: PropTypes.string,
     targetOutlet: PropTypes.string,
     title: PropTypes.string.isRequired,
 
@@ -56,6 +57,7 @@ export default FrostModalBinding.extend(PropTypesMixin, {
       confirm: this.confirm,
       content: this.form,
       links: this.links,
+      subtitle: this.subtitle,
       title: this.title
     }
   })

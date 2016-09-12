@@ -10,6 +10,9 @@
     data-test={{hook (concat hook '-title')}}
   >
     {{params.title}}
+    {{#if params.subtitle}}
+      <span class="frost-modal-dialog-header-subtitle">{{params.subtitle}}</span>
+    {{/if}}
   </div>
   {{! BEGIN-SNIPPET dialog-overflow-y-start }}
   {{#if isOverflowYStart}}

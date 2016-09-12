@@ -10,7 +10,7 @@ import {
   $hook,
   initialize as initializeHook
 } from 'ember-hook'
-import { beforeEach } from 'mocha'
+import { beforeEach, describe } from 'mocha'
 
 describeComponent(
   'frost-modal-warn-message',
@@ -42,6 +42,7 @@ describeComponent(
             )
             hook=hook
             isVisible=isModalVisible
+            subtitle=subtitle
             summary='Take this'
             title="It's dangerous to go alone!"
             onCancel=onCancel
@@ -70,6 +71,28 @@ describeComponent(
         .to.be.true
       expect($hook('warning-dialog-modal'), 'Is modal hidden')
         .to.have.length(0)
+    })
+
+    describe('when subtitle present', function () {
+      beforeEach(function () {
+        this.set('subtitle', 'Foo bar')
+      })
+
+      it('renders subtitle', function () {
+        const $subtitle = this.$('.frost-modal-dialog-header-subtitle')
+        expect($subtitle).to.have.length(1)
+        expect($subtitle.text()).to.equal('Foo bar')
+      })
+    })
+
+    describe('when subtitle not present', function () {
+      beforeEach(function () {
+        this.set('subtitle', undefined)
+      })
+
+      it('does not render subtitle DOM', function () {
+        expect(this.$('.frost-modal-dialog-header-subtitle')).to.have.length(0)
+      })
     })
   }
 )

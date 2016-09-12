@@ -10,7 +10,7 @@ import {
   it
 } from 'ember-mocha'
 import hbs from 'htmlbars-inline-precompile'
-import { beforeEach } from 'mocha'
+import { beforeEach, describe } from 'mocha'
 
 describeComponent(
   'frost-modal-info-message',
@@ -33,6 +33,7 @@ describeComponent(
           {{frost-modal-info-message
             hook='info-dialog'
             isVisible=isModalVisible
+            subtitle=subtitle
             summary='Summary'
             title='Title'
             onClose=(action closeModal)
@@ -58,6 +59,28 @@ describeComponent(
 
       expect($hook('info-dialog-modal'), 'Is modal hidden')
         .to.have.length(0)
+    })
+
+    describe('when subtitle present', function () {
+      beforeEach(function () {
+        this.set('subtitle', 'Foo bar')
+      })
+
+      it('renders subtitle', function () {
+        const $subtitle = this.$('.frost-modal-dialog-header-subtitle')
+        expect($subtitle).to.have.length(1)
+        expect($subtitle.text()).to.equal('Foo bar')
+      })
+    })
+
+    describe('when subtitle not present', function () {
+      beforeEach(function () {
+        this.set('subtitle', undefined)
+      })
+
+      it('does not render subtitle DOM', function () {
+        expect(this.$('.frost-modal-dialog-header-subtitle')).to.have.length(0)
+      })
     })
   }
 )

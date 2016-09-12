@@ -10,7 +10,7 @@ import {
   $hook,
   initialize as initializeHook
 } from 'ember-hook'
-import { beforeEach } from 'mocha'
+import { beforeEach, describe } from 'mocha'
 
 describeComponent(
   'frost-modal-form',
@@ -71,6 +71,7 @@ describeComponent(
             )
             hook='form-dialog'
             isVisible=isFormVisible
+            subtitle=subtitle
             title='Easy peasy'
             onClose=(action closeModal)
             onConfirm=onConfirm
@@ -91,6 +92,28 @@ describeComponent(
     it('triggers function on confirm click', function () {
       $hook('form-dialog-modal-confirm').click()
       expect(props.onConfirm.called, 'Is confirm called').to.be.true
+    })
+
+    describe('when subtitle present', function () {
+      beforeEach(function () {
+        this.set('subtitle', 'Foo bar')
+      })
+
+      it('renders subtitle', function () {
+        const $subtitle = this.$('.frost-modal-dialog-header-subtitle')
+        expect($subtitle).to.have.length(1)
+        expect($subtitle.text()).to.equal('Foo bar')
+      })
+    })
+
+    describe('when subtitle not present', function () {
+      beforeEach(function () {
+        this.set('subtitle', undefined)
+      })
+
+      it('does not render subtitle DOM', function () {
+        expect(this.$('.frost-modal-dialog-header-subtitle')).to.have.length(0)
+      })
     })
   }
 )

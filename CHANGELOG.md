@@ -1,3 +1,10 @@
+# 3.2.0
+
+* **Added** optional `subtitle` property to modals to support adding a subtitle to the header.
+* **Upgraded** `devDependencies` to latest versions for demo app.
+
+
+
 # 3.1.2
 * Removed the hack for dynamically disabling confirm on forms
 * Added a computed property for params that fires whenever attributes are updated

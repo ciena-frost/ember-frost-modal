@@ -73,6 +73,7 @@
 
   {{#each params.buttons as |button index|}}
     {{frost-button
+      disabled=button.disabled
       hook=(concat hook '-button-' index)
       icon=button.icon
       pack=button.pack

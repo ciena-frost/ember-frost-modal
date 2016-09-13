@@ -13,6 +13,7 @@ export default FrostModalBinding.extend(PropTypesMixin, {
 
   propTypes: {
     // Options
+    buttons: PropTypes.array,
     cancel: PropTypes.shape({
       isVisible: PropTypes.bool,
       text: PropTypes.string
@@ -28,6 +29,7 @@ export default FrostModalBinding.extend(PropTypesMixin, {
       PropTypes.EmberObject
     ]).isRequired,
     isVisible: PropTypes.bool.isRequired,
+    links: PropTypes.array,
     subtitle: PropTypes.string,
     targetOutlet: PropTypes.string,
     title: PropTypes.string.isRequired,
@@ -54,6 +56,7 @@ export default FrostModalBinding.extend(PropTypesMixin, {
 
   params: computed(function () {
     return {
+      buttons: this.buttons,
       cancel: this.cancel,
       confirm: this.confirm,
       content: this.form,

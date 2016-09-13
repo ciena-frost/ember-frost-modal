@@ -1,5 +1,15 @@
 {{!-- BEGIN-SNIPPET warn-api }}
   {{frost-modal-warn-message
+    buttons=(array
+      (hash
+        disabled= // true
+        icon= // e.g. 'info'
+        onClick= // e.g. (action 'info')
+        pack= // e.g. 'frost'
+        priority= // ['primary', etc.]
+        text= // e.g. 'Foo'
+      )
+    )
     cancel=(hash
       isVisible= // (true)
       text= // ('Cancel')

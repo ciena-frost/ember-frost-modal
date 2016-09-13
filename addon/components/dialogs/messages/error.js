@@ -14,6 +14,7 @@ export default FrostModalBinding.extend(PropTypesMixin, {
 
   propTypes: {
     // Options
+    buttons: PropTypes.array,
     confirm: PropTypes.shape({
       isVisible: PropTypes.bool,
       text: PropTypes.string
@@ -51,6 +52,7 @@ export default FrostModalBinding.extend(PropTypesMixin, {
 
   params: computed(function () {
     return {
+      buttons: this.buttons,
       cancel: {
         isVisible: false
       },

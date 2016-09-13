@@ -59,6 +59,10 @@ export default Controller.extend({
       this.get('doSomething').perform()
     },
 
+    info () {
+      window.alert('OMG!')
+    },
+
     simpleBunsenChange (formValue) {
       this.set('simpleBunsenValue', formValue)
     },

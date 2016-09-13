@@ -31,6 +31,7 @@ describeComponent(
           {{frost-modal-outlet}}
 
           {{frost-modal-info-message
+            buttons=buttons
             footer=footer
             hook='info-dialog'
             isVisible=isModalVisible
@@ -103,6 +104,35 @@ describeComponent(
 
       it('does not render footer text DOM', function () {
         expect(this.$('.frost-modal-dialog-footer-text')).to.have.length(0)
+      })
+    })
+
+    describe('when buttons present', function () {
+      beforeEach(function () {
+        this.set('buttons', [
+          {
+            priority: 'secondary',
+            text: 'Foo'
+          },
+          {
+            priority: 'secondary',
+            text: 'Bar'
+          }
+        ])
+      })
+
+      it('renders custom buttons plus cancel and create buttons', function () {
+        expect(this.$('.frost-modal-dialog-footer button')).to.have.length(4)
+      })
+    })
+
+    describe('when buttons not present', function () {
+      beforeEach(function () {
+        this.set('buttons', undefined)
+      })
+
+      it('only renders cancel and create buttons', function () {
+        expect(this.$('.frost-modal-dialog-footer button')).to.have.length(2)
       })
     })
   }

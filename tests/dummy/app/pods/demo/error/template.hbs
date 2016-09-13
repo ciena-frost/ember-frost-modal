@@ -1,5 +1,14 @@
 {{!-- BEGIN-SNIPPET error-api }}
   {{frost-modal-error-message
+    buttons=(array
+      (hash
+        icon= // e.g. 'info'
+        onClick= // e.g. (action 'info')
+        pack= // e.g. 'frost'
+        priority= // ['primary', etc.]
+        text= // e.g. 'Foo'
+      )
+    )
     confirm=(hash
       isVisible= // (true)
       text= // ('Close')

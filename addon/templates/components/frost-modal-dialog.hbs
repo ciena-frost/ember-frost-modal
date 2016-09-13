@@ -71,6 +71,18 @@
     onClick=onCancel
   }}
 
+  {{#each params.buttons as |button index|}}
+    {{frost-button
+      hook=(concat hook '-button-' index)
+      icon=button.icon
+      pack=button.pack
+      priority=button.priority
+      size='medium'
+      onClick=button.onClick
+      text=button.text
+    }}
+  {{/each}}
+
   {{frost-button
     disabled=params.confirm.disabled
     hook=(concat hook '-confirm')

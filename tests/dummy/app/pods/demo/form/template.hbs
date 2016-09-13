@@ -1,5 +1,14 @@
 {{!-- BEGIN-SNIPPET form-api }}
   {{frost-modal-form
+    buttons=(array
+      (hash
+        icon= // e.g. 'info'
+        onClick= // e.g. (action 'info')
+        pack= // e.g. 'frost'
+        priority= // ['primary', etc.]
+        text= // e.g. 'Foo'
+      )
+    )
     cancel=(hash
       isVisible= // (true)
       text= // ('Cancel')
@@ -32,6 +41,15 @@
 
 {{! BEGIN-SNIPPET form }}
 {{frost-modal-form
+  buttons=(array
+    (hash
+      icon='info'
+      onClick=(action 'info')
+      pack='frost'
+      priority='secondary'
+      text='Info'
+    )
+  )
   confirm=(hash
     disabled=(not isSomethingReady)
   )

@@ -40,6 +40,7 @@ describeComponent(
             cancel=(hash
               text='Nope'
             )
+            footer=footer
             hook=hook
             isVisible=isModalVisible
             subtitle=subtitle
@@ -92,6 +93,28 @@ describeComponent(
 
       it('does not render subtitle DOM', function () {
         expect(this.$('.frost-modal-dialog-header-subtitle')).to.have.length(0)
+      })
+    })
+
+    describe('when footer text present', function () {
+      beforeEach(function () {
+        this.set('footer', 'Foo bar')
+      })
+
+      it('renders footer text', function () {
+        const $footer = this.$('.frost-modal-dialog-footer-text')
+        expect($footer).to.have.length(1)
+        expect($footer.text()).to.equal('Foo bar')
+      })
+    })
+
+    describe('when footer text not present', function () {
+      beforeEach(function () {
+        this.set('footer', undefined)
+      })
+
+      it('does not render footer text DOM', function () {
+        expect(this.$('.frost-modal-dialog-footer-text')).to.have.length(0)
       })
     })
   }

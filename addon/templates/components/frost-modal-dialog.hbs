@@ -58,6 +58,10 @@
   {{/if}}
   {{! END-SNIPPET }}
 
+  {{#if params.footer}}
+    <div class="frost-modal-dialog-footer-text">{{params.footer}}</div>
+  {{/if}}
+
   {{frost-button
     hook=(concat hook '-cancel')
     isVisible=params.cancel.isVisible

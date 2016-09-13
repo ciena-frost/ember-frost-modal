@@ -1,3 +1,9 @@
+# 3.4.0
+
+* **Added** new `buttons` property to modals to allow user to specify additional buttons to show between the cancel and confirm buttons in the modal footer.
+
+
+
 # 3.3.0
 
 * **Added** new `footer` property to modals that allows arbitrary text to be rendered in the left side of the footer.

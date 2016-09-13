@@ -73,6 +73,12 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
     > * {
       margin-left: 10px;
     }
+
+    &-text {
+      position: absolute;
+      left: 30px;
+      color: $frost-color-grey-3;
+    }
   }
 
   &-header {

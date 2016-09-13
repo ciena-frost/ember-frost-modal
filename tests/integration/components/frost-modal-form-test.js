@@ -63,6 +63,7 @@ describeComponent(
           {{frost-modal-outlet}}
 
           {{frost-modal-form
+            footer=footer
             form=(component 'frost-bunsen-form'
               bunsenModel=simpleBunsenModel
               hook='bunsen-form'
@@ -113,6 +114,28 @@ describeComponent(
 
       it('does not render subtitle DOM', function () {
         expect(this.$('.frost-modal-dialog-header-subtitle')).to.have.length(0)
+      })
+    })
+
+    describe('when footer text present', function () {
+      beforeEach(function () {
+        this.set('footer', 'Foo bar')
+      })
+
+      it('renders footer text', function () {
+        const $footer = this.$('.frost-modal-dialog-footer-text')
+        expect($footer).to.have.length(1)
+        expect($footer.text()).to.equal('Foo bar')
+      })
+    })
+
+    describe('when footer text not present', function () {
+      beforeEach(function () {
+        this.set('footer', undefined)
+      })
+
+      it('does not render footer text DOM', function () {
+        expect(this.$('.frost-modal-dialog-footer-text')).to.have.length(0)
       })
     })
   }

@@ -22,6 +22,7 @@ export default FrostModalBinding.extend(PropTypesMixin, {
       PropTypes.object,
       PropTypes.EmberObject
     ]),
+    footer: PropTypes.string,
     isVisible: PropTypes.bool.isRequired,
     links: PropTypes.array,
     subtitle: PropTypes.string,
@@ -58,6 +59,7 @@ export default FrostModalBinding.extend(PropTypesMixin, {
         text: getWithDefault(this, 'confirm.text', 'Ok')
       },
       content: this.details,
+      footer: this.footer,
       icon: {
         name: 'info',
         pack: 'frost-modal'

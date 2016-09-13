@@ -9,6 +9,7 @@
       isVisible=  // (true)
       text= // ('Confirm')
     )
+    footer= // e.g. 'Foo bar'
     form=(component 'frost-bunsen-form'
       bar= // e.g. props for 'foo'
     )
@@ -34,6 +35,7 @@
   confirm=(hash
     disabled=(not isSomethingReady)
   )
+  footer='Foo bar'
   form=(component 'frost-bunsen-form'
     bunsenModel=simpleBunsenModel
     hook='bunsen-form'

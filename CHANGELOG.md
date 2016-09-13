@@ -1,3 +1,9 @@
+# 3.3.0
+
+* **Added** new `footer` property to modals that allows arbitrary text to be rendered in the left side of the footer.
+
+
+
 # 3.2.0
 
 * **Added** optional `subtitle` property to modals to support adding a subtitle to the header.

@@ -44,7 +44,7 @@ describeComponent(
           text='100%'
         )
         isVisible=isModalVisible
-        summary='I agree'
+        summary='I agree!!!!'
         title='Most definitely'
       }}`)
 

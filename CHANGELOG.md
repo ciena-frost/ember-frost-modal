@@ -1,3 +1,8 @@
+# 3.5.0
+
+* **Added** test helpers that can be used by consumers.
+
+
 # 3.4.0
 
 * **Added** new `buttons` property to modals to allow user to specify additional buttons to show between the cancel and confirm buttons in the modal footer.

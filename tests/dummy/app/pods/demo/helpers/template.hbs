@@ -1,0 +1,152 @@
+<div class='frost-modal-demo-notes'>
+  <h1>Test Helpers</h1>
+  <p>
+    You can use this addons test helpers by simply importing them from:
+    {{code-snippet
+      language='js'
+      source=importSnippet
+    }}
+  </p>
+  <p>
+    You can also import individual test helper methods like so:
+    {{code-snippet
+      language='js'
+      source=methodImportSnippet
+    }}
+  </p>
+
+  <h2>Type Definitions</h2>
+
+  <hr class="sep"/>
+
+  <h3>FrostModalButtonState</h3>
+  <h4>Properties:</h4>
+  <dl>
+    <dt>disabled <span>Boolean</span></dt>
+    <dd>whether or not button should be disabled</dd>
+    <dt>text <span>String</span></dt>
+    <dd>text that button should contain</dd>
+    <dt>visible <span>Boolean</span></dt>
+    <dd>whether or not button should be visible</dd>
+  </dl>
+
+  <hr class="sep"/>
+
+  <h3>FrostModalState</h3>
+  <h4>Properties:</h4>
+  <dl>
+    <dt>cancel <span>FrostModalButtonState</span></dt>
+    <dd>state of cancel button</dd>
+    <dt>confirm <span>FrostModalButtonState</span></dt>
+    <dd>state of confirm button</dd>
+    <dt>subtitle <span>String</span></dt>
+    <dd>subtitle text</dd>
+    <dt>title <span>String</span></dt>
+    <dd>title text</dd>
+    <dt>visible <span>Boolean</span></dt>
+    <dd>whether or not modal should be visible</dd>
+  </dl>
+
+  <hr class="sep"/>
+
+  <h2>Methods</h2>
+
+  <hr class="sep"/>
+
+  <h3><code>expectButtonToHaveText ($button, text)</code></h3>
+  <p>Verify button contains expected text</p>
+  <h4>Parameters:</h4>
+  <dl>
+    <dt>$button <span>jQuery</span></dt>
+    <dd>jQuery instance containing button</dd>
+    <dt>text <span>String</span></dt>
+    <dd>expected text</dd>
+  </dl>
+
+  <hr class="sep"/>
+
+  <h3><code>expectButtonWithState ($button, state)</code></h3>
+  <p>Verify button has correct state</p>
+  <h4>Parameters:</h4>
+  <dl>
+    <dt>$button <span>jQuery</span></dt>
+    <dd>jQuery instance containing button</dd>
+    <dt>state <span>FrostModalButtonState</span></dt>
+    <dd>expected state of button</dd>
+  </dl>
+
+  <hr class="sep"/>
+
+  <h3><code>expectButtonWithVisibility ($button, visible = true, name = '')</code></h3>
+  <p>Verify button is visible/not visible as expected</p>
+  <h4>Parameters:</h4>
+  <dl>
+    <dt>$button <span>jQuery</span></dt>
+    <dd>jQuery instance containing button</dd>
+    <dt>visible <span>Boolean</span></dt>
+    <dd>whether or not button should be visible</dd>
+    <dt>name <span>String</span></dt>
+    <dd>name of button to use in test log messages</dd>
+  </dl>
+
+  <hr class="sep"/>
+
+  <h3><code>expectModalCancelButtonWithState (state = {})</code></h3>
+  <p>Verify cancel button has correct state</p>
+  <h4>Parameters:</h4>
+  <dl>
+    <dt>state <span>FrostModalButtonState</span></dt>
+    <dd>expected state of cancel button</dd>
+  </dl>
+
+  <hr class="sep"/>
+
+  <h3><code>expectModalConfirmButtonWithState (state = {})</code></h3>
+  <p>Verify confirm button has correct state</p>
+  <h4>Parameters:</h4>
+  <dl>
+    <dt>state <span>FrostModalButtonState</span></dt>
+    <dd>expected state of confirm button</dd>
+  </dl>
+
+  <hr class="sep"/>
+
+  <h3><code>expectModalWithState (state = {})</code></h3>
+  <p>Verify modal has correct state</p>
+  <h4>Parameters:</h4>
+  <dl>
+    <dt>state <span>FrostModalState</span></dt>
+    <dd>expected state of modal</dd>
+  </dl>
+
+  <hr class="sep"/>
+
+  <h3><code>expectModalWithSubtitle (text)</code></h3>
+  <p>Verify modal subtitle has expected text</p>
+  <h4>Parameters:</h4>
+  <dl>
+    <dt>text <span>String</span></dt>
+    <dd>expected subtitle text</dd>
+  </dl>
+
+  <hr class="sep"/>
+
+  <h3><code>expectModalWithTitle (text)</code></h3>
+  <p>Verify modal title has expected text</p>
+  <h4>Parameters:</h4>
+  <dl>
+    <dt>text <span>String</span></dt>
+    <dd>expected title text</dd>
+  </dl>
+
+  <hr class="sep"/>
+
+  <h3><code>expectModalWithVisibility (visible = true)</code></h3>
+  <p>Verify whether or not a modal is visible</p>
+  <h4>Parameters:</h4>
+  <dl>
+    <dt>visible <span>Boolean</span></dt>
+    <dd>whether or not modal should be visible</dd>
+  </dl>
+
+</div>

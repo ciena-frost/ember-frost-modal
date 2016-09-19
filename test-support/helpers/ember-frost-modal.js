@@ -12,6 +12,15 @@ const assign = Object.assign || Ember.assign || Ember.merge
  */
 
 /**
+ * @typedef {Object} FrostModalState
+ * @property {FrostModalButtonState} cancel - state of cancel button
+ * @property {FrostModalButtonState} confirm - state of confirm button
+ * @property {String} subtitle - subtitle text
+ * @property {String} title - title text
+ * @property {Boolean} visible - whether or not modal should be visible
+ */
+
+/**
  * Verify button contains expected text
  * @param {jQuery} $button - jQuery instance containing button
  * @param {String} text - expected text

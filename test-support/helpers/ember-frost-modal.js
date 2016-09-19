@@ -89,6 +89,10 @@ export function expectModalWithState (state = {}) {
 
   expectModalWithVisibility(state.visible)
 
+  if (!state.visible) {
+    return
+  }
+
   if ('title' in state) {
     expectModalWithTitle(state.title)
   }

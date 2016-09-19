@@ -63,6 +63,7 @@
   {{/if}}
 
   {{frost-button
+    class='frost-modal-dialog-footer-cancel-button'
     hook=(concat hook '-cancel')
     isVisible=params.cancel.isVisible
     priority='tertiary'
@@ -85,6 +86,7 @@
   {{/each}}
 
   {{frost-button
+    class='frost-modal-dialog-footer-confirm-button'
     disabled=params.confirm.disabled
     hook=(concat hook '-confirm')
     isVisible=params.confirm.isVisible

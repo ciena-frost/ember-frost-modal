@@ -6,7 +6,7 @@
     "Firefox"
   ],
   "launch_in_dev": [
-    "Firefox"
+    "Chrome"
   ],
   "launchers": {
     "PhantomJsVisualAcceptance": {

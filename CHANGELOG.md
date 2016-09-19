@@ -1,3 +1,8 @@
+# 3.6.0
+
+* **Added** documentation for test helpers.
+
+
 # 3.5.0
 
 * **Added** test helpers that can be used by consumers.

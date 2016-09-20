@@ -1,8 +1,18 @@
+/* global click */
+
 import {expect} from 'chai'
 import Ember from 'ember'
 const {$} = Ember
 
 const assign = Object.assign || Ember.assign || Ember.merge
+
+const selectors = {
+  cancelButton: '.frost-modal-dialog-footer-cancel-button',
+  confirmButton: '.frost-modal-dialog-footer-confirm-button',
+  dialog: '.frost-modal-dialog:visible',
+  subtitle: '.frost-modal-dialog-header-subtitle:visible',
+  title: '.frost-modal-dialog-header-title:visible'
+}
 
 /**
  * @typedef {Object} FrostModalButtonState
@@ -19,6 +29,22 @@ const assign = Object.assign || Ember.assign || Ember.merge
  * @property {String} title - title text
  * @property {Boolean} visible - whether or not modal should be visible
  */
+
+/**
+ * Click modal's cancel button
+ * @returns {RSVP.Promise} promise that resolves when all async behavior completes
+ */
+export function clickModalCancelButton () {
+  return click(selectors.cancelButton)
+}
+
+/**
+ * Click modal's confirm button
+ * @returns {RSVP.Promise} promise that resolves when all async behavior completes
+ */
+export function clickModalConfirmButton () {
+  return click(selectors.confirmButton)
+}
 
 /**
  * Verify button contains expected text
@@ -68,7 +94,7 @@ export function expectModalCancelButtonWithState (state = {}) {
     text: 'Cancel'
   }, state)
 
-  const $button = $('.frost-modal-dialog-footer-cancel-button')
+  const $button = $(selectors.cancelButton)
   expectButtonWithState($button, state)
 }
 
@@ -81,7 +107,7 @@ export function expectModalConfirmButtonWithState (state = {}) {
     text: 'Confirm'
   }, state)
 
-  const $button = $('.frost-modal-dialog-footer-confirm-button')
+  const $button = $(selectors.confirmButton)
   expectButtonWithState($button, state)
 }
 
@@ -119,7 +145,7 @@ export function expectModalWithState (state = {}) {
  * @param {String} text - expected subtitle text
  */
 export function expectModalWithSubtitle (text) {
-  const $subtitle = $('.frost-modal-dialog-header-subtitle:visible')
+  const $subtitle = $(selectors.subtitle)
   expect($subtitle.text().trim(), 'modal has expected subtitle').to.equal(text)
 }
 
@@ -128,7 +154,7 @@ export function expectModalWithSubtitle (text) {
  * @param {String} text - expected title text
  */
 export function expectModalWithTitle (text) {
-  const $title = $('.frost-modal-dialog-header-title:visible')
+  const $title = $(selectors.title)
     .clone().children().remove().end() // Remove subtitle DOM to get just the title
 
   expect($title.text().trim(), 'modal has expected title').to.equal(text)
@@ -141,11 +167,13 @@ export function expectModalWithTitle (text) {
 export function expectModalWithVisibility (visible = true) {
   const length = visible ? 1 : 0
   const message = visible ? 'modal is visible' : 'modal is not visible'
-  const $modals = $('.frost-modal-dialog:visible')
+  const $modals = $(selectors.dialog)
   expect($modals, message).to.have.length(length)
 }
 
 export default {
+  clickModalCancelButton,
+  clickModalConfirmButton,
   expectButtonToHaveText,
   expectButtonWithState,
   expectButtonWithVisibility,

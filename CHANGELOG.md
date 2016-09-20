@@ -1,3 +1,10 @@
+# 3.8.0
+
+* **Added** two new test helpers: `expectModalWithContent()` and `expectModalWithIcon()`.
+* **Added** `icon` and `content` support to `expectModalWithState()` test helper.
+
+
+
 # 3.7.0
 
 * **Added** two more test helpers: `clickModalCancelButton()` and `clickModalConfirmButton()`.

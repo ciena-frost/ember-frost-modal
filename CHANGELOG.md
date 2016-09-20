@@ -1,3 +1,9 @@
+# 3.7.0
+
+* **Added** two more test helpers: `clickModalCancelButton()` and `clickModalConfirmButton()`.
+* **Fixed** bithound.io badge in [README](README.md).
+
+
 # 3.6.0
 
 * **Added** documentation for test helpers.

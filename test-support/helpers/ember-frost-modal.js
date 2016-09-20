@@ -122,7 +122,7 @@ export function expectModalConfirmButtonWithState (state = {}) {
 
 /**
  * Verify modal content has expected text
- * @param {String} text - expected content text
+ * @param {String} content - expected content text
  */
 export function expectModalWithContent (content) {
   const $content = $(selectors.content)
@@ -138,6 +138,7 @@ export function expectModalWithIcon (icon) {
   expect($content, 'modal has expected icon').to.have.length(1)
 }
 
+/* eslint-disable complexity */
 /**
  * Verify modal has correct state
  * @param {FrostModalState} [state={}] - expected state of modal
@@ -174,6 +175,7 @@ export function expectModalWithState (state = {}) {
   expectModalCancelButtonWithState(state.cancel)
   expectModalConfirmButtonWithState(state.confirm)
 }
+/* eslint-enable complexity */
 
 /**
  * Verify modal subtitle has expected text

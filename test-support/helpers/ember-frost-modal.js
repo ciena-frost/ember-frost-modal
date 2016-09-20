@@ -9,7 +9,14 @@ const assign = Object.assign || Ember.assign || Ember.merge
 const selectors = {
   cancelButton: '.frost-modal-dialog-footer-cancel-button',
   confirmButton: '.frost-modal-dialog-footer-confirm-button',
+  content: '.frost-modal-dialog-content',
   dialog: '.frost-modal-dialog:visible',
+  icons: {
+    confirm: '.frost-icon-frost-modal-warn',
+    error: '.frost-icon-frost-modal-error',
+    info: '.frost-icon-frost-modal-info',
+    warn: '.frost-icon-frost-modal-warn'
+  },
   subtitle: '.frost-modal-dialog-header-subtitle:visible',
   title: '.frost-modal-dialog-header-title:visible'
 }
@@ -25,6 +32,8 @@ const selectors = {
  * @typedef {Object} FrostModalState
  * @property {FrostModalButtonState} cancel - state of cancel button
  * @property {FrostModalButtonState} confirm - state of confirm button
+ * @property {String} content - content text
+ * @property {String} icon - icon type (confirm, error, info, or warn)
  * @property {String} subtitle - subtitle text
  * @property {String} title - title text
  * @property {Boolean} visible - whether or not modal should be visible
@@ -112,6 +121,25 @@ export function expectModalConfirmButtonWithState (state = {}) {
 }
 
 /**
+ * Verify modal content has expected text
+ * @param {String} content - expected content text
+ */
+export function expectModalWithContent (content) {
+  const $content = $(selectors.content)
+  expect($content.text().trim(), 'modal has expected content').to.equal(content)
+}
+
+/**
+ * Verify modal has expected icon
+ * @param {String} icon - expected icon (confirm, error, info, or warn)
+ */
+export function expectModalWithIcon (icon) {
+  const $content = $(selectors.icons[icon])
+  expect($content, 'modal has expected icon').to.have.length(1)
+}
+
+/* eslint-disable complexity */
+/**
  * Verify modal has correct state
  * @param {FrostModalState} [state={}] - expected state of modal
  */
@@ -128,6 +156,10 @@ export function expectModalWithState (state = {}) {
     return
   }
 
+  if ('icon' in state) {
+    expectModalWithIcon(state.icon)
+  }
+
   if ('title' in state) {
     expectModalWithTitle(state.title)
   }
@@ -136,9 +168,14 @@ export function expectModalWithState (state = {}) {
     expectModalWithSubtitle(state.subtitle)
   }
 
+  if ('content' in state) {
+    expectModalWithContent(state.content)
+  }
+
   expectModalCancelButtonWithState(state.cancel)
   expectModalConfirmButtonWithState(state.confirm)
 }
+/* eslint-enable complexity */
 
 /**
  * Verify modal subtitle has expected text
@@ -179,6 +216,8 @@ export default {
   expectButtonWithVisibility,
   expectModalCancelButtonWithState,
   expectModalConfirmButtonWithState,
+  expectModalWithContent,
+  expectModalWithIcon,
   expectModalWithState,
   expectModalWithSubtitle,
   expectModalWithTitle,

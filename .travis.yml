@@ -26,7 +26,7 @@ script:
 - git status
 - git --no-pager log -n 5
 - npm run sass-lint
-- ember try:one $EMBER_TRY_SCENARIO --- ember tva --push-var='false'
+- ember try:one $EMBER_TRY_SCENARIO --- ember tva --push-var='false' --msg-on=$EMBER_TRY_SCENARIO
 after_success:
 - .travis/publish-coverage.sh
 addons:

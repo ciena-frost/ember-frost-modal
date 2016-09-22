@@ -26,7 +26,7 @@ describeComponent(
       initializeSvgUse()
     })
 
-    it('renders', function (/* done*/) {
+    it('renders', function (done) {
       this.timeout(10000)
       this.set('closeModal', () => {
         this.set('isModalVisible', false)
@@ -58,19 +58,22 @@ describeComponent(
           onClose=(action closeModal)
         }}
       `)
-        // eslint-disable-next-line
+      // eslint-disable-next-line
       expect($hook('about-dialog-modal'), 'Is modal visible')
         .to.have.length(1)
-      // TODO uncomment once ember-cli-visual-acceptance issues are fixed
-      // Ember.run.later(function () {
-      //   return capture('about', {
-      //     targetElement: this.$('.frost-modal-outlet-container.about')[0],
-      //     experimentalSvgs: true
-      //   })
-      // }, 2000)
+      this.$('.frost-modal-outlet-container.about').ready(() => {
+        return capture('about', {
+          targetElement: this.$('.frost-modal-outlet-container.about')[0],
+          experimentalSvgs: true
+        }).then(() => {
+          done()
+        }).catch((err) => {
+          done(err)
+        })
+      })
     })
 
-    it('renders with product', function (/* done*/) {
+    it('renders with product', function (done) {
       this.timeout(10000)
       this.set('closeModal', () => {
         this.set('isModalVisible', false)
@@ -99,19 +102,22 @@ describeComponent(
           onClose=(action closeModal)
         }}
       `)
-        // eslint-disable-next-line
+      // eslint-disable-next-line
       expect($hook('about-dialog-modal'), 'Is modal visible')
         .to.have.length(1)
-      // TODO uncomment once ember-cli-visual-acceptance issues are fixed
-      // Ember.run.later(function () {
-      //   return capture('about-with-product', {
-      //     targetElement: this.$('.frost-modal-outlet-container.about')[0],
-      //     experimentalSvgs: true
-      //   })
-      // }, 2000)
+      this.$('.frost-modal-outlet-container.about').ready(() => {
+        return capture('about-with-product', {
+          targetElement: this.$('.frost-modal-outlet-container.about')[0],
+          experimentalSvgs: true
+        }).then(() => {
+          done()
+        }).catch((err) => {
+          done(err)
+        })
+      })
     })
 
-    it('renders about-with-multiple-versions', function (/* done*/) {
+    it('renders about-with-multiple-versions', function (done) {
       this.timeout(10000)
       this.set('closeModal', () => {
         this.set('isModalVisible', false)
@@ -139,19 +145,22 @@ describeComponent(
           onClose=(action closeModal)
         }}
       `)
-        // eslint-disable-next-line
+      // eslint-disable-next-line
       expect($hook('about-dialog-modal'), 'Is modal visible')
         .to.have.length(1)
-      // TODO uncomment once ember-cli-visual-acceptance issues are fixed
-      // Ember.run.later(function () {
-      //   return capture('about-with-multiple-verions', {
-      //     targetElement: this.$('.frost-modal-outlet-container.about')[0],
-      //     experimentalSvgs: true
-      //   })
-      // }, 2000)
+      this.$('.frost-modal-outlet-container.about').ready(() => {
+        return capture('about-with-multiple-verions', {
+          targetElement: this.$('.frost-modal-outlet-container.about')[0],
+          experimentalSvgs: true
+        }).then(() => {
+          done()
+        }).catch((err) => {
+          done(err)
+        })
+      })
     })
 
-    it('renders about-with-product-and-multiple-versions', function (/* done*/) {
+    it('renders about-with-product-and-multiple-versions', function (done) {
       this.timeout(10000)
       this.set('closeModal', () => {
         this.set('isModalVisible', false)
@@ -183,16 +192,19 @@ describeComponent(
           onClose=(action closeModal)
         }}
       `)
-        // eslint-disable-next-line
+      // eslint-disable-next-line
       expect($hook('about-dialog-modal'), 'Is modal visible')
         .to.have.length(1)
-      // TODO uncomment once ember-cli-visual-acceptance issues are fixed
-      // Ember.run.later(function () {
-      //   return capture('about-with-product-and-multiple-verions', {
-      //     targetElement: this.$('.frost-modal-outlet-container.about')[0],
-      //     experimentalSvgs: true
-      //   })
-      // }, 2000)
+      this.$('.frost-modal-outlet-container.about').ready(() => {
+        return capture('about-with-product-and-multiple-verions', {
+          targetElement: this.$('.frost-modal-outlet-container.about')[0],
+          experimentalSvgs: true
+        }).then(() => {
+          done()
+        }).catch((err) => {
+          done(err)
+        })
+      })
     })
   }
 )

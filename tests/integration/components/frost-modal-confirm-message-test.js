@@ -44,15 +44,14 @@ describeComponent(
           text='100%'
         )
         isVisible=isModalVisible
-        summary='I agree!!!'
+        summary='I agree'
         title='Most definitely'
       }}`)
 
       return wait().then(() => {
         expect($hook('confirm-dialog-modal'), 'Is modal visible')
           .to.have.length(1)
-        // TODO uncomment once ember-cli-visual-acceptance issues are fixed
-        run.later(function () {
+        this.$('.frost-modal-outlet-container.message').ready(() => {
           return capture('confirm', {
             targetElement: this.$('.frost-modal-outlet-container.message')[0],
             experimentalSvgs: true
@@ -61,7 +60,7 @@ describeComponent(
           }).catch((err) => {
             done(err)
           })
-        }, 2000)
+        })
       })
     })
 

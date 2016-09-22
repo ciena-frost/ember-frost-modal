@@ -53,17 +53,20 @@ describeComponent(
       })
     })
 
-    it('renders', function (/* done*/) {
+    it('renders', function (done) {
       expect($hook(props.hook), 'Is modal visible')
         .to.have.length(1)
 
-      // TODO uncomment once ember-cli-visual-acceptance issues are fixed
-      // Ember.run.later(function () {
-      //   return capture('warning-dialog', {
-      //     targetElement: this.$('.frost-modal-outlet-container.message')[0],
-      //     experimentalSvgs: true
-      //   })
-      // }, 2000)
+      this.$('.frost-modal-outlet-container.message').ready(() => {
+        return capture('warning-dialog', {
+          targetElement: this.$('.frost-modal-outlet-container.message')[0],
+          experimentalSvgs: false
+        }).then(() => {
+          done()
+        }).catch((err) => {
+          done(err)
+        })
+      })
     })
 
     it('cancel triggers callback and close', function () {

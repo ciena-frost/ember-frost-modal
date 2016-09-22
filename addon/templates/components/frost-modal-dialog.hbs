@@ -59,7 +59,16 @@
   {{! END-SNIPPET }}
 
   {{#if params.footer}}
-    <div class="frost-modal-dialog-footer-text">{{params.footer}}</div>
+    {{#if (type-of params.footer 'object')}}
+      <div class="frost-modal-dialog-footer-object"
+        data-test={{hook (concat hook '-object')}}>
+        {{component params.footer}}
+      </div>
+    {{else}}
+      <div class="frost-modal-dialog-footer-text">
+        {{params.footer}}
+      </div>
+    {{/if}}
   {{/if}}
 
   {{frost-button

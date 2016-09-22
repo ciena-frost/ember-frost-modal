@@ -102,7 +102,7 @@ describeComponent(
       it('renders footer text', function () {
         const $footer = this.$('.frost-modal-dialog-footer-text')
         expect($footer).to.have.length(1)
-        expect($footer.text()).to.equal('Foo bar')
+        expect($footer.text().trim()).to.equal('Foo bar')
       })
     })
 

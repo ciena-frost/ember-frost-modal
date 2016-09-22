@@ -20,3 +20,4 @@ coverage.json
 /visual-acceptance
 /typings
 jsconfig.json
+*.iml

@@ -1,3 +1,8 @@
+# 3.9.0
+* Added closeOnConfirm (default true) to allow forms to submit and receive an API response prior to close
+
+
+
 # 3.8.1
 * Enable visual acceptance test
 * Switch from Firefox to Chrome for testing env.

@@ -17,6 +17,7 @@ Router.map(function () {
     this.route('dynamic-updates')
     this.route('error')
     this.route('form')
+    this.route('helpers')
     this.route('info')
     this.route('overflow')
     this.route('overview', { path: '/' })

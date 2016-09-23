@@ -10,6 +10,9 @@
     data-test={{hook (concat hook '-title')}}
   >
     {{params.title}}
+    {{#if params.subtitle}}
+      <span class="frost-modal-dialog-header-subtitle">{{params.subtitle}}</span>
+    {{/if}}
   </div>
   {{! BEGIN-SNIPPET dialog-overflow-y-start }}
   {{#if isOverflowYStart}}
@@ -55,7 +58,12 @@
   {{/if}}
   {{! END-SNIPPET }}
 
+  {{#if params.footer}}
+    <div class="frost-modal-dialog-footer-text">{{params.footer}}</div>
+  {{/if}}
+
   {{frost-button
+    class='frost-modal-dialog-footer-cancel-button'
     hook=(concat hook '-cancel')
     isVisible=params.cancel.isVisible
     priority='tertiary'
@@ -64,7 +72,21 @@
     onClick=onCancel
   }}
 
+  {{#each params.buttons as |button index|}}
+    {{frost-button
+      disabled=button.disabled
+      hook=(concat hook '-button-' index)
+      icon=button.icon
+      pack=button.pack
+      priority=button.priority
+      size='medium'
+      onClick=button.onClick
+      text=button.text
+    }}
+  {{/each}}
+
   {{frost-button
+    class='frost-modal-dialog-footer-confirm-button'
     disabled=params.confirm.disabled
     hook=(concat hook '-confirm')
     isVisible=params.confirm.isVisible

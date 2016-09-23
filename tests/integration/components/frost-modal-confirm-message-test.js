@@ -29,7 +29,7 @@ describeComponent(
       initializeSvgUse()
     })
 
-    it('renders', function (/* done*/) {
+    it('renders', function (done) {
       this.timeout(10000)
 
       this.render(hbs`
@@ -51,10 +51,15 @@ describeComponent(
       return wait().then(() => {
         expect($hook('confirm-dialog-modal'), 'Is modal visible')
           .to.have.length(1)
-
-        return capture('confirm', {
-          targetElement: this.$('.frost-modal-outlet-container.message')[0],
-          experimentalSvgs: true
+        this.$('.frost-modal-outlet-container.message').ready(() => {
+          return capture('confirm', {
+            targetElement: this.$('.frost-modal-outlet-container.message')[0],
+            experimentalSvgs: true
+          }).then(() => {
+            done()
+          }).catch((err) => {
+            done(err)
+          })
         })
       })
     })

@@ -1,5 +1,15 @@
 {{!-- BEGIN-SNIPPET error-api }}
   {{frost-modal-error-message
+    buttons=(array
+      (hash
+        disabled= // true
+        icon= // e.g. 'info'
+        onClick= // e.g. (action 'info')
+        pack= // e.g. 'frost'
+        priority= // ['primary', etc.]
+        text= // e.g. 'Foo'
+      )
+    )
     confirm=(hash
       isVisible= // (true)
       text= // ('Close')
@@ -7,6 +17,7 @@
     details=(component 'foo'
       bar= // e.g. props for 'foo'
     )
+    footer= // e.g. 'Foo bar'
     isVisible= // Required binding
     links=(array
       (hash
@@ -15,6 +26,7 @@
         text= // e.g. 'Foo'
       )
     )
+    subtitle= // e.g. 'Foo bar'
     summary= // [main message]
     targetOutlet= // ('modal')
     title= // Required

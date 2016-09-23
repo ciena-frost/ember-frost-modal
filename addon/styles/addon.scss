@@ -66,12 +66,18 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
     align-items: center;
     justify-content: flex-end;
     min-height: 70px;
-    padding-right: 20px;
+    padding: 0 20px;
     border-top: 1px solid $frost-color-lgrey-1;
     background-color: $frost-modal-dialog-footer-background-color;
 
     > * {
       margin-left: 10px;
+    }
+
+    &-text {
+      margin-right: auto;
+      margin-left: 0;
+      color: $frost-color-grey-3;
     }
   }
 
@@ -91,6 +97,12 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
 
     &-title {
       font-size: $frost-font-l;
+    }
+
+    &-subtitle {
+      display: block;
+      color: $frost-color-grey-5;
+      font-size: $frost-font-s;
     }
   }
 

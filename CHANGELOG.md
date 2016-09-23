@@ -1,3 +1,50 @@
+# 3.8.1
+* Enable visual acceptance test
+* Switch from Firefox to Chrome for testing env.
+
+
+# 3.8.0
+
+* **Added** two new test helpers: `expectModalWithContent()` and `expectModalWithIcon()`.
+* **Added** `icon` and `content` support to `expectModalWithState()` test helper.
+
+
+
+# 3.7.0
+
+* **Added** two more test helpers: `clickModalCancelButton()` and `clickModalConfirmButton()`.
+* **Fixed** bithound.io badge in [README](README.md).
+
+
+# 3.6.0
+
+* **Added** documentation for test helpers.
+
+
+# 3.5.0
+
+* **Added** test helpers that can be used by consumers.
+
+
+# 3.4.0
+
+* **Added** new `buttons` property to modals to allow user to specify additional buttons to show between the cancel and confirm buttons in the modal footer.
+
+
+
+# 3.3.0
+
+* **Added** new `footer` property to modals that allows arbitrary text to be rendered in the left side of the footer.
+
+
+
+# 3.2.0
+
+* **Added** optional `subtitle` property to modals to support adding a subtitle to the header.
+* **Upgraded** `devDependencies` to latest versions for demo app.
+
+
+
 # 3.1.2
 * Removed the hack for dynamically disabling confirm on forms
 * Added a computed property for params that fires whenever attributes are updated

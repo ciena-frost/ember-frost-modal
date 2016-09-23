@@ -67,7 +67,7 @@ export default Controller.extend({
       this.set('simpleBunsenValue', formValue)
     },
 
-    notifyAndClear () {
+    notifyClearAndClose () {
       this.get('notifications').addNotification({
         message: JSON.stringify(this.get('simpleBunsenValue'), null, 2),
         type: 'success',
@@ -75,6 +75,7 @@ export default Controller.extend({
         clearDuration: 2000
       })
       this.set('simpleBunsenValue', {})
+      this.send('closeForm')
     }
   }
 })

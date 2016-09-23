@@ -36,12 +36,13 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
 
     // Actions
     onCancel: PropTypes.func,
-    onClose: PropTypes.func.isRequired,
+    onClose: PropTypes.func,
     onConfirm: PropTypes.func
   },
 
   getDefaultProps () {
     return {
+      closeOnConfirm: true,
       closeOnOutsideClick: false,
       targetOutlet: 'modal'
     }
@@ -73,7 +74,9 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
       if (onConfirm) {
         onConfirm()
       }
-      this.onClose()
+      if (this.get('closeOnConfirm') === true) {
+        this.onClose()
+      }
     },
 
     _onOutsideClick () {

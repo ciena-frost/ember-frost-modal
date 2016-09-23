@@ -1,5 +1,6 @@
 {
   "globals": {
+    "capture": true,
     "chai": true,
     "Ember": true,
     "sinon": true,

@@ -14,6 +14,7 @@
       isVisible= // (true)
       text= // ('Cancel')
     )
+    closeOnConfirm= // (true)
     confirm=(hash
       disabled= // (false)
       isVisible=  // (true)
@@ -51,6 +52,7 @@
       text='Info'
     )
   )
+  closeOnConfirm=false
   confirm=(hash
     disabled=(not isSomethingReady)
   )
@@ -66,7 +68,7 @@
   subtitle='Lemon squeezy'
   title='Easy peasy'
   onClose=(action 'closeForm')
-  onConfirm=(action 'notifyAndClear')
+  onConfirm=(action 'notifyClearAndClose')
 }}
 {{! END-SNIPPET }}
 

@@ -1,3 +1,8 @@
+# 3.8.1
+* Enable visual acceptance test
+* Switch from Firefox to Chrome for testing env.
+
+
 # 3.8.0
 
 * **Added** two new test helpers: `expectModalWithContent()` and `expectModalWithIcon()`.

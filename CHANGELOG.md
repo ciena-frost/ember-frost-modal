@@ -1,3 +1,7 @@
+# 3.10.0
+* Remove warning when a component is passed in the footer
+* Updated example to show component usage in footer
+
 # 3.9.0
 * Added closeOnConfirm (default true) to allow forms to submit and receive an API response prior to close
 

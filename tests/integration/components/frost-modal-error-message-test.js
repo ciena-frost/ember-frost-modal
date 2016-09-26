@@ -54,15 +54,9 @@ describeComponent(
     })
 
     it('renders', function (done) {
-      this.$('.frost-modal-outlet-container.message').ready(() => {
-        return capture('error-dialog', {
-          targetElement: this.$('.frost-modal-outlet-container.message')[0],
-          experimentalSvgs: true
-        }).then(() => {
-          done()
-        }).catch((err) => {
-          done(err)
-        })
+      return capture('error-dialog', done, {
+        targetElement: this.$('.frost-modal-outlet-container.message')[0],
+        experimentalSvgs: true
       })
     })
 

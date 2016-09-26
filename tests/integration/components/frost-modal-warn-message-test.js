@@ -57,15 +57,9 @@ describeComponent(
       expect($hook(props.hook), 'Is modal visible')
         .to.have.length(1)
 
-      this.$('.frost-modal-outlet-container.message').ready(() => {
-        return capture('warning-dialog', {
-          targetElement: this.$('.frost-modal-outlet-container.message')[0],
-          experimentalSvgs: false
-        }).then(() => {
-          done()
-        }).catch((err) => {
-          done(err)
-        })
+      return capture('warning-dialog', done, {
+        targetElement: this.$('.frost-modal-outlet-container.message')[0],
+        experimentalSvgs: false
       })
     })
 

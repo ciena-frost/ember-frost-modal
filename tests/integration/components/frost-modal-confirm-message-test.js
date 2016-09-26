@@ -14,7 +14,6 @@ import {
   initialize as initializeSvgUse
 } from 'ember-frost-core/instance-initializers/svg-use-polyfill'
 import sinon from 'sinon'
-import wait from 'ember-test-helpers/wait'
 import { beforeEach } from 'mocha'
 
 describeComponent(
@@ -31,7 +30,6 @@ describeComponent(
 
     it('renders', function (done) {
       this.timeout(10000)
-
       this.render(hbs`
         {{frost-modal-outlet}}
 
@@ -48,19 +46,11 @@ describeComponent(
         title='Most definitely'
       }}`)
 
-      return wait().then(() => {
-        expect($hook('confirm-dialog-modal'), 'Is modal visible')
+      expect($hook('confirm-dialog-modal'), 'Is modal visible')
           .to.have.length(1)
-        this.$('.frost-modal-outlet-container.message').ready(() => {
-          return capture('confirm', {
-            targetElement: this.$('.frost-modal-outlet-container.message')[0],
-            experimentalSvgs: true
-          }).then(() => {
-            done()
-          }).catch((err) => {
-            done(err)
-          })
-        })
+      return capture('confirm', done, {
+        targetElement: this.$('.frost-modal-outlet-container.message')[0],
+        experimentalSvgs: true
       })
     })
 

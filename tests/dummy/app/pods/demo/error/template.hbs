@@ -17,7 +17,8 @@
     details=(component 'foo'
       bar= // e.g. props for 'foo'
     )
-    footer= // e.g. 'Foo bar'
+    footer= // e.g. 'Foo bar' or a component
+      (component 'frost-loading')
     isVisible= // Required binding
     links=(array
       (hash
@@ -41,6 +42,7 @@
     isVisible=false
   )
   hook='error-dialog'
+  footer=(component 'frost-loading' class='frost-footer-component')
   isVisible=isErrorVisible
   links=(array
     (hash

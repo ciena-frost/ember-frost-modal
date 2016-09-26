@@ -61,15 +61,9 @@ describeComponent(
       // eslint-disable-next-line
       expect($hook('about-dialog-modal'), 'Is modal visible')
         .to.have.length(1)
-      this.$('.frost-modal-outlet-container.about').ready(() => {
-        return capture('about', {
-          targetElement: this.$('.frost-modal-outlet-container.about')[0],
-          experimentalSvgs: true
-        }).then(() => {
-          done()
-        }).catch((err) => {
-          done(err)
-        })
+      return capture('about', done, {
+        targetElement: this.$('.frost-modal-outlet-container.about')[0],
+        experimentalSvgs: true
       })
     })
 
@@ -105,15 +99,9 @@ describeComponent(
       // eslint-disable-next-line
       expect($hook('about-dialog-modal'), 'Is modal visible')
         .to.have.length(1)
-      this.$('.frost-modal-outlet-container.about').ready(() => {
-        return capture('about-with-product', {
-          targetElement: this.$('.frost-modal-outlet-container.about')[0],
-          experimentalSvgs: true
-        }).then(() => {
-          done()
-        }).catch((err) => {
-          done(err)
-        })
+      return capture('about-with-product', done, {
+        targetElement: this.$('.frost-modal-outlet-container.about')[0],
+        experimentalSvgs: true
       })
     })
 
@@ -148,15 +136,9 @@ describeComponent(
       // eslint-disable-next-line
       expect($hook('about-dialog-modal'), 'Is modal visible')
         .to.have.length(1)
-      this.$('.frost-modal-outlet-container.about').ready(() => {
-        return capture('about-with-multiple-verions', {
-          targetElement: this.$('.frost-modal-outlet-container.about')[0],
-          experimentalSvgs: true
-        }).then(() => {
-          done()
-        }).catch((err) => {
-          done(err)
-        })
+      return capture('about-with-multiple-verions', done, {
+        targetElement: this.$('.frost-modal-outlet-container.about')[0],
+        experimentalSvgs: true
       })
     })
 
@@ -195,15 +177,9 @@ describeComponent(
       // eslint-disable-next-line
       expect($hook('about-dialog-modal'), 'Is modal visible')
         .to.have.length(1)
-      this.$('.frost-modal-outlet-container.about').ready(() => {
-        return capture('about-with-product-and-multiple-verions', {
-          targetElement: this.$('.frost-modal-outlet-container.about')[0],
-          experimentalSvgs: true
-        }).then(() => {
-          done()
-        }).catch((err) => {
-          done(err)
-        })
+      return capture('about-with-product-and-multiple-verions', done, {
+        targetElement: this.$('.frost-modal-outlet-container.about')[0],
+        experimentalSvgs: true
       })
     })
   }

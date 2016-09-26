@@ -74,15 +74,10 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
       margin-left: 10px;
     }
 
-    &-text {
+    &-content {
       margin-right: auto;
       margin-left: 0;
       color: $frost-color-grey-3;
-    }
-
-    &-object {
-      margin-right: auto;
-      margin-left: 0;
     }
   }
 

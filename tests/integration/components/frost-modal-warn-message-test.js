@@ -103,7 +103,7 @@ describeComponent(
       })
 
       it('renders footer text', function () {
-        const $footer = this.$('.frost-modal-dialog-footer-text')
+        const $footer = this.$('.frost-modal-dialog-footer-content')
         expect($footer).to.have.length(1)
         expect($footer.text().trim()).to.equal('Foo bar')
       })
@@ -115,7 +115,7 @@ describeComponent(
       })
 
       it('does not render footer text DOM', function () {
-        expect(this.$('.frost-modal-dialog-footer-text')).to.have.length(0)
+        expect(this.$('.frost-modal-dialog-footer-content')).to.have.length(0)
       })
     })
 

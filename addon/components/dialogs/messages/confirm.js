@@ -26,7 +26,10 @@ export default FrostModalBinding.extend(PropTypesMixin, {
       PropTypes.object,
       PropTypes.EmberObject
     ]),
-    footer: PropTypes.string,
+    footer: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.string
+    ]),
     isVisible: PropTypes.bool.isRequired,
     links: PropTypes.array,
     subtitle: PropTypes.string,

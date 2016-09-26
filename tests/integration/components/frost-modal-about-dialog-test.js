@@ -61,6 +61,7 @@ describeComponent(
       // eslint-disable-next-line
       expect($hook('about-dialog-modal'), 'Is modal visible')
         .to.have.length(1)
+
       return capture('about', done, {
         targetElement: this.$('.frost-modal-outlet-container.about')[0],
         experimentalSvgs: true

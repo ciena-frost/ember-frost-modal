@@ -12,8 +12,8 @@
 
 [ember-img]: https://img.shields.io/badge/ember-1.12.2+-orange.svg "Ember 1.12.2+"
 
-[bithound-img]: https://www.bithound.io/github/ciena-blueplanet/ember-frost-modal/badges/score.svg "bitHound"
-[bithound-url]: https://www.bithound.io/github/ciena-blueplanet/ember-frost-modal
+[bithound-img]: https://www.bithound.io/github/ciena-frost/ember-frost-modal/badges/score.svg "bitHound"
+[bithound-url]: https://www.bithound.io/github/ciena-frost/ember-frost-modal
 
 # ember-frost-modal
 ###### Dependencies

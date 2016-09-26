@@ -28,6 +28,7 @@ describeComponent(
         this.set('isFormVisible', false)
       })
       props = {
+        closeOnConfirm: true,
         hook: 'form-dialog',
         isFormVisible: true,
         simpleBunsenChange: sinon.spy(),
@@ -64,6 +65,7 @@ describeComponent(
 
           {{frost-modal-form
             buttons=buttons
+            closeOnConfirm=closeOnConfirm
             footer=footer
             form=(component 'frost-bunsen-form'
               bunsenModel=simpleBunsenModel
@@ -94,6 +96,22 @@ describeComponent(
     it('triggers function on confirm click', function () {
       $hook('form-dialog-modal-confirm').click()
       expect(props.onConfirm.called, 'Is confirm called').to.be.true
+    })
+
+    it('closes on confirm when closeOnConfirm=true', function () {
+      $hook('form-dialog-modal-confirm').click()
+      expect($hook('form-dialog-modal'), 'Is modal hidden').to.have.length(0)
+    })
+
+    describe('when closeOnConfirm is false', function () {
+      beforeEach(function () {
+        this.set('closeOnConfirm', false)
+      })
+
+      it('stays open', function () {
+        $hook('form-dialog-modal-confirm').click()
+        expect($hook('form-dialog-modal'), 'Is modal hidden').to.have.length(1)
+      })
     })
 
     describe('when subtitle present', function () {

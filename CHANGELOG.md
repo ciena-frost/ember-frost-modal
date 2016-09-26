@@ -1,3 +1,36 @@
+# 3.9.0
+* Added closeOnConfirm (default true) to allow forms to submit and receive an API response prior to close
+
+
+
+# 3.8.1
+* Enable visual acceptance test
+* Switch from Firefox to Chrome for testing env.
+
+
+# 3.8.0
+
+* **Added** two new test helpers: `expectModalWithContent()` and `expectModalWithIcon()`.
+* **Added** `icon` and `content` support to `expectModalWithState()` test helper.
+
+
+
+# 3.7.0
+
+* **Added** two more test helpers: `clickModalCancelButton()` and `clickModalConfirmButton()`.
+* **Fixed** bithound.io badge in [README](README.md).
+
+
+# 3.6.0
+
+* **Added** documentation for test helpers.
+
+
+# 3.5.0
+
+* **Added** test helpers that can be used by consumers.
+
+
 # 3.4.0
 
 * **Added** new `buttons` property to modals to allow user to specify additional buttons to show between the cancel and confirm buttons in the modal footer.

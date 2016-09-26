@@ -73,6 +73,27 @@ $frost-modal-demos-shadow-color: rgba(0, 0, 0, .13);
   }
 }
 
+dl {
+  dd {
+    margin: 10px 0 10px 10px;
+    font-style: italic;
+  }
+
+  dt {
+    span {
+      padding: 2px 4px;
+      border-radius: 3px;
+      background: $frost-color-night-3;
+      color: $frost-color-white;
+    }
+  }
+}
+
+.sep {
+  border-top: 1px solid $frost-color-lgrey-2;
+  border-bottom: 0;
+}
+
 .frost-modal-demo {
   display: flex;
   flex-direction: row;

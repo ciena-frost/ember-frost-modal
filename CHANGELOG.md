@@ -1,3 +1,7 @@
+# 3.10.1
+
+* Remove type-of dependency
+
 # 3.10.0
 * Remove warning when a component is passed in the footer
 * Updated example to show component usage in footer

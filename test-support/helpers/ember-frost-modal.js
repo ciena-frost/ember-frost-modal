@@ -56,6 +56,22 @@ export function clickModalConfirmButton () {
 }
 
 /**
+ * Verify button is disabled
+ * @param {jQuery} $button - jQuery instance containing button
+ */
+export function expectButtonToBeDisabled ($button) {
+  expect($button.is(':disabled')).to.equal(true)
+}
+
+/**
+ * Verify button is enabled
+ * @param {jQuery} $button - jQuery instance containing button
+ */
+export function expectButtonToBeEnabled ($button) {
+  expect($button.is(':disabled')).to.equal(false)
+}
+
+/**
  * Verify button contains expected text
  * @param {jQuery} $button - jQuery instance containing button
  * @param {String} text - expected text
@@ -76,6 +92,12 @@ export function expectButtonWithState ($button, state) {
   }, state)
 
   expectButtonWithVisibility($button, state.visible, state.text)
+
+  if (state.disabled) {
+    expectButtonToBeDisabled($button)
+  } else {
+    expectButtonToBeEnabled($button)
+  }
 
   if (state.visible) {
     expectButtonToHaveText($button, state.text)
@@ -211,6 +233,8 @@ export function expectModalWithVisibility (visible = true) {
 export default {
   clickModalCancelButton,
   clickModalConfirmButton,
+  expectButtonToBeDisabled,
+  expectButtonToBeEnabled,
   expectButtonToHaveText,
   expectButtonWithState,
   expectButtonWithVisibility,

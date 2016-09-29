@@ -1,3 +1,9 @@
+# 3.11.0
+
+* **Added** two new test helpers `expectButtonToBeDisabled()` and `expectButtonToBeEnabled()`.
+* **Fixed** test helper `expectButtonWithState()` to check disabled state.
+
+
 # 3.10.1
 
 * Remove type-of dependency

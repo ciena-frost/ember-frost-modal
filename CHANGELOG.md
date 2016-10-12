@@ -1,3 +1,8 @@
+# 3.11.1
+
+* **Fixed** code so it works with versions of Ember all the back to `2.3`.
+* **Upgraded** dependencies.
+
 # 3.11.0
 
 * **Added** two new test helpers `expectButtonToBeDisabled()` and `expectButtonToBeEnabled()`.

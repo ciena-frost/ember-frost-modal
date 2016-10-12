@@ -1,14 +1,8 @@
-
-import {
-  describe,
-  it,
-  beforeEach,
-  afterEach
-} from 'mocha'
-import { expect } from 'chai'
+import {expect} from 'chai'
+import {$hook} from 'ember-hook'
+import {afterEach, beforeEach, describe, it} from 'mocha'
 import startApp from '../helpers/start-app'
 import destroyApp from '../helpers/destroy-app'
-import { $hook } from 'ember-hook'
 
 describe('Acceptance: FrostModalOutlet', function () {
   let application
@@ -29,24 +23,34 @@ describe('Acceptance: FrostModalOutlet', function () {
   // The alternative would be to figure out how Ember is handling
   // the programmatic click here (appears to be region based + simulation
   // https://github.com/emberjs/ember.js/blob/v2.7.0/packages/ember-testing/lib/events.js#L29)
-  it('can visit /frost-modal-outlet-test', function () {
-    visit('/frost-modal-outlet-test')
 
-    andThen(() => {
+  describe('visit /frost-modal-outlet-test', function () {
+    beforeEach(function () {
+      return visit('/frost-modal-outlet-test')
+    })
+
+    it('renders as expected', function () {
       expect(currentPath()).to.equal('frost-modal-outlet-test')
-
       expect($hook('basic-modal'), 'Modal is initially hidden')
         .to.have.length(0)
+    })
 
-      click($hook('launcher'))
+    describe('launch modal', function () {
+      beforeEach(function () {
+        return click($hook('launcher'))
+      })
 
-      andThen(() => {
+      it('renders as expected', function () {
         expect($hook('basic-modal'), 'Modal becomes visible')
           .to.have.length(1)
+      })
 
-        click($hook('modal-outlet-basic-container'))
+      describe('dismiss modal', function () {
+        beforeEach(function () {
+          return click($hook('basic-modal-confirm'))
+        })
 
-        andThen(() => {
+        it('renders as expected', function () {
           expect($hook('basic-modal'), 'Modal is dismissed')
             .to.have.length(0)
         })

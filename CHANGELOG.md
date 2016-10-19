@@ -1,3 +1,8 @@
+# 3.11.2
+Fixed issue with coverage not publishing
+
+
+
 # 3.11.1
 
 * **Fixed** code so it works with versions of Ember all the back to `2.3`.

@@ -1,3 +1,8 @@
+# 4.0.0
+*upgrade* ember-prop-types to v3.x. Remove `this._super()` to support this. 
+
+
+
 # 3.11.2
 Fixed issue with coverage not publishing
 

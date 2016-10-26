@@ -40,15 +40,11 @@ export default FrostModalBinding.extend(PropTypesMixin, {
   },
 
   getDefaultProps () {
-    let defaultProps = this._super()
-
-    assign(defaultProps, {
+    return {
       animation: message,
       classModifier: 'message',
       modal: 'frost-modal-dialog'
-    })
-
-    return defaultProps
+    }
   },
 
   // == Computed properties ===================================================

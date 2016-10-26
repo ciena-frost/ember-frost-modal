@@ -33,16 +33,12 @@ export default FrostModalBinding.extend(PropTypesMixin, {
   },
 
   getDefaultProps () {
-    let defaultProps = this._super()
-
-    assign(defaultProps, {
+    return {
       animation: about,
       classModifier: 'about',
       closeOnOutsideClick: true,
       modal: 'frost-modal-about-dialog'
-    })
-
-    return defaultProps
+    }
   },
 
   // == Computed properties ===================================================

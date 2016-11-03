@@ -1,5 +1,5 @@
 import Ember from 'ember'
-const { A, run } = Ember
+const { A } = Ember
 import { expect } from 'chai'
 import {
   describeComponent,

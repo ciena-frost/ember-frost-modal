@@ -1,5 +1,3 @@
-import Ember from 'ember'
-const { run } = Ember
 import { expect } from 'chai'
 import {
   $hook,

@@ -54,7 +54,7 @@ describeComponent(
       })
     })
 
-    it('confirm triggers the callback and closes', function () {
+    it('confirm triggers the callback and closes', function (done) {
       this.timeout(10000)
       this.set('closeModal', () => {
         this.set('isModalVisible', false)
@@ -88,6 +88,7 @@ describeComponent(
         expect(props.onConfirm.called, 'Is confirm called').to.be.true
         expect($hook('confirm-dialog-modal'), 'Is modal hidden')
           .to.have.length(0)
+        done()
       })
     })
   }

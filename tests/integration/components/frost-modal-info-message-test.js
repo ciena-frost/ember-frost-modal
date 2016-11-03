@@ -24,24 +24,22 @@ describeComponent(
       this.set('closeModal', () => {
         this.set('isModalVisible', false)
       })
-      run(() => {
-        this.set('isModalVisible', true)
+      this.set('isModalVisible', true)
 
-        this.render(hbs`
-          {{frost-modal-outlet}}
+      this.render(hbs`
+        {{frost-modal-outlet}}
 
-          {{frost-modal-info-message
-            buttons=buttons
-            footer=footer
-            hook='info-dialog'
-            isVisible=isModalVisible
-            subtitle=subtitle
-            summary='Summary'
-            title='Title'
-            onClose=(action closeModal)
-          }}
-        `)
-      })
+        {{frost-modal-info-message
+          buttons=buttons
+          footer=footer
+          hook='info-dialog'
+          isVisible=isModalVisible
+          subtitle=subtitle
+          summary='Summary'
+          title='Title'
+          onClose=(action closeModal)
+        }}
+      `)
     })
 
     it('renders', function (done) {

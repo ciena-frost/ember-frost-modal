@@ -6,7 +6,6 @@ const {
 import FrostModalBinding from '../../frost-modal-binding'
 import { message } from '../../../helpers/frost-modal-animation'
 import PropTypesMixin, { PropTypes } from 'ember-prop-types'
-const assign = Object.assign || Ember.assign || Ember.merge
 
 export default FrostModalBinding.extend(PropTypesMixin, {
 

@@ -16,7 +16,7 @@
   },
   "repository": "git@github.com:ciena-frost/ember-frost-modal.git",
   "engines": {
-    "node": ">= 5.0.0"
+    "node": ">= 6.0.0"
   },
   "author": "Steven Glanzer (https://github.com/sglanzer)",
   "contributors": [

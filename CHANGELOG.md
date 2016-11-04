@@ -1,3 +1,7 @@
+# 5.0.1
+**fix** gh-pages demo
+
+
 # 5.0.0
 **updated** node version to 6
 **updated** coverage props

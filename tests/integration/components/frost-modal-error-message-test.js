@@ -1,5 +1,5 @@
 import Ember from 'ember'
-const { A, run } = Ember
+const { A } = Ember
 import { expect } from 'chai'
 import {
   describeComponent,
@@ -30,27 +30,25 @@ describeComponent(
       while (this.get('things').length < 50) {
         things.addObject(`Thing ${things.length + 1}`)
       }
-      run(() => {
-        this.set('isModalVisible', true)
+      this.set('isModalVisible', true)
 
-        this.render(hbs`
-          {{frost-modal-outlet}}
-          {{frost-modal-error-message
-            buttons=buttons
-            confirm=(hash
-              isVisible=false
-            )
-            details=(component 'list-em' things=things)
-            footer=footer
-            hook='error-dialog'
-            isVisible=isModalVisible
-            subtitle=subtitle
-            summary='Are you familiar with the old robot saying?'
-            title='"Does not compute"'
-            onClose=(action closeModal)
-          }}`
-        )
-      })
+      this.render(hbs`
+        {{frost-modal-outlet}}
+        {{frost-modal-error-message
+          buttons=buttons
+          confirm=(hash
+            isVisible=false
+          )
+          details=(component 'list-em' things=things)
+          footer=footer
+          hook='error-dialog'
+          isVisible=isModalVisible
+          subtitle=subtitle
+          summary='Are you familiar with the old robot saying?'
+          title='"Does not compute"'
+          onClose=(action closeModal)
+        }}`
+      )
     })
 
     it('renders', function (done) {

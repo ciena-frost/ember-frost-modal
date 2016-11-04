@@ -9,14 +9,15 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "npm run lint && ember test",
+    "test": "npm run lint && COVERAGE=true ember test",
     "eslint": "eslint *.js addon app blueprints config tests --fix",
+    "md-lint": "remark *.md",
     "sass-lint": "sass-lint -q -v",
-    "lint": "npm run eslint && npm run sass-lint"
+    "lint": "npm run eslint && npm run sass-lint && npm run md-lint"
   },
   "repository": "git@github.com:ciena-frost/ember-frost-modal.git",
   "engines": {
-    "node": ">= 5.0.0"
+    "node": ">= 6.0.0"
   },
   "author": "Steven Glanzer (https://github.com/sglanzer)",
   "contributors": [
@@ -50,22 +51,22 @@
     "ember-cli-visual-acceptance": "^2.0.0",
     "ember-code-snippet": "1.8.0",
     "ember-computed-decorators": "0.2.2",
-    "ember-concurrency": "0.7.10",
+    "ember-concurrency": "~0.7.10",
     "ember-disable-proxy-controllers": "^1.0.1",
-    "ember-elsewhere": "0.4.1",
+    "ember-elsewhere": "~0.4.1",
     "ember-export-application-global": "^1.0.5",
-    "ember-frost-bunsen": "10.0.0",
-    "ember-frost-core": "0.28.1",
-    "ember-frost-tabs": "2.1.0",
+    "ember-frost-bunsen": "~10.0.0",
+    "ember-frost-core": "~0.29.0",
+    "ember-frost-tabs": "~4.0.0",
     "ember-get-config": "0.1.11",
-    "ember-hook": "1.3.5",
+    "ember-hook": "~1.3.5",
     "ember-ignore-children-helper": "^1.0.0",
     "ember-load-initializers": "^0.5.1",
     "ember-lodash-shim": "1.0.1",
     "ember-moment": "7.0.0-beta.3",
     "ember-one-way-controls": "1.1.1",
     "ember-perfectscroll": "0.1.12",
-    "ember-prop-types": "3.0.2",
+    "ember-prop-types": "~3.0.2",
     "ember-redux": "1.6.0",
     "ember-resolver": "^2.0.3",
     "ember-seamless-immutable-shim": "^1.0.1",

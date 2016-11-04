@@ -1,5 +1,3 @@
-import Ember from 'ember'
-const { run } = Ember
 import { expect } from 'chai'
 import {
   describeComponent,
@@ -32,25 +30,23 @@ describeComponent(
         onCancel: sinon.spy(),
         isModalVisible: true
       }
-      run(() => {
-        this.setProperties(props)
-        this.render(hbs`
-          {{frost-modal-outlet}}
-          {{frost-modal-warn-message
-            buttons=buttons
-            cancel=(hash
-              text='Nope'
-            )
-            footer=footer
-            hook=hook
-            isVisible=isModalVisible
-            subtitle=subtitle
-            summary='Take this'
-            title="It's dangerous to go alone!"
-            onCancel=onCancel
-            onClose=(action closeModal)
-          }}`)
-      })
+      this.setProperties(props)
+      this.render(hbs`
+        {{frost-modal-outlet}}
+        {{frost-modal-warn-message
+          buttons=buttons
+          cancel=(hash
+            text='Nope'
+          )
+          footer=footer
+          hook=hook
+          isVisible=isModalVisible
+          subtitle=subtitle
+          summary='Take this'
+          title="It's dangerous to go alone!"
+          onCancel=onCancel
+          onClose=(action closeModal)
+        }}`)
     })
 
     it('renders', function (done) {

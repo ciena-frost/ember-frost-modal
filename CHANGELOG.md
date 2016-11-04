@@ -1,3 +1,8 @@
+# 5.0.0
+**updated** node version to 6
+**updated** coverage props
+
+
 # 4.0.0
 *upgrade* ember-prop-types to v3.x. Remove `this._super()` to support this. 
 

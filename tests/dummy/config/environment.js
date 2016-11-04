@@ -37,7 +37,7 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-    ENV.rootURL = '/frost-modal'
+    ENV.rootURL = '/ember-frost-modal'
     ENV.isDemo = true
   }
 

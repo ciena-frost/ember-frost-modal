@@ -10,7 +10,6 @@ import {
 import { beforeEach } from 'mocha'
 import hbs from 'htmlbars-inline-precompile'
 
-
 describeComponent(
   'frost-modal-about',
   'Integration: FrostModalAboutComponent',

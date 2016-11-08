@@ -12,6 +12,7 @@ export default FrostModalBinding.extend(PropTypesMixin, {
     // Options
     buttons: PropTypes.array,
     cancel: PropTypes.shape({
+      disabled: PropTypes.bool,
       isVisible: PropTypes.bool,
       text: PropTypes.string
     }),

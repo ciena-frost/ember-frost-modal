@@ -1,3 +1,8 @@
+# 5.1.0
+Add ability to disabled Cancel button in dialog
+
+
+
 # 5.0.1
 **fix** gh-pages demo
 

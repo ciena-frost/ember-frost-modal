@@ -14,11 +14,13 @@ export default FrostModalBinding.extend(PropTypesMixin, {
     cancel: PropTypes.shape({
       disabled: PropTypes.bool,
       isVisible: PropTypes.bool,
+      tabIndex: PropTypes.number,
       text: PropTypes.string
     }),
     confirm: PropTypes.shape({
       disabled: PropTypes.bool,
       isVisible: PropTypes.bool,
+      tabIndex: PropTypes.number,
       text: PropTypes.string
     }),
     footer: PropTypes.string,

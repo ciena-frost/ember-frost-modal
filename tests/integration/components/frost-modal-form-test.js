@@ -209,6 +209,14 @@ describeComponent(
       it('renders custom buttons plus cancel and create buttons', function () {
         expect(this.$('.frost-modal-dialog-footer button')).to.have.length(4)
       })
+
+      it('should have first button with tabIndex of 0', function () {
+        expect($hook('form-dialog-modal-button-0').prop('tabindex')).to.equal(0)
+      })
+
+      it('should have second button with tabIndex of 0', function () {
+        expect($hook('form-dialog-modal-button-1').prop('tabindex')).to.equal(0)
+      })
     })
 
     describe('when buttons are given tabIndex', function () {

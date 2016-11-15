@@ -1,3 +1,9 @@
+# 5.2.0
+* Added tabIndex parameter to dialog buttons
+* Gave cancel button a default tabIndex of 1 so that it comes after confirm button in tab order
+
+
+
 # 5.1.1
 No CHANGELOG section found in Pull Request description.
 Use a `# CHANGELOG` section in your Pull Request description to auto-populate the `CHANGELOG.md`

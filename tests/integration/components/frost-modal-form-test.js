@@ -65,7 +65,9 @@ describeComponent(
 
           {{frost-modal-form
             buttons=buttons
+            cancel=cancel
             closeOnConfirm=closeOnConfirm
+            confirm=confirm
             footer=footer
             form=(component 'frost-bunsen-form'
               bunsenModel=simpleBunsenModel
@@ -101,6 +103,38 @@ describeComponent(
     it('closes on confirm when closeOnConfirm=true', function () {
       $hook('form-dialog-modal-confirm').click()
       expect($hook('form-dialog-modal'), 'Is modal hidden').to.have.length(0)
+    })
+
+    it('should have confirm button with tabIndex === 0', function () {
+      expect($hook('form-dialog-modal-confirm').prop('tabindex')).to.equal(0)
+    })
+
+    it('should have cancel button with tabIndex === 1', function () {
+      expect($hook('form-dialog-modal-cancel').prop('tabindex')).to.equal(1)
+    })
+
+    describe('when cancel is given tabIndex: 0', function () {
+      beforeEach(function () {
+        this.set('cancel', {
+          tabIndex: 0
+        })
+      })
+
+      it('should have cancel button with tabIndex === 0', function () {
+        expect($hook('form-dialog-modal-cancel').prop('tabindex')).to.equal(0)
+      })
+    })
+
+    describe('when confirm is given tabIndex: 1', function () {
+      beforeEach(function () {
+        this.set('confirm', {
+          tabIndex: 1
+        })
+      })
+
+      it('should have confirm button with tabIndex === 1', function () {
+        expect($hook('form-dialog-modal-confirm').prop('tabindex')).to.equal(1)
+      })
     })
 
     describe('when closeOnConfirm is false', function () {
@@ -174,6 +208,39 @@ describeComponent(
 
       it('renders custom buttons plus cancel and create buttons', function () {
         expect(this.$('.frost-modal-dialog-footer button')).to.have.length(4)
+      })
+
+      it('should have first button with tabIndex of 0', function () {
+        expect($hook('form-dialog-modal-button-0').prop('tabindex')).to.equal(0)
+      })
+
+      it('should have second button with tabIndex of 0', function () {
+        expect($hook('form-dialog-modal-button-1').prop('tabindex')).to.equal(0)
+      })
+    })
+
+    describe('when buttons are given tabIndex', function () {
+      beforeEach(function () {
+        this.set('buttons', [
+          {
+            priority: 'secondary',
+            tabIndex: 2,
+            text: 'Foo'
+          },
+          {
+            priority: 'secondary',
+            tabIndex: 1,
+            text: 'Bar'
+          }
+        ])
+      })
+
+      it('should have first button with tabIndex === 2', function () {
+        expect($hook('form-dialog-modal-button-0').prop('tabindex')).to.equal(2)
+      })
+
+      it('should have second button with tabIndex === 1', function () {
+        expect($hook('form-dialog-modal-button-1').prop('tabindex')).to.equal(1)
       })
     })
 

@@ -69,7 +69,7 @@
     isVisible=params.cancel.isVisible
     priority='tertiary'
     size='medium'
-    tabIndex=(ifUndefined params.cancel.tabIndex 1 params.cancel.tabIndex)
+    tabIndex=(if (or params.cancel.tabIndex (eq params.cancel.tabIndex 0)) params.cancel.tabIndex 1)
     text=(if params.cancel.text params.cancel.text 'Cancel')
     onClick=onCancel
   }}
@@ -83,7 +83,7 @@
       priority=button.priority
       size='medium'
       onClick=button.onClick
-      tabIndex=(ifUndefined button.tabIndex 0 button.tabIndex)
+      tabIndex=(if button.tabIndex button.tabIndex 0)
       text=button.text
     }}
   {{/each}}
@@ -95,7 +95,7 @@
     isVisible=params.confirm.isVisible
     priority='primary'
     size='medium'
-    tabIndex=(ifUndefined params.confirm.tabIndex 0 params.confirm.tabIndex)
+    tabIndex=(if params.confirm.tabIndex params.confirm.tabIndex 0)
     text=(if params.confirm.text params.confirm.text 'Confirm')
     onClick=onConfirm
   }}

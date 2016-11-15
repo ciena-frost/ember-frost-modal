@@ -133,7 +133,7 @@ describeComponent(
       })
 
       it('should have confirm button with tabIndex === 1', function () {
-        expect($hook('form-dialog-modal-cancel').prop('tabindex')).to.equal(1)
+        expect($hook('form-dialog-modal-confirm').prop('tabindex')).to.equal(1)
       })
     })
 

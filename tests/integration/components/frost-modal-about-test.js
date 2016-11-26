@@ -34,19 +34,19 @@ describeComponent(
 
         {{frost-modal-about
           brandingStrip=(hash
-            icon='branding-strip'
-            pack='dummy'
+            icon='company-strip'
+            pack='frost-modal'
           )
           copyright='copyright'
           hook='about-dialog'
           isVisible=isModalVisible
           logo=(hash
-            icon='logo'
-            pack='dummy'
+            icon='company'
+            pack='frost-modal'
           )
           product=(hash
             icon='product'
-            pack='dummy'
+            pack='frost-modal'
           )
           versions=(array
             'Version: 1.0.0'

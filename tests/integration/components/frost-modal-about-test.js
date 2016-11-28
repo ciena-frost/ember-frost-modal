@@ -34,14 +34,14 @@ describeComponent(
 
         {{frost-modal-about
           brandingStrip=(hash
-            icon='branding-strip'
+            icon='company-strip'
             pack='dummy'
           )
           copyright='copyright'
           hook='about-dialog'
           isVisible=isModalVisible
           logo=(hash
-            icon='logo'
+            icon='company'
             pack='dummy'
           )
           product=(hash

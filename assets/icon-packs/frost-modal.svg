@@ -1,11 +1,4 @@
 <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' style='display: none'>
-<symbol id="about-close" viewBox="0 0 30 30" preserveAspectRatio="undefined">
-	<circle fill="#FFFFFF" cx="15" cy="15" r="15"/>
-  <rect x="13.5" y="7" transform="matrix(0.7071 0.7071 -0.7071 0.7071 15 -6.2132)" width="3" height="15.9"/>
-  <rect x="7" y="13.5" transform="matrix(0.7071 0.7071 -0.7071 0.7071 15 -6.2132)" width="15.9" height="3"/>
-  <path d="M15,2c7.2,0,13,5.8,13,13s-5.8,13-13,13S2,22.2,2,15S7.8,2,15,2 M15,0C6.7,0,0,6.7,0,15s6.7,15,15,15
-  s15-6.7,15-15S23.3,0,15,0L15,0z"/>
-</symbol>
 <symbol id="error" viewBox="0 0 80 80" preserveAspectRatio="undefined">
 	<polygon fill="#ED5959" points="24.3,80 0,55.7 0,22.4 24.3,0 57.6,0 80,22.4 80,55.7 57.6,80"/>
 	<circle fill="#FFFFFF" cx="40.1" cy="58.1" r="4.5"/>
@@ -25,5 +18,17 @@
 		C42,15.2,41.1,14.7,40.2,14.7z"/>
   <circle fill="#7C807F" cx="40.1" cy="57" r="3.3"/>
   <path fill="#7C807F" d="M44,30.8c0-2.7-1.8-4.8-4-4.8c-2.2,0-3.9,2.5-3.9,5.2l2.4,17.6c0,1,0.6,1.7,1.4,1.7s1.4-0.8,1.4-1.7L44,30.8z"/>
+</symbol>
+<symbol id="warning" viewBox="0 0 80 80" preserveAspectRatio="undefined">
+	<path fill="none" stroke="#BABCBE" stroke-width="4" stroke-miterlimit="10" d="M435.1,599l30-45.1c1.9-2.9,6.2-2.9,8.2,0
+		l30.2,45.1c2.2,3.3-0.2,7.6-4.1,7.6h-60.2C435.3,606.6,432.9,602.3,435.1,599z"/>
+	<circle fill="#7C807F" cx="469.1" cy="596" r="3.3"/>
+	<path fill="#7C807F" d="M473,569.8c0-2.7-1.8-4.8-4-4.8c-2.2,0-3.9,2.5-3.9,5.2l2.4,17.6c0,1,0.6,1.7,1.4,1.7
+		c0.8,0,1.4-0.8,1.4-1.7L473,569.8z"/>
+	<path fill="none" stroke="#BABCBE" stroke-width="4" stroke-miterlimit="10" d="M6.1,60l30-45.1c1.9-2.9,6.2-2.9,8.2,0L74.4,60
+		c2.2,3.3-0.2,7.6-4.1,7.6H10.2C6.3,67.6,3.9,63.3,6.1,60z"/>
+	<circle fill="#7C807F" cx="40.1" cy="57" r="3.3"/>
+	<path fill="#7C807F" d="M44,30.8c0-2.7-1.8-4.8-4-4.8c-2.2,0-3.9,2.5-3.9,5.2l2.4,17.6c0,1,0.6,1.7,1.4,1.7s1.4-0.8,1.4-1.7
+		L44,30.8z"/>
 </symbol>
 </svg>

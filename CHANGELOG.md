@@ -1,3 +1,7 @@
+# 5.2.1
+* Add icons
+* Fix issue with frost-tabs
+
 # 5.2.0
 * Added tabIndex parameter to dialog buttons
 * Gave cancel button a default tabIndex of 1 so that it comes after confirm button in tab order

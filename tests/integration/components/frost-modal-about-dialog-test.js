@@ -39,18 +39,18 @@ describeComponent(
         {{frost-modal-about
           brandingStrip=(hash
             icon='company-strip'
-            pack='frost-modal'
+            pack='dummy'
           )
           copyright='copyright'
           hook='about-dialog'
           isVisible=isModalVisible
           logo=(hash
             icon='company'
-            pack='frost-modal'
+            pack='dummy'
           )
           product=(hash
             icon='product'
-            pack='frost-modal'
+            pack='dummy'
           )
           versions=(array
             'Version: 1.0.0'
@@ -81,18 +81,18 @@ describeComponent(
         {{frost-modal-about
           brandingStrip=(hash
             icon='company-strip'
-            pack='frost-modal'
+            pack='dummy'
           )
           copyright='copyright'
           hook='about-dialog'
           isVisible=isModalVisible
           logo=(hash
             icon='company'
-            pack='frost-modal'
+            pack='dummy'
           )
           product=(hash
             icon='product'
-            pack='frost-modal'
+            pack='dummy'
           )
           onClose=(action closeModal)
         }}
@@ -119,14 +119,14 @@ describeComponent(
         {{frost-modal-about
           brandingStrip=(hash
             icon='company-strip'
-            pack='frost-modal'
+            pack='dummy'
           )
           copyright='copyright'
           hook='about-dialog'
           isVisible=isModalVisible
           logo=(hash
             icon='company'
-            pack='frost-modal'
+            pack='dummy'
           )
           versions=(array
             'Version: 1.0.0' 'Version: 2.3.4'
@@ -156,18 +156,18 @@ describeComponent(
         {{frost-modal-about
           brandingStrip=(hash
             icon='company-strip'
-            pack='frost-modal'
+            pack='dummy'
           )
           copyright='copyright'
           hook='about-dialog'
           isVisible=isModalVisible
           logo=(hash
             icon='company'
-            pack='frost-modal'
+            pack='dummy'
           )
           product=(hash
             icon='product'
-            pack='frost-modal'
+            pack='dummy'
           )
           versions=(array
             'Version: 1.0.0' 'Version: 2.3.4'

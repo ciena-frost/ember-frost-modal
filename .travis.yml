@@ -9,6 +9,8 @@ branches:
   - "/^v[0-9\\.]+/"
 matrix:
   fast_finish: true
+  allow_failures:
+  - env: EMBER_TRY_SCENARIO=ember-release
 before_install:
 - npm config set spin false
 - npm install -g coveralls pr-bumper
@@ -41,7 +43,6 @@ env:
   matrix:
     - EMBER_TRY_SCENARIO=ember-2-3
     - EMBER_TRY_SCENARIO=default
-    - EMBER_TRY_SCENARIO=ember-release
   global:
     - CXX=g++-4.8
     - secure: Zflu328okdtasab8EadDgbbVTpSExWZJx8bU/uLR6JLznje252yLyA5ppQbpa6FigCJHSd1GxF2Wr9EPBU0za+TRdM6rrIuLqrcHZc7fWzg6AKOORGznRVMKSwVWyyZqp30XR9Fp9XvzyjJjUaiQ/5RgPq+vTkqO19CRw3V4gXoqgejSjasSgPJ4FQlmmmeg/aiB9cuxu38RTAn2EYQx1Ojas98Cu01Az3sO9Na3xz8/ne4T44DFM4ybX+zalwFjhJj7o4x1FZJD5XZR+BV1EcAU+0KG1c4S7TqidWtcHf06iiIflDNE5rClpPEiuH2I1wI93Df1Q6LmALeNQHhntXWcI4PcablfA4VQFiclSEFmBAd43K7XqZE8FuN5Z/Q0E3/b1OlVupOSu4djaKJ2u94ulaCVbNyeeF32FqaA8n6VltqVTBqqBwfRHNnnLzNe7DPGuwjgyv2tHRh0k0loLPmNOZaMnNqCimX8DmWG4Yocn8oR8X0+7JbLrSziZp9b12h1VUunpVFHaNxevfrrMmjCRI7rHD42AZyYeIM0fi3JzwQbZ+ceYuGtqHHeKf630pwgvyap8cI3DQ6aLA7GFROT/b03N82FzAjCSmL8xmvXIDnaSvXJQKy3j1cjmbuJA2LNGi5Cf+mcNuEyRn1ljMUvE2nsKC2x/UKBnQW5xi4=

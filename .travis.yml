@@ -9,6 +9,8 @@ branches:
   - "/^v[0-9\\.]+/"
 matrix:
   fast_finish: true
+  allow_failures:
+  - env: EMBER_TRY_SCENARIO=ember-release
 before_install:
 - npm config set spin false
 - npm install -g coveralls pr-bumper

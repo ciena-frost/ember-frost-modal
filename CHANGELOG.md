@@ -1,3 +1,7 @@
+# 6.0.0
+* **Updated** `ember-frost-core` to `^1.0.0`
+
+
 # 5.2.1
 * Add icons
 * Fix issue with frost-tabs

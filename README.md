@@ -76,6 +76,7 @@ A dummy application for development is available under `ember-frost-modal/tests/
 To run the server run `ember server` (or `npm start`) from the root of the repository and
 visit the app at http://localhost:4200.
 
+
 ### Testing
 Run `npm test` from the root of the project to run linting checks as well as execute the test suite
 and output code coverage.

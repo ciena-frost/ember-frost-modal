@@ -6,10 +6,10 @@ module.exports = {
     return this.addAddonsToProject({
       packages: [
         {name: 'ember-elsewhere', target: '~0.4.1'},
-        {name: 'ember-frost-core', target: '>=0.23.0 <1.0.0'},
+        {name: 'ember-frost-core', target: '^1.0.3'},
         {name: 'ember-get-config', target: '~0.1.11'},
         {name: 'ember-ignore-children-helper', target: '^1.0.0'},
-        {name: 'liquid-fire', target: '~0.25.0'}
+        {name: 'liquid-fire', target: '~0.26.1'}
       ]
     })
   }

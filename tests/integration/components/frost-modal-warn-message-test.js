@@ -50,6 +50,7 @@ describeComponent(
     })
 
     it('renders', function (done) {
+      this.timeout(10000)
       expect($hook(props.hook), 'Is modal visible')
         .to.have.length(1)
 

@@ -1,3 +1,7 @@
+# 6.0.1
+Updated blueprint to include stable liquid fire and package.json to include bunsen ^13.0.0. All functionality maintained.
+
+
 # 6.0.0
 * **Updated** `ember-frost-core` to `^1.0.0`
 

@@ -1,3 +1,7 @@
+# 6.0.2
+* **Removed** duplicate icon `warn`
+
+
 # 6.0.1
 Updated blueprint to include stable liquid fire and package.json to include bunsen ^13.0.0. All functionality maintained.
 

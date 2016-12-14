@@ -35,6 +35,7 @@ describeComponent(
         }}
 
         {{frost-modal-binding 'basic-modal'
+          classModifier='custom-class'
           closeOnOutsideClick=true
           hook='basic'
           isVisible=isModalVisible
@@ -49,6 +50,13 @@ describeComponent(
       this.set('isModalVisible', true)
       expect($hook('basic-modal'), 'Modal becomes visible')
         .to.have.length(1)
+
+      expect(this.$('.frost-modal-outlet-background').hasClass('custom-class'),
+        'has class modifier').to.be.true
+      expect(this.$('.frost-modal-outlet-container').hasClass('custom-class'),
+        'has class modifier').to.be.true
+      expect(this.$('.frost-modal-outlet-body').hasClass('custom-class'),
+        'has class modifier').to.be.true
 
       $hook('basic-modal-confirm').click()
       expect($hook('basic-modal'), 'Modal is dismissed')

@@ -43,7 +43,6 @@ export default FrostModalBinding.extend(PropTypesMixin, {
   getDefaultProps () {
     return {
       animation: form,
-      classModifier: 'form',
       modal: 'frost-modal-dialog'
     }
   },

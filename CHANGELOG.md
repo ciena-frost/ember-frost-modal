@@ -1,3 +1,8 @@
+# 6.0.3
+**adding** a classModifier for the contained modal.
+
+
+
 # 6.0.2
 * **Removed** duplicate icon `warn`
 

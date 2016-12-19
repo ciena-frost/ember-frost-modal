@@ -75,17 +75,19 @@
   }}
 
   {{#each params.buttons as |button index|}}
-    {{frost-button
-      disabled=button.disabled
-      hook=(concat hook '-button-' index)
-      icon=button.icon
-      pack=button.pack
-      priority=button.priority
-      size='medium'
-      onClick=button.onClick
-      tabIndex=(if button.tabIndex button.tabIndex 0)
-      text=button.text
-    }}
+    {{#if button.isVisible}}
+      {{frost-button
+        disabled=button.disabled
+        hook=(concat hook '-button-' index)
+        icon=button.icon
+        pack=button.pack
+        priority=button.priority
+        size='medium'
+        onClick=button.onClick
+        tabIndex=(if button.tabIndex button.tabIndex 0)
+        text=button.text
+      }}
+    {{/if}}
   {{/each}}
 
   {{frost-button

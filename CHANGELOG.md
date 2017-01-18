@@ -1,3 +1,7 @@
+# 6.0.4
+* **Fixed** #71 
+
+
 # 6.0.3
 **adding** a classModifier for the contained modal.
 

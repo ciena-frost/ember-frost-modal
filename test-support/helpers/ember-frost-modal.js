@@ -12,10 +12,10 @@ const selectors = {
   content: '.frost-modal-dialog-content',
   dialog: '.frost-modal-dialog:visible',
   icons: {
-    confirm: '.frost-icon-frost-modal-warn',
+    confirm: '.frost-icon-frost-modal-warning',
     error: '.frost-icon-frost-modal-error',
     info: '.frost-icon-frost-modal-info',
-    warn: '.frost-icon-frost-modal-warn'
+    warn: '.frost-icon-frost-modal-warning'
   },
   subtitle: '.frost-modal-dialog-header-subtitle:visible',
   title: '.frost-modal-dialog-header-title:visible'
@@ -111,9 +111,8 @@ export function expectButtonWithState ($button, state) {
  * @param {String} [name=''] - name of button to use in test log messages
  */
 export function expectButtonWithVisibility ($button, visible = true, name = '') {
-  const length = visible ? 1 : 0
   const message = visible ? `${name} button is visible` : `${name} button is not visible`
-  expect($button, message.trim()).to.have.length(length)
+  expect($button.is(':visible'), message.trim()).to.equal(visible)
 }
 
 /**

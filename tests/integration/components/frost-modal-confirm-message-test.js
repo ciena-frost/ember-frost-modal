@@ -68,7 +68,7 @@ describeComponent(
         })
       })
 
-      it('confirm triggers the callback and closes', function () {
+      it('renders as expected', function () {
         expectModalWithState({
           cancel: {
             visible: false

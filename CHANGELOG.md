@@ -1,3 +1,8 @@
+# 6.0.5
+
+* **Fixed** broken test helper.
+
+
 # 6.0.4
 * **Fixed** #71 
 

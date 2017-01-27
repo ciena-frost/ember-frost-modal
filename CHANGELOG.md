@@ -1,3 +1,7 @@
+# 6.0.6
+**added** `isVisible` to any custom buttons 
+
+
 # 6.0.5
 
 * **Fixed** broken test helper.

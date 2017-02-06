@@ -1,3 +1,8 @@
+# 6.1.0
+* **Updated** integration tests to remove the deprecated use of `describeComponent()`
+* **Updated** service unit test to use setupTest() from `ember-mocha`
+* **Updated** `ember-test-utils` version
+
 # 6.0.6
 **added** `isVisible` to any custom buttons 
 

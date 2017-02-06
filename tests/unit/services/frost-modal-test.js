@@ -1,21 +1,19 @@
-import { expect } from 'chai'
-import {
-  describeModule,
-  it
-} from 'ember-mocha'
+import {expect} from 'chai'
+import {setupTest} from 'ember-mocha'
+import {beforeEach, describe, it} from 'mocha'
 
-describeModule(
-  'service:frost-modal',
-  'FrostModalService',
-  {
-    // Specify the other units that are required for this test.
-    // needs: ['service:foo']
-  },
-  function () {
-    // Replace this with your real tests.
-    it('exists', function () {
-      let service = this.subject()
-      expect(service).to.be.ok
-    })
-  }
-)
+describe('Unit / Service / frost-modal', function () {
+  setupTest('service:frost-modal', {
+    unit: true
+  })
+
+  let service
+
+  beforeEach(function () {
+    service = this.subject()
+  })
+
+  it('exists', function () {
+    expect(service).to.be.ok
+  })
+})

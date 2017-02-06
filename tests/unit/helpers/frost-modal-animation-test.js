@@ -1,9 +1,6 @@
-import {
-  describe,
-  it
-} from 'mocha'
+import {describe, it} from 'mocha'
 
-describe('FrostModalAnimationHelper', function () {
+describe('Unit / Helper / frost-modal-animation', function () {
   it('works', function () {
   })
 })

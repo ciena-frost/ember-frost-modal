@@ -1,99 +1,91 @@
 import {expect} from 'chai'
-
-import {
-  initialize as initializeSvgUse
-} from 'ember-frost-core/instance-initializers/svg-use-polyfill'
-
+import {initialize as initializeSvgUse} from 'ember-frost-core/instance-initializers/svg-use-polyfill'
 import {$hook, initialize as initializeHook} from 'ember-hook'
-import {describeComponent, it} from 'ember-mocha'
 import hbs from 'htmlbars-inline-precompile'
-import {beforeEach, describe} from 'mocha'
+import {beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
 import {expectModalWithState} from 'dummy/tests/helpers/ember-frost-modal'
+import {integration} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'
 
-describeComponent(
-  'frost-modal-confirm-message',
-  'Integration: FrostModalConfirmMessageComponent',
-  {
-    integration: true
-  },
-  function () {
+const test = integration('frost-modal-confirm-message')
+describe(test.label, function () {
+  test.setup()
+
+  beforeEach(function () {
+    initializeHook()
+    initializeSvgUse()
+  })
+
+  describe('render visible confirm modal', function () {
+    let props
+
     beforeEach(function () {
-      initializeHook()
-      initializeSvgUse()
+      this.timeout(10000)
+
+      this.set('closeModal', () => {
+        this.set('isModalVisible', false)
+      })
+
+      props = {
+        hook: 'confirm-dialog',
+        isModalVisible: true,
+        onConfirm: sinon.spy()
+      }
+
+      this.setProperties(props)
+
+      this.render(hbs`
+        {{frost-modal-outlet}}
+
+        {{frost-modal-confirm-message
+        hook=hook
+        cancel=(hash
+          isVisible=false
+        )
+        confirm=(hash
+          text='100%'
+        )
+        isVisible=isModalVisible
+        summary='I agree'
+        title='Most definitely'
+        onConfirm=onConfirm
+        onClose=(action closeModal)
+      }}`)
     })
 
-    describe('render visible confirm modal', function () {
-      let props
+    it('renders visually as expected', function (done) {
+      return capture('confirm', done, {
+        targetElement: this.$('.frost-modal-outlet-container.message')[0],
+        experimentalSvgs: true
+      })
+    })
 
+    it('renders as expected', function () {
+      expectModalWithState({
+        cancel: {
+          visible: false
+        },
+        confirm: {
+          text: '100%'
+        },
+        summary: 'I agree',
+        title: 'Most definitely'
+      })
+    })
+
+    describe('press confirm button', function () {
       beforeEach(function () {
-        this.timeout(10000)
-
-        this.set('closeModal', () => {
-          this.set('isModalVisible', false)
-        })
-
-        props = {
-          hook: 'confirm-dialog',
-          isModalVisible: true,
-          onConfirm: sinon.spy()
-        }
-
-        this.setProperties(props)
-
-        this.render(hbs`
-          {{frost-modal-outlet}}
-
-          {{frost-modal-confirm-message
-          hook=hook
-          cancel=(hash
-            isVisible=false
-          )
-          confirm=(hash
-            text='100%'
-          )
-          isVisible=isModalVisible
-          summary='I agree'
-          title='Most definitely'
-          onConfirm=onConfirm
-          onClose=(action closeModal)
-        }}`)
+        $hook('confirm-dialog-modal-confirm').click()
       })
 
-      it('renders visually as expected', function (done) {
-        return capture('confirm', done, {
-          targetElement: this.$('.frost-modal-outlet-container.message')[0],
-          experimentalSvgs: true
-        })
+      it('triggers the callback', function () {
+        expect(props.onConfirm.called).to.equal(true)
       })
 
-      it('renders as expected', function () {
-        expectModalWithState({
-          cancel: {
-            visible: false
-          },
-          confirm: {
-            text: '100%'
-          },
-          summary: 'I agree',
-          title: 'Most definitely'
-        })
-      })
-
-      describe('press confirm button', function () {
-        beforeEach(function () {
-          $hook('confirm-dialog-modal-confirm').click()
-        })
-
-        it('triggers the callback', function () {
-          expect(props.onConfirm.called).to.equal(true)
-        })
-
-        it('closes', function () {
-          expect($hook('confirm-dialog-modal')).to.have.length(0)
-        })
+      it('closes', function () {
+        expect($hook('confirm-dialog-modal')).to.have.length(0)
       })
     })
-  }
-)
+  })
+})

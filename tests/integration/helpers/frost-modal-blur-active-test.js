@@ -1,52 +1,46 @@
-import { expect } from 'chai'
-import {
-  describeComponent,
-  it
-} from 'ember-mocha'
+import {expect} from 'chai'
 import wait from 'ember-test-helpers/wait'
 import hbs from 'htmlbars-inline-precompile'
-import { beforeEach } from 'mocha'
+import {beforeEach, describe, it} from 'mocha'
 
-describeComponent(
-  'frost-modal-blur-active',
-  'Integration: FrostModalBlurActiveHelper',
-  {
-    integration: true
-  },
-  function () {
-    beforeEach(function () {
-      this.inject.service('frost-modal')
+import {integration} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'
 
-      this.render(hbs`
-        <span id='active'>{{frost-modal-blur-active}}</span>
-      `)
+const test = integration('frost-modal-blur-active')
+describe(test.label, function () {
+  test.setup()
 
-      this.modalName = 'foo-modal'
+  beforeEach(function () {
+    this.inject.service('frost-modal')
+
+    this.render(hbs`
+      <span id='active'>{{frost-modal-blur-active}}</span>
+    `)
+
+    this.modalName = 'foo-modal'
+  })
+
+  it('renders', function () {
+    expect(this.$('#active').text().trim()).to.equal('false')
+  })
+
+  it('reflects the active state of the frost-modal service', function () {
+    const active = true
+
+    this.get('frost-modal').setState(this.modalName, active)
+
+    return wait().then(() => {
+      expect(this.$('#active').text().trim()).to.equal('true')
     })
+  })
 
-    it('renders', function () {
+  it("doesn't blur when the noBlur property is true", function () {
+    const active = true
+    const noBlur = true
+
+    this.get('frost-modal').setState(this.modalName, active, noBlur)
+
+    return wait().then(() => {
       expect(this.$('#active').text().trim()).to.equal('false')
     })
-
-    it('reflects the active state of the frost-modal service', function () {
-      const active = true
-
-      this.get('frost-modal').setState(this.modalName, active)
-
-      return wait().then(() => {
-        expect(this.$('#active').text().trim()).to.equal('true')
-      })
-    })
-
-    it("doesn't blur when the noBlur property is true", function () {
-      const active = true
-      const noBlur = true
-
-      this.get('frost-modal').setState(this.modalName, active, noBlur)
-
-      return wait().then(() => {
-        expect(this.$('#active').text().trim()).to.equal('false')
-      })
-    })
-  }
-)
+  })
+})

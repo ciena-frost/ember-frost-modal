@@ -1,8 +1,8 @@
+import destroyApp from '../helpers/destroy-app'
+import startApp from '../helpers/start-app'
 import {expect} from 'chai'
 import {$hook} from 'ember-hook'
 import {afterEach, beforeEach, describe, it} from 'mocha'
-import startApp from '../helpers/start-app'
-import destroyApp from '../helpers/destroy-app'
 
 describe('Acceptance: FrostModalOutlet', function () {
   let application

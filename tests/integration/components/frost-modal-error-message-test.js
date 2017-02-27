@@ -1,8 +1,8 @@
 import {expect} from 'chai'
 import Ember from 'ember'
 const {A} = Ember
-import hbs from 'htmlbars-inline-precompile'
 import {$hook, initialize as initializeHook} from 'ember-hook'
+import hbs from 'htmlbars-inline-precompile'
 import {beforeEach, describe, it} from 'mocha'
 
 import {integration} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'

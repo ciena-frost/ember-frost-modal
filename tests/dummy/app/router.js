@@ -1,12 +1,13 @@
-import Ember from 'ember'
 import config from './config/environment'
+import Ember from 'ember'
+const {Router: EmberRouter} = Ember
 
-var Router = Ember.Router.extend({
+var Router = EmberRouter.extend({
   location: config.locationType
 })
 
 Router.map(function () {
-  this.route('demo', { path: '/' }, function () {
+  this.route('demo', {path: '/'}, function () {
     this.route('about')
     this.route('animation-binding')
     this.route('basic-binding')
@@ -20,7 +21,7 @@ Router.map(function () {
     this.route('helpers')
     this.route('info')
     this.route('overflow')
-    this.route('overview', { path: '/' })
+    this.route('overview', {path: '/'})
     this.route('remote-outlet')
     this.route('warn')
   })

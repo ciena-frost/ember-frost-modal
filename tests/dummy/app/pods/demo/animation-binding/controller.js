@@ -1,7 +1,5 @@
 import Ember from 'ember'
-const {
-  Controller
-} = Ember
+const {Controller} = Ember
 
 export default Controller.extend({
   queryParams: [
@@ -18,11 +16,11 @@ export default Controller.extend({
       this.toValue(true),
       this.use('explode', {
         pick: '.frost-modal-outlet-body',
-        use: ['to-right', { duration: 300 }]
+        use: ['to-right', {duration: 300}]
       }),
       this.reverse('explode', {
         pick: '.frost-modal-outlet-body',
-        use: ['to-left', { duration: 300 }]
+        use: ['to-left', {duration: 300}]
       })
     )
   }

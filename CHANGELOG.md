@@ -4,7 +4,7 @@
 * **Updated** `ember-test-utils` version
 
 # 6.0.6
-**added** `isVisible` to any custom buttons 
+**added** `isVisible` to any custom buttons
 
 
 # 6.0.5
@@ -13,7 +13,7 @@
 
 
 # 6.0.4
-* **Fixed** #71 
+* **Fixed** #71
 
 
 # 6.0.3
@@ -26,7 +26,8 @@
 
 
 # 6.0.1
-Updated blueprint to include stable liquid fire and package.json to include bunsen ^13.0.0. All functionality maintained.
+Updated blueprint to include stable liquid fire and package.json to include bunsen ^13.0.0. All
+functionality maintained.
 
 
 # 6.0.0
@@ -62,7 +63,7 @@ Add ability to disabled Cancel button in dialog
 
 
 # 4.0.0
-*upgrade* ember-prop-types to v3.x. Remove `this._super()` to support this. 
+*upgrade* ember-prop-types to v3.x. Remove `this._super()` to support this.
 
 
 
@@ -125,7 +126,8 @@ Fixed issue with coverage not publishing
 
 # 3.4.0
 
-* **Added** new `buttons` property to modals to allow user to specify additional buttons to show between the cancel and confirm buttons in the modal footer.
+* **Added** new `buttons` property to modals to allow user to specify additional buttons to show
+between the cancel and confirm buttons in the modal footer.
 
 
 
@@ -155,7 +157,8 @@ Fixed issue with coverage not publishing
 
 
 # 3.1.0
-* Added a hack to allow confirm buttons on the frost-modal-form to be disabled - a better proxy solution will be put in place shortly
+* Added a hack to allow confirm buttons on the frost-modal-form to be disabled - a better proxy
+solution will be put in place shortly
 
 
 # 3.0.1
@@ -200,7 +203,8 @@ Guard against a null destroy in perfect-scroll
 
 # 2.0.0
 ## Breaking
- - Changed the footer block controls interface to more cleanly support cancel, confirm and custom buttons within a single block-slot
+ - Changed the footer block controls interface to more cleanly support cancel, confirm and custom
+ buttons within a single block-slot
 
 # 1.0.0
 No CHANGELOG section found in Pull Request description.

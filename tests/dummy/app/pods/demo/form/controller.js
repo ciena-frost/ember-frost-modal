@@ -1,14 +1,10 @@
 import Ember from 'ember'
-const {
-  Controller
-} = Ember
-import {
-  task,
-  timeout
-} from 'ember-concurrency'
+const {Controller, inject} = Ember
+const {service} = inject
+import {task, timeout} from 'ember-concurrency'
 
 export default Controller.extend({
-  notifications: Ember.inject.service('notification-messages'),
+  notifications: service('notification-messages'),
   queryParams: [
     'isFormVisible'
   ],

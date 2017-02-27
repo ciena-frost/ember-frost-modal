@@ -43,7 +43,8 @@ Detailed API and example usage can be found in the sample application in `tests/
 
 ### Ember-elsewhere
 
-This addon uses the [ember-elsewhere](https://github.com/ef4/ember-elsewhere) to manage the modals, to lift them outside the normal route hiearchy.
+This addon uses the [ember-elsewhere](https://github.com/ef4/ember-elsewhere) to manage the modals, to
+lift them outside the normal route hiearchy.
 
 ### ember-perfectscroll effects (TODO effects based off perfectscroll events, but not from perfectscroll)
 
@@ -53,7 +54,9 @@ Styling includes: box shadow plus slight transparency in header/footer to reveal
 For more documentation on ember-perfectscroll:  [perfect-scrollbar](https://github.com/noraesae/perfect-scrollbar)
 
 ## Testing with ember-hook
-This addon has been optimized for use with [ember-hook](https://github.com/Ticketfly/ember-hook). You can set a `hook` name on your modal template. This will allow you to access the internal modal content for testing.
+This addon has been optimized for use with [ember-hook](https://github.com/Ticketfly/ember-hook). You
+can set a `hook` name on your modal template. This will allow you to access the internal modal content
+for testing.
 ### Available hooks (TODO move to documentation)
 * Modal dialog title - `<hook-name>-title`
 * Modal dialog header icon - `<hook-name>-icon`

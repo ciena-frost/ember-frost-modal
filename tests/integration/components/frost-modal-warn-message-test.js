@@ -1,6 +1,6 @@
 import {expect} from 'chai'
-import hbs from 'htmlbars-inline-precompile'
 import {$hook, initialize as initializeHook} from 'ember-hook'
+import hbs from 'htmlbars-inline-precompile'
 import {beforeEach, describe, it} from 'mocha'
 
 import {integration} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'
@@ -56,7 +56,7 @@ describe(test.label, function () {
     $hook('warning-dialog-modal-cancel').click()
 
     expect(props.onCancel.called, 'Callback triggered')
-      .to.be.true
+      .to.equal(true)
     expect($hook('warning-dialog-modal'), 'Is modal hidden')
       .to.have.length(0)
   })

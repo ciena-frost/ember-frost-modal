@@ -1,1 +1,1 @@
-export { default } from 'ember-frost-modal/components/frost-modal-binding'
+export {default} from 'ember-frost-modal/components/frost-modal-binding'

@@ -1,1 +1,1 @@
-export { default } from 'ember-frost-modal/components/frost-modal-outlet'
+export {default} from 'ember-frost-modal/components/frost-modal-outlet'

@@ -1,1 +1,1 @@
-export { default, array } from 'ember-frost-modal/helpers/array'
+export {default, array} from 'ember-frost-modal/helpers/array'

@@ -1,8 +1,8 @@
 import Ember from 'ember'
 const {computed} = Ember
+import {form} from '../../helpers/frost-modal-animation'
 import FrostModalBinding from '../frost-modal-binding'
-import { form } from '../../helpers/frost-modal-animation'
-import PropTypesMixin, { PropTypes } from 'ember-prop-types'
+import PropTypesMixin, {PropTypes} from 'ember-prop-types'
 
 export default FrostModalBinding.extend(PropTypesMixin, {
 

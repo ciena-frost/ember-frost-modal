@@ -1,7 +1,5 @@
 import Ember from 'ember'
-const {
-  Helper
-} = Ember
+const {Helper} = Ember
 
 // TODO Unique animation
 const about = function () {
@@ -9,17 +7,17 @@ const about = function () {
     this.toValue(true),
     this.use('explode', {
       pick: '.frost-modal-outlet-background',
-      use: ['fade', { maxOpacity: 0.5 }]
+      use: ['fade', {maxOpacity: 0.5}]
     }, {
       pick: '.frost-modal-outlet-body',
-      use: ['to-down', { duration: 300 }]
+      use: ['to-down', {duration: 300}]
     }),
     this.reverse('explode', {
       pick: '.frost-modal-outlet-background',
-      use: ['fade', { maxOpacity: 0.5 }]
+      use: ['fade', {maxOpacity: 0.5}]
     }, {
       pick: '.frost-modal-outlet-body',
-      use: ['to-up', { duration: 300 }]
+      use: ['to-up', {duration: 300}]
     })
   )
 }
@@ -30,17 +28,17 @@ const form = function () {
     this.toValue(true),
     this.use('explode', {
       pick: '.frost-modal-outlet-background',
-      use: ['fade', { maxOpacity: 0.5 }]
+      use: ['fade', {maxOpacity: 0.5}]
     }, {
       pick: '.frost-modal-outlet-body',
-      use: ['to-down', { duration: 300 }]
+      use: ['to-down', {duration: 300}]
     }),
     this.reverse('explode', {
       pick: '.frost-modal-outlet-background',
-      use: ['fade', { maxOpacity: 0.5 }]
+      use: ['fade', {maxOpacity: 0.5}]
     }, {
       pick: '.frost-modal-outlet-body',
-      use: ['to-up', { duration: 300 }]
+      use: ['to-up', {duration: 300}]
     })
   )
 }
@@ -51,17 +49,17 @@ const message = function () {
     this.toValue(true),
     this.use('explode', {
       pick: '.frost-modal-outlet-background',
-      use: ['fade', { duration: 300, maxOpacity: 0.7 }]
+      use: ['fade', {duration: 300, maxOpacity: 0.7}]
     }, {
       pick: '.frost-modal-outlet-body',
-      use: ['to-down', { duration: 300 }]
+      use: ['to-down', {duration: 300}]
     }),
     this.reverse('explode', {
       pick: '.frost-modal-outlet-background',
-      use: ['fade', { duration: 300, maxOpacity: 0.0 }]
+      use: ['fade', {duration: 300, maxOpacity: 0.0}]
     }, {
       pick: '.frost-modal-outlet-body',
-      use: ['to-up', { duration: 300 }]
+      use: ['to-up', {duration: 300}]
     })
   )
 }
@@ -82,4 +80,4 @@ export function frostModalFormAnimation ([type]) {
 
 export default Helper.helper(frostModalFormAnimation)
 
-export { about, form, message }
+export {about, form, message}

@@ -1,7 +1,7 @@
 import {expect} from 'chai'
 import {$hook, initialize} from 'ember-hook'
-import {beforeEach, describe, it} from 'mocha'
 import hbs from 'htmlbars-inline-precompile'
+import {beforeEach, describe, it} from 'mocha'
 
 import {integration} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'
 
@@ -44,11 +44,11 @@ describe(test.label, function () {
       .to.have.length(1)
 
     expect(this.$('.frost-modal-outlet-background').hasClass('custom-class'),
-      'has class modifier').to.be.true
+      'has class modifier').to.equal(true)
     expect(this.$('.frost-modal-outlet-container').hasClass('custom-class'),
-      'has class modifier').to.be.true
+      'has class modifier').to.equal(true)
     expect(this.$('.frost-modal-outlet-body').hasClass('custom-class'),
-      'has class modifier').to.be.true
+      'has class modifier').to.equal(true)
 
     $hook('basic-modal-confirm').click()
     expect($hook('basic-modal'), 'Modal is dismissed')

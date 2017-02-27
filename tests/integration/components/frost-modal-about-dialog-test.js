@@ -1,8 +1,8 @@
 import {expect} from 'chai'
-import {$hook, initialize} from 'ember-hook'
-import {beforeEach, describe, it} from 'mocha'
 import {initialize as initializeSvgUse} from 'ember-frost-core/instance-initializers/svg-use-polyfill'
+import {$hook, initialize} from 'ember-hook'
 import hbs from 'htmlbars-inline-precompile'
+import {beforeEach, describe, it} from 'mocha'
 
 import {integration} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'
 

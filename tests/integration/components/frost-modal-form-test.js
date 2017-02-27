@@ -1,8 +1,8 @@
 import {expect} from 'chai'
 import Ember from 'ember'
 const {run} = Ember
-import hbs from 'htmlbars-inline-precompile'
 import {$hook, initialize as initializeHook} from 'ember-hook'
+import hbs from 'htmlbars-inline-precompile'
 import {beforeEach, describe, it} from 'mocha'
 
 import {integration} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'
@@ -89,7 +89,7 @@ describe(test.label, function () {
 
   it('triggers function on confirm click', function () {
     $hook('form-dialog-modal-confirm').click()
-    expect(props.onConfirm.called, 'Is confirm called').to.be.true
+    expect(props.onConfirm.called, 'Is confirm called').to.equal(true)
   })
 
   it('closes on confirm when closeOnConfirm=true', function () {

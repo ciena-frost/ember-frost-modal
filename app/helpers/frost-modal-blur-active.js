@@ -1,1 +1,1 @@
-export { default } from 'ember-frost-modal/helpers/frost-modal-blur-active'
+export {default} from 'ember-frost-modal/helpers/frost-modal-blur-active'

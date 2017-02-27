@@ -1,1 +1,1 @@
-export { default } from 'ember-frost-modal/helpers/frost-modal-outlet-animation'
+export {default} from 'ember-frost-modal/helpers/frost-modal-outlet-animation'

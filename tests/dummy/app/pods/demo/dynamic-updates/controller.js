@@ -1,13 +1,6 @@
 import Ember from 'ember'
-const {
-  A,
-  Controller,
-  Object: EmberObject
-} = Ember
-import {
-  task,
-  timeout
-} from 'ember-concurrency'
+const {A, Controller, Object: EmberObject} = Ember
+import {task, timeout} from 'ember-concurrency'
 
 export default Controller.extend({
   queryParams: [

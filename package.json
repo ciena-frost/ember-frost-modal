@@ -8,12 +8,9 @@
   },
   "scripts": {
     "build": "ember build",
+    "lint": "lint-all-the-things",
     "start": "ember server",
-    "test": "npm run lint && COVERAGE=true ember test",
-    "eslint": "eslint *.js addon app blueprints config tests --fix",
-    "md-lint": "remark *.md",
-    "sass-lint": "sass-lint -q -v",
-    "lint": "npm run eslint && npm run sass-lint && npm run md-lint"
+    "test": "npm run lint && COVERAGE=true ember test"
   },
   "repository": "git@github.com:ciena-frost/ember-frost-modal.git",
   "engines": {
@@ -77,20 +74,15 @@
     "ember-sortable": "1.9.1",
     "ember-spread": "1.0.0",
     "ember-test-helpers": "0.5.34",
-    "ember-test-utils": "^1.8.0",
+    "ember-test-utils": "^1.10.7",
     "ember-truth-helpers": "1.2.0",
     "ember-validator-shim": "~2.0.0",
     "ember-z-schema": "~2.0.0",
-    "eslint": "^3.4.0",
-    "eslint-config-frost-standard": "^4.0.0",
     "liquid-fire": "0.25.0",
     "loader.js": "^4.0.1",
     "lodash-es": "~4.15.0",
     "redux": "3.6.0",
     "redux-thunk": "2.1.0",
-    "remark-cli": "^2.0.0",
-    "remark-lint": "^5.1.0",
-    "sass-lint": "1.9.1",
     "seamless-immutable": "^6.1.1",
     "validator": "^6.2.0",
     "z-schema": "~3.18.2"

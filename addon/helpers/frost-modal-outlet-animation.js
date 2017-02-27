@@ -1,10 +1,6 @@
-import config from 'ember-get-config'
 import Ember from 'ember'
-const {
-  Helper,
-  get,
-  inject
-} = Ember
+const {Helper, get, inject} = Ember
+import config from 'ember-get-config'
 
 export default Helper.extend({
 

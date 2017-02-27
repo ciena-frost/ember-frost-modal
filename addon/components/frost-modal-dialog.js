@@ -1,9 +1,5 @@
 import Ember from 'ember'
-const {
-  Component,
-  on,
-  run
-} = Ember
+const {Component, on, run} = Ember
 import layout from '../templates/components/frost-modal-dialog'
 
 export default Component.extend({

@@ -14,6 +14,7 @@ describe('Unit / Service / frost-modal', function () {
   })
 
   it('exists', function () {
+    // eslint-disable-next-line no-unused-expressions
     expect(service).to.be.ok
   })
 })

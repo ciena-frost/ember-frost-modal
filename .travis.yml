@@ -28,7 +28,6 @@ before_script:
 - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 - sudo dpkg -i google-chrome*.deb
 script:
-- npm run sass-lint
 - ember try:one $EMBER_TRY_SCENARIO --- ember tva --push-var='false' --msg-on=$EMBER_TRY_SCENARIO
 after_success:
 - .travis/publish-coverage.sh
@@ -59,7 +58,7 @@ deploy:
     branch: master
     condition: "$EMBER_TRY_SCENARIO = 'default'"
     node: 'stable'
-    tags: false
+    tags: true
 after_deploy:
 - .travis/publish-gh-pages.sh
 notifications:

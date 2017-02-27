@@ -1,1 +1,1 @@
-export { default } from 'ember-frost-modal/components/dialogs/messages/warn'
+export {default} from 'ember-frost-modal/components/dialogs/messages/warn'

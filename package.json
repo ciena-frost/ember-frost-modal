@@ -8,6 +8,7 @@
   },
   "scripts": {
     "build": "ember build",
+    "coverage": "COVERAGE=true ember test -r 'dot'",
     "lint": "lint-all-the-things",
     "start": "ember server",
     "test": "npm run lint && npm run test-addon",

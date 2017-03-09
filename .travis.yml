@@ -22,7 +22,7 @@ cache:
 
 env:
   matrix:
-    - EMBER_TRY_SCENARIO=ember-2-3
+    - EMBER_TRY_SCENARIO=ember-2-8
     - EMBER_TRY_SCENARIO=default
     - EMBER_TRY_SCENARIO=ember-release
   global:
@@ -49,6 +49,7 @@ before_script:
 
 script:
 - $(npm root -g)/pr-bumper/.travis/maybe-test.sh
+- $(npm root -g)/pr-bumper/.travis/maybe-test.sh coverage
 - .travis/maybe-bump-version.sh
 
 after_success:

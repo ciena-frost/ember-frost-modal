@@ -1,3 +1,6 @@
+# 6.1.3 (2017-03-20)
+* **Used** info, warning and error icons from `ember-frost-core`
+
 # 6.1.2
 * **Updated** the travis.yml and package.json to run code coverage
 

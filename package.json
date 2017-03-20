@@ -56,7 +56,7 @@
     "ember-elsewhere": "~0.4.1",
     "ember-export-application-global": "^1.0.5",
     "ember-frost-bunsen": "^13.2.0",
-    "ember-frost-core": "^1.3.0",
+    "ember-frost-core": "^1.11.0",
     "ember-frost-fields": "^4.0.0",
     "ember-frost-popover": "^4.0.2",
     "ember-frost-tabs": "^5.0.1",

@@ -13,10 +13,10 @@ const selectors = {
   content: '.frost-modal-dialog-content',
   dialog: '.frost-modal-dialog:visible',
   icons: {
-    confirm: '.frost-icon-frost-modal-warning',
-    error: '.frost-icon-frost-modal-error',
-    info: '.frost-icon-frost-modal-info',
-    warn: '.frost-icon-frost-modal-warning'
+    confirm: '.frost-icon-frost-warning',
+    error: '.frost-icon-frost-error',
+    info: '.frost-icon-frost-info',
+    warn: '.frost-icon-frost-warning'
   },
   subtitle: '.frost-modal-dialog-header-subtitle:visible',
   summary: '.frost-modal-dialog-summary',

@@ -1,3 +1,9 @@
+# 6.1.4 (2017-04-07)
+
+- fixes for issue #78 and #74.
+- Upgraded ember-test-utils.
+- Upgraded Ember to 2.11
+
 # 6.1.3 (2017-03-20)
 * **Used** info, warning and error icons from `ember-frost-core`
 

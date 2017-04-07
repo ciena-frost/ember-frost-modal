@@ -3,7 +3,8 @@ import Ember from 'ember'
 const {Router: EmberRouter} = Ember
 
 var Router = EmberRouter.extend({
-  location: config.locationType
+  location: config.locationType,
+  rootURL: config.rootURL
 })
 
 Router.map(function () {

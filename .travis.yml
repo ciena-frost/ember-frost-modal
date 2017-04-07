@@ -49,7 +49,6 @@ before_script:
 
 script:
 - $(npm root -g)/pr-bumper/.travis/maybe-test.sh
-- $(npm root -g)/pr-bumper/.travis/maybe-test.sh coverage
 - .travis/maybe-bump-version.sh
 
 after_success:

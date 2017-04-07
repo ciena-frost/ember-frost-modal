@@ -19,6 +19,7 @@ const selectors = {
     warn: '.frost-icon-frost-modal-warning'
   },
   subtitle: '.frost-modal-dialog-header-subtitle:visible',
+  summary: '.frost-modal-dialog-summary',
   title: '.frost-modal-dialog-header-title:visible'
 }
 
@@ -152,6 +153,15 @@ export function expectModalWithContent (content) {
 }
 
 /**
+ * Verify modal summary has expected text
+ * @param {String} content - expected content text
+ */
+export function expectModalWithSummary (content) {
+  const $summary = $(selectors.summary)
+  expect($summary.text().trim(), 'modal has expected summary').to.equal(content)
+}
+
+/**
  * Verify modal has expected icon
  * @param {String} icon - expected icon (confirm, error, info, or warn)
  */
@@ -192,6 +202,10 @@ export function expectModalWithState (state = {}) {
 
   if ('content' in state) {
     expectModalWithContent(state.content)
+  }
+
+  if ('summary' in state) {
+    expectModalWithSummary(state.summary)
   }
 
   expectModalCancelButtonWithState(state.cancel)

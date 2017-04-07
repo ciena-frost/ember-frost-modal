@@ -1,12 +1,12 @@
 import {expect} from 'chai'
 import {initialize as initializeSvgUse} from 'ember-frost-core/instance-initializers/svg-use-polyfill'
 import {$hook, initialize as initializeHook} from 'ember-hook'
+import {integration} from 'ember-test-utils/test-support/setup-component-test'
 import hbs from 'htmlbars-inline-precompile'
 import {beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
 import {expectModalWithState} from 'dummy/tests/helpers/ember-frost-modal'
-import {integration} from 'dummy/tests/helpers/ember-test-utils/setup-component-test'
 
 const test = integration('frost-modal-confirm-message')
 describe(test.label, function () {

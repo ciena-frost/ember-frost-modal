@@ -50,6 +50,6 @@ export default FrostModalBinding.extend(PropTypesMixin, {
       product: this.product,
       versions: this.versions
     }
-  })
+  }).readOnly()
 
 })

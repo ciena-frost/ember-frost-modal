@@ -3,9 +3,7 @@
   "dependencies": {
     "ember": "~2.8.2",
     "ember-cli-shims": "0.1.1",
-    "ember-cli-test-loader": "0.2.2",
     "ember-mocha": "~0.8.11",
-    "ember-mocha-adapter": "~0.3.1",
     "es6-promise": "^3.2.2",
     "node-uuid": "1.4.7",
     "lodash": "^4.10.0",

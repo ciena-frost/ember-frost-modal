@@ -61,6 +61,6 @@ export default FrostModalBinding.extend(PropTypesMixin, {
       subtitle: this.subtitle,
       title: this.title
     }
-  })
+  }).readOnly()
 
 })

@@ -1,3 +1,8 @@
+# 6.2.1 (2017-04-11)
+
+* **Fixed** icons so they stop disappearing on a subsequent render.
+
+
 # 6.2.0 (2017-04-11)
 
 * **Upgraded** to Ember 2.11.

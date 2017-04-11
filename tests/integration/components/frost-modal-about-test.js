@@ -1,5 +1,6 @@
 import {expect} from 'chai'
 import {$hook, initialize} from 'ember-hook'
+import wait from 'ember-test-helpers/wait'
 import {integration} from 'ember-test-utils/test-support/setup-component-test'
 import hbs from 'htmlbars-inline-precompile'
 import {beforeEach, describe, it} from 'mocha'
@@ -46,12 +47,18 @@ describe(test.label, function () {
       }}
     `)
 
-    expect($hook('about-dialog-modal'), 'Is modal visible')
-      .to.have.length(1)
+    return wait()
+      .then(() => {
+        expect($hook('about-dialog-modal'), 'Is modal visible')
+          .to.have.length(1)
 
-    $hook('about-dialog-modal-close').click()
+        $hook('about-dialog-modal-close').click()
 
-    expect($hook('about-dialog-modal'), 'Is modal hidden')
-      .to.have.length(0)
+        return wait()
+      })
+      .then(() => {
+        expect($hook('about-dialog-modal'), 'Is modal hidden')
+          .to.have.length(0)
+      })
   })
 })

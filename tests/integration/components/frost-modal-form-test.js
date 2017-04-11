@@ -1,7 +1,6 @@
 import {expect} from 'chai'
-import Ember from 'ember'
-const {run} = Ember
 import {$hook, initialize as initializeHook} from 'ember-hook'
+import wait from 'ember-test-helpers/wait'
 import {integration} from 'ember-test-utils/test-support/setup-component-test'
 import hbs from 'htmlbars-inline-precompile'
 import {beforeEach, describe, it} from 'mocha'
@@ -15,10 +14,11 @@ describe(test.label, function () {
   beforeEach(function () {
     initializeHook()
     this.timeout(10000)
-    this.set('closeModal', () => {
-      this.set('isFormVisible', false)
-    })
+
     props = {
+      closeModal: () => {
+        this.set('isFormVisible', false)
+      },
       closeOnConfirm: true,
       hook: 'form-dialog',
       isFormVisible: true,
@@ -49,32 +49,33 @@ describe(test.label, function () {
       simpleBunsenValue: {},
       onConfirm: sinon.spy()
     }
-    run(() => {
-      this.setProperties(props)
-      this.render(hbs`
-        {{frost-modal-outlet}}
 
-        {{frost-modal-form
-          buttons=buttons
-          cancel=cancel
-          closeOnConfirm=closeOnConfirm
-          confirm=confirm
-          footer=footer
-          form=(component 'frost-bunsen-form'
-            bunsenModel=simpleBunsenModel
-            hook='bunsen-form'
-            onChange=simpleBunsenChange
-            value=simpleBunsenValue
-          )
-          hook='form-dialog'
-          isVisible=isFormVisible
-          subtitle=subtitle
-          title='Easy peasy'
-          onClose=(action closeModal)
-          onConfirm=onConfirm
-        }}
-      `)
-    })
+    this.setProperties(props)
+    this.render(hbs`
+      {{frost-modal-outlet}}
+
+      {{frost-modal-form
+        buttons=buttons
+        cancel=cancel
+        closeOnConfirm=closeOnConfirm
+        confirm=confirm
+        footer=footer
+        form=(component 'frost-bunsen-form'
+          bunsenModel=simpleBunsenModel
+          hook='bunsen-form'
+          onChange=simpleBunsenChange
+          value=simpleBunsenValue
+        )
+        hook='form-dialog'
+        isVisible=isFormVisible
+        subtitle=subtitle
+        title='Easy peasy'
+        onClose=(action closeModal)
+        onConfirm=onConfirm
+      }}
+    `)
+
+    return wait()
   })
 
   it('renders', function () {
@@ -83,17 +84,29 @@ describe(test.label, function () {
 
   it('closes on cancel', function () {
     $hook('form-dialog-modal-cancel').click()
-    expect($hook('form-dialog-modal'), 'Is modal hidden').to.have.length(0)
+
+    return wait()
+      .then(() => {
+        expect($hook('form-dialog-modal'), 'Is modal hidden').to.have.length(0)
+      })
   })
 
   it('triggers function on confirm click', function () {
     $hook('form-dialog-modal-confirm').click()
-    expect(props.onConfirm.called, 'Is confirm called').to.equal(true)
+
+    return wait()
+      .then(() => {
+        expect(props.onConfirm.called, 'Is confirm called').to.equal(true)
+      })
   })
 
   it('closes on confirm when closeOnConfirm=true', function () {
     $hook('form-dialog-modal-confirm').click()
-    expect($hook('form-dialog-modal'), 'Is modal hidden').to.have.length(0)
+
+    return wait()
+      .then(() => {
+        expect($hook('form-dialog-modal'), 'Is modal hidden').to.have.length(0)
+      })
   })
 
   it('should have confirm button with tabIndex === 0', function () {
@@ -109,6 +122,8 @@ describe(test.label, function () {
       this.set('cancel', {
         tabIndex: 0
       })
+
+      return wait()
     })
 
     it('should have cancel button with tabIndex === 0', function () {
@@ -121,6 +136,8 @@ describe(test.label, function () {
       this.set('confirm', {
         tabIndex: 1
       })
+
+      return wait()
     })
 
     it('should have confirm button with tabIndex === 1', function () {
@@ -131,6 +148,7 @@ describe(test.label, function () {
   describe('when closeOnConfirm is false', function () {
     beforeEach(function () {
       this.set('closeOnConfirm', false)
+      return wait()
     })
 
     it('stays open', function () {
@@ -142,6 +160,7 @@ describe(test.label, function () {
   describe('when subtitle present', function () {
     beforeEach(function () {
       this.set('subtitle', 'Foo bar')
+      return wait()
     })
 
     it('renders subtitle', function () {
@@ -154,6 +173,7 @@ describe(test.label, function () {
   describe('when subtitle not present', function () {
     beforeEach(function () {
       this.set('subtitle', undefined)
+      return wait()
     })
 
     it('does not render subtitle DOM', function () {
@@ -164,6 +184,7 @@ describe(test.label, function () {
   describe('when footer text present', function () {
     beforeEach(function () {
       this.set('footer', 'Foo bar')
+      return wait()
     })
 
     it('renders footer text', function () {
@@ -176,6 +197,7 @@ describe(test.label, function () {
   describe('when footer text not present', function () {
     beforeEach(function () {
       this.set('footer', undefined)
+      return wait()
     })
 
     it('does not render footer text DOM', function () {
@@ -195,6 +217,8 @@ describe(test.label, function () {
           text: 'Bar'
         }
       ])
+
+      return wait()
     })
 
     it('renders custom buttons plus cancel and create buttons', function () {
@@ -224,6 +248,8 @@ describe(test.label, function () {
           text: 'Bar'
         }
       ])
+
+      return wait()
     })
 
     it('should have first button with tabIndex === 2', function () {
@@ -238,6 +264,7 @@ describe(test.label, function () {
   describe('when buttons not present', function () {
     beforeEach(function () {
       this.set('buttons', undefined)
+      return wait()
     })
 
     it('only renders cancel and create buttons', function () {

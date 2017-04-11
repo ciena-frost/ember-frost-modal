@@ -2,6 +2,7 @@ import {expect} from 'chai'
 import Ember from 'ember'
 const {A} = Ember
 import {$hook, initialize as initializeHook} from 'ember-hook'
+import wait from 'ember-test-helpers/wait'
 import {integration} from 'ember-test-utils/test-support/setup-component-test'
 import hbs from 'htmlbars-inline-precompile'
 import {beforeEach, describe, it} from 'mocha'
@@ -38,8 +39,10 @@ describe(test.label, function () {
         summary='Are you familiar with the old robot saying?'
         title='"Does not compute"'
         onClose=(action closeModal)
-      }}`
-    )
+      }}
+    `)
+
+    return wait()
   })
 
   it('renders', function (done) {
@@ -52,13 +55,17 @@ describe(test.label, function () {
   it('closes on cancel', function () {
     $hook('error-dialog-modal-cancel').click()
 
-    expect($hook('error-dialog-modal'), 'Is modal hidden')
-        .to.have.length(0)
+    return wait()
+      .then(() => {
+        expect($hook('error-dialog-modal'), 'Is modal hidden')
+          .to.have.length(0)
+      })
   })
 
   describe('when subtitle present', function () {
     beforeEach(function () {
       this.set('subtitle', 'Foo bar')
+      return wait()
     })
 
     it('renders subtitle', function () {
@@ -71,6 +78,7 @@ describe(test.label, function () {
   describe('when subtitle not present', function () {
     beforeEach(function () {
       this.set('subtitle', undefined)
+      return wait()
     })
 
     it('does not render subtitle DOM', function () {
@@ -81,6 +89,7 @@ describe(test.label, function () {
   describe('when footer text present', function () {
     beforeEach(function () {
       this.set('footer', 'Foo bar')
+      return wait()
     })
 
     it('renders footer text', function () {
@@ -93,6 +102,7 @@ describe(test.label, function () {
   describe('when footer text not present', function () {
     beforeEach(function () {
       this.set('footer', undefined)
+      return wait()
     })
 
     it('does not render footer text DOM', function () {
@@ -112,6 +122,8 @@ describe(test.label, function () {
           text: 'Bar'
         }
       ])
+
+      return wait()
     })
 
     it('renders custom buttons plus cancel and create buttons', function () {
@@ -122,6 +134,7 @@ describe(test.label, function () {
   describe('when buttons not present', function () {
     beforeEach(function () {
       this.set('buttons', undefined)
+      return wait()
     })
 
     it('only renders cancel and create buttons', function () {

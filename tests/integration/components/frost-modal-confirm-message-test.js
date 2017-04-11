@@ -1,6 +1,7 @@
 import {expect} from 'chai'
 import {initialize as initializeSvgUse} from 'ember-frost-core/instance-initializers/svg-use-polyfill'
 import {$hook, initialize as initializeHook} from 'ember-hook'
+import wait from 'ember-test-helpers/wait'
 import {integration} from 'ember-test-utils/test-support/setup-component-test'
 import hbs from 'htmlbars-inline-precompile'
 import {beforeEach, describe, it} from 'mocha'
@@ -39,19 +40,22 @@ describe(test.label, function () {
         {{frost-modal-outlet}}
 
         {{frost-modal-confirm-message
-        hook=hook
-        cancel=(hash
-          isVisible=false
-        )
-        confirm=(hash
-          text='100%'
-        )
-        isVisible=isModalVisible
-        summary='I agree'
-        title='Most definitely'
-        onConfirm=onConfirm
-        onClose=(action closeModal)
-      }}`)
+          hook=hook
+          cancel=(hash
+            isVisible=false
+          )
+          confirm=(hash
+            text='100%'
+          )
+          isVisible=isModalVisible
+          summary='I agree'
+          title='Most definitely'
+          onConfirm=onConfirm
+          onClose=(action closeModal)
+        }}
+      `)
+
+      return wait()
     })
 
     it('renders visually as expected', function (done) {
@@ -77,6 +81,7 @@ describe(test.label, function () {
     describe('press confirm button', function () {
       beforeEach(function () {
         $hook('confirm-dialog-modal-confirm').click()
+        return wait()
       })
 
       it('triggers the callback', function () {

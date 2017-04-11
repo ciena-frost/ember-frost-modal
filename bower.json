@@ -1,17 +1,8 @@
 {
   "name": "ember-frost-modal",
   "dependencies": {
-    "ember": "~2.8.2",
-    "ember-cli-shims": "0.1.1",
-    "ember-mocha": "~0.8.11",
     "es6-promise": "^3.2.2",
     "node-uuid": "1.4.7",
-    "lodash": "^4.10.0",
-    "resemblejs": "^2.2.0",
-    "sinonjs": "1.17.1",
-    "z-schema": "3.16.1"
-  },
-  "resolutions": {
-    "ember": "~2.8.2"
+    "resemblejs": "^2.2.0"
   }
 }

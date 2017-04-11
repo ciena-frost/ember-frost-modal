@@ -1,6 +1,7 @@
 import {expect} from 'chai'
 import {initialize as initializeSvgUse} from 'ember-frost-core/instance-initializers/svg-use-polyfill'
 import {$hook, initialize} from 'ember-hook'
+import wait from 'ember-test-helpers/wait'
 import {integration} from 'ember-test-utils/test-support/setup-component-test'
 import hbs from 'htmlbars-inline-precompile'
 import {beforeEach, describe, it} from 'mocha'
@@ -46,13 +47,17 @@ describe(test.label, function () {
         onClose=(action closeModal)
       }}
     `)
-    // eslint-disable-next-line
-    expect($hook('about-dialog-modal'), 'Is modal visible')
-      .to.have.length(1)
 
-    return capture('about', done, {
-      targetElement: this.$('.frost-modal-outlet-container.about')[0],
-      experimentalSvgs: true
+    return wait()
+    .then(() => {
+      // eslint-disable-next-line
+      expect($hook('about-dialog-modal'), 'Is modal visible')
+        .to.have.length(1)
+
+      return capture('about', done, {
+        targetElement: this.$('.frost-modal-outlet-container.about')[0],
+        experimentalSvgs: true
+      })
     })
   })
 
@@ -85,12 +90,17 @@ describe(test.label, function () {
         onClose=(action closeModal)
       }}
     `)
-    // eslint-disable-next-line
-    expect($hook('about-dialog-modal'), 'Is modal visible')
-      .to.have.length(1)
-    return capture('about-with-product', done, {
-      targetElement: this.$('.frost-modal-outlet-container.about')[0],
-      experimentalSvgs: true
+
+    return wait()
+    .then(() => {
+      // eslint-disable-next-line
+      expect($hook('about-dialog-modal'), 'Is modal visible')
+        .to.have.length(1)
+
+      return capture('about-with-product', done, {
+        targetElement: this.$('.frost-modal-outlet-container.about')[0],
+        experimentalSvgs: true
+      })
     })
   })
 
@@ -122,13 +132,18 @@ describe(test.label, function () {
         onClose=(action closeModal)
       }}
     `)
-    // eslint-disable-next-line
-    expect($hook('about-dialog-modal'), 'Is modal visible')
-      .to.have.length(1)
-    return capture('about-with-multiple-verions', done, {
-      targetElement: this.$('.frost-modal-outlet-container.about')[0],
-      experimentalSvgs: true
-    })
+
+    return wait()
+      .then(() => {
+        // eslint-disable-next-line
+        expect($hook('about-dialog-modal'), 'Is modal visible')
+          .to.have.length(1)
+
+        return capture('about-with-multiple-verions', done, {
+          targetElement: this.$('.frost-modal-outlet-container.about')[0],
+          experimentalSvgs: true
+        })
+      })
   })
 
   it('renders about-with-product-and-multiple-versions', function (done) {
@@ -163,13 +178,18 @@ describe(test.label, function () {
         onClose=(action closeModal)
       }}
     `)
-    // eslint-disable-next-line
-    expect($hook('about-dialog-modal'), 'Is modal visible')
-      .to.have.length(1)
-    return capture('about-with-product-and-multiple-verions', done, {
-      targetElement: this.$('.frost-modal-outlet-container.about')[0],
-      experimentalSvgs: true
-    })
+
+    return wait()
+      .then(() => {
+        // eslint-disable-next-line
+        expect($hook('about-dialog-modal'), 'Is modal visible')
+          .to.have.length(1)
+
+        return capture('about-with-product-and-multiple-verions', done, {
+          targetElement: this.$('.frost-modal-outlet-container.about')[0],
+          experimentalSvgs: true
+        })
+      })
   })
 })
 

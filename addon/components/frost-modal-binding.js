@@ -1,5 +1,5 @@
 import Ember from 'ember'
-const {Component, inject} = Ember
+const {Component, inject, run} = Ember
 import layout from '../templates/components/frost-modal-binding'
 import PropTypesMixin, {PropTypes} from 'ember-prop-types'
 
@@ -52,7 +52,10 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
   },
 
   didUpdateAttrs () {
-    this.notifyPropertyChange('params')
+    run.next(() => {
+      if (this.isDestroyed || this.isDestroying) return
+      this.notifyPropertyChange('params')
+    })
   },
 
   // == Actions ===============================================================

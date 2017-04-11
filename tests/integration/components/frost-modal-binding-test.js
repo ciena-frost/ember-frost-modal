@@ -1,5 +1,6 @@
 import {expect} from 'chai'
 import {$hook, initialize} from 'ember-hook'
+import wait from 'ember-test-helpers/wait'
 import {integration} from 'ember-test-utils/test-support/setup-component-test'
 import hbs from 'htmlbars-inline-precompile'
 import {beforeEach, describe, it} from 'mocha'
@@ -35,22 +36,33 @@ describe(test.label, function () {
       }}
     `)
 
-    expect($hook('basic-modal'), 'Modal is initially hidden')
-      .to.have.length(0)
+    return wait()
+      .then(() => {
+        expect($hook('basic-modal'), 'Modal is initially hidden')
+          .to.have.length(0)
 
-    this.set('isModalVisible', true)
-    expect($hook('basic-modal'), 'Modal becomes visible')
-      .to.have.length(1)
+        this.set('isModalVisible', true)
 
-    expect(this.$('.frost-modal-outlet-background').hasClass('custom-class'),
-      'has class modifier').to.equal(true)
-    expect(this.$('.frost-modal-outlet-container').hasClass('custom-class'),
-      'has class modifier').to.equal(true)
-    expect(this.$('.frost-modal-outlet-body').hasClass('custom-class'),
-      'has class modifier').to.equal(true)
+        return wait()
+      })
+      .then(() => {
+        expect($hook('basic-modal'), 'Modal becomes visible')
+          .to.have.length(1)
 
-    $hook('basic-modal-confirm').click()
-    expect($hook('basic-modal'), 'Modal is dismissed')
-      .to.have.length(0)
+        expect(this.$('.frost-modal-outlet-background').hasClass('custom-class'),
+          'has class modifier').to.equal(true)
+        expect(this.$('.frost-modal-outlet-container').hasClass('custom-class'),
+          'has class modifier').to.equal(true)
+        expect(this.$('.frost-modal-outlet-body').hasClass('custom-class'),
+          'has class modifier').to.equal(true)
+
+        $hook('basic-modal-confirm').click()
+
+        return wait()
+      })
+      .then(() => {
+        expect($hook('basic-modal'), 'Modal is dismissed')
+          .to.have.length(0)
+      })
   })
 })

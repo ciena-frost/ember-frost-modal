@@ -1,3 +1,8 @@
+# 6.2.0 (2017-04-11)
+
+* **Upgraded** to Ember 2.11.
+
+
 # 6.1.4 (2017-04-07)
 
 - fixes for issue #78 and #74.

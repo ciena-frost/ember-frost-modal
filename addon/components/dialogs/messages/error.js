@@ -58,7 +58,8 @@ export default FrostModalBinding.extend(PropTypesMixin, {
       content: this.details,
       footer: this.footer,
       icon: {
-        name: 'error'
+        name: 'error',
+        pack: 'frost'
       },
       links: this.links,
       subtitle: this.subtitle,

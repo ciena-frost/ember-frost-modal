@@ -48,7 +48,8 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
   display: flex;
   position: relative;
   flex-direction: column;
-  min-width: 500px;
+  min-width: 400px;
+  max-width: calc(100vw - 40px);
   min-height: 250px;
   max-height: calc(100vh - 90px); // TODO Nav height variable
 
@@ -93,8 +94,8 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
     position: relative;
     align-items: center;
     min-height: 90px;
-    padding: 20px 30px 30px;
-    border-bottom: 1px solid $frost-color-lgrey-1;
+    padding: 20px 30px;
+    //border-bottom: 1px solid $frost-color-lgrey-1;
 
     & .frost-icon {
       width: 40px;
@@ -103,6 +104,7 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
     }
 
     &-title {
+      color: $frost-color-grey-2;
       font-size: $frost-font-l;
     }
 
@@ -117,7 +119,9 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
   &-overflow-y-start {
     position: absolute;
     right: 0;
+    bottom: 0;
     left: 0;
+    height: 12px;
     transition: opacity 300ms; // TODO Animate in/out
     opacity: 1;
     z-index: 1;
@@ -125,18 +129,19 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
 
   &-overflow-y-end {
     top: 0;
-    box-shadow: 0 -4px 10px 2px $frost-modal-overflow-shadow-color;
+    box-shadow: 0 -13px 25px 0 $frost-modal-overflow-shadow-color;
   }
 
   &-overflow-y-start {
     bottom: 0;
-    box-shadow: 0 4px 10px 2px $frost-modal-overflow-shadow-color;
+    box-shadow: 0 13px 25px 0 $frost-modal-overflow-shadow-color;
   }
 
   &-scroll {
     position: relative;
     flex: 1;
     padding: 0 30px;
+    padding-left: 0;
 
     .ps-scrollbar-y-rail {
       margin-bottom: 70px; // TODO Footer height variable
@@ -144,7 +149,9 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
   }
 
   &-summary {
-    padding: 20px 30px;
+    margin-bottom: 70px;
+    padding: 0 30px;
+    color: $frost-color-grey-1;
     font-size: $frost-font-m;
 
     + .frost-modal-dialog-content {

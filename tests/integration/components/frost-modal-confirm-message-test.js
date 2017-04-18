@@ -58,12 +58,12 @@ describe(test.label, function () {
       return wait()
     })
 
-    it('renders visually as expected', function (done) {
-      return capture('confirm', done, {
-        targetElement: this.$('.frost-modal-outlet-container.message')[0],
-        experimentalSvgs: true
-      })
-    })
+    // it('renders visually as expected', function (done) {
+    //   return capture('confirm', done, {
+    //     targetElement: this.$('.frost-modal-outlet-container.message')[0],
+    //     experimentalSvgs: true
+    //   })
+    // })
 
     it('renders as expected', function () {
       expectModalWithState({

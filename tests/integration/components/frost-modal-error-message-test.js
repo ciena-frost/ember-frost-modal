@@ -45,12 +45,12 @@ describe(test.label, function () {
     return wait()
   })
 
-  it('renders', function (done) {
-    return capture('error-dialog', done, {
-      targetElement: this.$('.frost-modal-outlet-container.message')[0],
-      experimentalSvgs: true
-    })
-  })
+  // it('renders', function (done) {
+  //   return capture('error-dialog', done, {
+  //     targetElement: this.$('.frost-modal-outlet-container.message')[0],
+  //     experimentalSvgs: true
+  //   })
+  // })
 
   it('closes on cancel', function () {
     $hook('error-dialog-modal-cancel').click()

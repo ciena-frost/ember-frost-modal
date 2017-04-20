@@ -15,7 +15,7 @@ describe(test.label, function () {
     initializeSvgUse()
   })
 
-  it('renders', function (done) {
+  it('renders', function () {
     this.timeout(10000)
     this.set('closeModal', () => {
       this.set('isModalVisible', false)
@@ -54,14 +54,14 @@ describe(test.label, function () {
       expect($hook('about-dialog-modal'), 'Is modal visible')
         .to.have.length(1)
 
-      return capture('about', done, {
-        targetElement: this.$('.frost-modal-outlet-container.about')[0],
-        experimentalSvgs: true
-      })
+      // return capture('about', done, {
+      //   targetElement: this.$('.frost-modal-outlet-container.about')[0],
+      //   experimentalSvgs: true
+      // })
     })
   })
 
-  it('renders with product', function (done) {
+  it('renders with product', function () {
     this.timeout(10000)
     this.set('closeModal', () => {
       this.set('isModalVisible', false)
@@ -97,14 +97,14 @@ describe(test.label, function () {
       expect($hook('about-dialog-modal'), 'Is modal visible')
         .to.have.length(1)
 
-      return capture('about-with-product', done, {
-        targetElement: this.$('.frost-modal-outlet-container.about')[0],
-        experimentalSvgs: true
-      })
+      // return capture('about-with-product', done, {
+      //   targetElement: this.$('.frost-modal-outlet-container.about')[0],
+      //   experimentalSvgs: true
+      // })
     })
   })
 
-  it('renders about-with-multiple-versions', function (done) {
+  it('renders about-with-multiple-versions', function () {
     this.timeout(10000)
     this.set('closeModal', () => {
       this.set('isModalVisible', false)
@@ -139,14 +139,14 @@ describe(test.label, function () {
         expect($hook('about-dialog-modal'), 'Is modal visible')
           .to.have.length(1)
 
-        return capture('about-with-multiple-verions', done, {
-          targetElement: this.$('.frost-modal-outlet-container.about')[0],
-          experimentalSvgs: true
-        })
+        // return capture('about-with-multiple-verions', done, {
+        //   targetElement: this.$('.frost-modal-outlet-container.about')[0],
+        //   experimentalSvgs: true
+        // })
       })
   })
 
-  it('renders about-with-product-and-multiple-versions', function (done) {
+  it('renders about-with-product-and-multiple-versions', function () {
     this.timeout(10000)
     this.set('closeModal', () => {
       this.set('isModalVisible', false)
@@ -185,10 +185,10 @@ describe(test.label, function () {
         expect($hook('about-dialog-modal'), 'Is modal visible')
           .to.have.length(1)
 
-        return capture('about-with-product-and-multiple-verions', done, {
-          targetElement: this.$('.frost-modal-outlet-container.about')[0],
-          experimentalSvgs: true
-        })
+        // return capture('about-with-product-and-multiple-verions', done, {
+        //   targetElement: this.$('.frost-modal-outlet-container.about')[0],
+        //   experimentalSvgs: true
+        // })
       })
   })
 })

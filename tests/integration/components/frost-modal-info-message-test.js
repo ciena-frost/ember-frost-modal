@@ -34,15 +34,15 @@ describe(test.label, function () {
     return wait()
   })
 
-  it('renders', function (done) {
-    this.timeout(10000)
-    expect($hook('info-dialog-modal'), 'Is modal visible')
-      .to.have.length(1)
-    return capture('info', done, {
-      targetElement: this.$('.frost-modal-outlet-container.message')[0],
-      experimentalSvgs: false
-    })
-  })
+  // it('renders', function (done) {
+  //   this.timeout(10000)
+  //   expect($hook('info-dialog-modal'), 'Is modal visible')
+  //     .to.have.length(1)
+  //   return capture('info', done, {
+  //     targetElement: this.$('.frost-modal-outlet-container.message')[0],
+  //     experimentalSvgs: false
+  //   })
+  // })
 
   it('closes on confirm', function () {
     $hook('info-dialog-modal-confirm').click()

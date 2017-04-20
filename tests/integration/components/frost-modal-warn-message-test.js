@@ -44,16 +44,16 @@ describe(test.label, function () {
     return wait()
   })
 
-  it('renders', function (done) {
-    this.timeout(10000)
-    expect($hook(props.hook), 'Is modal visible')
-      .to.have.length(1)
-
-    return capture('warning-dialog', done, {
-      targetElement: this.$('.frost-modal-outlet-container.message')[0],
-      experimentalSvgs: false
-    })
-  })
+  // it('renders', function (done) {
+  //   this.timeout(10000)
+  //   expect($hook(props.hook), 'Is modal visible')
+  //     .to.have.length(1)
+  //
+  //   return capture('warning-dialog', done, {
+  //     targetElement: this.$('.frost-modal-outlet-container.message')[0],
+  //     experimentalSvgs: false
+  //   })
+  // })
 
   it('cancel triggers callback and close', function () {
     $hook('warning-dialog-modal-cancel').click()

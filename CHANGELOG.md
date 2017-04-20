@@ -1,3 +1,6 @@
+# 6.2.2 (2017-04-20)
+-Modifications to align with UX spec
+
 # 6.2.1 (2017-04-11)
 
 * **Fixed** icons so they stop disappearing on a subsequent render.

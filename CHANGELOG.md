@@ -1,3 +1,7 @@
+# 6.2.3 (2017-04-21)
+* **Added** blueprint check
+
+
 # 6.2.2 (2017-04-20)
 -Modifications to align with UX spec
 

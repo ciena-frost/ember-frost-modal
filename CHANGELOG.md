@@ -1,3 +1,7 @@
+# 6.2.4 (2017-04-21)
+* **Removed** unnecessary dependencies from blueprint
+
+
 # 6.2.3 (2017-04-21)
 * **Added** blueprint check
 

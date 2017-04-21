@@ -56,7 +56,6 @@
     "ember-export-application-global": "^1.0.5",
     "ember-fetch": "1.4.0",
     "ember-frost-bunsen": "^14.2.0",
-    "ember-frost-core": "^1.11.0",
     "ember-frost-fields": "^4.0.0",
     "ember-frost-popover": "^4.0.2",
     "ember-frost-tabs": "^5.0.1",
@@ -83,7 +82,8 @@
   "dependencies": {
     "ember-cli-babel": "^5.1.5",
     "ember-cli-htmlbars": "^1.0.1",
-    "ember-cli-sass": "^5.3.0"
+    "ember-cli-sass": "^5.3.0",
+    "ember-frost-core": "^1.14.3"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"

@@ -49,7 +49,6 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
   position: relative;
   flex-direction: column;
   min-width: 400px;
-  max-width: calc(100vw - 40px);
   min-height: 250px;
   max-height: calc(100vh - 90px); // TODO Nav height variable
 

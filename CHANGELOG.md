@@ -1,3 +1,7 @@
+# 6.2.5 (2017-04-25)
+- Removed max-width from dialog modal
+
+
 # 6.2.4 (2017-04-21)
 * **Removed** unnecessary dependencies from blueprint
 

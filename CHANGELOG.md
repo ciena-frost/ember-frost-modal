@@ -1,3 +1,7 @@
+# 6.2.6 (2017-05-11)
+* **Updated** the secure auth tokens in `.travis.yml`
+
+
 # 6.2.5 (2017-04-25)
 - Removed max-width from dialog modal
 

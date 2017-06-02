@@ -2,12 +2,14 @@
   {{#if params.icon}}
     {{frost-icon
       hook=(concat hook '-icon')
+      hookQualifiers=hookQualifiers
       icon=params.icon.name
       pack=params.icon.pack
     }}
   {{/if}}
-  <div class='frost-modal-dialog-header-title'
-    data-test={{hook (concat hook '-title')}}
+  <div
+    class='frost-modal-dialog-header-title'
+    data-test={{hook (concat hook '-title') hookQualifiers}}
   >
     {{params.title}}
     {{#if params.subtitle}}
@@ -16,9 +18,11 @@
   </div>
   {{! BEGIN-SNIPPET dialog-overflow-y-start }}
   {{#if isOverflowYStart}}
-    <div class='frost-modal-dialog-overflow-y-start'
-      data-test={{hook (concat hook '-overflow-y-start')}}
-    ></div>
+    <div
+      class='frost-modal-dialog-overflow-y-start'
+      data-test={{hook (concat hook '-overflow-y-start') hookQualifiers}}
+    >
+    </div>
   {{/if}}
   {{! END-SNIPPET }}
 </div>
@@ -26,23 +30,27 @@
 {{! BEGIN-SNIPPET dialog-overflow-scroll }}
 {{#frost-scroll
   class='frost-modal-dialog-scroll'
+  hook=(concat hook '-scroll')
+  hookQualifiers=hookQualifiers
+
   onScrollDown=(action 'scrollDown')
   onScrollUp=(action 'scrollUp')
   onScrollYEnd=(action 'scrollYEnd')
   onScrollYStart=(action 'scrollYStart')
 }}
-{{! END-SNIPPET}}
+  {{! END-SNIPPET}}
   {{#if params.summary}}
     <div class='frost-modal-dialog-summary'
-      data-test={{hook (concat hook '-summary')}}
+      data-test={{hook (concat hook '-summary') hookQualifiers}}
     >
       {{params.summary}}
     </div>
   {{/if}}
 
   {{#if params.content}}
-    <div class='frost-modal-dialog-content'
-      data-test={{hook (concat hook '-content')}}
+    <div
+      class='frost-modal-dialog-content'
+      data-test={{hook (concat hook '-content') hookQualifiers}}
     >
       {{component params.content}}
     </div>
@@ -52,9 +60,11 @@
 <div class='frost-modal-dialog-footer'>
   {{! BEGIN-SNIPPET dialog-overflow-y-end }}
   {{#if isOverflowYEnd}}
-    <div class='frost-modal-dialog-overflow-y-end'
-      data-test={{hook (concat hook '-overflow-y-end')}}
-    ></div>
+    <div
+      class='frost-modal-dialog-overflow-y-end'
+      data-test={{hook (concat hook '-overflow-y-end') hookQualifiers}}
+    >
+    </div>
   {{/if}}
   {{! END-SNIPPET }}
 
@@ -66,38 +76,44 @@
     class='frost-modal-dialog-footer-cancel-button'
     disabled=params.cancel.disabled
     hook=(concat hook '-cancel')
+    hookQualifiers=hookQualifiers
     isVisible=params.cancel.isVisible
     priority='tertiary'
     size='medium'
     tabIndex=(if (or params.cancel.tabIndex (eq params.cancel.tabIndex 0)) params.cancel.tabIndex 1)
     text=(if params.cancel.text params.cancel.text 'Cancel')
+
     onClick=onCancel
   }}
 
   {{#each params.buttons as |button index|}}
-      {{frost-button
-        disabled=button.disabled
-        hook=(concat hook '-button-' index)
-        icon=button.icon
-        isVisible=button.isVisible
-        pack=button.pack
-        priority=button.priority
-        size='medium'
-        onClick=button.onClick
-        tabIndex=(if button.tabIndex button.tabIndex 0)
-        text=button.text
-      }}
+    {{frost-button
+      disabled=button.disabled
+      hook=(concat hook '-button-' index)
+      hookQualifiers=(extend hookQualifiers buttonIndex=index)
+      icon=button.icon
+      isVisible=button.isVisible
+      pack=button.pack
+      priority=button.priority
+      size='medium'
+      tabIndex=(if button.tabIndex button.tabIndex 0)
+      text=button.text
+
+      onClick=button.onClick
+    }}
   {{/each}}
 
   {{frost-button
     class='frost-modal-dialog-footer-confirm-button'
     disabled=params.confirm.disabled
     hook=(concat hook '-confirm')
+    hookQualifiers=hookQualifiers
     isVisible=params.confirm.isVisible
     priority='primary'
     size='medium'
     tabIndex=(if params.confirm.tabIndex params.confirm.tabIndex 0)
     text=(if params.confirm.text params.confirm.text 'Confirm')
+
     onClick=onConfirm
   }}
 
@@ -105,8 +121,10 @@
     {{! TODO Can the hook here be done with an index param? }}
     {{#frost-link link.route
       hook=(concat hook '-link-' index)
+      hookQualifiers=(extend hookQualifiers linkIndex=index)
       priority=link.priority
       size='medium'
+
       onClick=onClose
     }}
       {{link.text}}

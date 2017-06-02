@@ -1,16 +1,22 @@
-<div class='frost-modal-about-dialog-close'
-  data-test={{hook (concat hook '-close')}}
+<div
+  class='frost-modal-about-dialog-close'
+  data-test={{hook (concat hook '-close') hookQualifiers}}
+  role='button'
   onclick={{action (action onClose)}}
 >
   {{frost-icon
     class='frost-modal-about-dialog-close-icon'
+    hook=(concat hook '-closeIcon')
+    hookQualifiers=hookQualifiers
     icon='round-close'
   }}
 </div>
+
 <div class='frost-modal-about-dialog-header'>
   {{frost-icon
     class='frost-modal-about-dialog-branding-strip'
     hook=(concat hook '-branding-strip')
+    hookQualifiers=hookQualifiers
     icon=params.brandingStrip.icon
     pack=params.brandingStrip.pack
   }}
@@ -18,6 +24,7 @@
     {{frost-icon
       class='frost-modal-about-dialog-logo'
       hook=(concat hook '-logo')
+      hookQualifiers=hookQualifiers
       icon=params.logo.icon
       pack=params.logo.pack
     }}
@@ -25,22 +32,27 @@
       {{frost-icon
         class='frost-modal-about-dialog-product'
         hook=(concat hook '-product')
+        hookQualifiers=hookQualifiers
         icon=params.product.icon
         pack=params.product.pack
       }}
     {{/if}}
     {{#each params.versions as |version index|}}
       <div class='frost-modal-about-dialog-version'
-        data-test={{hook (concat hook '-version') index=index}}
+        data-test={{hook (concat hook '-version') (extend hookQualifiers index=index)}}
       >
         {{version}}
       </div>
     {{/each}}
   </div>
 </div>
-{{#frost-scroll class='frost-modal-about-dialog-scroll'}}
+{{#frost-scroll
+  class='frost-modal-about-dialog-scroll'
+  hook=(concat hook '-scroll')
+  hookQualifiers=hookQualifiers
+}}
   <div class='frost-modal-about-dialog-copyright'
-    data-test={{hook (concat hook '-copyright')}}
+    data-test={{hook (concat hook '-copyright') hookQualifiers}}
   >
     {{params.copyright}}
   </div>

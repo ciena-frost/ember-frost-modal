@@ -6,7 +6,6 @@ describe('Unit / Helper / array', function () {
   // Replace this with your real tests.
   it('works', function () {
     let result = array(42)
-    // eslint-disable-next-line no-unused-expressions
-    expect(result).to.be.ok
+    expect(result).not.to.equal(undefined)
   })
 })

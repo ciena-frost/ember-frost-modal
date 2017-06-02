@@ -14,7 +14,11 @@ export default FrostModalBinding.extend(PropTypesMixin, {
       icon: PropTypes.string.isRequired,
       pack: PropTypes.string.isRequired
     }).isRequired,
-    copyright: PropTypes.string.isRequired,
+    // htmlSafe() doesn't return a string, so can't use string here for copyright (@job13er 2017-06-02)
+    copyright: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object
+    ]).isRequired,
     isVisible: PropTypes.bool.isRequired,
     logo: PropTypes.shape({
       icon: PropTypes.string.isRequired,

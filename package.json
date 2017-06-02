@@ -34,7 +34,7 @@
     "ember-cli": "2.11.1",
     "ember-cli-app-version": "^2.0.0",
     "ember-cli-chai": "~0.3.0",
-    "ember-cli-code-coverage": "0.3.5",
+    "ember-cli-code-coverage": "^0.3.10",
     "ember-cli-dependency-checker": "^1.2.0",
     "ember-cli-htmlbars-inline-precompile": "^0.3.1",
     "ember-cli-import-polyfill": "0.2.0",
@@ -48,7 +48,7 @@
     "ember-cli-test-loader": "^1.1.0",
     "ember-cli-uglify": "^1.2.0",
     "ember-cli-visual-acceptance": "^2.0.0",
-    "ember-code-snippet": "^1.8.1",
+    "ember-code-snippet": "1.7.0",
     "ember-computed-decorators": "~0.3.0",
     "ember-concurrency": "~0.8.1",
     "ember-disable-proxy-controllers": "^1.0.1",
@@ -70,7 +70,7 @@
     "ember-sinon": "0.7.0",
     "ember-source": "2.11.3",
     "ember-spread": "^1.1.4",
-    "ember-test-utils": "^4.0.0",
+    "ember-test-utils": "^5.1.1",
     "ember-truth-helpers": "1.3.0",
     "liquid-fire": "0.27.2",
     "loader.js": "^4.0.1"
@@ -87,5 +87,8 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "pr-bumper": {
+    "coverage": 88.95
   }
 }

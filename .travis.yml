@@ -33,6 +33,7 @@ matrix:
   fast_finish: true
   allow_failures:
   - env: EMBER_TRY_SCENARIO=ember-release
+  - node_js: 'stable'
 
 before_install:
 - npm config set spin false
@@ -49,6 +50,7 @@ before_script:
 
 script:
 - $(npm root -g)/pr-bumper/.travis/maybe-test.sh
+- .travis/maybe-check-coverage.sh
 - .travis/maybe-bump-version.sh
 
 after_success:

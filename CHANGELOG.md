@@ -1,3 +1,8 @@
+# 6.2.7 (2017-06-03)
+* **Enabled** code coverage checking and set an initial baseline coverage
+* **Fixed** propType warnings (resolves [#106](https://github.com/ciena-frost/ember-frost-modal/issues/106))
+* **Enabled** propType errors (instead of warnings) within the addon so the above doesn't regress
+
 # 6.2.6 (2017-05-11)
 * **Updated** the secure auth tokens in `.travis.yml`
 

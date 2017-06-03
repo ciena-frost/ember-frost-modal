@@ -7,7 +7,9 @@
     rules=(frost-modal-outlet-animation this modal)
   }}
     <div class="frost-modal-outlet-background {{if modal.classModifier modal.classModifier}}"></div>
-    <div class="frost-modal-outlet-container {{if modal.classModifier modal.classModifier}}"
+    <div
+      class='frost-modal-outlet-container {{if modal.classModifier modal.classModifier}}'
+      role='button'
       onclick={{action (ignore-children modal.onOutsideClick)}}
       data-test={{hook (concat 'modal-outlet-' name '-container')}}
     >

@@ -17,7 +17,7 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
 
   propTypes: {
     // Positional params
-    modal: PropTypes.string.isRequired,
+    modal: PropTypes.string,
 
     // Options
     animation: PropTypes.func,
@@ -46,6 +46,18 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
   },
 
   // == Events ================================================================
+
+  init () {
+    this._super(...arguments)
+
+    // This is necessary because we can't list modal as required via propTypes, because
+    // we want components that derive from frost-modal-binding to be able to provide their own default 'modal'
+    // properties, and ember-prop-types won't let us override parent propTypes in children. (@job13er 2017-06-02)
+    const modal = this.get('modal')
+    if (!modal) {
+      throw new Error('frost-modal-binding: Missing required property "modal"')
+    }
+  },
 
   didReceiveAttrs () {
     this.get('modalService').setState(this.modalComponentName, this.isVisible, this.noBlur)

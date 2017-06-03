@@ -20,7 +20,13 @@ describe(test.label, function () {
     this.set('closeModal', () => {
       this.set('isModalVisible', false)
     })
-    this.set('isModalVisible', true)
+
+    // We want to make sure we pass an `htmlSafe` string as a copyright, because `Ember.String.htmlSafe()` doesn't
+    // actually return a string, and so this will make sure our propTypes for it are correct (@job13er 2017-06-02)
+    this.setProperties({
+      isModalVisible: true,
+      copyright: Ember.String.htmlSafe('<p>Some copyright text</p>')
+    })
 
     this.render(hbs `
       {{frost-modal-outlet}}
@@ -30,7 +36,7 @@ describe(test.label, function () {
           icon='company-strip'
           pack='dummy'
         )
-        copyright='copyright'
+        copyright=copyright
         hook='about-dialog'
         isVisible=isModalVisible
         logo=(hash
@@ -50,9 +56,7 @@ describe(test.label, function () {
 
     return wait()
     .then(() => {
-      // eslint-disable-next-line
-      expect($hook('about-dialog-modal'), 'Is modal visible')
-        .to.have.length(1)
+      expect($hook('about-dialog-modal'), 'Is modal visible').to.have.length(1)
 
       // return capture('about', done, {
       //   targetElement: this.$('.frost-modal-outlet-container.about')[0],
@@ -87,15 +91,16 @@ describe(test.label, function () {
           icon='product'
           pack='dummy'
         )
+        versions=(array
+          'Version: 1.0.0'
+        )
         onClose=(action closeModal)
       }}
     `)
 
     return wait()
     .then(() => {
-      // eslint-disable-next-line
-      expect($hook('about-dialog-modal'), 'Is modal visible')
-        .to.have.length(1)
+      expect($hook('about-dialog-modal'), 'Is modal visible').to.have.length(1)
 
       // return capture('about-with-product', done, {
       //   targetElement: this.$('.frost-modal-outlet-container.about')[0],
@@ -135,9 +140,7 @@ describe(test.label, function () {
 
     return wait()
       .then(() => {
-        // eslint-disable-next-line
-        expect($hook('about-dialog-modal'), 'Is modal visible')
-          .to.have.length(1)
+        expect($hook('about-dialog-modal'), 'Is modal visible').to.have.length(1)
 
         // return capture('about-with-multiple-verions', done, {
         //   targetElement: this.$('.frost-modal-outlet-container.about')[0],
@@ -181,9 +184,7 @@ describe(test.label, function () {
 
     return wait()
       .then(() => {
-        // eslint-disable-next-line
-        expect($hook('about-dialog-modal'), 'Is modal visible')
-          .to.have.length(1)
+        expect($hook('about-dialog-modal'), 'Is modal visible').to.have.length(1)
 
         // return capture('about-with-product-and-multiple-verions', done, {
         //   targetElement: this.$('.frost-modal-outlet-container.about')[0],
@@ -192,11 +193,3 @@ describe(test.label, function () {
       })
   })
 })
-
-// data-test={{hook (concat hook '-close')}}
-// onclick={{action (action onClose)}}
-// hook=(concat hook '-branding-strip')
-// hook=(concat hook '-logo')
-// hook=(concat hook '-product')
-// data-test={{hook (concat hook '-version') index=index}}
-// data-test={{hook (concat hook '-copyright')}}

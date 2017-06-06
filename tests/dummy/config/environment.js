@@ -5,6 +5,9 @@ module.exports = function (environment) {
     environment: environment,
     rootURL: '/',
     locationType: 'hash',
+    'ember-prop-types': {
+      throwErrors: true
+    },
     EmberENV: {
       FEATURES: {},
       iconPacks: {

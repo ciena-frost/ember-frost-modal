@@ -1,3 +1,6 @@
+# 6.2.8 (2017-06-06)
+* **Fixed** `config/environment.js` to no longer impact consuming app environment (resolves [#108](https://github.com/ciena-frost/ember-frost-modal/issues/108))
+
 # 6.2.7 (2017-06-03)
 * **Enabled** code coverage checking and set an initial baseline coverage
 * **Fixed** propType warnings (resolves [#106](https://github.com/ciena-frost/ember-frost-modal/issues/106))

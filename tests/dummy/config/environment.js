@@ -6,7 +6,7 @@ module.exports = function (environment) {
     podModulePrefix: 'dummy/pods',
     environment: environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     'ember-prop-types': {
       throwErrors: true
     },
@@ -37,14 +37,6 @@ module.exports = function (environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true
   }
 
-  // BEGIN-SNIPPET config-no-animation
-  if (environment === 'test') {
-    ENV['frost-modal'] = {
-      'no-animation': true
-    }
-  }
-  // END-SNIPPET
-
   if (environment === 'test') {
     // Testem prefers this...
     ENV.locationType = 'none'
@@ -54,6 +46,10 @@ module.exports = function (environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false
 
     ENV.APP.rootElement = '#ember-testing'
+
+    ENV['frost-modal'] = {
+      'no-animation': true
+    }
   }
 
   if (environment === 'production') {

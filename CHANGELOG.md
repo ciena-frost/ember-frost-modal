@@ -1,5 +1,6 @@
 # 6.2.8 (2017-06-06)
-* **Fixed** `config/environment.js` to no longer impact consuming app environment (resolves [#108](https://github.com/ciena-frost/ember-frost-modal/issues/108))
+* **Fixed** `config/environment.js` to no longer impact consuming app environment
+(resolves [#108](https://github.com/ciena-frost/ember-frost-modal/issues/108))
 
 # 6.2.7 (2017-06-03)
 * **Enabled** code coverage checking and set an initial baseline coverage
@@ -48,7 +49,8 @@
 * **Updated** the travis.yml and package.json to run code coverage
 
 # 6.1.1
-* **Updated** to use latest pr-bumper which supports being able to set a PR to `none` when publishing a new version is not desired.
+* **Updated** to use latest pr-bumper which supports being able to set a PR to `none` when publishing a new version is
+not desired.
 
 
 # 6.1.0

@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 module.exports = {
   'framework': 'mocha',
   'test_page': 'tests/index.html?hidepassed&coverage',
@@ -7,5 +9,15 @@ module.exports = {
   ],
   'launch_in_dev': [
     'Chrome'
-  ]
+  ],
+  'launchers': {
+    'PhantomJsVisualAcceptance': {
+      'command': 'phantomjs vendor/phantomjs-launcher.js <url>',
+      'protocol': 'browser'
+    },
+    'SlimerJsVisualAcceptance': {
+      'command': 'slimerjs vendor/phantomjs-launcher.js <url>',
+      'protocol': 'browser'
+    }
+  }
 }

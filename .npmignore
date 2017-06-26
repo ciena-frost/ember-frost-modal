@@ -7,12 +7,12 @@
 .bowerrc
 .editorconfig
 .ember-cli
+.eslintrc.js
 .gitignore
-.jshintrc
 .watchmanconfig
 .travis.yml
 bower.json
 ember-cli-build.js
-testem.json
+testem.js
 .idea
 /visual-acceptance

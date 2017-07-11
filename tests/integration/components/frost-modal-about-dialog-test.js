@@ -1,4 +1,5 @@
 import {expect} from 'chai'
+import Ember from 'ember'
 import {initialize as initializeSvgUse} from 'ember-frost-core/instance-initializers/svg-use-polyfill'
 import {$hook, initialize} from 'ember-hook'
 import wait from 'ember-test-helpers/wait'

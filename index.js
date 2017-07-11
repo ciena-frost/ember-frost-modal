@@ -1,4 +1,4 @@
-/* globals module */
+/* eslint-env node */
 
 'use strict'
 
@@ -9,7 +9,7 @@ module.exports = {
     this._super.included(app)
   },
 
-  init: function (app) {
+  init: function () {
     this.options = this.options || {}
     this.options.babel = this.options.babel || {}
     this.options.babel.optional = this.options.babel.optional || []

@@ -1,3 +1,6 @@
+# 6.2.9 (2017-07-11)
+* Upgrade `ember-cli` to 2.12.3
+
 # 6.2.8 (2017-06-06)
 * **Fixed** `config/environment.js` to no longer impact consuming app environment
 (resolves [#108](https://github.com/ciena-frost/ember-frost-modal/issues/108))

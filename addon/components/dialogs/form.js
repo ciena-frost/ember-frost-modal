@@ -1,5 +1,4 @@
-import Ember from 'ember'
-const {computed} = Ember
+import computed, {readOnly} from 'ember-computed-decorators'
 import {form} from '../../helpers/frost-modal-animation'
 import FrostModalBinding from '../frost-modal-binding'
 import PropTypesMixin, {PropTypes} from 'ember-prop-types'
@@ -49,8 +48,9 @@ export default FrostModalBinding.extend(PropTypesMixin, {
   },
 
   // == Computed properties ===================================================
-
-  params: computed(function () {
+  @readOnly
+  @computed()
+  params () {
     return {
       buttons: this.buttons,
       cancel: this.cancel,
@@ -61,6 +61,6 @@ export default FrostModalBinding.extend(PropTypesMixin, {
       subtitle: this.subtitle,
       title: this.title
     }
-  }).readOnly()
+  }
 
 })

@@ -60,6 +60,7 @@
 
 <div class='frost-modal-demo-api'>
   {{#frost-tabs
+    hook='tabs'
     onChange=(action (mut tab))
     selectedTab=tab
      as |controls|
@@ -85,6 +86,7 @@
   </div>
   <div class='frost-modal-demo-launch'>
     {{frost-button
+      hook='launchButton'
       priority='primary'
       size='medium'
       text='Launch the modal'

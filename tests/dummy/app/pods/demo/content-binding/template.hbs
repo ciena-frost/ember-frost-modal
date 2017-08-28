@@ -40,7 +40,7 @@
       And what better way to represent content than an actual component?
     </p>
     <p>
-      As mentioned in {{#frost-link 'demo.basic-binding'}}basic binding{{/frost-link}}, components
+      As mentioned in {{#frost-link 'demo.basic-binding' hook='basicBindingHook'}}basic binding{{/frost-link}}, components
       used in a <b>frost-modal-binding</b> are rendered as Ember components in the outlet location
       and parameters are bound to the local context (route), so any changes will be handled using
       the standard Ember component lifecycle.
@@ -49,8 +49,8 @@
       Since this aspect of modals is completely custom, the best way to figure out how it works is
       to present the basic API and look at a few samples:
       <ul>
-        <li>{{#frost-link 'demo.dynamic-updates'}}Dynamic updates{{/frost-link}}</li>
-        <li>{{#frost-link 'demo.overflow'}}Overflow{{/frost-link}}</li>
+        <li>{{#frost-link 'demo.dynamic-updates' hook='dynamicHook'}}Dynamic updates{{/frost-link}}</li>
+        <li>{{#frost-link 'demo.overflow' hook='overflowHook'}}Overflow{{/frost-link}}</li>
       </ul>
     </p>
   </div>
@@ -79,6 +79,7 @@
   </div>
   <div class='frost-modal-demo-launch'>
     {{frost-button
+      hook='launchButton'
       priority='primary'
       size='medium'
       text='Launch the modal'

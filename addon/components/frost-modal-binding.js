@@ -33,7 +33,7 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
 
     // Actions
     onCancel: PropTypes.func,
-    onClose: PropTypes.func,
+    onClose: PropTypes.func.isRequired,
     onConfirm: PropTypes.func
   },
 

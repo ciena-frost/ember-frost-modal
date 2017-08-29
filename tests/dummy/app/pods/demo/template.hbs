@@ -3,7 +3,10 @@
     <div class='frost-modal-demo-title'>
       Demos
     </div>
-    {{#frost-scroll class='frost-modal-demo-selectors'}}
+    {{#frost-scroll
+      class='frost-modal-demo-selectors'
+      hook='selectorScroll'
+    }}
       {{#link-to 'demo.overview'}}Overview{{/link-to}}
       <div class='frost-modal-demo-selector-title'>
         Building blocks
@@ -43,7 +46,10 @@
       </div>
     {{/frost-scroll}}
   </div>
-  {{#frost-scroll class='frost-modal-demo-example'}}
+  {{#frost-scroll
+    class='frost-modal-demo-example'
+    hook='exampleScroll'
+  }}
     {{outlet}}
   {{/frost-scroll}}
 </div>

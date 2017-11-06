@@ -6,7 +6,7 @@ module.exports = {
 
   afterInstall: function (options) {
     const addonsToAdd = [
-      {name: 'ember-frost-core', target: '1.23.10'},
+      {name: 'ember-frost-core', target: '^3.0.1'},
       {name: 'ember-get-config', target: '~0.2.1'},
       {name: 'ember-ignore-children-helper', target: '^1.0.0'},
       {name: 'liquid-fire', target: '0.27.2'}

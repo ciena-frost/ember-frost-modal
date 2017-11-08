@@ -1,3 +1,7 @@
+# 7.0.0 (2017-11-08)
+* Use the latest `ember-frost-core`, with a flexible minor version (`^3.0.1`)
+
+
 # 6.2.13 (2017-08-30)
 * Fixes #114 
   * Use ember-cli-notifications latest - v4.2.0 was using a beta version of ember-css-modules

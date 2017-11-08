@@ -82,7 +82,7 @@
     "ember-cli-babel": "^5.1.7",
     "ember-cli-htmlbars": "^1.1.1",
     "ember-cli-sass": "5.6.0",
-    "ember-frost-core": "1.23.10"
+    "ember-frost-core": "^3.0.1"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"

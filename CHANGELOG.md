@@ -1,3 +1,6 @@
+# 7.0.2 (2017-11-14)
+* Remove unused `ember-simple-uuid` dependency
+
 # 7.0.1 (2017-11-14)
 * #118 - Bind context to call of this._super.included() in index.js
 

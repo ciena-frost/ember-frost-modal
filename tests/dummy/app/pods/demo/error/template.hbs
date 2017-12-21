@@ -44,10 +44,10 @@
     isVisible=false
   )
   hook='error-dialog'
-  footer=(component 'frost-loading' class='frost-footer-component')
+  footer=(component 'frost-loading' hook='frost-loading' class='frost-footer-component')
   isVisible=isErrorVisible
   links=(array
-    (hash
+    (object
       priority='secondary'
       route='demo.confirm'
       text='To safety!'

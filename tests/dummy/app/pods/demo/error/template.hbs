@@ -1,6 +1,7 @@
 {{!-- BEGIN-SNIPPET error-api }}
   {{frost-modal-outlet}}
 
+  {{! use `object` instead of `hash` to resolve issue https://github.com/emberjs/ember.js/issues/14738. As `hash` does not have a `toString` method }}
   {{frost-modal-error-message
     buttons=(array
       (object

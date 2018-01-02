@@ -1,9 +1,10 @@
 {{!-- BEGIN-SNIPPET confirm-api }}
   {{frost-modal-outlet}}
 
+  {{! use `object` instead of `hash` to resolve issue https://github.com/emberjs/ember.js/issues/14738. As `hash` does not have a `toString` method }}
   {{frost-modal-confirm-message
     buttons=(array
-      (object
+      (object 
         disabled= // true
         icon= // e.g. 'info'
         onClick= // e.g. (action 'info')

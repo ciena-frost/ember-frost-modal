@@ -1,9 +1,10 @@
 {{!-- BEGIN-SNIPPET error-api }}
   {{frost-modal-outlet}}
 
+  {{! use `object` instead of `hash` to resolve issue https://github.com/emberjs/ember.js/issues/14738. As `hash` does not have a `toString` method }}
   {{frost-modal-error-message
     buttons=(array
-      (hash
+      (object
         disabled= // true
         icon= // e.g. 'info'
         onClick= // e.g. (action 'info')
@@ -23,7 +24,7 @@
       (component 'frost-loading')
     isVisible= // Required binding
     links=(array
-      (hash
+      (object
         priority= // ['primary', etc.]
         route= // e.g. 'foo.bar'
         text= // e.g. 'Foo'
@@ -44,10 +45,10 @@
     isVisible=false
   )
   hook='error-dialog'
-  footer=(component 'frost-loading' class='frost-footer-component')
+  footer=(component 'frost-loading' hook='frost-loading' class='frost-footer-component')
   isVisible=isErrorVisible
   links=(array
-    (hash
+    (object
       priority='secondary'
       route='demo.confirm'
       text='To safety!'

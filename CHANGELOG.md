@@ -1,3 +1,7 @@
+# 7.0.3 (2018-01-02)
+* Demo, and docs use object instead of hash (For Emb
+
+
 # 7.0.2 (2017-11-14)
 * Remove unused `ember-simple-uuid` dependency
 

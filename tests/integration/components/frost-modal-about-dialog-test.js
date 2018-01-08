@@ -29,7 +29,7 @@ describe(test.label, function () {
       copyright: Ember.String.htmlSafe('<p>Some copyright text</p>')
     })
 
-    this.render(hbs `
+    this.render(hbs`
       {{frost-modal-outlet}}
 
       {{frost-modal-about
@@ -55,8 +55,7 @@ describe(test.label, function () {
       }}
     `)
 
-    return wait()
-    .then(() => {
+    return wait().then(() => {
       expect($hook('about-dialog-modal'), 'Is modal visible').to.have.length(1)
 
       // return capture('about', done, {
@@ -73,7 +72,7 @@ describe(test.label, function () {
     })
     this.set('isModalVisible', true)
 
-    this.render(hbs `
+    this.render(hbs`
       {{frost-modal-outlet}}
 
       {{frost-modal-about
@@ -99,8 +98,7 @@ describe(test.label, function () {
       }}
     `)
 
-    return wait()
-    .then(() => {
+    return wait().then(() => {
       expect($hook('about-dialog-modal'), 'Is modal visible').to.have.length(1)
 
       // return capture('about-with-product', done, {
@@ -117,7 +115,7 @@ describe(test.label, function () {
     })
     this.set('isModalVisible', true)
 
-    this.render(hbs `
+    this.render(hbs`
       {{frost-modal-outlet}}
 
       {{frost-modal-about
@@ -157,7 +155,7 @@ describe(test.label, function () {
     })
     this.set('isModalVisible', true)
 
-    this.render(hbs `
+    this.render(hbs`
       {{frost-modal-outlet}}
 
       {{frost-modal-about

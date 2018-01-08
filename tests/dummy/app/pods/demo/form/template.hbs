@@ -1,7 +1,9 @@
 {{!-- BEGIN-SNIPPET form-api }}
   {{frost-modal-outlet}}
 
-  {{! use `object` instead of `hash` to resolve issue https://github.com/emberjs/ember.js/issues/14738. As `hash` does not have a `toString` method }}
+  {{! use `object` instead of `hash` to resolve issue
+      https://github.com/emberjs/ember.js/issues/14738
+      as `hash` does not have a `toString` method }}
   {{frost-modal-form
     buttons=(array
       (object
@@ -18,11 +20,13 @@
       text= // ('Cancel')
     )
     closeOnConfirm= // (true)
+    closeAfterOnConfirmResolves= // (false)
     confirm=(hash
       disabled= // (false)
       isVisible=  // (true)
       text= // ('Confirm')
     )
+    disableConfirmUntilOnConfirmResolves= // (false)
     footer= // e.g. 'Foo bar' or a component
       (component 'frost-loading')
     form=(component 'frost-bunsen-form'
@@ -59,13 +63,14 @@
   classModifier='my-class'
   closeOnConfirm=false
   confirm=(hash
-    disabled=(not isSomethingReady)
+    disabled=(not isFormValid)
   )
   footer='Foo bar'
   form=(component 'frost-bunsen-form'
     bunsenModel=simpleBunsenModel
     hook='bunsen-form'
-    onChange=(action 'simpleBunsenChange')
+    onChange=(action 'updateFormValue')
+    onValidation=(action 'updateValidity')
     value=simpleBunsenValue
   )
   hook='form-dialog'

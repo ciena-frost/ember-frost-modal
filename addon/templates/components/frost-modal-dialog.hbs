@@ -82,6 +82,7 @@
     size='medium'
     tabIndex=(if (or params.cancel.tabIndex (eq params.cancel.tabIndex 0)) params.cancel.tabIndex 1)
     text=(if params.cancel.text params.cancel.text 'Cancel')
+    title=(if params.cancel.title params.cancel.title)
 
     onClick=onCancel
   }}
@@ -98,6 +99,7 @@
       size='medium'
       tabIndex=(if button.tabIndex button.tabIndex 0)
       text=button.text
+      title=button.title
 
       onClick=button.onClick
     }}
@@ -113,6 +115,7 @@
     size='medium'
     tabIndex=(if params.confirm.tabIndex params.confirm.tabIndex 0)
     text=(if params.confirm.text params.confirm.text 'Confirm')
+    title=(if params.confirm.title params.confirm.title)
 
     onClick=onConfirm
   }}

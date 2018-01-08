@@ -1,10 +1,13 @@
 /**
- * Demo of frost-modal-form with useful defaults
+ * Demo of frost-modal-form with optional progress indication
+ * until a promise is returned from the onConfirm callback,
+ * triggered with the showProgressUntilConfirmResolves option.
  */
 
 import Ember from 'ember'
-const {Controller, inject} = Ember
+const {Controller, RSVP, inject, run} = Ember
 const {service} = inject
+const {Promise} = RSVP
 
 export default Controller.extend({
   notifications: service('notification-messages'),
@@ -46,12 +49,14 @@ export default Controller.extend({
 
   actions: {
     closeForm () {
-      this.set('isFormValid', true)
-      this.set('isFormVisible', false)
-      this.set('simpleBunsenValue', Ember.Object({
-        firstName: 'Ada',
-        lastName: 'Lovelace'
-      }))
+      this.setProperties({
+        isFormValid: true,
+        isFormVisible: false,
+        simpleBunsenValue: {
+          firstName: 'Ada',
+          lastName: 'Lovelace'
+        }
+      })
     },
 
     openForm () {
@@ -62,14 +67,22 @@ export default Controller.extend({
       window.alert('OMG!')
     },
 
-    notifyClearAndClose () {
+    /**
+     * @returns {Promise} promise - a promise that resolves in a few seconds to imitate an async call
+     */
+    resolveLater () {
       this.get('notifications').addNotification({
-        message: JSON.stringify(this.get('simpleBunsenValue'), null, 2),
+        message: 'Showing progress indicator until async returns',
         type: 'success',
         autoClear: true,
-        clearDuration: 2000
+        clearDuration: 3000
       })
-      this.send('closeForm')
+
+      return new Promise((resolve) => {
+        run.later(() => {
+          resolve('success!')
+        }, 3000)
+      })
     },
 
     /**

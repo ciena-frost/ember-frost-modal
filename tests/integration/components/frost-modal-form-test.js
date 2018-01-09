@@ -7,6 +7,8 @@ import hbs from 'htmlbars-inline-precompile'
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
+import modalUtils from 'dummy/tests/helpers/ember-frost-modal'
+
 const test = integration('frost-modal-form')
 describe(test.label, function () {
   test.setup()
@@ -20,12 +22,8 @@ describe(test.label, function () {
 
     props = {
       closeOnConfirm: true,
-      closeAfterOnConfirmResolves: false,
-      disabledConfirm: {
-        disabled: true,
-        text: 'Waiting'
-      },
-      disableConfirmUntilOnConfirmResolves: false,
+      disabledConfirmText: 'Waiting',
+      disableConfirmUntilOnConfirmResolves: true,
       hook: 'form-dialog',
       isFormVisible: true,
       simpleBunsenChange: sandbox.stub(),
@@ -67,7 +65,7 @@ describe(test.label, function () {
         closeOnConfirm=closeOnConfirm
         closeAfterOnConfirmResolves=closeAfterOnConfirmResolves
         confirm=confirm
-        disabledConfirm=disabledConfirm
+        disabledConfirmText=disabledConfirmText
         disableConfirmUntilOnConfirmResolves=disableConfirmUntilOnConfirmResolves
         footer=footer
         form=(component 'frost-bunsen-form'
@@ -171,24 +169,23 @@ describe(test.label, function () {
     })
   })
 
-  describe('When onConfirm returns a promise', function () {
+  describe('when closeOnConfirm=true and onConfirm returns a promise', function () {
     let resolver
 
     beforeEach(function () {
       resolver = returnPromiseFromStub(props.onConfirm)
     })
 
-    function itShouldDeferClosing (desc, {closeAfterConfirm, disableConfirm}) {
+    function itShouldDeferClosing (desc, {disableConfirmUntilOnConfirmResolves}) {
       describe(desc, function () {
         beforeEach(function () {
           this.setProperties({
-            closeAfterOnConfirmResolves: closeAfterConfirm,
-            closeOnConfirm: false,
-            disableConfirmUntilOnConfirmResolves: disableConfirm
+            closeOnConfirm: true,
+            disableConfirmUntilOnConfirmResolves
           })
         })
 
-        describe('When Confirm is clicked', function () {
+        describe('when Confirm is clicked', function () {
           beforeEach(function () {
             $hook('form-dialog-modal-confirm').click()
             return wait()
@@ -204,72 +201,43 @@ describe(test.label, function () {
 
           // State before promise is resolved
 
-          if (disableConfirm) {
-            describe('The Confirm button uses the disabled settings', function () {
-              it('should have a disabled Confirm button', function () {
-                expect($hook('form-dialog-modal-confirm')).to.have.prop('disabled', true)
-              })
-
-              it('should have the disabled placeholder text', function () {
-                expect($hook('form-dialog-modal-confirm').text().trim()).to.equal('Waiting')
-              })
+          if (disableConfirmUntilOnConfirmResolves) {
+            it('should have a disabled Confirm button with the overridden disabled settings', function () {
+              modalUtils.expectModalConfirmButtonWithState({text: 'Waiting', disabled: true})
             })
           } else {
-            describe('The Confirm button is not disabled', function () {
-              it('should not have a disabled Confirm button', function () {
-                expect($hook('form-dialog-modal-confirm')).to.have.prop('disabled', false)
-              })
-
-              it('should have the normal Confirm text', function () {
-                expect($hook('form-dialog-modal-confirm').text().trim()).to.equal('Confirm')
-              })
+            it('should have an enabled Confirm button', function () {
+              modalUtils.expectModalConfirmButtonWithState({text: 'Confirm', disabled: false})
             })
           }
 
-          describe('When the onConfirm promise resolves', function () {
+          describe('when the onConfirm promise resolves', function () {
             beforeEach(function () {
               resolver.resolve('success!')
               return wait()
             })
 
-            if (disableConfirm) {
-              describe('The Confirm button is no longer disabled', function () {
-                it('should not have a disabled Confirm button', function () {
-                  expect($hook('form-dialog-modal-confirm')).to.have.prop('disabled', false)
-                })
-
-                it('should have the normal Confirm text', function () {
-                  expect($hook('form-dialog-modal-confirm').text().trim()).to.equal('Confirm')
-                })
+            if (disableConfirmUntilOnConfirmResolves) {
+              it('should have an enabled Confirm button', function () {
+                modalUtils.expectModalConfirmButtonWithState({text: 'Confirm', disabled: false})
               })
             }
 
-            if (closeAfterConfirm) {
-              it('should invoke `onClose`', function () {
-                expect(props.onClose).to.have.callCount(1)
-              })
-            }
+            it('should invoke `onClose`', function () {
+              expect(props.onClose).to.have.callCount(1)
+            })
           })
         })
       })
     }
 
-    itShouldDeferClosing('when closeAfterOnConfirmResolves is true', {
-      closeAfterConfirm: true,
-      disableConfirm: false
+    itShouldDeferClosing('when disableConfirmUntilOnConfirmResolves is true (default)', {
+      disableConfirmUntilOnConfirmResolves: true
     })
 
-    itShouldDeferClosing('when disableConfirmUntilOnConfirmResolves is true', {
-      closeAfterConfirm: false,
-      disableConfirm: true
+    itShouldDeferClosing('when disableConfirmUntilOnConfirmResolves is false', {
+      disableConfirmUntilOnConfirmResolves: false
     })
-
-    itShouldDeferClosing(
-      'when both closeAfterOnConfirmResolves and disableConfirmUntilOnConfirmResolves are true',
-      {
-        disableConfirm: true,
-        closeAfterConfirm: true
-      })
   })
 
   describe('when subtitle present', function () {

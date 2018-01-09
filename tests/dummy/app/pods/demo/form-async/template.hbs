@@ -2,19 +2,7 @@
   {{frost-modal-outlet}}
 
   {{frost-modal-form
-    closeOnConfirm=false
-    closeAfterOnConfirmResolves=true
-    confirm=(object
-      disabled= // (false)
-      isVisible=  // (true)
-      text= // ('Confirm')
-    )
-    disableConfirmUntilOnConfirmResolves=true
-    disabledConfirm=(object
-      disabled=true
-      isVisible=  // (true)
-      text= // ('Confirm')
-    )
+    disabledConfirmText= // ('Confirm')
     form=(component 'frost-bunsen-form'
       bar= // e.g. props for 'foo'
     )
@@ -25,69 +13,56 @@
 
 {{! BEGIN-SNIPPET form-async }}
 {{frost-modal-form
-  classModifier='my-class'
-  closeOnConfirm=false
-  closeAfterOnConfirmResolves=true
+  closeOnConfirm=true
   confirm=(hash
     disabled=(not isFormValid)
   )
-  disabledConfirm=(object
-    disabled=true
-    text='Waiting...'
-  )
-  disableConfirmUntilOnConfirmResolves=true
+  disabledConfirmText='Waiting...'
   form=(component 'frost-bunsen-form'
-    bunsenModel=simpleBunsenModel
+    bunsenModel=bunsenModel
     hook='bunsen-form'
     onChange=(action 'updateFormValue')
     onValidation=(action 'updateValidity')
-    value=simpleBunsenValue
+    value=bunsenValue
   )
   hook='form-dialog'
   isVisible=isFormVisible
   subtitle='Confirm can optionally wait until onConfirm resolves'
   title='Delaying closure until a promise resolves'
   onClose=(action 'closeForm')
-  onConfirm=(action 'resolveLater')
+  onConfirm=(action 'doSomethingAsync')
 }}
 {{! END-SNIPPET }}
 
 <div class='frost-modal-demo-api'>
   <div class='frost-modal-demo-title'>
-    Optional behavior when <code>onConfirm</code> returns a promise
+    Promise-aware behavior when <code>onConfirm</code> returns a promise
   </div>
   <div class='frost-modal-demo-notes'>
     <p>
-      When <code>onConfirm</code> returns a promise, the modal can optionally be configured to
-      disable the Confirm button until the promise resolves, as well as stay open until the promise resolves.
+      When <code>onConfirm</code> returns a promise, the modal will stay open until the promise resolves.
+      It can optionally be configured to disable the Confirm button until the promise resolves.
     </p>
     <p>
-      The API for the modal is the same as normal, except for:
+      To take advantage of this feature, <code>closeOnConfirm</code> must be true
+      and your <code>onConfirm</code> action needs to return a promise.
     </p>
     <ul>
       <li><b><code>onConfirm</code></b> is a function that returns a promise</li>
-      <li><b><code>closeOnConfirm=false</code></b> to prevent early closure of the modal</li>
+      <li><b><code>closeOnConfirm=true</code></b> (default true) to enable automatic handling</li>
       <li>
-        <b><code>closeAfterConfirmResolves=true</code></b>
-        will cause the modal to automatically close once <code>onConfirm</code> resolves
+        <b><code>disableConfirmUntilOnConfirmResolves=true</code></b> (default true)
+        will disable the confirm button until <code>onConfirm</code>'s return value resolves
       </li>
       <li>
-        <b><code>disableConfirmUntilOnConfirmResolves=true</code></b>
-        will replace the Confirm button with the props in the <code>disabledConfirm</code> property
-      </li>
-      <li>
-        <b><code>disabledConfirm=(object ...)</code></b> lets you override the text to use (instead of "Confirm").
-        (You must specify both the disabled and text properties for this to work correctly.)
+        <b><code>disabledConfirmText='some string'</code></b>
+        lets you override the text to use (instead of "Confirm") when the Confirm button is disabled.
+        Default behavior is to use the <code>confirm.text</code> property.
       </li>
     </ul>
   </div>
   <div class='frost-modal-demo-title'>
     API
-  </div>
-  <div class='frost-modal-demo-notes'>
-    <p>
-      (Differences from default <code>frost-modal-form</code>)
-    </p>
   </div>
   <div class='frost-modal-demo-snippet'>
     {{code-snippet name='form-api-async.hbs'}}

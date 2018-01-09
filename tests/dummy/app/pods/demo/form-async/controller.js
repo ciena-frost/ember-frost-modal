@@ -18,7 +18,8 @@ export default Controller.extend({
   isFormValid: true,
   isFormVisible: false,
 
-  simpleBunsenModel: {
+  // This would often be imported from a separate file, or provided by an external API.
+  bunsenModel: {
     type: 'object',
     properties: {
       firstName: {
@@ -42,17 +43,20 @@ export default Controller.extend({
     required: ['lastName']
   },
 
-  simpleBunsenValue: {
+  bunsenValue: {
     firstName: 'Ada',
     lastName: 'Lovelace'
   },
 
   actions: {
+    /**
+     * Hide our form and reset the values
+     */
     closeForm () {
       this.setProperties({
         isFormValid: true,
         isFormVisible: false,
-        simpleBunsenValue: {
+        bunsenValue: {
           firstName: 'Ada',
           lastName: 'Lovelace'
         }
@@ -68,9 +72,13 @@ export default Controller.extend({
     },
 
     /**
+     * Force delayed resolution so that we can demo async onConfirm behavior.
+     * In a real app, this action would be an action that does something async
+     * (such as make an API call), and returns a promise.
+     *
      * @returns {Promise} promise - a promise that resolves in a few seconds to imitate an async call
      */
-    resolveLater () {
+    doSomethingAsync () {
       this.get('notifications').addNotification({
         message: 'Showing progress indicator until async returns',
         type: 'success',
@@ -90,7 +98,7 @@ export default Controller.extend({
      * @param {Object} formValue - the updated value from bunsen
      */
     updateFormValue (formValue) {
-      this.set('simpleBunsenValue', formValue)
+      this.set('bunsenValue', formValue)
     },
 
     /**

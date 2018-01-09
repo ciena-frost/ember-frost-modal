@@ -1,5 +1,6 @@
 import Ember from 'ember'
 const {Component, inject, run} = Ember
+import computed, {readOnly} from 'ember-computed-decorators'
 import layout from '../templates/components/frost-modal-binding'
 import PropTypesMixin, {PropTypes} from 'ember-prop-types'
 
@@ -31,12 +32,18 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
     // Options
     animation: PropTypes.func,
     classModifier: PropTypes.string,
+    closeOnConfirm: PropTypes.bool,
     closeOnOutsideClick: PropTypes.bool,
-    closeAfterOnConfirmResolves: PropTypes.bool,
+    // desired properties of the 'Confirm' button
+    confirm: PropTypes.shape({
+      disabled: PropTypes.bool,
+      isVisible: PropTypes.bool,
+      tabIndex: PropTypes.number,
+      text: PropTypes.string,
+      title: PropTypes.string
+    }),
+    disabledConfirmText: PropTypes.string,
     disableConfirmUntilOnConfirmResolves: PropTypes.bool,
-    // This is only used when we are overriding the confirm button's state, which
-    // is useful if we want to prevent spamming Confirm until onConfirm resolves.
-    forceDisabledConfirm: PropTypes.bool,
     isVisible: PropTypes.bool.isRequired,
     params: PropTypes.oneOfType([
       PropTypes.EmberObject,
@@ -44,6 +51,9 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
     ]),
     noBlur: PropTypes.bool,
     targetOutlet: PropTypes.string,
+
+    // State
+    forceDisabledConfirm: PropTypes.bool, // only used when we are currently overriding the confirm button state
 
     // Actions
     onCancel: PropTypes.func,
@@ -53,14 +63,47 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
 
   getDefaultProps () {
     return {
-      closeAfterOnConfirmResolves: false,
       closeOnConfirm: true,
       closeOnOutsideClick: false,
-      disableConfirmUntilOnConfirmResolves: false,
+      confirm: {
+        disabled: false,
+        isVisible: true,
+        text: 'Confirm'
+      },
+      _defaultConfirm: {
+        disabled: false,
+        isVisible: true,
+        text: 'Confirm'
+      },
+      disableConfirmUntilOnConfirmResolves: true,
       forceDisabledConfirm: false,
-      overrideConfirmState: false,
       targetOutlet: 'modal'
     }
+  },
+
+  // == Computed Properties ===================================================
+
+  @readOnly
+  @computed('confirm', 'forceDisabledConfirm', 'disabledConfirmText', '_defaultConfirm')
+  /**
+   * Computed our Confirm button's props so that we can alter text/disabled in concord with onConfirm promises
+   * TODO: Update confirm/error/info/warn to use this as well: they currently use this.confirm directly
+   * @param {Object} confirm - normal props for confirm button
+   * @param {Boolean} forceDisabledConfirm - whether to override normal confirm button props
+   * @param {String} disabledConfirmText - optional replacement text for the confirm button
+   * @param {Object} defaultConfirm - defaults for confirm button, in case someone doesn't specify text
+   * @returns {Object} - props to use when displaying the confirm button
+   */
+  confirmButtonProps (confirm, forceDisabledConfirm, disabledConfirmText, defaultConfirm) {
+    if (forceDisabledConfirm) {
+      const text = disabledConfirmText || confirm.text || defaultConfirm.text
+      return {
+        ...confirm,
+        disabled: true,
+        text
+      }
+    }
+    return confirm
   },
 
   // == Events ================================================================
@@ -88,34 +131,6 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
     })
   },
 
-  // == Functions ==============================================================
-
-  /**
-   * Do any promise-dependent logic that we might want to once onConfirm resolves
-   * @param {Promise} confirmed - the result of onConfirm()
-   * @returns {Promise} promise
-   */
-  handleThenableConfirmResult (confirmed) {
-    let thenable = confirmed
-
-    // We handle these separately because someone might want to
-    // have the confirm button disabled, but not call onClose automatically.
-    if (this.get('disableConfirmUntilOnConfirmResolves')) {
-      this.set('forceDisabledConfirm', true)
-      thenable = confirmed.then(() => {
-        this.set('forceDisabledConfirm', false)
-      })
-    }
-
-    if (this.get('closeAfterOnConfirmResolves')) {
-      thenable = thenable.then(() => {
-        this.onClose()
-      })
-    }
-
-    return thenable
-  },
-
   // == Actions ===============================================================
 
   actions: {
@@ -127,6 +142,12 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
       this.onClose()
     },
 
+    /**
+     * Handle confirmation in a promise-aware way.
+     * If onConfirm returns a promise, closeOnConfirm will wait for it to resolve successfully before closing the modal.
+     * @returns {Object} the return value of onConfirm.
+     * @private
+     */
     _onConfirm () {
       const onConfirm = this.get('onConfirm')
       let confirmed
@@ -135,14 +156,27 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
       }
 
       if (this.get('closeOnConfirm') === true) {
+        if (isThenable(confirmed)) {
+          // We handle these separately because someone might want to
+          // have the confirm button disabled, but not call onClose automatically.
+          if (this.get('disableConfirmUntilOnConfirmResolves')) {
+            this.set('forceDisabledConfirm', true)
+            confirmed = confirmed.then(() => {
+              this.set('forceDisabledConfirm', false)
+            })
+          }
+
+          confirmed = confirmed.then(() => {
+            this.onClose()
+          })
+
+          return confirmed
+        }
+
+        // Otherwise, we don't care about promise awareness
         this.onClose()
+        return confirmed
       }
-
-      if (isThenable(confirmed)) {
-        return this.handleThenableConfirmResult(confirmed)
-      }
-
-      return confirmed
     },
 
     _onOutsideClick () {

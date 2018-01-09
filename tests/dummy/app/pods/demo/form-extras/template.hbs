@@ -1,0 +1,118 @@
+{{!-- BEGIN-SNIPPET form-extras-api }}
+  {{frost-modal-outlet}}
+
+  {{! use `object` instead of `hash` to resolve issue
+      https://github.com/emberjs/ember.js/issues/14738
+      as `hash` does not have a `toString` method }}
+  {{frost-modal-form
+    buttons=(array
+      (object
+        disabled= // true
+        icon= // e.g. 'info'
+        onClick= // e.g. (action 'info')
+        pack= // e.g. 'frost'
+        priority= // ['primary', etc.]
+        text= // e.g. 'Foo'
+      )
+    )
+    cancel=(hash
+      isVisible= // (true)
+      text= // ('Cancel')
+    )
+    closeOnConfirm= // (true)
+    confirm=(hash
+      disabled= // (false)
+      isVisible=  // (true)
+      text= // ('Confirm')
+    )
+    disabledText= // (defaults to confirm.text)
+    disableConfirmUntilOnConfirmResolves= // (true)
+    footer= // e.g. 'Foo bar' or a component
+      (component 'frost-loading')
+    form=(component 'frost-bunsen-form'
+      bar= // e.g. props for 'foo'
+    )
+    isVisible= // Required binding
+    links=(array
+      (object
+        priority= // ['primary', etc.]
+        route= // e.g. 'foo.bar'
+        text= // e.g. 'Foo'
+      )
+    )
+    subtitle= // e.g. 'Foo bar'
+    targetOutlet= // ('modal')
+    title= // Required
+    onCancel= // e.g. (action 'foo')
+    onClose= // Required binding
+    onConfirm= // e.g. (action 'foo')
+  }}
+{{ END-SNIPPET --}}
+
+{{! BEGIN-SNIPPET form-extras }}
+{{frost-modal-form
+  buttons=(array
+    (object
+      icon='info'
+      onClick=(action 'info')
+      pack='frost'
+      priority='secondary'
+      text='Info'
+    )
+  )
+  classModifier='my-class'
+  closeOnConfirm=false
+  confirm=(hash
+    disabled=(not isFormValid)
+  )
+  footer='Foo bar'
+  form=(component 'frost-bunsen-form'
+    bunsenModel=bunsenModel
+    hook='bunsen-form'
+    onChange=(action 'updateFormValue')
+    onValidation=(action 'updateValidity')
+    value=bunsenValue
+  )
+  hook='form-dialog'
+  isVisible=isFormVisible
+  subtitle='Lemon squeezy'
+  title='Easy peasy'
+  onClose=(action 'closeForm')
+  onConfirm=(action 'notifyClearAndClose')
+}}
+{{! END-SNIPPET }}
+
+<div class='frost-modal-demo-api'>
+  <div class='frost-modal-demo-title'>
+    Additional <code>frost-modal-form</code> options
+  </div>
+  <div class='frost-modal-demo-notes'>
+    <p>
+      <code>frost-modal-form</code> also allows you to specify additional buttons and customized footer text.
+      You may also choose to disable <code>closeOnConfirm</code> and handle closure of the modal yourself.
+    </p>
+    <p>
+      (Differences from default <code>frost-modal-form</code> usage)
+    </p>
+  </div>
+  <div class='frost-modal-demo-snippet'>
+    {{code-snippet name='form-extras-api.hbs'}}
+  </div>
+</div>
+<div class='frost-modal-demo-live'>
+  <div class='frost-modal-demo-title'>
+    Live demo
+  </div>
+  <div class='frost-modal-demo-snippet'>
+    {{code-snippet name='form-extras.hbs'}}
+  </div>
+  <div class='frost-modal-demo-launch'>
+    {{frost-button
+      hook='launchButton'
+      priority='primary'
+      size='medium'
+      text='Launch the modal'
+      onClick=(action 'openForm')
+    }}
+  </div>
+</div>

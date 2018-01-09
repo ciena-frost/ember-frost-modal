@@ -20,6 +20,7 @@ Router.map(function () {
     this.route('error')
     this.route('form')
     this.route('form-async')
+    this.route('form-extras')
     this.route('helpers')
     this.route('info')
     this.route('overflow')

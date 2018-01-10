@@ -1,3 +1,6 @@
+# 8.0.0 (2018-01-10)
+* Update `ember-frost-core` to latest major
+
 # 7.0.3 (2018-01-02)
 * Demo, and docs use object instead of hash (For Emb
 

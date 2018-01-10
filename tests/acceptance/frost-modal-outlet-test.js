@@ -29,7 +29,7 @@ describe('Acceptance: FrostModalOutlet', function () {
       return visit('/frost-modal-outlet-test')
     })
 
-    it('renders as expected', function () {
+    it('should render as expected', function () {
       expect(currentPath()).to.equal('frost-modal-outlet-test')
       expect($hook('basic-modal'), 'Modal is initially hidden')
         .to.have.length(0)
@@ -40,7 +40,7 @@ describe('Acceptance: FrostModalOutlet', function () {
         return click($hook('launcher'))
       })
 
-      it('renders as expected', function () {
+      it('should render as expected', function () {
         expect($hook('basic-modal'), 'Modal becomes visible')
           .to.have.length(1)
       })
@@ -50,7 +50,7 @@ describe('Acceptance: FrostModalOutlet', function () {
           return click($hook('basic-modal-confirm'))
         })
 
-        it('renders as expected', function () {
+        it('should render as expected', function () {
           expect($hook('basic-modal'), 'Modal is dismissed')
             .to.have.length(0)
         })

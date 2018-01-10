@@ -16,7 +16,7 @@ describe(test.label, function () {
     initializeSvgUse()
   })
 
-  it('renders', function () {
+  it('should render', function () {
     this.timeout(10000)
     this.set('closeModal', () => {
       this.set('isModalVisible', false)
@@ -65,7 +65,7 @@ describe(test.label, function () {
     })
   })
 
-  it('renders with product', function () {
+  it('should render with product', function () {
     this.timeout(10000)
     this.set('closeModal', () => {
       this.set('isModalVisible', false)
@@ -108,7 +108,7 @@ describe(test.label, function () {
     })
   })
 
-  it('renders about-with-multiple-versions', function () {
+  it('should render about-with-multiple-versions', function () {
     this.timeout(10000)
     this.set('closeModal', () => {
       this.set('isModalVisible', false)
@@ -148,7 +148,7 @@ describe(test.label, function () {
       })
   })
 
-  it('renders about-with-product-and-multiple-versions', function () {
+  it('should render about-with-product-and-multiple-versions', function () {
     this.timeout(10000)
     this.set('closeModal', () => {
       this.set('isModalVisible', false)

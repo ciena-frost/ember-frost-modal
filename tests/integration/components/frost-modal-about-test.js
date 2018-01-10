@@ -13,7 +13,7 @@ describe(test.label, function () {
     initialize()
   })
 
-  it('renders', function () {
+  it('should render', function () {
     this.set('actions', {
       closeModal () {
         this.set('isModalVisible', false)

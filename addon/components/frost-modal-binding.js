@@ -143,10 +143,11 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
       this.onClose()
     },
 
+    /* eslint-disable complexity */
     /**
      * Handle confirmation in a promise-aware way.
      * If onConfirm returns a promise, closeOnConfirm will wait for it to resolve successfully before closing the modal.
-     * @returns {Object} the return value of onConfirm.
+     * @returns {Object} either the return value of onConfirm, or a promise chain from it
      * @private
      */
     _onConfirm () {
@@ -155,30 +156,32 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
       if (onConfirm) {
         confirmed = onConfirm()
       }
+      const _isThenable = isThenable(confirmed)
+
+      // handle closeOnConfirm + button-disabling separately, so that we still protect from spamming
+      // even if we want to avoid automatic invocation of onClose
 
       if (this.get('closeOnConfirm') === true) {
-        if (isThenable(confirmed)) {
-          // We handle these separately because someone might want to
-          // have the confirm button disabled, but not call onClose automatically.
-          if (this.get('disableConfirmUntilOnConfirmResolves')) {
-            this.set('forceDisabledConfirm', true)
-            confirmed = confirmed.then(() => {
-              this.set('forceDisabledConfirm', false)
-            })
-          }
-
+        if (_isThenable) {
           confirmed = confirmed.then(() => {
             this.onClose()
           })
-
-          return confirmed
+        } else {
+          // Otherwise, we don't care about promise awareness
+          this.onClose()
         }
-
-        // Otherwise, we don't care about promise awareness
-        this.onClose()
-        return confirmed
       }
+
+      if (_isThenable && this.get('disableConfirmUntilOnConfirmResolves')) {
+        this.set('forceDisabledConfirm', true)
+        confirmed = confirmed.finally(() => {
+          this.set('forceDisabledConfirm', false)
+        })
+      }
+
+      return confirmed
     },
+    /* eslint-enable complexity */
 
     _onOutsideClick () {
       if (this.get('closeOnOutsideClick')) {

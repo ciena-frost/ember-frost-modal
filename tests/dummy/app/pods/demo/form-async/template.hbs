@@ -2,7 +2,9 @@
   {{frost-modal-outlet}}
 
   {{frost-modal-form
-    disabledConfirmText= // ('Confirm')
+    confirm=(object
+      disabledText= // ('Confirm')
+    )
     form=(component 'frost-bunsen-form'
       bar= // e.g. props for 'foo'
     )
@@ -16,8 +18,8 @@
   closeOnConfirm=true
   confirm=(hash
     disabled=(not isFormValid)
+    disabledText='Waiting...'
   )
-  disabledConfirmText='Waiting...'
   form=(component 'frost-bunsen-form'
     bunsenModel=bunsenModel
     hook='bunsen-form'
@@ -55,7 +57,7 @@
         will disable the confirm button until <code>onConfirm</code>'s return value resolves
       </li>
       <li>
-        <b><code>disabledConfirmText='some string'</code></b>
+        <b><code>confirm.disabledText='some string'</code></b>
         lets you override the text to use (instead of "Confirm") when the Confirm button is disabled.
         Default behavior is to use the <code>confirm.text</code> property.
       </li>

@@ -22,7 +22,10 @@ describe(test.label, function () {
 
     props = {
       closeOnConfirm: true,
-      disabledConfirmText: 'Waiting',
+      confirm: {
+        disabledText: 'Waiting',
+        text: 'Confirm'
+      },
       disableConfirmUntilOnConfirmResolves: true,
       hook: 'form-dialog',
       isFormVisible: true,
@@ -65,7 +68,6 @@ describe(test.label, function () {
         closeOnConfirm=closeOnConfirm
         closeAfterOnConfirmResolves=closeAfterOnConfirmResolves
         confirm=confirm
-        disabledConfirmText=disabledConfirmText
         disableConfirmUntilOnConfirmResolves=disableConfirmUntilOnConfirmResolves
         footer=footer
         form=(component 'frost-bunsen-form'

@@ -37,12 +37,12 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
     // desired properties of the 'Confirm' button
     confirm: PropTypes.shape({
       disabled: PropTypes.bool,
+      disabledText: PropTypes.string,
       isVisible: PropTypes.bool,
       tabIndex: PropTypes.number,
       text: PropTypes.string,
       title: PropTypes.string
     }),
-    disabledConfirmText: PropTypes.string,
     disableConfirmUntilOnConfirmResolves: PropTypes.bool,
     isVisible: PropTypes.bool.isRequired,
     params: PropTypes.oneOfType([
@@ -67,11 +67,13 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
       closeOnOutsideClick: false,
       confirm: {
         disabled: false,
+        disabledText: 'Confirm',
         isVisible: true,
         text: 'Confirm'
       },
       _defaultConfirm: {
         disabled: false,
+        disabledText: 'Confirm',
         isVisible: true,
         text: 'Confirm'
       },
@@ -84,19 +86,18 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
   // == Computed Properties ===================================================
 
   @readOnly
-  @computed('confirm', 'forceDisabledConfirm', 'disabledConfirmText', '_defaultConfirm')
+  @computed('confirm', 'forceDisabledConfirm', '_defaultConfirm')
   /**
    * Computed our Confirm button's props so that we can alter text/disabled in concord with onConfirm promises
    * TODO: Update confirm/error/info/warn to use this as well: they currently use this.confirm directly
    * @param {Object} confirm - normal props for confirm button
    * @param {Boolean} forceDisabledConfirm - whether to override normal confirm button props
-   * @param {String} disabledConfirmText - optional replacement text for the confirm button
    * @param {Object} defaultConfirm - defaults for confirm button, in case someone doesn't specify text
    * @returns {Object} - props to use when displaying the confirm button
    */
-  confirmButtonProps (confirm, forceDisabledConfirm, disabledConfirmText, defaultConfirm) {
+  confirmButtonProps (confirm, forceDisabledConfirm, defaultConfirm) {
     if (forceDisabledConfirm) {
-      const text = disabledConfirmText || confirm.text || defaultConfirm.text
+      const text = confirm.disabledText || defaultConfirm.disabledText || confirm.text || defaultConfirm.text
       return {
         ...confirm,
         disabled: true,

@@ -1,3 +1,6 @@
+/**
+ * Integration test for frost-modal-form
+ */
 import {expect} from 'chai'
 import {$hook, initialize as initializeHook} from 'ember-hook'
 import wait from 'ember-test-helpers/wait'
@@ -241,48 +244,47 @@ describe(test.label, function () {
               })
             }
           })
-        })
 
-        // When the onConfirm promise is rejected, the error bubbles
-        describe('when the onConfirm promise rejects', function () {
-          beforeEach(function () {
-            resolver.reject('failure!')
-            return wait()
-          })
-
-          it('should log an error', function () {
-            expect(modalDeps.Logger.log).to.have.been.calledWith('failure!')
-          })
-
-          if (disableConfirmUntilOnConfirmResolves) {
-            it('should have an enabled Confirm button', function () {
-              modalUtils.expectModalConfirmButtonWithState({text: 'Confirm', disabled: false})
+          describe('when the onConfirm promise rejects', function () {
+            beforeEach(function () {
+              resolver.reject('failure!')
+              return wait()
             })
-          }
 
-          it('should not invoke `onClose`', function () {
-            expect(props.onClose).to.have.callCount(0)
+            it('should log an error', function () {
+              expect(modalDeps.Logger.log).to.have.been.calledWith('failure!')
+            })
+
+            if (disableConfirmUntilOnConfirmResolves) {
+              it('should have an enabled Confirm button', function () {
+                modalUtils.expectModalConfirmButtonWithState({text: 'Confirm', disabled: false})
+              })
+            }
+
+            it('should not invoke `onClose`', function () {
+              expect(props.onClose).to.have.callCount(0)
+            })
           })
         })
       })
     }
 
-    itShouldBePromiseAware('when disableConfirmUntilOnConfirmResolves is true (default)', {
+    itShouldBePromiseAware('when closeOnConfirm and disableConfirmUntilOnConfirmResolves are true (default)', {
       closeOnConfirm: true,
       disableConfirmUntilOnConfirmResolves: true
     })
 
-    itShouldBePromiseAware('when disableConfirmUntilOnConfirmResolves is false', {
+    itShouldBePromiseAware('when closeOnConfirm is true and disableConfirmUntilOnConfirmResolves is false', {
       closeOnConfirm: true,
       disableConfirmUntilOnConfirmResolves: false
     })
 
-    itShouldBePromiseAware('when disableConfirmUntilOnConfirmResolves is true (default)', {
+    itShouldBePromiseAware('when closeOnConfirm is false and disableConfirmUntilOnConfirmResolves is true', {
       closeOnConfirm: false,
       disableConfirmUntilOnConfirmResolves: true
     })
 
-    itShouldBePromiseAware('when disableConfirmUntilOnConfirmResolves is false', {
+    itShouldBePromiseAware('when closeOnConfirm and disableConfirmUntilOnConfirmResolves are both false', {
       closeOnConfirm: false,
       disableConfirmUntilOnConfirmResolves: false
     })
@@ -293,8 +295,15 @@ describe(test.label, function () {
       props.onConfirm.returns(42)
     })
 
-    it('should not override confirm state', function () {
-      modalUtils.expectModalConfirmButtonWithState({text: 'Confirm', disabled: false})
+    describe('when Confirm is clicked', function () {
+      beforeEach(function () {
+        $hook('form-dialog-modal-confirm').click()
+        return wait()
+      })
+
+      it('should not override confirm state', function () {
+        modalUtils.expectModalConfirmButtonWithState({text: 'Confirm', disabled: false})
+      })
     })
   })
 

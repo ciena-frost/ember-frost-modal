@@ -148,7 +148,7 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
     // handle closeOnConfirm + button-disabling separately, so that we still protect from spamming
     // even if we want to avoid automatic invocation of onClose
 
-    if (this.get('closeOnConfirm') === true) {
+    if (this.get('closeOnConfirm')) {
       confirmed = confirmed.then(() => {
         this.onClose()
       })
@@ -196,7 +196,7 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
       if (_isThenable) {
         return this._handleThenableOnConfirmResult(confirmed)
       } else {
-        if (this.get('closeOnConfirm') === true) {
+        if (this.get('closeOnConfirm')) {
           this.onClose()
         }
         return confirmed

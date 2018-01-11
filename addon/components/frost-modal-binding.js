@@ -155,7 +155,7 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
     }
 
     confirmed = confirmed.catch((err) => {
-      deps.Logger.log(err)
+      deps.Logger.error(err)
     })
 
     if (this.get('disableConfirmUntilOnConfirmResolves')) {

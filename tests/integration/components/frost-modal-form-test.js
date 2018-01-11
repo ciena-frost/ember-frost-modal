@@ -23,7 +23,7 @@ describe(test.label, function () {
     initializeHook()
     this.timeout(10000)
     sandbox = sinon.sandbox.create()
-    sandbox.stub(modalDeps.Logger, 'log')
+    sandbox.stub(modalDeps.Logger, 'error')
 
     props = {
       closeOnConfirm: true,
@@ -225,7 +225,7 @@ describe(test.label, function () {
             })
 
             it('should not log an error', function () {
-              expect(modalDeps.Logger.log).to.have.callCount(0)
+              expect(modalDeps.Logger.error).to.have.callCount(0)
             })
 
             if (disableConfirmUntilOnConfirmResolves) {
@@ -252,7 +252,7 @@ describe(test.label, function () {
             })
 
             it('should log an error', function () {
-              expect(modalDeps.Logger.log).to.have.been.calledWith('failure!')
+              expect(modalDeps.Logger.error).to.have.been.calledWith('failure!')
             })
 
             if (disableConfirmUntilOnConfirmResolves) {

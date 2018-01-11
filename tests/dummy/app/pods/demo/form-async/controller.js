@@ -38,6 +38,9 @@ export default Controller.extend({
       age: {
         type: 'number',
         title: 'Age'
+      },
+      rejectPromise: {
+        type: 'boolean'
       }
     },
     required: ['lastName']
@@ -79,16 +82,37 @@ export default Controller.extend({
      * @returns {Promise} promise - a promise that resolves in a few seconds to imitate an async call
      */
     doSomethingAsync () {
-      this.get('notifications').addNotification({
-        message: 'Showing progress indicator until async returns',
-        type: 'success',
-        autoClear: true,
-        clearDuration: 3000
+      const resolves = !(this.get('bunsenValue.rejectPromise'))
+
+      const _notify = ({message, type}) => {
+        this.get('notifications').addNotification({
+          message,
+          type,
+          autoClear: true,
+          clearDuration: 3000
+        })
+      }
+
+      _notify({
+        message: `Showing progress indicator until async ${resolves ? 'resolves' : 'rejects'}`,
+        type: 'success'
       })
 
-      return new Promise((resolve) => {
+      return new Promise((resolve, reject) => {
         run.later(() => {
-          resolve('success!')
+          if (resolves) {
+            _notify({
+              message: 'Modal closes when the promise resolves',
+              type: 'success'
+            })
+            resolve('success!')
+          } else {
+            _notify({
+              message: 'Modal stays open when the promise rejects',
+              type: 'warning'
+            })
+            reject(new Error('failure!'))
+          }
         }, 3000)
       })
     },

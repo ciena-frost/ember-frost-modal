@@ -1,8 +1,12 @@
 import Ember from 'ember'
-const {Component, inject, run} = Ember
+const {Component, Logger, inject, run} = Ember
 import computed, {readOnly} from 'ember-computed-decorators'
 import layout from '../templates/components/frost-modal-binding'
 import PropTypesMixin, {PropTypes} from 'ember-prop-types'
+
+export const deps = {
+  Logger
+}
 
 /**
  * Helper to ensure we don't try to resolve something that isn't a then-able
@@ -170,6 +174,13 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
           // Otherwise, we don't care about promise awareness
           this.onClose()
         }
+      }
+
+      if (_isThenable) {
+        // Normally, onConfirm will already catch and do things with any promise errors.
+        confirmed = confirmed.catch((err) => {
+          deps.Logger.log(err)
+        })
       }
 
       if (_isThenable && this.get('disableConfirmUntilOnConfirmResolves')) {

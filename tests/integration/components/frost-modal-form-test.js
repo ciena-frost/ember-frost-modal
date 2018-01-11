@@ -8,6 +8,7 @@ import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
 import modalUtils from 'dummy/tests/helpers/ember-frost-modal'
+import {deps as modalDeps} from 'ember-frost-modal/components/frost-modal-binding'
 
 const test = integration('frost-modal-form')
 describe(test.label, function () {
@@ -19,6 +20,7 @@ describe(test.label, function () {
     initializeHook()
     this.timeout(10000)
     sandbox = sinon.sandbox.create()
+    sandbox.stub(modalDeps.Logger, 'log')
 
     props = {
       closeOnConfirm: true,
@@ -171,18 +173,18 @@ describe(test.label, function () {
     })
   })
 
-  describe('when closeOnConfirm=true and onConfirm returns a promise', function () {
+  describe('when onConfirm returns a promise', function () {
     let resolver
 
     beforeEach(function () {
       resolver = returnPromiseFromStub(props.onConfirm)
     })
 
-    function itShouldDeferClosing (desc, {disableConfirmUntilOnConfirmResolves}) {
+    function itShouldBePromiseAware (desc, {closeOnConfirm, disableConfirmUntilOnConfirmResolves}) {
       describe(desc, function () {
         beforeEach(function () {
           this.setProperties({
-            closeOnConfirm: true,
+            closeOnConfirm,
             disableConfirmUntilOnConfirmResolves
           })
         })
@@ -219,26 +221,80 @@ describe(test.label, function () {
               return wait()
             })
 
+            it('should not log an error', function () {
+              expect(modalDeps.Logger.log).to.have.callCount(0)
+            })
+
             if (disableConfirmUntilOnConfirmResolves) {
               it('should have an enabled Confirm button', function () {
                 modalUtils.expectModalConfirmButtonWithState({text: 'Confirm', disabled: false})
               })
             }
 
-            it('should invoke `onClose`', function () {
-              expect(props.onClose).to.have.callCount(1)
+            if (closeOnConfirm) {
+              it('should invoke `onClose`', function () {
+                expect(props.onClose).to.have.callCount(1)
+              })
+            } else {
+              it('should not invoke `onClose`', function () {
+                expect(props.onClose).to.have.callCount(0)
+              })
+            }
+          })
+        })
+
+        // When the onConfirm promise is rejected, the error bubbles
+        describe('when the onConfirm promise rejects', function () {
+          beforeEach(function () {
+            resolver.reject('failure!')
+            return wait()
+          })
+
+          it('should log an error', function () {
+            expect(modalDeps.Logger.log).to.have.been.calledWith('failure!')
+          })
+
+          if (disableConfirmUntilOnConfirmResolves) {
+            it('should have an enabled Confirm button', function () {
+              modalUtils.expectModalConfirmButtonWithState({text: 'Confirm', disabled: false})
             })
+          }
+
+          it('should not invoke `onClose`', function () {
+            expect(props.onClose).to.have.callCount(0)
           })
         })
       })
     }
 
-    itShouldDeferClosing('when disableConfirmUntilOnConfirmResolves is true (default)', {
+    itShouldBePromiseAware('when disableConfirmUntilOnConfirmResolves is true (default)', {
+      closeOnConfirm: true,
       disableConfirmUntilOnConfirmResolves: true
     })
 
-    itShouldDeferClosing('when disableConfirmUntilOnConfirmResolves is false', {
+    itShouldBePromiseAware('when disableConfirmUntilOnConfirmResolves is false', {
+      closeOnConfirm: true,
       disableConfirmUntilOnConfirmResolves: false
+    })
+
+    itShouldBePromiseAware('when disableConfirmUntilOnConfirmResolves is true (default)', {
+      closeOnConfirm: false,
+      disableConfirmUntilOnConfirmResolves: true
+    })
+
+    itShouldBePromiseAware('when disableConfirmUntilOnConfirmResolves is false', {
+      closeOnConfirm: false,
+      disableConfirmUntilOnConfirmResolves: false
+    })
+  })
+
+  describe('when onConfirm does not return a promise', function () {
+    beforeEach(function () {
+      props.onConfirm.returns(42)
+    })
+
+    it('should not override confirm state', function () {
+      modalUtils.expectModalConfirmButtonWithState({text: 'Confirm', disabled: false})
     })
   })
 

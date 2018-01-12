@@ -4,7 +4,7 @@ import {describe, it} from 'mocha'
 
 describe('Unit / Helper / array', function () {
   // Replace this with your real tests.
-  it('works', function () {
+  it('should work', function () {
     let result = array(42)
     expect(result).not.to.equal(undefined)
   })

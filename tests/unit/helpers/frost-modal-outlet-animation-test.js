@@ -4,7 +4,7 @@ import {describe, it} from 'mocha'
 
 describe('Unit / Helper / frost-modal-outlet-animation', function () {
   // Replace this with your real tests.
-  it('works', function () {
+  it('should work', function () {
     // let result = frostModalOutletAnimation(42)
     // expect(result).to.be.ok
   })

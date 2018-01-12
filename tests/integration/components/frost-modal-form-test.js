@@ -1,29 +1,40 @@
+/**
+ * Integration test for frost-modal-form
+ */
 import {expect} from 'chai'
 import {$hook, initialize as initializeHook} from 'ember-hook'
 import wait from 'ember-test-helpers/wait'
 import {integration} from 'ember-test-utils/test-support/setup-component-test'
+import {returnPromiseFromStub} from 'ember-test-utils/test-support/stub'
 import hbs from 'htmlbars-inline-precompile'
-import {beforeEach, describe, it} from 'mocha'
+import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
+
+import modalUtils from 'dummy/tests/helpers/ember-frost-modal'
+import {deps as modalDeps} from 'ember-frost-modal/components/frost-modal-binding'
 
 const test = integration('frost-modal-form')
 describe(test.label, function () {
   test.setup()
 
-  let props
+  let props, sandbox
 
   beforeEach(function () {
     initializeHook()
     this.timeout(10000)
+    sandbox = sinon.sandbox.create()
+    sandbox.stub(modalDeps.Logger, 'error')
 
     props = {
-      closeModal: () => {
-        this.set('isFormVisible', false)
-      },
       closeOnConfirm: true,
+      confirm: {
+        disabledText: 'Waiting',
+        text: 'Confirm'
+      },
+      disableConfirmUntilOnConfirmResolves: true,
       hook: 'form-dialog',
       isFormVisible: true,
-      simpleBunsenChange: sinon.spy(),
+      simpleBunsenChange: sandbox.stub(),
       simpleBunsenModel: {
         type: 'object',
         properties: {
@@ -48,7 +59,8 @@ describe(test.label, function () {
         required: ['lastName']
       },
       simpleBunsenValue: {},
-      onConfirm: sinon.spy()
+      onClose: sandbox.stub(),
+      onConfirm: sandbox.stub()
     }
 
     this.setProperties(props)
@@ -59,7 +71,9 @@ describe(test.label, function () {
         buttons=buttons
         cancel=cancel
         closeOnConfirm=closeOnConfirm
+        closeAfterOnConfirmResolves=closeAfterOnConfirmResolves
         confirm=confirm
+        disableConfirmUntilOnConfirmResolves=disableConfirmUntilOnConfirmResolves
         footer=footer
         form=(component 'frost-bunsen-form'
           bunsenModel=simpleBunsenModel
@@ -71,28 +85,32 @@ describe(test.label, function () {
         isVisible=isFormVisible
         subtitle=subtitle
         title='Easy peasy'
-        onClose=(action closeModal)
         onConfirm=onConfirm
+        onClose=onClose
       }}
     `)
 
     return wait()
   })
 
-  it('renders', function () {
+  afterEach(function () {
+    sandbox.restore()
+  })
+
+  it('should render', function () {
     expect($hook('form-dialog-modal')).to.have.length(1)
   })
 
-  it('closes on cancel', function () {
+  it('should close on cancel', function () {
     $hook('form-dialog-modal-cancel').click()
 
     return wait()
       .then(() => {
-        expect($hook('form-dialog-modal'), 'Is modal hidden').to.have.length(0)
+        expect(props.onClose, 'Is modal hidden').to.have.callCount(1)
       })
   })
 
-  it('triggers function on confirm click', function () {
+  it('should trigger function on confirm click', function () {
     $hook('form-dialog-modal-confirm').click()
 
     return wait()
@@ -101,12 +119,12 @@ describe(test.label, function () {
       })
   })
 
-  it('closes on confirm when closeOnConfirm=true', function () {
+  it('should close on confirm when closeOnConfirm=true', function () {
     $hook('form-dialog-modal-confirm').click()
 
     return wait()
       .then(() => {
-        expect($hook('form-dialog-modal'), 'Is modal hidden').to.have.length(0)
+        expect(props.onClose, 'Is modal hidden').to.have.callCount(1)
       })
   })
 
@@ -152,9 +170,140 @@ describe(test.label, function () {
       return wait()
     })
 
-    it('stays open', function () {
+    it('should stay open', function () {
       $hook('form-dialog-modal-confirm').click()
       expect($hook('form-dialog-modal'), 'Is modal hidden').to.have.length(1)
+    })
+  })
+
+  describe('when onConfirm returns a promise', function () {
+    let resolver
+
+    beforeEach(function () {
+      resolver = returnPromiseFromStub(props.onConfirm)
+    })
+
+    function itShouldBePromiseAware (desc, {closeOnConfirm, disableConfirmUntilOnConfirmResolves}) {
+      describe(desc, function () {
+        beforeEach(function () {
+          this.setProperties({
+            closeOnConfirm,
+            disableConfirmUntilOnConfirmResolves
+          })
+        })
+
+        describe('when Confirm is clicked', function () {
+          beforeEach(function () {
+            $hook('form-dialog-modal-confirm').click()
+            return wait()
+          })
+
+          it('should call onConfirm()', function () {
+            expect(props.onConfirm).to.have.callCount(1)
+          })
+
+          it('should not invoke onClose', function () {
+            expect(props.onClose).to.have.callCount(0)
+          })
+
+          // State before promise is resolved
+
+          if (disableConfirmUntilOnConfirmResolves) {
+            it('should have a disabled Confirm button with the overridden disabled settings', function () {
+              modalUtils.expectModalConfirmButtonWithState({text: 'Waiting', disabled: true})
+            })
+          } else {
+            it('should have an enabled Confirm button', function () {
+              modalUtils.expectModalConfirmButtonWithState({text: 'Confirm', disabled: false})
+            })
+          }
+
+          describe('when the onConfirm promise resolves', function () {
+            beforeEach(function () {
+              resolver.resolve('success!')
+              return wait()
+            })
+
+            it('should not log an error', function () {
+              expect(modalDeps.Logger.error).to.have.callCount(0)
+            })
+
+            if (disableConfirmUntilOnConfirmResolves) {
+              it('should have an enabled Confirm button', function () {
+                modalUtils.expectModalConfirmButtonWithState({text: 'Confirm', disabled: false})
+              })
+            }
+
+            if (closeOnConfirm) {
+              it('should invoke `onClose`', function () {
+                expect(props.onClose).to.have.callCount(1)
+              })
+            } else {
+              it('should not invoke `onClose`', function () {
+                expect(props.onClose).to.have.callCount(0)
+              })
+            }
+          })
+
+          describe('when the onConfirm promise rejects', function () {
+            beforeEach(function () {
+              resolver.reject('failure!')
+              return wait()
+            })
+
+            it('should log an error', function () {
+              expect(modalDeps.Logger.error).to.have.been.calledWith('failure!')
+            })
+
+            if (disableConfirmUntilOnConfirmResolves) {
+              it('should have an enabled Confirm button', function () {
+                modalUtils.expectModalConfirmButtonWithState({text: 'Confirm', disabled: false})
+              })
+            }
+
+            it('should not invoke `onClose`', function () {
+              expect(props.onClose).to.have.callCount(0)
+            })
+          })
+        })
+      })
+    }
+
+    itShouldBePromiseAware('when closeOnConfirm and disableConfirmUntilOnConfirmResolves are true (default)', {
+      closeOnConfirm: true,
+      disableConfirmUntilOnConfirmResolves: true
+    })
+
+    itShouldBePromiseAware('when closeOnConfirm is true and disableConfirmUntilOnConfirmResolves is false', {
+      closeOnConfirm: true,
+      disableConfirmUntilOnConfirmResolves: false
+    })
+
+    itShouldBePromiseAware('when closeOnConfirm is false and disableConfirmUntilOnConfirmResolves is true', {
+      closeOnConfirm: false,
+      disableConfirmUntilOnConfirmResolves: true
+    })
+
+    itShouldBePromiseAware('when closeOnConfirm and disableConfirmUntilOnConfirmResolves are both false', {
+      closeOnConfirm: false,
+      disableConfirmUntilOnConfirmResolves: false
+    })
+  })
+
+  describe('when onConfirm does not return a promise', function () {
+    beforeEach(function () {
+      props.onConfirm.returns(42)
+    })
+
+    describe('when Confirm is clicked', function () {
+      beforeEach(function () {
+        $hook('form-dialog-modal-confirm').click()
+        return wait()
+      })
+
+      it('should not override confirm state', function () {
+        modalUtils.expectModalConfirmButtonWithState({text: 'Confirm', disabled: false})
+      })
     })
   })
 
@@ -164,7 +313,7 @@ describe(test.label, function () {
       return wait()
     })
 
-    it('renders subtitle', function () {
+    it('should render subtitle', function () {
       const $subtitle = this.$('.frost-modal-dialog-header-subtitle')
       expect($subtitle).to.have.length(1)
       expect($subtitle.text()).to.equal('Foo bar')
@@ -177,7 +326,7 @@ describe(test.label, function () {
       return wait()
     })
 
-    it('does not render subtitle DOM', function () {
+    it('should not render subtitle DOM', function () {
       expect(this.$('.frost-modal-dialog-header-subtitle')).to.have.length(0)
     })
   })
@@ -188,7 +337,7 @@ describe(test.label, function () {
       return wait()
     })
 
-    it('renders footer text', function () {
+    it('should render footer text', function () {
       const $footer = this.$('.frost-modal-dialog-footer-content')
       expect($footer).to.have.length(1)
       expect($footer.text().trim()).to.equal('Foo bar')
@@ -201,7 +350,7 @@ describe(test.label, function () {
       return wait()
     })
 
-    it('does not render footer text DOM', function () {
+    it('should not render footer text DOM', function () {
       expect(this.$('.frost-modal-dialog-footer-content')).to.have.length(0)
     })
   })
@@ -222,7 +371,7 @@ describe(test.label, function () {
       return wait()
     })
 
-    it('renders custom buttons plus cancel and create buttons', function () {
+    it('should render custom buttons plus cancel and create buttons', function () {
       expect(this.$('.frost-modal-dialog-footer button')).to.have.length(4)
     })
 
@@ -268,7 +417,7 @@ describe(test.label, function () {
       return wait()
     })
 
-    it('only renders cancel and create buttons', function () {
+    it('should only render cancel and create buttons', function () {
       expect(this.$('.frost-modal-dialog-footer button')).to.have.length(2)
     })
   })

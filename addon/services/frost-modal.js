@@ -4,7 +4,7 @@ const {
   run: {
     scheduleOnce
   }
- } = Ember
+} = Ember
 
 export default Service.extend({
 

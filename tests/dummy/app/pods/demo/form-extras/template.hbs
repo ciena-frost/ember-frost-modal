@@ -1,10 +1,10 @@
-{{!-- BEGIN-SNIPPET confirm-api }}
+{{!-- BEGIN-SNIPPET form-extras-api }}
   {{frost-modal-outlet}}
 
   {{! use `object` instead of `hash` to resolve issue
       https://github.com/emberjs/ember.js/issues/14738
       as `hash` does not have a `toString` method }}
-  {{frost-modal-confirm-message
+  {{frost-modal-form
     buttons=(array
       (object
         disabled= // true
@@ -19,15 +19,19 @@
       isVisible= // (true)
       text= // ('Cancel')
     )
+    closeOnConfirm= // (true)
     confirm=(hash
+      disabled= // (false)
       isVisible=  // (true)
       text= // ('Confirm')
     )
-    details=(component 'foo'
-      bar= // e.g. props for 'foo'
-    )
+    disabledText= // (defaults to confirm.text)
+    disableConfirmUntilOnConfirmResolves= // (true)
     footer= // e.g. 'Foo bar' or a component
       (component 'frost-loading')
+    form=(component 'frost-bunsen-form'
+      bar= // e.g. props for 'foo'
+    )
     isVisible= // Required binding
     links=(array
       (object
@@ -37,7 +41,6 @@
       )
     )
     subtitle= // e.g. 'Foo bar'
-    summary= // [main message]
     targetOutlet= // ('modal')
     title= // Required
     onCancel= // e.g. (action 'foo')
@@ -46,32 +49,54 @@
   }}
 {{ END-SNIPPET --}}
 
-{{! BEGIN-SNIPPET confirm }}
-{{frost-modal-confirm-message
-  hook='confirm-dialog'
-  cancel=(hash
-    isVisible=false
+{{! BEGIN-SNIPPET form-extras }}
+{{frost-modal-form
+  buttons=(array
+    (object
+      icon='info'
+      onClick=(action 'info')
+      pack='frost'
+      priority='secondary'
+      text='Info'
+    )
   )
+  classModifier='my-class'
+  closeOnConfirm=false
   confirm=(hash
-    text='100%'
+    disabled=(not isFormValid)
   )
-  details=(component 'demo/confirm/components/doubt-checker'
-    doubt='None'
+  footer='Foo bar'
+  form=(component 'frost-bunsen-form'
+    bunsenModel=bunsenModel
+    hook='bunsen-form'
+    onChange=(action 'updateFormValue')
+    onValidation=(action 'updateValidity')
+    value=bunsenValue
   )
-  isVisible=isConfirmVisible
-  summary='I agree'
-  title='Most definitely'
-  onClose=(action (mut isConfirmVisible) false)
-  onConfirm=(action 'rejoice')
+  hook='form-dialog'
+  isVisible=isFormVisible
+  subtitle='Lemon squeezy'
+  title='Easy peasy'
+  onClose=(action 'closeForm')
+  onConfirm=(action 'notifyClearAndClose')
 }}
 {{! END-SNIPPET }}
 
 <div class='frost-modal-demo-api'>
   <div class='frost-modal-demo-title'>
-    API
+    Additional <code>frost-modal-form</code> options
+  </div>
+  <div class='frost-modal-demo-notes'>
+    <p>
+      <code>frost-modal-form</code> also allows you to specify additional buttons and customized footer text.
+      You may also choose to disable <code>closeOnConfirm</code> and handle closure of the modal yourself.
+    </p>
+    <p>
+      (Differences from default <code>frost-modal-form</code> usage)
+    </p>
   </div>
   <div class='frost-modal-demo-snippet'>
-    {{code-snippet name='confirm-api.hbs'}}
+    {{code-snippet name='form-extras-api.hbs'}}
   </div>
 </div>
 <div class='frost-modal-demo-live'>
@@ -79,7 +104,7 @@
     Live demo
   </div>
   <div class='frost-modal-demo-snippet'>
-    {{code-snippet name='confirm.hbs'}}
+    {{code-snippet name='form-extras.hbs'}}
   </div>
   <div class='frost-modal-demo-launch'>
     {{frost-button
@@ -87,7 +112,7 @@
       priority='primary'
       size='medium'
       text='Launch the modal'
-      onClick=(action (mut isConfirmVisible) true)
+      onClick=(action 'openForm')
     }}
   </div>
 </div>

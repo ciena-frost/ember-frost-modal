@@ -31,7 +31,9 @@
 {{ END-SNIPPET --}}
 
 {{! BEGIN-SNIPPET dialog }}
-{{! use `object` instead of `hash` to resolve issue https://github.com/emberjs/ember.js/issues/14738. As `hash` does not have a `toString` method }}
+{{! use `object` instead of `hash` to resolve issue
+    https://github.com/emberjs/ember.js/issues/14738
+    as `hash` does not have a `toString` method }}
 {{frost-modal-binding 'frost-modal-dialog'
   hook='basic-dialog'
   isVisible=isDialogVisible
@@ -46,7 +48,7 @@
       name='warning'
     )
     links=(array
-       (object 
+      (object
         priority='secondary'
         route='demo.form'
         text='Moving on...'

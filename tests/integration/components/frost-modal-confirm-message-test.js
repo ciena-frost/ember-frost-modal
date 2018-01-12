@@ -58,14 +58,14 @@ describe(test.label, function () {
       return wait()
     })
 
-    // it('renders visually as expected', function (done) {
+    // it('should render visually as expected', function (done) {
     //   return capture('confirm', done, {
     //     targetElement: this.$('.frost-modal-outlet-container.message')[0],
     //     experimentalSvgs: true
     //   })
     // })
 
-    it('renders as expected', function () {
+    it('should render as expected', function () {
       expectModalWithState({
         cancel: {
           visible: false
@@ -84,11 +84,11 @@ describe(test.label, function () {
         return wait()
       })
 
-      it('triggers the callback', function () {
+      it('should trigger the callback', function () {
         expect(props.onConfirm.called).to.equal(true)
       })
 
-      it('closes', function () {
+      it('should close', function () {
         expect($hook('confirm-dialog-modal')).to.have.length(0)
       })
     })

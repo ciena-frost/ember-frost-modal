@@ -14,13 +14,8 @@ export default FrostModalBinding.extend(PropTypesMixin, {
       disabled: PropTypes.bool,
       isVisible: PropTypes.bool,
       tabIndex: PropTypes.number,
-      text: PropTypes.string
-    }),
-    confirm: PropTypes.shape({
-      disabled: PropTypes.bool,
-      isVisible: PropTypes.bool,
-      tabIndex: PropTypes.number,
-      text: PropTypes.string
+      text: PropTypes.string,
+      title: PropTypes.string
     }),
     footer: PropTypes.string,
     form: PropTypes.oneOfType([
@@ -48,13 +43,17 @@ export default FrostModalBinding.extend(PropTypesMixin, {
   },
 
   // == Computed properties ===================================================
+
   @readOnly
-  @computed()
+  @computed('forceDisabledConfirm')
   params () {
+    // We look up confirmButtonProps here, rather than using arguments to computed(), so that we avoid
+    // double-computed assertion errors when we hide the modal.
+    // The recomputation seems to still happen when confirm is changed (e.g. validation state changes), thankfully.
     return {
       buttons: this.buttons,
       cancel: this.cancel,
-      confirm: this.confirm,
+      confirm: this.get('confirmButtonProps'), // computed in frost-modal-binding
       content: this.form,
       footer: this.footer,
       links: this.links,

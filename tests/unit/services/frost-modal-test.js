@@ -13,7 +13,7 @@ describe('Unit / Service / frost-modal', function () {
     service = this.subject()
   })
 
-  it('exists', function () {
+  it('should exist', function () {
     expect(service).not.to.equal(undefined)
   })
 })

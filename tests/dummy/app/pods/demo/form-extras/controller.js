@@ -1,5 +1,5 @@
 /**
- * Demo of frost-modal-form with useful defaults
+ * Demo of frost-modal-form with extra bells and whistles
  */
 
 import Ember from 'ember'
@@ -45,7 +45,6 @@ export default Controller.extend({
     lastName: 'Lovelace'
   },
 
-  // BEGIN-SNIPPET form-actions
   actions: {
     closeForm () {
       this.setProperties({
@@ -62,13 +61,18 @@ export default Controller.extend({
       this.set('isFormVisible', true)
     },
 
-    handleConfirm () {
+    info () {
+      window.alert('OMG!')
+    },
+
+    notifyClearAndClose () {
       this.get('notifications').addNotification({
         message: JSON.stringify(this.get('bunsenValue'), null, 2),
         type: 'success',
         autoClear: true,
         clearDuration: 2000
       })
+      this.send('closeForm')
     },
 
     /**
@@ -87,5 +91,4 @@ export default Controller.extend({
       this.set('isFormValid', !validation.errors.length)
     }
   }
-  // END-SNIPPET
 })

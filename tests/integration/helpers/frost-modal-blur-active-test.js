@@ -18,11 +18,11 @@ describe(test.label, function () {
     this.modalName = 'foo-modal'
   })
 
-  it('renders', function () {
+  it('should render', function () {
     expect(this.$('#active').text().trim()).to.equal('false')
   })
 
-  it('reflects the active state of the frost-modal service', function () {
+  it('should reflect the active state of the frost-modal service', function () {
     const active = true
 
     this.get('frost-modal').setState(this.modalName, active)
@@ -32,7 +32,7 @@ describe(test.label, function () {
     })
   })
 
-  it("doesn't blur when the noBlur property is true", function () {
+  it('should not blur when the noBlur property is true', function () {
     const active = true
     const noBlur = true
 

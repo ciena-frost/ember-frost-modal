@@ -7,7 +7,7 @@ const test = integration('frost-modal-dialog')
 describe(test.label, function () {
   test.setup()
 
-  it('renders', function () {
+  it('should render', function () {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.on('myAction', function(val) { ... });
     // Template block usage:

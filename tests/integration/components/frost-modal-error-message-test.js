@@ -45,14 +45,14 @@ describe(test.label, function () {
     return wait()
   })
 
-  // it('renders', function (done) {
+  // it('should render', function (done) {
   //   return capture('error-dialog', done, {
   //     targetElement: this.$('.frost-modal-outlet-container.message')[0],
   //     experimentalSvgs: true
   //   })
   // })
 
-  it('closes on cancel', function () {
+  it('should close on cancel', function () {
     $hook('error-dialog-modal-cancel').click()
 
     return wait()
@@ -68,7 +68,7 @@ describe(test.label, function () {
       return wait()
     })
 
-    it('renders subtitle', function () {
+    it('should render subtitle', function () {
       const $subtitle = this.$('.frost-modal-dialog-header-subtitle')
       expect($subtitle).to.have.length(1)
       expect($subtitle.text()).to.equal('Foo bar')
@@ -81,7 +81,7 @@ describe(test.label, function () {
       return wait()
     })
 
-    it('does not render subtitle DOM', function () {
+    it('should not render subtitle DOM', function () {
       expect(this.$('.frost-modal-dialog-header-subtitle')).to.have.length(0)
     })
   })
@@ -92,7 +92,7 @@ describe(test.label, function () {
       return wait()
     })
 
-    it('renders footer text', function () {
+    it('should render footer text', function () {
       const $footer = this.$('.frost-modal-dialog-footer-content')
       expect($footer).to.have.length(1)
       expect($footer.text().trim()).to.equal('Foo bar')
@@ -105,7 +105,7 @@ describe(test.label, function () {
       return wait()
     })
 
-    it('does not render footer text DOM', function () {
+    it('should not render footer text DOM', function () {
       expect(this.$('.frost-modal-dialog-footer-content')).to.have.length(0)
     })
   })
@@ -126,7 +126,7 @@ describe(test.label, function () {
       return wait()
     })
 
-    it('renders custom buttons plus cancel and create buttons', function () {
+    it('should render custom buttons plus cancel and create buttons', function () {
       expect(this.$('.frost-modal-dialog-footer button')).to.have.length(4)
     })
   })
@@ -137,7 +137,7 @@ describe(test.label, function () {
       return wait()
     })
 
-    it('only renders cancel and create buttons', function () {
+    it('should only render cancel and create buttons', function () {
       expect(this.$('.frost-modal-dialog-footer button')).to.have.length(2)
     })
   })

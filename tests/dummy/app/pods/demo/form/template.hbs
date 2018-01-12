@@ -1,43 +1,20 @@
 {{!-- BEGIN-SNIPPET form-api }}
   {{frost-modal-outlet}}
 
-  {{! use `object` instead of `hash` to resolve issue https://github.com/emberjs/ember.js/issues/14738. As `hash` does not have a `toString` method }}
+  {{! use `object` instead of `hash` to resolve issue
+      https://github.com/emberjs/ember.js/issues/14738
+      as `hash` does not have a `toString` method }}
   {{frost-modal-form
-    buttons=(array
-      (object
-        disabled= // true
-        icon= // e.g. 'info'
-        onClick= // e.g. (action 'info')
-        pack= // e.g. 'frost'
-        priority= // ['primary', etc.]
-        text= // e.g. 'Foo'
-      )
-    )
-    cancel=(hash
-      isVisible= // (true)
-      text= // ('Cancel')
-    )
-    closeOnConfirm= // (true)
     confirm=(hash
       disabled= // (false)
       isVisible=  // (true)
       text= // ('Confirm')
     )
-    footer= // e.g. 'Foo bar' or a component
-      (component 'frost-loading')
     form=(component 'frost-bunsen-form'
       bar= // e.g. props for 'foo'
     )
+    hook= // a string
     isVisible= // Required binding
-    links=(array
-      (object
-        priority= // ['primary', etc.]
-        route= // e.g. 'foo.bar'
-        text= // e.g. 'Foo'
-      )
-    )
-    subtitle= // e.g. 'Foo bar'
-    targetOutlet= // ('modal')
     title= // Required
     onCancel= // e.g. (action 'foo')
     onClose= // Required binding
@@ -47,42 +24,58 @@
 
 {{! BEGIN-SNIPPET form }}
 {{frost-modal-form
-  buttons=(array
-    (object
-      icon='info'
-      onClick=(action 'info')
-      pack='frost'
-      priority='secondary'
-      text='Info'
-    )
-  )
-  classModifier='my-class'
-  closeOnConfirm=false
+  closeOnConfirm=true
   confirm=(hash
-    disabled=(not isSomethingReady)
+    disabled=(not isFormValid)
   )
-  footer='Foo bar'
   form=(component 'frost-bunsen-form'
-    bunsenModel=simpleBunsenModel
-    hook='bunsen-form'
-    onChange=(action 'simpleBunsenChange')
-    value=simpleBunsenValue
+    bunsenModel=bunsenModel
+    hook='simple-form'
+    onChange=(action 'updateFormValue')
+    onValidation=(action 'updateValidity')
+    value=bunsenValue
   )
   hook='form-dialog'
   isVisible=isFormVisible
-  subtitle='Lemon squeezy'
-  title='Easy peasy'
+  title='Basic usage'
   onClose=(action 'closeForm')
-  onConfirm=(action 'notifyClearAndClose')
+  onConfirm=(action 'handleConfirm')
 }}
 {{! END-SNIPPET }}
 
 <div class='frost-modal-demo-api'>
   <div class='frost-modal-demo-title'>
+    Basic <code>frost-modal-form</code> usage
+  </div>
+  <div class='frost-modal-demo-notes'>
+    <p>
+      The
+      <a href='https://github.com/ciena-frost/ember-frost-modal/tree/master/tests/dummy/app/pods/demo/form'
+         rel='noopener'
+         target='_blank'
+      >
+        <code>tests/dummy/app/pods/demo/form</code>
+      </a>
+      demo route demonstrates basic usage of <code>frost-modal-form</code> to present a Bunsen form.
+    </p>
+    <ul>
+      <li>The Confirm button is only enabled when the form is valid</li>
+      <li>The form value is kept by the consumer of our modal form</li>
+    </ul>
+  </div>
+  <div class='frost-modal-demo-title'>
     API
   </div>
   <div class='frost-modal-demo-snippet'>
     {{code-snippet name='form-api.hbs'}}
+  </div>
+  <div class='frost-modal-demo-notes'>
+    <p>
+      Controller actions:
+    </p>
+  </div>
+  <div class='frost-modal-demo-snippet'>
+    {{code-snippet name='form-actions.js'}}
   </div>
 </div>
 <div class='frost-modal-demo-live'>

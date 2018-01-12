@@ -1,3 +1,18 @@
+# 8.1.0 (2018-01-12)
+- **Upgraded** `closeOnConfirm` to be promise-aware. If `onConfirm` returns a Promise, the modal will call `onClose` once that Promise resolves.  (Errors will leave the modal open.)
+- **Added** optional `disableConfirmUntilOnConfirmResolves` flag, and the ability to specify different text for a disabled confirm button.  This behavior defaults to `true`, and is only active when handling an `onConfirm` that returns a Promise.
+- **Upgraded** demo pages for `frost-modal-form` so that they show more realistic form modal usage
+- **Added** support for `title` tooltips on modal buttons
+- **Added** `chai-jquery`, `sinon-chai` devDependencies
+- **Updated** to version `^8.1.0` of `ember-test-utils`
+- **Added** eslint configuration options to allow existing test names
+- **Fixed** some linting per updated linting rules
+- **Fixed** demo notifications so that they show above the blur layer
+
+  
+  
+  
+
 # 8.0.0 (2018-01-10)
 * Update `ember-frost-core` to latest major
 

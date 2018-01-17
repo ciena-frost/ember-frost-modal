@@ -43,7 +43,6 @@ const FrostModalBinding = Component.extend(PropTypesMixin, {
       disabled: PropTypes.bool,
       disabledText: PropTypes.string,
       isVisible: PropTypes.bool,
-      tabIndex: PropTypes.number,
       text: PropTypes.string,
       title: PropTypes.string
     }),

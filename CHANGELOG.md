@@ -1,3 +1,7 @@
+# 9.0.0 (2018-01-17)
+* Remove `tabIndex` support on "Cancel" and "Confirm" buttons per the discussion in #112 
+
+
 # 8.1.0 (2018-01-12)
 - **Upgraded** `closeOnConfirm` to be promise-aware. If `onConfirm` returns a Promise, the modal will call `onClose` once that Promise resolves.  (Errors will leave the modal open.)
 - **Added** optional `disableConfirmUntilOnConfirmResolves` flag, and the ability to specify different text for a disabled confirm button.  This behavior defaults to `true`, and is only active when handling an `onConfirm` that returns a Promise.

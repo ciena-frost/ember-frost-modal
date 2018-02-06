@@ -49,7 +49,6 @@
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-export-application-global": "^1.0.5",
     "ember-frost-bunsen": "^17.0.0",
-    "ember-frost-fields": "^6.0.2",
     "ember-frost-popover": "^4.0.2",
     "ember-frost-table": "^1.5.3",
     "ember-frost-tabs": "^6.0.4",

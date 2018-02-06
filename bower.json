@@ -1,6 +1,4 @@
 {
   "name": "ember-frost-modal",
-  "dependencies": {
-    "es6-promise": "^3.2.2"
-  }
+  "dependencies": {}
 }

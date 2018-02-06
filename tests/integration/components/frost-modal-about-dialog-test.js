@@ -57,11 +57,6 @@ describe(test.label, function () {
 
     return wait().then(() => {
       expect($hook('about-dialog-modal'), 'Is modal visible').to.have.length(1)
-
-      // return capture('about', done, {
-      //   targetElement: this.$('.frost-modal-outlet-container.about')[0],
-      //   experimentalSvgs: true
-      // })
     })
   })
 
@@ -100,11 +95,6 @@ describe(test.label, function () {
 
     return wait().then(() => {
       expect($hook('about-dialog-modal'), 'Is modal visible').to.have.length(1)
-
-      // return capture('about-with-product', done, {
-      //   targetElement: this.$('.frost-modal-outlet-container.about')[0],
-      //   experimentalSvgs: true
-      // })
     })
   })
 
@@ -140,11 +130,6 @@ describe(test.label, function () {
     return wait()
       .then(() => {
         expect($hook('about-dialog-modal'), 'Is modal visible').to.have.length(1)
-
-        // return capture('about-with-multiple-verions', done, {
-        //   targetElement: this.$('.frost-modal-outlet-container.about')[0],
-        //   experimentalSvgs: true
-        // })
       })
   })
 
@@ -184,11 +169,6 @@ describe(test.label, function () {
     return wait()
       .then(() => {
         expect($hook('about-dialog-modal'), 'Is modal visible').to.have.length(1)
-
-        // return capture('about-with-product-and-multiple-verions', done, {
-        //   targetElement: this.$('.frost-modal-outlet-container.about')[0],
-        //   experimentalSvgs: true
-        // })
       })
   })
 })

@@ -45,13 +45,6 @@ describe(test.label, function () {
     return wait()
   })
 
-  // it('should render', function (done) {
-  //   return capture('error-dialog', done, {
-  //     targetElement: this.$('.frost-modal-outlet-container.message')[0],
-  //     experimentalSvgs: true
-  //   })
-  // })
-
   it('should close on cancel', function () {
     $hook('error-dialog-modal-cancel').click()
 

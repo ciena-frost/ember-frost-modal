@@ -49,11 +49,6 @@ describe(test.label, function () {
   //   this.timeout(10000)
   //   expect($hook(props.hook), 'Is modal visible')
   //     .to.have.length(1)
-  //
-  //   return capture('warning-dialog', done, {
-  //     targetElement: this.$('.frost-modal-outlet-container.message')[0],
-  //     experimentalSvgs: false
-  //   })
   // })
 
   it('should trigger callback and close when cancel is clicked', function () {

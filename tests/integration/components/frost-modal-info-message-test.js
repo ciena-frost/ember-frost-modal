@@ -38,10 +38,6 @@ describe(test.label, function () {
   //   this.timeout(10000)
   //   expect($hook('info-dialog-modal'), 'Is modal visible')
   //     .to.have.length(1)
-  //   return capture('info', done, {
-  //     targetElement: this.$('.frost-modal-outlet-container.message')[0],
-  //     experimentalSvgs: false
-  //   })
   // })
 
   it('should close on confirm', function () {

@@ -1,7 +1,6 @@
 {
   "name": "ember-frost-modal",
   "dependencies": {
-    "es6-promise": "^3.2.2",
-    "resemblejs": "^2.2.0"
+    "es6-promise": "^3.2.2"
   }
 }

@@ -51,7 +51,6 @@
     "ember-frost-bunsen": "^17.0.0",
     "ember-frost-tabs": "^7.0.0",
     "ember-frost-test": "^4.0.0",
-    "ember-get-config": "0.2.1",
     "ember-ignore-children-helper": "^1.0.0",
     "ember-load-initializers": "^0.6.0",
     "ember-prop-types": "^3.11.0",
@@ -76,6 +75,7 @@
     "ember-computed-decorators": "0.3.0",
     "ember-frost-core": "^5.1.1",
     "ember-elsewhere": "1.0.1",
+    "ember-get-config": "0.2.2",
     "ember-hook": "1.4.2"
   },
   "ember-addon": {

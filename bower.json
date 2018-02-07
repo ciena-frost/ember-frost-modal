@@ -1,9 +1,4 @@
 {
   "name": "ember-frost-modal",
-  "dependencies": {
-    "es6-promise": "^3.2.2",
-    "node-uuid": "1.4.7",
-    "resemblejs": "^2.2.0",
-    "clockpicker-seconds": "~0.1.6"
-  }
+  "dependencies": {}
 }

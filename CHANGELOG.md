@@ -1,3 +1,50 @@
+# 10.0.0 (2018-02-07)
+* **Removed** package-lock until we are ready to support node 8
+* **Added** ignore the linting of the `CHANGELOG.md`
+* **Added** ignoring of `package-lock` until we are ready to move to node 8
+* **Removed** useLintTree ember-cli-mocha configuration from `ember-cli-build.js`
+* **Removed** `.remarkrc` file since it is now provided by `ember-test-utils`
+* **Removed** `ember-cli-visual-acceptance` package and related files
+* **Removed** the blueprint file since packages are now included via dependencies
+* **Updated** `ember-browserify` to `^1.2.0`
+* **Added** `ember-frost-test`@ `^4.0.0`
+* **Updated** `ember-cli-chai` to `0.4.3`
+* **Updated** `ember-cli-mocha` to `0.14.4`
+* **Updated** `ember-sinon` to `^0.7.0`
+* **Updated** `ember-test-utils` to `^8.1.0`
+* **Updated** `sinon-chai` to `^2.14.0`
+* **Updated** `ember-cli-code-coverage` to `0.3.12`
+* **Updated** `ember-cli-frost-blueprints` to `^5.0.1`
+* **Removed** no longer needed `ember-cli-import-polyfill` package
+* **Removed** unused `ember-cli-moment-shim` package
+* **Removed** unused `ember-cli-release` package
+* **Removed** unused `ember-cli-sri` package
+* **Updated** `ember-computed-decorators` to `0.3.0`  and moved to a dependency instead of a devDependency
+* **Updated** `ember-concurrency` to `0.7.19`
+* **Updated** `ember-elsewhere` to be a dependency instead of a devDependency
+* **Removed** unused `ember-fetch` package
+* **Updated** `ember-frost-bunsen` to `^17.0.0`
+* **Removed** unused `ember-frost-date-picker` package
+* **Removed** unused `ember-frost-fields` package
+* **Removed** unused `ember-frost-popover` package
+* **Removed** unused `ember-frost-table` package
+* **Updated** `ember-frost-tabs` to `^7.0.0`
+* **Updated** `ember-get-config` to `0.2.2` and moved to a dependency instead of a devDependency
+* **Updated** `ember-hook` to `1.4.2` and moved to a dependency instead of a devDependency
+* **Updated** `ember-ignore-children-helper` to `1.0.0` and moved to a dependency instead of a devDependency
+* **Removed** unused `ember-moment` package
+* **Updated** `ember-prop-types` to `^6.0.1` and moved to a dependency instead of a devDependency
+* **Removed** unused `ember-spread` package
+* **Updated** `ember-truth-helper` to `^1.3.0`
+* **Updated** `liquid-fire` to be a dependency instead of a devDependency
+* **Updated** `ember-cli-sass` to `7.1.1`
+* **Updated** `ember-frost-core` to `^5.1.1`
+* **Updated** code coverage configuration with reporters
+* **Removed** unused `clockpicker-seconds` bower package
+* **Removed** unused `resemblejs` bower package
+* **Removed** unused `node-uuid` bower package
+* **Removed** unused `es6-promise` bower package
+
 # 9.0.0 (2018-01-17)
 * Remove `tabIndex` support on "Cancel" and "Confirm" buttons per the discussion in #112 
 

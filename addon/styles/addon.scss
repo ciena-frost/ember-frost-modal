@@ -44,6 +44,12 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
   }
 }
 
+.form {
+  .frost-modal-dialog-header {
+    border-bottom: 1px $frost-color-lgrey-1 solid;
+  }
+}
+
 .frost-modal-dialog {
   display: flex;
   position: relative;
@@ -103,7 +109,7 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
     }
 
     &-title {
-      color: $frost-color-grey-2;
+      color: $frost-color-night-2;
       font-size: $frost-font-l;
     }
 

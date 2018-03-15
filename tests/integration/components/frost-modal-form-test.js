@@ -100,7 +100,9 @@ describe(test.label, function () {
   it('should render', function () {
     expect($hook('form-dialog-modal')).to.have.length(1)
   })
-
+  it('should have a default class modifier', function () {
+    expect($hook('modal-outlet-modal-container')).to.have.class('frost-modal-form')
+  })
   it('should close on cancel', function () {
     $hook('form-dialog-modal-cancel').click()
 

@@ -44,11 +44,7 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
   }
 }
 
-.frost-modal-form {
-  .frost-modal-dialog-header {
-    border-bottom: 1px $frost-color-lgrey-1 solid;
-  }
-}
+
 
 .frost-modal-dialog {
   display: flex;
@@ -57,6 +53,12 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
   min-width: 400px;
   min-height: 250px;
   max-height: calc(100vh - 90px); // TODO Nav height variable
+
+  &.frost-modal-form {
+    .frost-modal-dialog-header {
+      border-bottom: 1px $frost-color-lgrey-1 solid;
+    }
+  }
 
   &-content {
     margin-bottom: 70px; // TODO Footer height variable

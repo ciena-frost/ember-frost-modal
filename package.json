@@ -1,6 +1,6 @@
 {
   "name": "ember-frost-modal",
-  "version": "10.0.0",
+  "version": "10.0.1",
   "description": "Modals for what ails you",
   "directories": {
     "doc": "doc",
@@ -81,6 +81,6 @@
     "configPath": "tests/dummy/config"
   },
   "pr-bumper": {
-    "coverage": 94.65
+    "coverage": 94.67
   }
 }

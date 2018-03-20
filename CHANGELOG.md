@@ -1,3 +1,8 @@
+# 10.0.1 (2018-03-20)
+* Add a separator between header and body form modal-form
+* Adjust `min-height` from `90px` to `60px` of all modal headers
+
+
 # 10.0.0 (2018-02-07)
 * **Removed** package-lock until we are ready to support node 8
 * **Added** ignore the linting of the `CHANGELOG.md`

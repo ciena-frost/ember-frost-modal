@@ -4,7 +4,8 @@ import FrostModalBinding from '../frost-modal-binding'
 import PropTypesMixin, {PropTypes} from 'ember-prop-types'
 
 export default FrostModalBinding.extend(PropTypesMixin, {
-
+  // == Properties ============================================================
+  classNames: ['frost-modal-form'],
   // == State properties ======================================================
 
   propTypes: {

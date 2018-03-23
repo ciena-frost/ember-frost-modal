@@ -83,3 +83,8 @@ visit the app at http://localhost:4200.
 ### Testing
 Run `npm test` from the root of the project to run linting checks as well as execute the test suite
 and output code coverage.
+
+### Test Helpers
+Test helpers are provided at `ember-frost-modal/test-support/frost-modal` to assist with writing tests for code that uses ember-frost-modal components:
+
+* [frost-modal](addon-test-support/frost-modal.js)

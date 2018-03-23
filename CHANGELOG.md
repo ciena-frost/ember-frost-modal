@@ -1,3 +1,23 @@
+# 11.0.0 (2018-03-23)
+* **Updated** pull request template
+* **Added** issue template
+* **Updated** to `pr-bumper` version `3`
+* **Updated** to node 8
+* **Added** slack integration
+* **Updated** `ember-frost-test` to `^4.0.1`
+* **Updated** `ember-test-utils` to `^8.1.1`
+* **Updated** `ember-cli-frost-blueprints` to `^5.0.2`
+* **Updated** `ember-frost-bunsen` to `^19.0.1`
+* **Updated** `ember-frost-tabs` to `^8.0.0`
+* **Updated** `ember-prop-types` to `^7.0.1`
+* **Updated** `ember-frost-core` to `^7.0.0`
+* **Removed** ignoring of `package-lock.json` file
+* **Added** `package-lock.json` file
+* **Updated** Travis CI scripts to allow non-exact node version
+* **Updated** test helpers to now be provided from addon-test-support. For example, test helpers previously available at `dummy/tests/helpers/ember-frost-modal` are now available via `ember-frost-modal/test-support/frost-modal`
+* **Updated** add information to README.md about test helpers
+* **Removed** `array.js` helper since no longer used
+
 # 10.0.0 (2018-02-07)
 * **Removed** package-lock until we are ready to support node 8
 * **Added** ignore the linting of the `CHANGELOG.md`

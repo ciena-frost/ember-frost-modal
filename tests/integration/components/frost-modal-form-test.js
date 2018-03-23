@@ -10,8 +10,8 @@ import hbs from 'htmlbars-inline-precompile'
 import {afterEach, beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
-import modalUtils from 'dummy/tests/helpers/ember-frost-modal'
 import {deps as modalDeps} from 'ember-frost-modal/components/frost-modal-binding'
+import modalUtils from 'ember-frost-modal/test-support/frost-modal'
 
 const test = integration('frost-modal-form')
 describe(test.label, function () {

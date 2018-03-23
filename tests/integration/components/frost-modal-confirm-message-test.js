@@ -7,7 +7,7 @@ import hbs from 'htmlbars-inline-precompile'
 import {beforeEach, describe, it} from 'mocha'
 import sinon from 'sinon'
 
-import {expectModalWithState} from 'dummy/tests/helpers/ember-frost-modal'
+import {expectModalWithState} from 'ember-frost-modal/test-support/frost-modal'
 
 const test = integration('frost-modal-confirm-message')
 describe(test.label, function () {

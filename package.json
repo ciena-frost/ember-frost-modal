@@ -13,7 +13,10 @@
     "test": "npm run lint && npm run test-addon",
     "test-addon": "EMBER_TRY_SCENARIO=${EMBER_TRY_SCENARIO:=ember-default} && ember try:one $EMBER_TRY_SCENARIO --- COVERAGE=true ember test"
   },
-  "repository": "git@github.com:ciena-frost/ember-frost-modal.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ciena-frost/ember-frost-modal.git"
+  },
   "engines": {
     "node": ">= 6.0.0"
   },
@@ -37,7 +40,7 @@
     "ember-cli-chai": "0.4.3",
     "ember-cli-code-coverage": "0.3.12",
     "ember-cli-dependency-checker": "^1.3.0",
-    "ember-cli-frost-blueprints": "^5.0.1",
+    "ember-cli-frost-blueprints": "^5.0.2",
     "ember-cli-htmlbars-inline-precompile": "0.3.12",
     "ember-cli-inject-live-reload": "^1.4.1",
     "ember-cli-mocha": "0.14.4",
@@ -48,14 +51,14 @@
     "ember-concurrency": "0.7.19",
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-export-application-global": "^1.0.5",
-    "ember-frost-bunsen": "^17.0.0",
-    "ember-frost-tabs": "^7.0.0",
-    "ember-frost-test": "^4.0.0",
+    "ember-frost-bunsen": "^19.0.1",
+    "ember-frost-tabs": "^8.0.0",
+    "ember-frost-test": "^4.0.1",
     "ember-load-initializers": "^0.6.0",
     "ember-resolver": "^2.0.3",
     "ember-sinon": "^0.7.0",
     "ember-source": "~2.12.0",
-    "ember-test-utils": "^8.1.0",
+    "ember-test-utils": "^8.1.1",
     "ember-truth-helpers": "^1.3.0",
     "loader.js": "^4.2.3",
     "sinon-chai": "^2.14.0"
@@ -69,18 +72,18 @@
     "ember-cli-htmlbars": "^1.1.1",
     "ember-cli-sass": "7.1.1",
     "ember-computed-decorators": "0.3.0",
-    "ember-frost-core": "^5.1.1",
+    "ember-frost-core": "^7.0.0",
     "ember-elsewhere": "1.0.1",
     "ember-get-config": "0.2.2",
     "ember-hook": "1.4.2",
     "ember-ignore-children-helper": "1.0.0",
-    "ember-prop-types": "^6.0.1",
+    "ember-prop-types": "^7.0.2",
     "liquid-fire": "0.27.2"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
   },
   "pr-bumper": {
-    "coverage": 94.65
+    "coverage": 93.23
   }
 }

@@ -52,7 +52,7 @@
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-export-application-global": "^1.0.5",
     "ember-frost-bunsen": "^19.0.1",
-    "ember-frost-tabs": "^7.0.0",
+    "ember-frost-tabs": "^8.0.0",
     "ember-frost-test": "^4.0.0",
     "ember-load-initializers": "^0.6.0",
     "ember-resolver": "^2.0.3",

@@ -11,11 +11,14 @@ module.exports = function (defaults) {
       'tests/dummy'
     ],
     svgstore: {
-       files: [{
-         sourceDirs: 'tests/dummy/frost-icon-svgs',
-         outputFile: '/assets/icon-packs/dummy.svg'
-       }]
-     }
+      files: [{
+        sourceDirs: 'tests/dummy/frost-icon-svgs',
+        outputFile: '/assets/icon-packs/dummy.svg'
+      }],
+      svgstoreOpts: {
+        copyAttrs: ['preserveAspectRatio']
+      }
+    }
   })
 
   return app.toTree()

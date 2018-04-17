@@ -9,7 +9,16 @@ module.exports = function (defaults) {
     snippetSearchPaths: [
       'addon',
       'tests/dummy'
-    ]
+    ],
+    svgstore: {
+      files: [{
+        sourceDirs: 'tests/dummy/frost-icon-svgs',
+        outputFile: '/assets/icon-packs/dummy.svg'
+      }],
+      svgstoreOpts: {
+        copyAttrs: ['preserveAspectRatio']
+      }
+    }
   })
 
   return app.toTree()

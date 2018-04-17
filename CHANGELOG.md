@@ -1,3 +1,11 @@
+# 12.0.0 (2018-04-17)
+
+* Upgraded `ember-frost-bunsen` to `^20.0.0`
+* Upgraded `ember-frost-tabs` to `^9.0.0`
+* Upgraded `ember-frost-core` to `^8.0.0`
+* Installed `ember-cli-svgstore` devDependency
+* Updated `frost-icon` functionality to work with new version of `ember-frost-core`
+
 # 11.0.0 (2018-03-23)
 * **Updated** pull request template
 * **Added** issue template

@@ -1,3 +1,6 @@
+# 12.0.1 (2018-05-30)
+* **Updated** Pin `ember-cli-notifications` to version `4.2.1` to fix broken demo app
+
 # 12.0.0 (2018-04-17)
 
 * Upgraded `ember-frost-bunsen` to `^20.0.0`

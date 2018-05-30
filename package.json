@@ -44,7 +44,7 @@
     "ember-cli-htmlbars-inline-precompile": "0.3.12",
     "ember-cli-inject-live-reload": "^1.4.1",
     "ember-cli-mocha": "0.14.4",
-    "ember-cli-notifications": "^4.2.1",
+    "ember-cli-notifications": "4.2.1",
     "ember-cli-shims": "^1.0.2",
     "ember-cli-svgstore": "github:ciena-blueplanet/ember-cli-svgstore#977df1cf58ae43b1d98a591573c3e06947744321",
     "ember-cli-uglify": "^1.2.0",

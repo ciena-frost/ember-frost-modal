@@ -1,3 +1,7 @@
+# 12.0.2 (2018-06-13)
+* **Updated** `ember-frost-tabs` to version `^10.0.0`
+* **Updated** `ember-frost-bunsen` to version `22.0.0`
+
 # 12.0.1 (2018-05-30)
 * **Updated** Pin `ember-cli-notifications` to version `4.2.1` to fix broken demo app
 

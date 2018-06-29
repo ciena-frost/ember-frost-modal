@@ -27,7 +27,7 @@ export default FrostModalBinding.extend(PropTypesMixin, {
     subtitle: PropTypes.string,
     targetOutlet: PropTypes.string,
     title: PropTypes.string.isRequired,
-
+    helpUrl: PropTypes.string,
     // Actions
     onCancel: PropTypes.func,
     onClose: PropTypes.func.isRequired,
@@ -58,7 +58,8 @@ export default FrostModalBinding.extend(PropTypesMixin, {
       footer: this.footer,
       links: this.links,
       subtitle: this.subtitle,
-      title: this.title
+      title: this.title,
+      helpUrl: this.helpUrl
     }
   }
 

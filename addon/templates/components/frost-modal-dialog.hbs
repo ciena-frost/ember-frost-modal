@@ -16,6 +16,25 @@
       <span class="frost-modal-dialog-header-subtitle">{{params.subtitle}}</span>
     {{/if}}
   </div>
+
+  {{#if params.helpUrl}}
+    <div
+      class='frost-modal-dialog-header-help'
+      data-test={{hook (concat hook '-help') hookQualifiers}}
+    >
+      <a
+        href='/docs/{{params.helpUrl}}'
+      >
+        {{frost-icon
+          class='frost-modal-dialog-help-icon'
+          hook=(concat hook '-helpIcon')
+          hookQualifiers=hookQualifiers
+          icon='info'
+        }}
+      </a>
+    </div>
+  {{/if}}
+
   {{! BEGIN-SNIPPET dialog-overflow-y-start }}
   {{#if isOverflowYStart}}
     <div

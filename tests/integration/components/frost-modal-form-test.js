@@ -85,6 +85,7 @@ describe(test.label, function () {
         isVisible=isFormVisible
         subtitle=subtitle
         title='Easy peasy'
+        helpUrl=helpUrl
         onConfirm=onConfirm
         onClose=onClose
       }}
@@ -350,6 +351,25 @@ describe(test.label, function () {
 
     it('should only render cancel and create buttons', function () {
       expect(this.$('.frost-modal-dialog-footer button')).to.have.length(2)
+    })
+  })
+
+  describe('when helpUrl is present', function () {
+    beforeEach(function () {
+      this.set('helpUrl', 'test-url')
+      return wait()
+    })
+
+    it('should render a help link', function () {
+      expect(this.$('.frost-modal-dialog-header-help')).to.have.length(1)
+    })
+
+    it('should have the correct url', function () {
+      expect(this.$('.frost-modal-dialog-header-help a').attr('href')).to.equal('/docs/test-url')
+    })
+
+    it('should have the correct icon', function () {
+      expect(this.$('.frost-modal-dialog-help-icon')).to.have.length(1)
     })
   })
 })

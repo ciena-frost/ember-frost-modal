@@ -57,6 +57,22 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
   &.frost-modal-form {
     .frost-modal-dialog-header {
       border-bottom: 1px $frost-color-lgrey-1 solid;
+
+      .frost-modal-dialog-header-help {
+        display: flex;
+        flex-grow: 5;
+        justify-content: flex-end;
+
+        a {
+          height: 23px;
+
+          .frost-modal-dialog-help-icon {
+            height: 23px;
+            width: 23px;
+            margin: 0 0 0 10px;
+          }
+        }
+      }
     }
   }
 

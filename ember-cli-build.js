@@ -11,10 +11,16 @@ module.exports = function (defaults) {
       'tests/dummy'
     ],
     svgstore: {
-      files: [{
-        sourceDirs: 'tests/dummy/frost-icon-svgs',
-        outputFile: '/assets/icon-packs/dummy.svg'
-      }],
+      files: [
+        {
+          sourceDirs: 'tests/dummy/frost-icon-svgs',
+          outputFile: '/assets/icon-packs/dummy.svg'
+        },
+        {
+          sourceDirs: 'frost-icon-svgs',
+          outputFile: '/assets/icon-packs/modal.svg'
+        }
+      ],
       svgstoreOpts: {
         copyAttrs: ['preserveAspectRatio']
       }

@@ -6,6 +6,17 @@ $frost-modal-outlet-body-shadow-color: rgba(0, 0, 0, .3);
 $frost-modal-dialog-footer-background-color: rgba($frost-color-white, .95);
 $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
 
+@mixin help-icon {
+  circle {
+    fill: $frost-color-white;
+    stroke: $frost-color-grey-6;
+  }
+
+  path {
+    fill: $frost-color-grey-4;
+  }
+}
+
 @mixin header-help {
   .frost-modal-dialog-header-help {
     display: flex;
@@ -16,6 +27,7 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
       height: 23px;
 
       .frost-modal-dialog-help-icon {
+        @include help-icon;
         width: 23px;
         height: 23px;
         margin: 0 0 0 10px;

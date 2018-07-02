@@ -356,7 +356,7 @@ describe(test.label, function () {
 
   describe('when helpUrl is present', function () {
     beforeEach(function () {
-      this.set('helpUrl', 'test-url')
+      this.set('helpUrl', '/test-url')
       return wait()
     })
 
@@ -365,7 +365,7 @@ describe(test.label, function () {
     })
 
     it('should have the correct url', function () {
-      expect(this.$('.frost-modal-dialog-header-help a').attr('href')).to.equal('/docs/test-url')
+      expect(this.$('.frost-modal-dialog-header-help a').attr('href')).to.equal('/test-url')
     })
 
     it('should have the correct icon', function () {

@@ -1,3 +1,7 @@
+# 12.1.0 (2018-07-03)
+* adds a `helpUrl` property to the frost-modal-dialog-form component.  Needed for epic https://agile-jira.ciena.com/browse/BPSO-45504
+
+
 # 12.0.2 (2018-06-13)
 * **Updated** `ember-frost-tabs` to version `^10.0.0`
 * **Updated** `ember-frost-bunsen` to version `22.0.0`

@@ -18,7 +18,7 @@ module.exports = function (defaults) {
         },
         {
           sourceDirs: 'frost-icon-svgs',
-          outputFile: '/assets/icon-packs/modal.svg'
+          outputFile: '/assets/icon-packs/frost-modal.svg'
         }
       ],
       svgstoreOpts: {

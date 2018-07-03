@@ -1,9 +1,21 @@
 /* eslint-env node */
-
 'use strict'
+
+const {setSvgConfiguration} = require('ember-frost-core/utils/frost-icon-svg')
 
 module.exports = {
   name: 'ember-frost-modal',
+
+  /* eslint-disable no-useless-call */
+  included: function () {
+    this.app = this._findHost.call(this)
+
+    // Set ember-cli-svgstore options so that consuming applications don't have to
+    setSvgConfiguration.call(this, 'frost-modal')
+
+    this._super.included.apply(this, arguments)
+  },
+  /* eslint-enable no-useless-call */
 
   /* eslint-disable complexity */
   init: function () {

@@ -1,3 +1,8 @@
+# 12.1.1 (2018-07-05)
+
+Please add a description of your change here, it will be automatically prepended to the `CHANGELOG.md` file.
+
+
 # 12.1.0 (2018-07-03)
 * adds a `helpUrl` property to the frost-modal-dialog-form component.  Needed for epic https://agile-jira.ciena.com/browse/BPSO-45504
 

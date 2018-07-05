@@ -15,12 +15,10 @@ $frost-modal-overflow-shadow-color: rgba(0, 0, 0, .13);
     a {
       height: 23px;
 
-      svg {
-        &.frost-modal-dialog-help-icon {
-          width: 23px;
-          height: 23px;
-          margin: 0 0 0 10px;
-        }
+      .frost-modal-dialog-help-icon {
+        width: 23px;
+        height: 23px;
+        margin: 0 0 0 10px;
       }
     }
   }

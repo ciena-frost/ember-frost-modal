@@ -1,3 +1,8 @@
+# 12.1.2 (2018-07-20)
+
+* **Fixed** Travis API key.
+
+
 # 12.1.1 (2018-07-05)
 
 Please add a description of your change here, it will be automatically prepended to the `CHANGELOG.md` file.
